@@ -1,0 +1,36 @@
+{
+  "name": "doa-gravure-studio-overlay",
+  "version": "0.0.1",
+  "description": "An overlay for DoA Gravure Studio",
+  "main": "app.js",
+  "author": {
+    "name": "grusigast"
+  },
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win=portable"
+  },
+  "dependencies": {
+    "electron-overlay-window": "2.0.1",
+    "ejs-electron": "2.1.1",
+    "node-key-sender": "1.0.11"
+  },
+  "devDependencies": {
+    "electron": "^12.0.8",
+    "electron-reloader": "1.2.1",
+    "electron-builder": "6.1.0"
+  },
+  "build": {
+    "appId": "com.grusigast.overlay",
+    "win": {
+      "target": [
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    }
+  }
+}

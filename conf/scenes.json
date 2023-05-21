@@ -1,0 +1,398 @@
+[
+    {
+        "name": "Beach",
+        "scenes": [
+            {
+                "name": "Beach 1",
+                "keyMode": "combination",
+                "keys": "F9+0"
+            },
+            {
+                "name": "Beach 2",
+                "keyMode": "combination",
+                "keys": "F9+1"
+            },
+            {
+                "name": "Beach 3",
+                "keyMode": "combination",
+                "keys": "F9+2"
+            },
+            {
+                "name": "Beach 4",
+                "keyMode": "combination",
+                "keys": "F9+3"
+            },
+            {
+                "name": "Beach 5",
+                "keyMode": "combination",
+                "keys": "F9+4"
+            },
+            {
+                "name": "Beach 6",
+                "keyMode": "combination",
+                "keys": "F9+5"
+            },
+            {
+                "name": "Beach 7",
+                "keyMode": "combination",
+                "keys": "F9+6"
+            },
+            {
+                "name": "Beach 8",
+                "keyMode": "combination",
+                "keys": "F9+7"
+            },
+            {
+                "name": "Beach 9",
+                "keyMode": "combination",
+                "keys": "F9+8"
+            },
+            {
+                "name": "Beach 10",
+                "keyMode": "combination",
+                "keys": "F9+9"
+            },
+            {
+                "name": "Beach 11",
+                "keyMode": "combination",
+                "keys": "F9+A"
+            },
+            {
+                "name": "Beach 12",
+                "keyMode": "combination",
+                "keys": "F9+D"
+            },
+            {
+                "name": "Beach 13",
+                "keyMode": "combination",
+                "keys": "F9+E"
+            },
+            {
+                "name": "Beach 14",
+                "keyMode": "combination",
+                "keys": "F9+F"
+            },
+            {
+                "name": "Beach 15",
+                "keyMode": "combination",
+                "keys": "F9+G"
+            },
+            {
+                "name": "Beach 16",
+                "keyMode": "combination",
+                "keys": "F9+I"
+            },
+            {
+                "name": "Beach 17",
+                "keyMode": "combination",
+                "keys": "F9+O"
+            },
+            {
+                "name": "Beach 18",
+                "keyMode": "combination",
+                "keys": "F9+P"
+            },
+            {
+                "name": "Beach 19",
+                "keyMode": "combination",
+                "keys": "F9+Q"
+            },
+            {
+                "name": "Beach 20",
+                "keyMode": "combination",
+                "keys": "F9+R"
+            },
+            {
+                "name": "Beach 21",
+                "keyMode": "combination",
+                "keys": "F9+S"
+            },
+            {
+                "name": "Beach 22",
+                "keyMode": "combination",
+                "keys": "F9+T"
+            },
+            {
+                "name": "Beach 23",
+                "keyMode": "combination",
+                "keys": "F9+U"
+            },
+            {
+                "name": "Beach 24",
+                "keyMode": "combination",
+                "keys": "F9+W"
+            },
+            {
+                "name": "Beach 25",
+                "keyMode": "combination",
+                "keys": "F9+Y"
+            }
+        ]
+    },
+    {
+        "name": "Gym",
+        "scenes": [
+            {
+                "name": "Boxing",
+                "keyMode": "combination",
+                "keys": "F10+A"
+            },
+            {
+                "name": "Pushups",
+                "keyMode": "combination",
+                "keys": "F10+D"
+            },
+            {
+                "name": "Situps",
+                "keyMode": "combination",
+                "keys": "F10+F"
+            },
+            {
+                "name": "Gym 4",
+                "keyMode": "combination",
+                "keys": "F10+G"
+            },
+            {
+                "name": "Treadmill",
+                "keyMode": "combination",
+                "keys": "F10+S"
+            }
+        ]
+    },   
+    {
+        "name": "Remastered PP",
+        "scenes": [
+            {
+                "name": "PP 1",
+                "keyMode": "combination",
+                "keys": "F10+0"
+            },
+            {
+                "name": "PP 2",
+                "keyMode": "combination",
+                "keys": "F10+1"
+            },
+            {
+                "name": "PP 3",
+                "keyMode": "combination",
+                "keys": "F10+2"
+            },
+            {
+                "name": "PP 4",
+                "keyMode": "combination",
+                "keys": "F10+3"
+            },
+            {
+                "name": "PP 5",
+                "keyMode": "combination",
+                "keys": "F10+4"
+            },
+            {
+                "name": "PP 6",
+                "keyMode": "combination",
+                "keys": "F10+5"
+            },
+            {
+                "name": "PP 7",
+                "keyMode": "combination",
+                "keys": "F10+6"
+            },
+            {
+                "name": "PP 8",
+                "keyMode": "combination",
+                "keys": "F10+7"
+            },
+            {
+                "name": "PP 9",
+                "keyMode": "combination",
+                "keys": "F10+8"
+            },
+            {
+                "name": "PP 10",
+                "keyMode": "combination",
+                "keys": "F10+9"
+            },
+            {
+                "name": "PP 11",
+                "keyMode": "combination",
+                "keys": "F10+E"
+            },
+            {
+                "name": "PP 12",
+                "keyMode": "combination",
+                "keys": "F10+Q"
+            },
+            {
+                "name": "PP 13",
+                "keyMode": "combination",
+                "keys": "F10+R"
+            },
+            {
+                "name": "PP 14",
+                "keyMode": "combination",
+                "keys": "F10+T"
+            },
+            {
+                "name": "PP 15",
+                "keyMode": "combination",
+                "keys": "F10+W"
+            },
+            {
+                "name": "PP 16",
+                "keyMode": "combination",
+                "keys": "F10+Y"
+            }
+        ]
+        
+    },
+    {
+        "name": "Bathroom",
+        "scenes": [
+            {
+                "name": "Bathroom 1",
+                "keyMode": "combination",
+                "keys": "F11+A"
+            },
+            {
+                "name": "Bathroom 2",
+                "keyMode": "combination",
+                "keys": "F11+D"
+            },
+            {
+                "name": "Bathroom 3",
+                "keyMode": "combination",
+                "keys": "F11+F"
+            },
+            {
+                "name": "Bathroom 4",
+                "keyMode": "combination",
+                "keys": "F11+G"
+            },
+            {
+                "name": "Bathroom 5",
+                "keyMode": "combination",
+                "keys": "F11+H"
+            },
+            {
+                "name": "Bathroom 6",
+                "keyMode": "combination",
+                "keys": "F11+J"
+            },
+            {
+                "name": "Bathroom 7",
+                "keyMode": "combination",
+                "keys": "F11+S"
+            }
+        ]
+    },
+    {
+        "name": "Bedroom",
+        "scenes": [
+            {
+                "name": "Bedroom 1",
+                "keyMode": "combination",
+                "keys": "F11+C"
+            },
+            {
+                "name": "Bedroom 2",
+                "keyMode": "combination",
+                "keys": "F11+X"
+            },
+            {
+                "name": "Bedroom 3",
+                "keyMode": "combination",
+                "keys": "F11+Z"
+            }
+        ]
+    },
+    {
+        "name": "Casino",
+        "scenes": [
+            {
+                "name": "Casino 1",
+                "keyMode": "combination",
+                "keys": "F11+E"
+            },
+            {
+                "name": "Casino 2",
+                "keyMode": "combination",
+                "keys": "F11+Q"
+            },
+            {
+                "name": "Casino 3",
+                "keyMode": "combination",
+                "keys": "F11+R"
+            },
+            {
+                "name": "Casino 4",
+                "keyMode": "combination",
+                "keys": "F11+T"
+            },
+            {
+                "name": "Casino 5",
+                "keyMode": "combination",
+                "keys": "F11+W"
+            },
+            {
+                "name": "Casino 6",
+                "keyMode": "combination",
+                "keys": "F11+Y"
+            }
+        ]
+    },
+    {
+        "name": "Photo Studio",
+        "scenes": [
+            {
+                "name": "Studio 1",
+                "keyMode": "combination",
+                "keys": "F11+0"
+            },
+            {
+                "name": "Studio 2",
+                "keyMode": "combination",
+                "keys": "F11+1"
+            },
+            {
+                "name": "Studio 3",
+                "keyMode": "combination",
+                "keys": "F11+2"
+            },
+            {
+                "name": "Studio 4",
+                "keyMode": "combination",
+                "keys": "F11+3"
+            },
+            {
+                "name": "Studio 5",
+                "keyMode": "combination",
+                "keys": "F11+4"
+            },
+            {
+                "name": "Studio 6",
+                "keyMode": "combination",
+                "keys": "F11+5"
+            },
+            {
+                "name": "Studio 7",
+                "keyMode": "combination",
+                "keys": "F11+6"
+            },
+            {
+                "name": "Studio 8",
+                "keyMode": "combination",
+                "keys": "F11+7"
+            },
+            {
+                "name": "Studio 9",
+                "keyMode": "combination",
+                "keys": "F11+8"
+            },
+            {
+                "name": "Studio 10",
+                "keyMode": "combination",
+                "keys": "F11+9"
+            }
+        ]
+    }
+]
