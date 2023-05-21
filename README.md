@@ -48,7 +48,7 @@ Configuration of the overlay is done in three different JSON files;
 ### scenes.json
 Contains all scene data.
 
-```json
+```javascript
 {
     "name": "Beach",                    // Category name
     "scenes": [                         // Array of scenes in category.
@@ -65,7 +65,7 @@ Contains all scene data.
 ### actions.json
 A button for each action will show up at the bottom of the overlay.
 
-```json
+```javascript
 {
     "type": "button",       // type of UI element, "button" or "dropdown"
     "icon": "eye-slash",    // Bootstrap Icon key
@@ -84,7 +84,7 @@ A button for each action will show up at the bottom of the overlay.
 ### conf.json
 Contains generic overlay configuration, available options:
 
-```json
+```javascript
 {
     "windowTitle": "DEAD OR ALIVE 5 Last Round Ver.1.10C AutoLink 19/23",           // Title of the window to display overlay window on.
     "keyDelay": 300,                  // Delay in milliseconds between overlay hide and button presses.
