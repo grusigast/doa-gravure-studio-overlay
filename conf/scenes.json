@@ -282,6 +282,11 @@
                 "name": "Bathroom 7",
                 "keyMode": "combination",
                 "keys": "F11+S"
+            },
+            {
+                "name": "Bathroom 8",
+                "keyMode": "combination",
+                "keys": "F11+K"
             }
         ]
     },
