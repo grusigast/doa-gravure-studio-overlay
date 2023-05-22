@@ -13,7 +13,8 @@
   "dependencies": {
     "electron-overlay-window": "2.0.1",
     "ejs-electron": "2.1.1",
-    "node-key-sender": "1.0.11"
+    "node-key-sender": "1.0.11",
+    "hasbin": "1.2.3"
   },
   "devDependencies": {
     "electron": "^12.0.8",
