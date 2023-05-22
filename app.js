@@ -1,13 +1,15 @@
-const {app, BrowserWindow, globalShortcut, ipcMain, Tray, Menu, nativeImage} = require('electron')
+const {app, BrowserWindow, globalShortcut, ipcMain, Tray, Menu, nativeImage, dialog } = require('electron')
 const { overlayWindow } = require('electron-overlay-window')
 const sendkeys = require('node-key-sender')
 const ejse = require('ejs-electron')
+const hasbin = require('hasbin')
 
 var mainWindow, tray
 var conf, scenes, actions
 var isInteractable = false
 
 app.whenReady().then(() => {
+  checkJava()
   loadConf()
   createOverlay()
   createTray()
@@ -16,6 +18,17 @@ app.whenReady().then(() => {
 app.on('window-all-closed', function () {
   app.quit()
 })
+
+async function checkJava()
+{
+  hasbin('java', function (isAvailable) {
+    if (!isAvailable) {
+      console.log('DoA Gravure Studio Overlay requires Java on your windows PATH!')
+      dialog.showErrorBox('Could not locate Java!', 'DoA Gravure Studio Overlay requires Java on your Windows PATH!');
+      app.exit()
+    }
+  });
+}
 
 function createTray () {
   tray = new Tray(nativeImage.createFromPath('icon.png'))

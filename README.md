@@ -100,6 +100,7 @@ Contains generic overlay configuration, available options:
 - [ejs-electron](https://github.com/bowheart/ejs-electron)
 - [node-key-sender](https://github.com/garimpeiro-it/node-key-sender)
 - [BootStrap](https://getbootstrap.com/) + [BootStrap Icons](https://icons.getbootstrap.com/)
+- [hasbin](https://github.com/springernature/hasbin)
 
 ## Build executable
 Building a portable executable file can be done with electron-builder and the following command:
