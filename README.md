@@ -4,6 +4,15 @@ DoA Gravure Studio Overlay is an overlay for DoA Gravure Studio to make it easie
 
 ![Screenshot of overlay](screenshot.png?raw=true "Screenshot of overlay")
 
+## Features
+* Select DoA Gravure Studio scenes
+* Perform AutoLink actions
+
+## Limitations
+* Not possible to select characters via overlay
+* Not possible to select costumes via overlay
+* Navigation-based actions do not work when DoA starts with controller
+
 
 ## Requirements
 * [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com))
@@ -49,16 +58,21 @@ Configuration of the overlay is done in three different JSON files;
 Contains all scene data.
 
 ```javascript
-{
-    "name": "Beach",                    // Category name
-    "scenes": [                         // Array of scenes in category.
-        {
-            "name": "Beach 1",          // Scene name
-            "keyMode": "combination",   // Type of keypress; "press" for single press, "combination" for key combinations, "sequence" for sequence of keypresses.
-            "keys": "F9+0"              // Keys to press. Use + as delimeter for combination and sequence keyMode.
-        }
-    ]
-}
+[
+    {
+        "name": "Beach",                    // Category name.
+        "id": 1,                            // Category ID, just a unique integer.
+        "scenes": [                         // Array of scenes in category.
+            {
+                "name": "Beach 1",          // Scene name
+                "keyMode": "combination",   // Type of keypress; "press" for single press, "combination" for key combinations, "sequence" for sequence of keypresses.
+                "keys": "F9+0"              // Keys to press. Use + as delimeter for combination and sequence keyMode.
+            }
+            // Additional scenes...
+        ]
+    }
+    // Additional categories...
+]
 ```
 
 
@@ -66,19 +80,24 @@ Contains all scene data.
 A button for each action will show up at the bottom of the overlay.
 
 ```javascript
-{
-    "type": "button",       // type of UI element, "button" or "dropdown"
-    "icon": "eye-slash",    // Bootstrap Icon key
-    "name": "Toggle HUD",   // Name in UI
-    "keyMode": "press",     // Type of keypress; "press" for single press, "combination" for key combinations, "sequence" for sequence of keypresses.
-    "keys": "F5",           // Keys to press. Use + as delimeter for combination and sequence keyMode.
-    "options": [            // For dropdown action type, array of dropdown items.
+[
     {
-        "name": "Slow",
-        "keyMode": "combination",
-        "keys": "F1+subtract"
-    },
-}
+        "type": "button",       // type of UI element, "button" or "dropdown".
+        "icon": "eye-slash",    // Bootstrap Icon key.
+        "name": "Toggle HUD",   // Name in UI.
+        "keyMode": "press",     // Type of keypress; "press" for single press, "combination" for key combinations, "sequence" for sequence of keypresses.
+        "keys": "F5",           // Keys to press. Use + as delimeter for combination and sequence keyMode.
+        "options": [            // For dropdown action type, array of dropdown items.
+            {
+                "name": "Slow",
+                "keyMode": "combination",
+                "keys": "F1+subtract"
+            }
+            // Additional options...
+        ]
+    }
+    // Additional actions...
+]
 ```
 
 ### conf.json

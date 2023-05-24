@@ -1,6 +1,7 @@
 [
     {
         "name": "Beach",
+        "id": 1,
         "scenes": [
             {
                 "name": "Beach 1",
@@ -131,6 +132,7 @@
     },
     {
         "name": "Gym",
+        "id": 2,
         "scenes": [
             {
                 "name": "Boxing",
@@ -161,6 +163,7 @@
     },   
     {
         "name": "Remastered PP",
+        "id": 3,
         "scenes": [
             {
                 "name": "PP 1",
@@ -247,6 +250,7 @@
     },
     {
         "name": "Bathroom",
+        "id": 4,
         "scenes": [
             {
                 "name": "Bathroom 1",
@@ -292,6 +296,7 @@
     },
     {
         "name": "Bedroom",
+        "id": 5,
         "scenes": [
             {
                 "name": "Bedroom 1",
@@ -312,6 +317,7 @@
     },
     {
         "name": "Casino",
+        "id": 6,
         "scenes": [
             {
                 "name": "Casino 1",
@@ -347,6 +353,7 @@
     },
     {
         "name": "Photo Studio",
+        "id": 7,
         "scenes": [
             {
                 "name": "Studio 1",

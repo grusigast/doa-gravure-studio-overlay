@@ -4,6 +4,7 @@ ipcRenderer.on('set-visibility', (e, visibility) => {
   console.log('set-visibility: ' + visibility)
   
   if (document.body.style.display) {
+    document.getElementById('menuImage').setAttribute('src', 'img/logo.png')
     document.body.style.display = null
   } else {
     document.body.style.display = 'none'
@@ -13,7 +14,7 @@ ipcRenderer.on('set-visibility', (e, visibility) => {
 function sendKeyPress(keys, keyMode)
 {
   console.log('Send key press: ' + keys + '  with mode: '  + keyMode)
-  ipcRenderer.send("pressKey", keys, keyMode);
+  ipcRenderer.send("pressKey", keys, keyMode)
 }
 
 function setImage(keys)
