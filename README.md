@@ -60,8 +60,8 @@ Contains all scene data.
 ```javascript
 [
     {
-        "name": "Beach",                    // Category name.
-        "id": 1,                            // Category ID, just a unique integer.
+        "name": "Beach",                    // Scene category name.
+        "id": 1,                            // Scene category ID, just a unique integer.
         "scenes": [                         // Array of scenes in category.
             {
                 "name": "Beach 1",          // Scene name
@@ -71,7 +71,7 @@ Contains all scene data.
             // Additional scenes...
         ]
     }
-    // Additional categories...
+    // Additional scene categories...
 ]
 ```
 
@@ -82,21 +82,27 @@ A button for each action will show up at the bottom of the overlay.
 ```javascript
 [
     {
-        "type": "button",       // type of UI element, "button" or "dropdown".
-        "icon": "eye-slash",    // Bootstrap Icon key.
-        "name": "Toggle HUD",   // Name in UI.
-        "keyMode": "press",     // Type of keypress; "press" for single press, "combination" for key combinations, "sequence" for sequence of keypresses.
-        "keys": "F5",           // Keys to press. Use + as delimeter for combination and sequence keyMode.
-        "options": [            // For dropdown action type, array of dropdown items.
+        "name": "Game",         // Action category.
+        "actions": [            // Array of actions in category.
             {
-                "name": "Slow",
-                "keyMode": "combination",
-                "keys": "F1+subtract"
+                "type": "button",       // type of UI element, "button" or "dropdown".
+                "icon": "eye-slash",    // Bootstrap Icon key.
+                "name": "Toggle HUD",   // Name in UI.
+                "keyMode": "press",     // Type of keypress; "press" for single press, "combination" for key combinations, "sequence" for sequence of keypresses.
+                "keys": "F5",           // Keys to press. Use + as delimeter for combination and sequence keyMode.
+                "options": [            // For dropdown action type, array of dropdown items.
+                    {
+                        "name": "Slow",
+                        "keyMode": "combination",
+                        "keys": "F1+subtract"
+                    }
+                    // Additional options...
+                ]
             }
-            // Additional options...
+            // Additional actions...
         ]
     }
-    // Additional actions...
+    // Additional action categories...
 ]
 ```
 

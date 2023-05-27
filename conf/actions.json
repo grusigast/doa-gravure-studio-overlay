@@ -1,91 +1,157 @@
 [
     {
-        "type": "button",
-        "icon": "arrow-repeat",
-        "name": "Refresh",
-        "keyMode": "sequence",
-        "keys": "L+M+M"
-    },
-    {
-        "type": "button",
-        "icon": "magic",
-        "name": "Toggle ReShade",
-        "keyMode": "press",
-        "keys": "F2"
-    },
-    {
-        "type": "button",
-        "icon": "eye-slash",
-        "name": "Toggle HUD",
-        "keyMode": "press",
-        "keys": "F5"
-    },
-    {
-        "type": "button",
-        "icon": "camera",
-        "name": "Screenshot",
-        "keyMode": "press",
-        "keys": "print_screen"
-    },
-    {
-        "type": "dropdown",
-        "icon": "speedometer2",
-        "name": "Game speed",
-        "options": [
+        "name": "Game",
+        "actions": [
             {
-                "name": "Slow",
-                "keyMode": "combination",
-                "keys": "F1+subtract"
-            },
-            {
-                "name": "Normal",
+                "type": "button",
+                "icon": "play",
+                "name": "Play",
                 "keyMode": "combination",
                 "keys": "F1+escape"
             },
             {
-                "name": "Fast",
+                "type": "button",
+                "icon": "pause",
+                "name": "Pause",
                 "keyMode": "combination",
-                "keys": "F1+add"
+                "keys": "F1+0"
+            },
+            {
+                "type": "dropdown",
+                "icon": "speedometer2",
+                "name": "Speed",
+                "options": [
+                    {
+                        "name": "Slow",
+                        "keyMode": "combination",
+                        "keys": "F1+subtract"
+                    },
+                    {
+                        "name": "Normal",
+                        "keyMode": "combination",
+                        "keys": "F1+escape"
+                    },
+                    {
+                        "name": "Fast",
+                        "keyMode": "combination",
+                        "keys": "F1+add"
+                    }
+                ]
             }
         ]
     },
     {
-        "type": "dropdown",
-        "icon": "heart-pulse",
-        "name": "Breast motion",
-        "options": [
+        "name": "UI",
+        "actions":[
             {
-                "name": "Off",
-                "keyMode": "combination",
-                "keys": "F7+back_quote"
+                "type": "button",
+                "icon": "arrow-repeat",
+                "name": "Refresh",
+                "keyMode": "sequence",
+                "keys": "L+M+M"
             },
             {
-                "name": "Natural",
-                "keyMode": "combination",
-                "keys": "F7+1"
+                "type": "button",
+                "icon": "magic",
+                "name": "Toggle ReShade",
+                "keyMode": "press",
+                "keys": "F2"
             },
             {
-                "name": "DOA",
-                "keyMode": "combination",
-                "keys": "F7+2"
-            },
-            {
-                "name": "OMG",
-                "keyMode": "combination",
-                "keys": "F7+3"
-            },
-            {
-                "name": "OMG+DOA",
-                "keyMode": "combination",
-                "keys": "F7+4"
+                "type": "button",
+                "icon": "eye-slash",
+                "name": "Toggle HUD",
+                "keyMode": "press",
+                "keys": "F5"
             }
         ]
     },
     {
-        "type": "button",
-        "icon": "arrow-clockwise",
-        "name": "Rotate",
-        "keyMode": "press",
-        "keys": "F4"
+        "name": "Camera",
+        "actions":[
+            {
+                "type": "button",
+                "icon": "arrow-clockwise",
+                "name": "Rotate",
+                "keyMode": "press",
+                "keys": "F4"
+            },
+            {
+                "type": "button",
+                "icon": "camera",
+                "name": "Screenshot",
+                "keyMode": "press",
+                "keys": "print_screen"
+            }
+        ]
+    },
+    {
+        "name": "Character",
+        "actions":[
+            {
+                "type": "dropdown",
+                "icon": "heart-pulse",
+                "name": "Breast motion",
+                "options": [
+                    {
+                        "name": "Off",
+                        "keyMode": "combination",
+                        "keys": "F7+back_quote"
+                    },
+                    {
+                        "name": "Natural",
+                        "keyMode": "combination",
+                        "keys": "F7+1"
+                    },
+                    {
+                        "name": "DOA",
+                        "keyMode": "combination",
+                        "keys": "F7+2"
+                    },
+                    {
+                        "name": "OMG",
+                        "keyMode": "combination",
+                        "keys": "F7+3"
+                    },
+                    {
+                        "name": "OMG+DOA",
+                        "keyMode": "combination",
+                        "keys": "F7+4"
+                    }
+                ]
+            },
+            {
+                "type": "dropdown",
+                "icon": "brightness-high",
+                "name": "Brightness",
+                "options": [
+                    {
+                        "name": "80%",
+                        "keyMode": "combination",
+                        "keys": "F6+6"
+                    },
+                    {
+                        "name": "90%",
+                        "keyMode": "combination",
+                        "keys": "F6+8"
+                    },
+                    {
+                        "name": "100%",
+                        "keyMode": "combination",
+                        "keys": "F6+0"
+                    },
+                    {
+                        "name": "110%",
+                        "keyMode": "combination",
+                        "keys": "F6+2"
+                    },
+                    {
+                        "name": "120%",
+                        "keyMode": "combination",
+                        "keys": "F6+4"
+                    }
+                ]
+            }
+        ]
     }
 ]
