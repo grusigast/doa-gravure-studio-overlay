@@ -108,7 +108,8 @@ Contains generic overlay configuration, available options:
     "windowTitle": "DEAD OR ALIVE 5 Last Round Ver.1.10C AutoLink 19/23",           // Title of the window to display overlay window on.
     "keyDelay": 300,                  // Delay in milliseconds between overlay hide and button presses.
     "toggleOverlay": "CmdOrCtrl + Q", // Keyboard shortcut to toggle overlay.
-    "reopenOverlay": false            // Show overlay after button pressed.
+    "reopenOverlay": false,           // Show overlay after button pressed.
+    "theme": "dark"                   // Overlay theme, "dark" or "light".
 }
 ```
 

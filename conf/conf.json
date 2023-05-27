@@ -2,5 +2,6 @@
     "windowTitle": "DEAD OR ALIVE 5 Last Round Ver.1.10C AutoLink 19/23",
     "keyDelay": 300,
     "toggleOverlay": "CmdOrCtrl + Q",
-    "reopenOverlay": false
+    "reopenOverlay": false,
+    "theme": "light"
 }

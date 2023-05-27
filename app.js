@@ -102,7 +102,7 @@ function loadConf() {
   scenes = require('./conf/scenes.json')
   actions = require('./conf/actions.json')
 
-  ejse.data({'scenes': scenes, 'actions': actions})
+  ejse.data({'scenes': scenes, 'actions': actions, 'conf': conf})
 }
 
 // Recieve key press event.
