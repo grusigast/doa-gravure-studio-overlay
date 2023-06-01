@@ -1,5 +1,5 @@
 const {app, BrowserWindow, globalShortcut, ipcMain, Tray, Menu, nativeImage, dialog } = require('electron')
-const { overlayWindow } = require('electron-overlay-window')
+const { OverlayController } = require('electron-overlay-window')
 const sendkeys = require('node-key-sender')
 const ejse = require('ejs-electron')
 const hasbin = require('hasbin')
@@ -65,8 +65,7 @@ function createOverlay () {
   globalShortcut.register(conf.toggleOverlay, toggleOverlay)
 
   // Attach to process with configured windowTitle.
-  overlayWindow.attachTo(mainWindow, conf.windowTitle)
-
+  OverlayController.attachByTitle(mainWindow, conf.windowTitle)
 
   // Enable the overlay
   toggleOverlay()
@@ -82,7 +81,7 @@ function toggleDevTools() {
 
 function toggleOverlay () {
   if (isInteractable) {
-    overlayWindow.focusTarget()
+    OverlayController.focusTarget()
     mainWindow.setIgnoreMouseEvents(true)
     mainWindow.webContents.send('focus-change', false)
     mainWindow.webContents.send('set-visibility', false)
@@ -92,7 +91,7 @@ function toggleOverlay () {
     mainWindow.webContents.send('focus-change', true)
     mainWindow.webContents.send('set-visibility', true)
     isInteractable = true
-    overlayWindow.activateOverlay()
+    OverlayController.activateOverlay()
   }
 }
 
