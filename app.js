@@ -6,7 +6,7 @@ const hasbin = require('hasbin')
 
 var mainWindow, tray
 var conf, scenes, actions
-var isInteractable = false
+var isInteractable = true
 
 app.whenReady().then(() => {
   checkJava()
@@ -83,12 +83,10 @@ function toggleOverlay () {
   if (isInteractable) {
     OverlayController.focusTarget()
     mainWindow.setIgnoreMouseEvents(true)
-    mainWindow.webContents.send('focus-change', false)
     mainWindow.webContents.send('set-visibility', false)
     isInteractable = false
   } else {
     mainWindow.setIgnoreMouseEvents(false)
-    mainWindow.webContents.send('focus-change', true)
     mainWindow.webContents.send('set-visibility', true)
     isInteractable = true
     OverlayController.activateOverlay()
