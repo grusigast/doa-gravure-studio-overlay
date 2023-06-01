@@ -15,7 +15,7 @@ DoA Gravure Studio Overlay is an overlay for DoA Gravure Studio to make it easie
 
 
 ## Requirements
-* [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com))
+* [Node.js](https://nodejs.org/en/download/) > 16.6.0 (which comes with [npm](http://npmjs.com))
 * The library used for sending key commands requires Java in your PATH
 
 
