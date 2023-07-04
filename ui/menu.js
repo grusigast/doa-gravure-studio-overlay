@@ -11,10 +11,10 @@ ipcRenderer.on('set-visibility', (e, visibility) => {
   }
 });
 
-function sendKeyPress(keys, keyMode)
+function sendAction(data, mode)
 {
-  console.log('Send key press: ' + keys + '  with mode: '  + keyMode)
-  ipcRenderer.send("pressKey", keys, keyMode)
+  console.log('Send: ' + data + '  with mode: '  + mode)
+  ipcRenderer.send("action", data, mode)
 }
 
 function setImage(keys)

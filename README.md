@@ -7,15 +7,17 @@ DoA Gravure Studio Overlay is an overlay for DoA Gravure Studio to make it easie
 ## Features
 * Select DoA Gravure Studio scenes
 * Perform AutoLink actions
+* Perform memory injects
 
 ## Limitations
-* Not possible to select characters via overlay
-* Not possible to select costumes via overlay
+* Not possible to select characters via overlay (unless its possible via memory injects?)
+* Not possible to select costumes via overlay (unless its possible via memory injects?)
 * Navigation-based actions do not work when DoA starts with controller
 
 
 ## Requirements
 * [Node.js](https://nodejs.org/en/download/) > 16.6.0 (which comes with [npm](http://npmjs.com))
+* [node-gyp](https://github.com/nodejs/node-gyp)
 * The library used for sending key commands requires Java in your PATH
 
 
@@ -65,8 +67,8 @@ Contains all scene data.
         "scenes": [                         // Array of scenes in category.
             {
                 "name": "Beach 1",          // Scene name
-                "keyMode": "combination",   // Type of keypress; "press" for single press, "combination" for key combinations, "sequence" for sequence of keypresses.
-                "keys": "F9+0"              // Keys to press. Use + as delimeter for combination and sequence keyMode.
+                "mode": "combination",   // Type of keypress; "press" for single press, "combination" for key combinations, "sequence" for sequence of keypresses.
+                "data": "F9+0"              // Keys to press. Use + as delimeter for combination and sequence keyMode.
             }
             // Additional scenes...
         ]
@@ -84,22 +86,32 @@ A button for each action will show up at the bottom of the overlay.
     {
         "name": "Game",         // Action category.
         "actions": [            // Array of actions in category.
+
+            // Key press action.
             {
-                "type": "button",       // type of UI element, "button" or "dropdown".
+                "type": "button",       // Type of UI element, "button" or "dropdown".
                 "icon": "eye-slash",    // Bootstrap Icon key.
                 "name": "Toggle HUD",   // Name in UI.
-                "keyMode": "press",     // Type of keypress; "press" for single press, "combination" for key combinations, "sequence" for sequence of keypresses.
-                "keys": "F5",           // Keys to press. Use + as delimeter for combination and sequence keyMode.
+                "mode": "press",       // Type of action; "press" for single press, "combination" for key combinations, "sequence" for sequence of keypresses.
+                "data": "F5",           // Keys to press. Use + as delimeter for combination and sequence keyMode.
                 "options": [            // For dropdown action type, array of dropdown items.
                     {
                         "name": "Slow",
-                        "keyMode": "combination",
-                        "keys": "F1+subtract"
+                        "mode": "combination",
+                        "data": "F1+subtract"
                     }
                     // Additional options...
                 ]
+            },
+
+            // Memory inject action.
+            {
+                "type": "button",       // Type of UI element, "button" or "dropdown".
+                "icon": "eye-slash",    // Bootstrap Icon key.
+                "name": "Toggle HUD",   // Name in UI.
+                "mode": "inject",       // Type of action; inject for memory injections.
+                "data": "12559D10|-1.0",// Data to send, format: memoryAddressHex|value
             }
-            // Additional actions...
         ]
     }
     // Additional action categories...
@@ -112,6 +124,7 @@ Contains generic overlay configuration, available options:
 ```javascript
 {
     "windowTitle": "DEAD OR ALIVE 5 Last Round Ver.1.10C AutoLink 19/23",           // Title of the window to display overlay window on.
+    "processName": "game.exe"         // Name of DEAD OR ALIVE 5 process, used for memory injections.
     "keyDelay": 300,                  // Delay in milliseconds between overlay hide and button presses.
     "toggleOverlay": "CmdOrCtrl + Q", // Keyboard shortcut to toggle overlay.
     "reopenOverlay": false,           // Show overlay after button pressed.
@@ -127,6 +140,7 @@ Contains generic overlay configuration, available options:
 - [node-key-sender](https://github.com/garimpeiro-it/node-key-sender)
 - [BootStrap](https://getbootstrap.com/) + [BootStrap Icons](https://icons.getbootstrap.com/)
 - [hasbin](https://github.com/springernature/hasbin)
+- [memoryjs](https://github.com/Rob--/memoryjs)
 
 ## Build executable
 Building a portable executable file can be done with electron-builder and the following command:

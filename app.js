@@ -3,6 +3,7 @@ const { OverlayController } = require('electron-overlay-window')
 const sendkeys = require('node-key-sender')
 const ejse = require('ejs-electron')
 const hasbin = require('hasbin')
+const memoryjs = require('memoryjs')
 
 var mainWindow, tray
 var conf, scenes, actions
@@ -102,40 +103,47 @@ function loadConf() {
   ejse.data({'scenes': scenes, 'actions': actions, 'conf': conf})
 }
 
-// Recieve key press event.
-ipcMain.on('pressKey', (event, keys, keyMode) => {
-  console.log('Press keys: ' + keys + ' with mode: ' + keyMode)
+// Recieve action event.
+ipcMain.on('action', (event, data, mode) => {
+  console.log('Handle action: ' + mode + ' with data: ' + data)
 
   sendkeys.setOption('globalDelayPressMillisec', conf.keyDelay)
   sendkeys.setOption('startDelayMillisec ', conf.keyDelay * 2)
 
   toggleOverlay()
 
-  if (keyMode == 'press') {
+  if (mode == 'press') {
     overlayWindow.focusTarget()
     sendkeys.setOption('globalDelayPressMillisec', 100)
 
-    sendkeys.sendKey(keys).then((out, err) => {
+    sendkeys.sendKey(data).then((out, err) => {
       if (conf.reopenOverlay)
       {
         toggleOverlay()
       }
     })
-  } else if (keyMode == 'combination') {
-    sendkeys.sendCombination(keys.split('+')).then((out, err) => {
+  } else if (mode == 'combination') {
+    sendkeys.sendCombination(data.split('+')).then((out, err) => {
       if (conf.reopenOverlay)
       {
         toggleOverlay()
       }
     })
-  } else if (keyMode == 'sequence') {
-    sendkeys.sendKeys(keys.split('+')).then((out, err) => {
+  } else if (mode == 'sequence') {
+    sendkeys.sendKeys(data.split('+')).then((out, err) => {
       if (conf.reopenOverlay)
       {
         toggleOverlay()
       }
     })
+  } else if (mode == 'inject') {
+    memoryInject(data.split('|')[0], data.split('|')[1])
   } else {
-    console.log('Invalid keyMode: ' + keyMode)
+    console.log('Invalid mode: ' + mode)
   }
 })
+
+function memoryInject(hexAddress, value) {
+  var processObject = memoryjs.openProcess(conf.processName)
+  memoryjs.writeMemory(processObject.handle, parseInt(hexAddress, 16), parseFloat(value), memoryjs.FLOAT)
+}

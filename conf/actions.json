@@ -6,15 +6,15 @@
                 "type": "button",
                 "icon": "play",
                 "name": "Play",
-                "keyMode": "combination",
-                "keys": "F1+escape"
+                "mode": "combination",
+                "data": "F1+escape"
             },
             {
                 "type": "button",
                 "icon": "pause",
                 "name": "Pause",
-                "keyMode": "combination",
-                "keys": "F1+0"
+                "mode": "combination",
+                "data": "F1+0"
             },
             {
                 "type": "dropdown",
@@ -23,18 +23,18 @@
                 "options": [
                     {
                         "name": "Slow",
-                        "keyMode": "combination",
-                        "keys": "F1+subtract"
+                        "mode": "combination",
+                        "data": "F1+subtract"
                     },
                     {
                         "name": "Normal",
-                        "keyMode": "combination",
-                        "keys": "F1+escape"
+                        "mode": "combination",
+                        "data": "F1+escape"
                     },
                     {
                         "name": "Fast",
-                        "keyMode": "combination",
-                        "keys": "F1+add"
+                        "mode": "combination",
+                        "data": "F1+add"
                     }
                 ]
             }
@@ -47,22 +47,22 @@
                 "type": "button",
                 "icon": "arrow-repeat",
                 "name": "Refresh",
-                "keyMode": "sequence",
-                "keys": "L+M+M"
+                "mode": "sequence",
+                "data": "L+M+M"
             },
             {
                 "type": "button",
                 "icon": "magic",
                 "name": "Toggle ReShade",
-                "keyMode": "press",
-                "keys": "F2"
+                "mode": "press",
+                "data": "F2"
             },
             {
                 "type": "button",
                 "icon": "eye-slash",
                 "name": "Toggle HUD",
-                "keyMode": "press",
-                "keys": "F5"
+                "mode": "press",
+                "data": "F5"
             }
         ]
     },
@@ -73,15 +73,15 @@
                 "type": "button",
                 "icon": "arrow-clockwise",
                 "name": "Rotate",
-                "keyMode": "press",
-                "keys": "F4"
+                "mode": "press",
+                "data": "F4"
             },
             {
                 "type": "button",
                 "icon": "camera",
                 "name": "Screenshot",
-                "keyMode": "press",
-                "keys": "print_screen"
+                "mode": "press",
+                "data": "print_screen"
             }
         ]
     },
@@ -95,28 +95,28 @@
                 "options": [
                     {
                         "name": "Off",
-                        "keyMode": "combination",
-                        "keys": "F7+back_quote"
+                        "mode": "combination",
+                        "data": "F7+back_quote"
                     },
                     {
                         "name": "Natural",
-                        "keyMode": "combination",
-                        "keys": "F7+1"
+                        "mode": "combination",
+                        "data": "F7+1"
                     },
                     {
                         "name": "DOA",
-                        "keyMode": "combination",
-                        "keys": "F7+2"
+                        "mode": "combination",
+                        "data": "F7+2"
                     },
                     {
                         "name": "OMG",
-                        "keyMode": "combination",
-                        "keys": "F7+3"
+                        "mode": "combination",
+                        "data": "F7+3"
                     },
                     {
                         "name": "OMG+DOA",
-                        "keyMode": "combination",
-                        "keys": "F7+4"
+                        "mode": "combination",
+                        "data": "F7+4"
                     }
                 ]
             },
@@ -127,28 +127,50 @@
                 "options": [
                     {
                         "name": "80%",
-                        "keyMode": "combination",
-                        "keys": "F6+6"
+                        "mode": "combination",
+                        "data": "F6+6"
                     },
                     {
                         "name": "90%",
-                        "keyMode": "combination",
-                        "keys": "F6+8"
+                        "mode": "combination",
+                        "data": "F6+8"
                     },
                     {
                         "name": "100%",
-                        "keyMode": "combination",
-                        "keys": "F6+0"
+                        "mode": "combination",
+                        "data": "F6+0"
                     },
                     {
                         "name": "110%",
-                        "keyMode": "combination",
-                        "keys": "F6+2"
+                        "mode": "combination",
+                        "data": "F6+2"
                     },
                     {
                         "name": "120%",
-                        "keyMode": "combination",
-                        "keys": "F6+4"
+                        "mode": "combination",
+                        "data": "F6+4"
+                    }
+                ]
+            },
+            {
+                "type": "dropdown",
+                "icon": "emoji-sunglasses",
+                "name": "Tan",
+                "options": [
+                    {
+                        "name": "Min",
+                        "mode": "inject",
+                        "data": "12559D10|-1.0"
+                    },
+                    {
+                        "name": "Mid",
+                        "mode": "inject",
+                        "data": "12559D10|0.0"
+                    },
+                    {
+                        "name": "Max",
+                        "mode": "inject",
+                        "data": "12559D10|1.0"
                     }
                 ]
             }

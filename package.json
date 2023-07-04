@@ -14,12 +14,14 @@
     "electron-overlay-window": "3.3.0",
     "ejs-electron": "2.1.1",
     "node-key-sender": "1.0.11",
-    "hasbin": "1.2.3"
+    "hasbin": "1.2.3",
+    "memoryjs": "3.5.1"
   },
   "devDependencies": {
     "electron": "^24.4.0",
     "electron-reloader": "1.2.1",
-    "electron-builder": "23.6.0"
+    "electron-builder": "23.6.0",
+    "memoryjs": "3.5.1"
   },
   "build": {
     "appId": "com.grusigast.overlay",
