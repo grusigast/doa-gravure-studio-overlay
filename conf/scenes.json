@@ -127,6 +127,11 @@
                 "name": "Beach 25",
                 "mode": "combination",
                 "data": "F9+Y"
+            },
+            {
+                "name": "Beach Bounce",
+                "mode": "combination",
+                "data": "F9+H"
             }
         ]
     },
@@ -291,6 +296,11 @@
                 "name": "Bathroom 8",
                 "mode": "combination",
                 "data": "F11+K"
+            },
+            {
+                "name": "Bathroom 9",
+                "mode": "combination",
+                "data": "F11+L"
             }
         ]
     },

@@ -113,7 +113,7 @@ ipcMain.on('action', (event, data, mode) => {
   toggleOverlay()
 
   if (mode == 'press') {
-    overlayWindow.focusTarget()
+    OverlayController.focusTarget()
     sendkeys.setOption('globalDelayPressMillisec', 100)
 
     sendkeys.sendKey(data).then((out, err) => {
