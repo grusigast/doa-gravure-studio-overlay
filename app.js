@@ -4,12 +4,14 @@ const sendkeys = require('node-key-sender')
 const ejse = require('ejs-electron')
 const hasbin = require('hasbin')
 const memoryjs = require('memoryjs')
+const isElevated = require('native-is-elevated')()
 
 var mainWindow, tray
 var conf, scenes, actions
 var isInteractable = true
 
 app.whenReady().then(() => {
+  checkElevation()
   checkJava()
   loadConf()
   createOverlay()
@@ -19,6 +21,15 @@ app.whenReady().then(() => {
 app.on('window-all-closed', function () {
   app.quit()
 })
+
+function checkElevation()
+{
+  if (!isElevated) {
+    console.log('DoA Gravure Studio Overlay is not running with elevated privileges, closing down!')
+    dialog.showErrorBox('Not running as administrator!', 'In order for DoA Gravure Studio Overlay to send keyboard commands and perform memory injects to the DoA game process, it needs to be run with Administrator priveleges!');
+    app.exit()
+  }
+}
 
 async function checkJava()
 {

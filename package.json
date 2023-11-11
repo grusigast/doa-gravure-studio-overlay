@@ -15,7 +15,8 @@
     "ejs-electron": "2.1.1",
     "node-key-sender": "1.0.11",
     "hasbin": "1.2.3",
-    "memoryjs": "3.5.1"
+    "memoryjs": "3.5.1",
+    "native-is-elevated": "0.7.0"
   },
   "devDependencies": {
     "electron": "^24.4.0",
