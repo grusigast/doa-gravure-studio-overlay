@@ -129,9 +129,54 @@
                 "data": "F9+Y"
             },
             {
+                "name": "Beach 26",
+                "mode": "combination",
+                "data": "F9+Z"
+            },
+            {
+                "name": "Beach 27",
+                "mode": "combination",
+                "data": "F9+X"
+            },
+            {
+                "name": "Beach 28",
+                "mode": "combination",
+                "data": "F9+C"
+            },
+            {
+                "name": "Beach 29",
+                "mode": "combination",
+                "data": "F9+V"
+            },
+            {
+                "name": "Beach 30",
+                "mode": "combination",
+                "data": "F9+B"
+            },
+            {
+                "name": "Beach 31",
+                "mode": "combination",
+                "data": "F9+N"
+            },
+            {
                 "name": "Beach Bounce",
                 "mode": "combination",
                 "data": "F9+H"
+            },
+            {
+                "name": "Beach Posereel 1",
+                "mode": "combination",
+                "data": "F9+J"
+            },
+            {
+                "name": "Beach Posereel 2",
+                "mode": "combination",
+                "data": "F9+K"
+            },
+            {
+                "name": "Beach Posereel 3",
+                "mode": "combination",
+                "data": "F9+L"
             }
         ]
     },
@@ -163,6 +208,16 @@
                 "name": "Treadmill",
                 "mode": "combination",
                 "data": "F10+S"
+            },
+            {
+                "name": "Gym 5",
+                "mode": "combination",
+                "data": "F10+H"
+            },
+            {
+                "name": "Gym 6",
+                "mode": "combination",
+                "data": "F10+J"
             }
         ]
     },   
@@ -358,6 +413,11 @@
                 "name": "Casino 6",
                 "mode": "combination",
                 "data": "F11+Y"
+            },
+            {
+                "name": "Casino Posereel",
+                "mode": "combination",
+                "data": "F11+U"
             }
         ]
     },
@@ -414,6 +474,28 @@
                 "name": "Studio 10",
                 "mode": "combination",
                 "data": "F11+9"
+            }
+        ]
+    },
+    {
+        "name": "Manor",
+        "id": 8,
+        "scenes": [
+            {
+                "name": "Manor 1",
+                "mode": "combination",
+                "data": "F10+M"
+            }
+        ]
+    },
+    {
+        "name": "Onsen",
+        "id": 9,
+        "scenes": [
+            {
+                "name": "Onsen 1",
+                "mode": "combination",
+                "data": "F10+Z"
             }
         ]
     }
