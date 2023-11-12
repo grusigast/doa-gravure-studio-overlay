@@ -40,6 +40,9 @@
         }
       ]
     },
+    "directories": {
+      "buildResources": "resources/"
+    },
     "extraResources": [
       {
           "from": "resources/local-jre",
@@ -48,6 +51,10 @@
       {
         "from": "resources/jar",
         "to": "jar"
+      },
+      {
+        "from": "resources/icon.png",
+        "to": "icon.png"
       }
     ]
   }

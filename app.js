@@ -64,7 +64,7 @@ function setupJREandJar() {
 }
 
 function createTray () {
-  tray = new Tray(nativeImage.createFromPath('icon.png'))
+  tray = new Tray(nativeImage.createFromPath(path.join('resources', 'icon.png')))
   tray.setToolTip('DoA Gravure Studio Overlay')
   tray.setContextMenu(Menu.buildFromTemplate([
     { id: 1, label: 'Toggle overlay', click: async() => { toggleOverlay() }},
