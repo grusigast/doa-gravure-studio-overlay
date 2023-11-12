@@ -4,5 +4,6 @@
     "keyDelay": 300,
     "toggleOverlay": "CmdOrCtrl + Q",
     "reopenOverlay": false,
-    "theme": "light"
+    "theme": "light",
+    "logToFile": false
 }

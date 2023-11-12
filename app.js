@@ -6,15 +6,18 @@ const memoryjs = require('memoryjs')
 const isElevated = require('native-is-elevated')()
 const path = require('path')
 const fs = require('fs')
+const pino = require('pino')
 
-var mainWindow, tray
+var mainWindow, tray, logger
 var confPath, conf, scenes, actions
 var isInteractable = true
 
 app.whenReady().then(() => {
+  loadConf()
+  setupLogger()
   checkElevation()
   setupJREandJar()
-  loadConf()
+  loadData()
   createOverlay()
   createTray()
 })
@@ -23,17 +26,41 @@ app.on('window-all-closed', function () {
   app.quit()
 })
 
+function setupLogger() {
+  var logPath
+  if (process.env.INIT_CWD) {
+    logPath = path.join(process.env.INIT_CWD, 'overlay.log')
+  } else if (process.env.PORTABLE_EXECUTABLE_FILE) {
+    logPath = path.join(path.dirname(process.env.PORTABLE_EXECUTABLE_FILE), 'overlay.log')
+  }
+
+  if (conf.logToFile) {
+    logger = pino(pino.destination({dest: logPath, sync: true}))
+    logger.info('File logger setup, conf loaded from ' + confPath + ' and logging to file ' + logPath)
+  } else {
+    logger = pino({transport: { target: 'pino-pretty', sync: true }})
+    logger.info('Console logger setup, conf loaded from ' + confPath)
+  }
+}
+
 function checkElevation() {
   if (!isElevated) {
-    console.log('DoA Gravure Studio Overlay is not running with elevated privileges, closing down!')
+    logger.error('DoA Gravure Studio Overlay is not running with elevated privileges, closing down!')
     dialog.showErrorBox('Not running as administrator!', 'In order for DoA Gravure Studio Overlay to send keyboard commands and perform memory injects to the DoA game process, it needs to be run with Administrator priveleges!');
     app.exit()
   }
 }
 
+
 function setupJREandJar() {
-  sendkeys.setOption('jarPath', path.join(process.cwd(), "resources", "jar", "key-sender.jar"))
-  sendkeys.setOption('jrePath', path.join(process.cwd(), "resources", "local-jre", "bin", "java.exe"))
+  var jarPath = path.join(process.cwd(), "resources", "jar", "key-sender.jar")
+  var jrePath = path.join(process.cwd(), "resources", "local-jre", "bin", "java.exe")
+
+  logger.info('Using jarPath: ' + jarPath)
+  logger.info('Using jrePath: ' + jrePath)
+
+  sendkeys.setOption('jarPath', jarPath)
+  sendkeys.setOption('jrePath', jrePath)
 }
 
 function createTray () {
@@ -90,11 +117,13 @@ function toggleDevTools() {
 
 function toggleOverlay () {
   if (isInteractable) {
+    logger.info('Disabling overlay')
     OverlayController.focusTarget()
     mainWindow.setIgnoreMouseEvents(true)
     mainWindow.webContents.send('set-visibility', false)
     isInteractable = false
   } else {
+    logger.info('Enabling overlay')
     mainWindow.setIgnoreMouseEvents(false)
     mainWindow.webContents.send('set-visibility', true)
     isInteractable = true
@@ -103,18 +132,20 @@ function toggleOverlay () {
 }
 
 function loadConf() {
-  // Load conf file
-  if (process.env.INIT_CWD) {
-    confPath = path.join(process.env.INIT_CWD, 'conf.json')
-    conf = JSON.parse(fs.readFileSync(confPath, 'utf8'));
-  } else if (process.env.PORTABLE_EXECUTABLE_FILE) {
-    confPath = path.join(path.dirname(process.env.PORTABLE_EXECUTABLE_FILE), 'conf.json')
-    conf = JSON.parse(fs.readFileSync(confPath, 'utf8'));
-  } else {
-    console.log('Conf path could not be constructed, using require instead.')
-    conf = require('./conf.json')
-  }
+    // Load conf file
+    if (process.env.INIT_CWD) {
+      confPath = path.join(process.env.INIT_CWD, 'conf.json')
+      conf = JSON.parse(fs.readFileSync(confPath, 'utf8'));
+    } else if (process.env.PORTABLE_EXECUTABLE_FILE) {
+      confPath = path.join(path.dirname(process.env.PORTABLE_EXECUTABLE_FILE), 'conf.json')
+      conf = JSON.parse(fs.readFileSync(confPath, 'utf8'));
+    } else {
+      confPath = 'Could not construct confPath, using require instead.'
+      conf = require('./conf.json')
+    }
+}
 
+function loadData() {
   // Load overlay data.
   scenes = require('./data/scenes.json')
   actions = require('./data/actions.json')
@@ -125,7 +156,7 @@ function loadConf() {
 
 // Recieve action event.
 ipcMain.on('action', (event, data, mode) => {
-  console.log('Handle action: ' + mode + ' with data: ' + data)
+  logger.info('Recieved action: ' + mode + ' with data: ' + data)
 
   sendkeys.setOption('globalDelayPressMillisec', conf.keyDelay)
   sendkeys.setOption('startDelayMillisec ', conf.keyDelay * 2)
@@ -159,7 +190,7 @@ ipcMain.on('action', (event, data, mode) => {
   } else if (mode == 'inject') {
     memoryInject(data.split('|')[0], data.split('|')[1])
   } else {
-    console.log('Invalid mode: ' + mode)
+    logger.error('Recieved action with unsupported mode: ' + mode)
   }
 })
 
