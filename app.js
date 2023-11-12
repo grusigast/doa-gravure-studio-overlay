@@ -1,13 +1,14 @@
-const {app, BrowserWindow, globalShortcut, ipcMain, Tray, Menu, nativeImage, dialog } = require('electron')
+const {app, BrowserWindow, globalShortcut, ipcMain, Tray, Menu, nativeImage, dialog, shell } = require('electron')
 const { OverlayController } = require('electron-overlay-window')
 const sendkeys = require('node-key-sender')
 const ejse = require('ejs-electron')
 const memoryjs = require('memoryjs')
 const isElevated = require('native-is-elevated')()
 const path = require('path')
+const fs = require('fs')
 
 var mainWindow, tray
-var conf, scenes, actions
+var confPath, conf, scenes, actions
 var isInteractable = true
 
 app.whenReady().then(() => {
@@ -43,8 +44,9 @@ function createTray () {
     { id: 2, label: 'Toggle DevTools', click: async() => { toggleDevTools() }},
     { type: 'separator' },
     { id: 3, label: 'Reload overlay', click: async() => { app.relaunch(); app.exit() }},
+    { id: 4, label: 'Configure overlay', click: async() => { shell.openPath(confPath) }},
     { type: 'separator' },
-    { id: 4, label: 'Quit', click: async() => { mainWindow.webContents.closeDevTools(); app.quit() }}
+    { id: 5, label: 'Quit', click: async() => { mainWindow.webContents.closeDevTools(); app.quit() }}
   ]))
 }
 
@@ -101,11 +103,23 @@ function toggleOverlay () {
 }
 
 function loadConf() {
-  // Load overlay conf and data.
-  conf = require('./conf/conf.json')
-  scenes = require('./conf/scenes.json')
-  actions = require('./conf/actions.json')
+  // Load conf file
+  if (process.env.INIT_CWD) {
+    confPath = path.join(process.env.INIT_CWD, 'conf.json')
+    conf = JSON.parse(fs.readFileSync(confPath, 'utf8'));
+  } else if (process.env.PORTABLE_EXECUTABLE_FILE) {
+    confPath = path.join(path.dirname(process.env.PORTABLE_EXECUTABLE_FILE), 'conf.json')
+    conf = JSON.parse(fs.readFileSync(confPath, 'utf8'));
+  } else {
+    console.log('Conf path could not be constructed, using require instead.')
+    conf = require('./conf.json')
+  }
 
+  // Load overlay data.
+  scenes = require('./data/scenes.json')
+  actions = require('./data/actions.json')
+
+  // Set conf and data.
   ejse.data({'scenes': scenes, 'actions': actions, 'conf': conf})
 }
 
