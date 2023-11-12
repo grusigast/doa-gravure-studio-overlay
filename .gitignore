@@ -131,3 +131,4 @@ dist
 
 # custom
 /ui/img/*.jpg
+/resources/

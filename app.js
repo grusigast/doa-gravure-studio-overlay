@@ -2,9 +2,9 @@ const {app, BrowserWindow, globalShortcut, ipcMain, Tray, Menu, nativeImage, dia
 const { OverlayController } = require('electron-overlay-window')
 const sendkeys = require('node-key-sender')
 const ejse = require('ejs-electron')
-const hasbin = require('hasbin')
 const memoryjs = require('memoryjs')
 const isElevated = require('native-is-elevated')()
+const path = require('path')
 
 var mainWindow, tray
 var conf, scenes, actions
@@ -12,7 +12,7 @@ var isInteractable = true
 
 app.whenReady().then(() => {
   checkElevation()
-  checkJava()
+  setupJREandJar()
   loadConf()
   createOverlay()
   createTray()
@@ -22,8 +22,7 @@ app.on('window-all-closed', function () {
   app.quit()
 })
 
-function checkElevation()
-{
+function checkElevation() {
   if (!isElevated) {
     console.log('DoA Gravure Studio Overlay is not running with elevated privileges, closing down!')
     dialog.showErrorBox('Not running as administrator!', 'In order for DoA Gravure Studio Overlay to send keyboard commands and perform memory injects to the DoA game process, it needs to be run with Administrator priveleges!');
@@ -31,15 +30,9 @@ function checkElevation()
   }
 }
 
-async function checkJava()
-{
-  hasbin('java', function (isAvailable) {
-    if (!isAvailable) {
-      console.log('DoA Gravure Studio Overlay requires Java on your windows PATH!')
-      dialog.showErrorBox('Could not locate Java!', 'DoA Gravure Studio Overlay requires Java on your Windows PATH!');
-      app.exit()
-    }
-  });
+function setupJREandJar() {
+  sendkeys.setOption('jarPath', path.join(process.cwd(), "resources", "jar", "key-sender.jar"))
+  sendkeys.setOption('jrePath', path.join(process.cwd(), "resources", "local-jre", "bin", "java.exe"))
 }
 
 function createTray () {
@@ -79,8 +72,10 @@ function createOverlay () {
   // Attach to process with configured windowTitle.
   OverlayController.attachByTitle(mainWindow, conf.windowTitle)
 
-  // Enable the overlay
-  toggleOverlay()
+  // Init the overlay
+  OverlayController.focusTarget()
+  mainWindow.setIgnoreMouseEvents(true)
+  isInteractable = false
 }
 
 function toggleDevTools() {

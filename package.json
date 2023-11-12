@@ -7,14 +7,16 @@
     "name": "grusigast"
   },
   "scripts": {
+    "setup-jre": "robocopy ^\"%JAVA_HOME%^\" resources/local-jre /COPYALL /E",
+    "setup-jar": "robocopy node_modules/node-key-sender/jar resources/jar /COPYALL /E",
+    "setup": "npm run setup-jre & npm run setup-jar",
     "start": "electron .",
     "dist": "electron-builder --win=portable"
   },
   "dependencies": {
     "electron-overlay-window": "3.3.0",
     "ejs-electron": "2.1.1",
-    "node-key-sender": "1.0.11",
-    "hasbin": "1.2.3",
+    "node-key-sender": "git+https://git@github.com/grusigast/node-key-sender.git",
     "memoryjs": "3.5.1",
     "native-is-elevated": "0.7.0"
   },
@@ -35,6 +37,16 @@
           ]
         }
       ]
-    }
+    },
+    "extraResources": [
+      {
+          "from": "resources/local-jre",
+          "to": "local-jre"
+      },
+      {
+        "from": "resources/jar",
+        "to": "jar"
+      }
+    ]
   }
 }
