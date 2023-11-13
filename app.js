@@ -16,7 +16,7 @@ app.whenReady().then(() => {
   loadConf()
   setupLogger()
   checkElevation()
-  setupJREandJar()
+  setupKeySender()
   loadData()
   createOverlay()
   createTray()
@@ -52,7 +52,7 @@ function checkElevation() {
 }
 
 
-function setupJREandJar() {
+function setupKeySender() {
   var jarPath = path.join(process.cwd(), "resources", "jar", "key-sender.jar")
   var jrePath = path.join(process.cwd(), "resources", "local-jre", "bin", "java.exe")
 
@@ -61,6 +61,9 @@ function setupJREandJar() {
 
   sendkeys.setOption('jarPath', jarPath)
   sendkeys.setOption('jrePath', jrePath)
+
+  sendkeys.setOption('globalDelayPressMillisec', conf.keyDelay)
+  sendkeys.setOption('startDelayMillisec ', conf.keyDelay)
 }
 
 function createTray () {
@@ -146,53 +149,64 @@ function loadConf() {
 }
 
 function loadData() {
-  // Load overlay data.
-  scenes = require('./data/scenes.json')
-  actions = require('./data/actions.json')
+  try {
+    // Load overlay data.
+    scenes = require('./data/scenes.json')
+    actions = require('./data/actions.json')
 
-  // Set conf and data.
-  ejse.data({'scenes': scenes, 'actions': actions, 'conf': conf})
+    if (!scenes || scenes.length == 0)
+    {
+      logger.error('Unable to read any scene data!')
+    }
+  
+    if (!actions || actions.length == 0)
+    {
+      logger.error('Unable to read any action data!')
+    }
+
+    // Set conf and data.
+    ejse.data({'scenes': scenes, 'actions': actions, 'conf': conf})
+  } catch (error) {
+    logger.error('Error occurred when reading scene or action data: ' + error)
+    ejse.data({'scenes': [], 'actions': [], 'conf': conf})
+  }
 }
 
 // Recieve action event.
 ipcMain.on('action', (event, data, mode) => {
   logger.info('Recieved action: ' + mode + ' with data: ' + data)
 
-  sendkeys.setOption('globalDelayPressMillisec', conf.keyDelay)
-  sendkeys.setOption('startDelayMillisec ', conf.keyDelay * 2)
-
   toggleOverlay()
 
   if (mode == 'press') {
-    OverlayController.focusTarget()
-    sendkeys.setOption('globalDelayPressMillisec', 100)
-
-    sendkeys.sendKey(data).then((out, err) => {
-      if (conf.reopenOverlay)
-      {
-        toggleOverlay()
-      }
-    })
+    sendkeys.sendKey(data).then(handleKeyPressCallback)
   } else if (mode == 'combination') {
-    sendkeys.sendCombination(data.split('+')).then((out, err) => {
-      if (conf.reopenOverlay)
-      {
-        toggleOverlay()
-      }
-    })
+    sendkeys.sendCombination(data.split('+')).then(handleKeyPressCallback)
   } else if (mode == 'sequence') {
-    sendkeys.sendKeys(data.split('+')).then((out, err) => {
-      if (conf.reopenOverlay)
-      {
-        toggleOverlay()
-      }
-    })
+    sendkeys.sendKeys(data.split('+')).then(handleKeyPressCallback)
   } else if (mode == 'inject') {
     memoryInject(data.split('|')[0], data.split('|')[1])
   } else {
     logger.error('Recieved action with unsupported mode: ' + mode)
   }
 })
+
+function handleKeyPressCallback(out, err)
+{
+  if (err)
+  {
+    logger.error('Error when sending key press: ' + err)
+  }
+  if (out)
+  {
+    logger.info('Output from keyevent: ' + out)
+  }
+
+  if (conf.reopenOverlay)
+  {
+    toggleOverlay()
+  }
+}
 
 function memoryInject(hexAddress, value) {
   var processObject = memoryjs.openProcess(conf.processName)
