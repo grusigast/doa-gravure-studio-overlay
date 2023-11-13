@@ -10,18 +10,47 @@ DoA Gravure Studio Overlay is an overlay for DoA Gravure Studio to make it easie
 * Perform memory injects
 
 ## Limitations
+* The overlay will not work in Fullscreen mode! Recommend using Window mode with something like  [Borderless Gaming](https://github.com/Codeusa/Borderless-Gaming).
 * Not possible to select characters via overlay (unless its possible via memory injects?)
 * Not possible to select costumes via overlay (unless its possible via memory injects?)
 * Navigation-based actions do not work when DoA starts with controller
 
 
-## Requirements
+## Instructions
+After starting the application, the overlay is accessible via an icon in the Windows tray or via a configurable keyboard shortcut (Ctrl+Q as default).
+In the tray icon you can also:
+* Toggle overlay state
+* Toggle Chrome DevTools
+* Configure overlay
+* Reload overlay
+* Quit 
+
+
+## Configuration
+Configuration is done in the conf.json file. Available options:
+
+```javascript
+{
+    "windowTitle": "DEAD OR ALIVE 5 Last Round Ver.1.10C AutoLink 19/23",           // Title of the window to display overlay window on.
+    "processName": "game.exe"         // Name of DEAD OR ALIVE 5 process, used for memory injections.
+    "keyDelay": 300,                  // Delay in milliseconds between overlay hide and button presses.
+    "toggleOverlay": "CmdOrCtrl + Q", // Keyboard shortcut to toggle overlay.
+    "reopenOverlay": false,           // Show overlay after button pressed.
+    "theme": "dark",                  // Overlay theme, "dark" or "light".
+    "logToFile": false                // Enable or disable logging to file overlay.log.   
+}
+```
+
+
+## Requirements for development
 * [Node.js](https://nodejs.org/en/download/) > 16.6.0 (which comes with [npm](http://npmjs.com))
 * [node-gyp](https://github.com/nodejs/node-gyp)
-* The library used for sending key commands requires Java in your PATH
+* The library used for sending key commands, [node-key-sender](https://github.com/garimpeiro-it/node-key-sender), requires a JDK/JRE in order to call a JAR-file to execute the keyboard commands.
+** The necessary files can be manually copied to `resources/` or automatically with the `npm run setup` command. The `setup` command will copy the necessary files from `%JAVA_HOME%` and `node_modules/node-key-sender/jar`
+** The JDK is copied to `resources/local-jdk/` and the `key-sender.jar` is copied to `resources/jar/`
 
 
-## Usage
+## Developing
 
 
 ```bash
@@ -34,6 +63,9 @@ cd doa-gravure-studio-overlay
 # Install dependencies
 npm install
 
+# Copy JDK from %JAVA_HOME% and key-sender jar
+npm run setup
+
 # Run the overlay
 npm start
 ```
@@ -41,19 +73,11 @@ npm start
 To display images in the overlay for each of the scenes, copy all jpg files from the `<DOAHDM Gravure Studio folder>\Scene Guide\` folder to `doa-gravure-studio-overlay\ui\img\`.
 
 
-The overlay is accessible via an icon in the Windows tray or via a configurable keyboard shortcut (Ctrl+Q as default).
-In the tray icon you can also:
-* Toggle overlay state
-* Toggle Chrome DevTools
-* Reload overlay
-* Quit 
-
-## Configuration
+## Scenes and actions
 
 Configuration of the overlay is done in three different JSON files;
-* /conf/scenes.json
-* /conf/actions.json
-* /conf/conf.json
+* /data/scenes.json
+* /data/actions.json
 
 
 ### scenes.json
@@ -118,19 +142,7 @@ A button for each action will show up at the bottom of the overlay.
 ]
 ```
 
-### conf.json
-Contains generic overlay configuration, available options:
 
-```javascript
-{
-    "windowTitle": "DEAD OR ALIVE 5 Last Round Ver.1.10C AutoLink 19/23",           // Title of the window to display overlay window on.
-    "processName": "game.exe"         // Name of DEAD OR ALIVE 5 process, used for memory injections.
-    "keyDelay": 300,                  // Delay in milliseconds between overlay hide and button presses.
-    "toggleOverlay": "CmdOrCtrl + Q", // Keyboard shortcut to toggle overlay.
-    "reopenOverlay": false,           // Show overlay after button pressed.
-    "theme": "dark"                   // Overlay theme, "dark" or "light".
-}
-```
 
 ## Dependencies
 
@@ -139,8 +151,9 @@ Contains generic overlay configuration, available options:
 - [ejs-electron](https://github.com/bowheart/ejs-electron)
 - [node-key-sender](https://github.com/garimpeiro-it/node-key-sender)
 - [BootStrap](https://getbootstrap.com/) + [BootStrap Icons](https://icons.getbootstrap.com/)
-- [hasbin](https://github.com/springernature/hasbin)
 - [memoryjs](https://github.com/Rob--/memoryjs)
+- [pino](https://github.com/pinojs/pino)
+- [native-is-elevated](https://github.com/arkon/native-is-elevated)
 
 ## Build executable
 Building a portable executable file can be done with electron-builder and the following command:
