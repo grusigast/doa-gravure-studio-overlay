@@ -6,9 +6,9 @@ const memoryjs = require('memoryjs')
 const isElevated = require('native-is-elevated')()
 const path = require('path')
 const fs = require('fs')
-const pino = require('pino')
+const logger = require('electron-log')
 
-var mainWindow, tray, logger
+var mainWindow, tray
 var confPath, conf, scenes, actions
 var isInteractable = true
 
@@ -35,10 +35,11 @@ function setupLogger() {
   }
 
   if (conf.logToFile) {
-    logger = pino(pino.destination({dest: logPath, sync: true}))
+    logger.transports.file.resolvePathFn = () => logPath
+    logger.transports.file.fileName = 'overlay.log'
     logger.info('File logger setup, conf loaded from ' + confPath + ' and logging to file ' + logPath)
   } else {
-    logger = pino({transport: { target: 'pino-pretty', sync: true }})
+    logger.transports.console.useStyles = true
     logger.info('Console logger setup, conf loaded from ' + confPath)
   }
 }

@@ -148,11 +148,11 @@ A button for each action will show up at the bottom of the overlay.
 
 - [electronjs.org](https://electronjs.org) + [electron-builder](https://www.electron.build/)
 - [electron-overlay-window](https://github.com/SnosMe/electron-overlay-window)
+- [electron-log](https://github.com/megahertz/electron-log)
 - [ejs-electron](https://github.com/bowheart/ejs-electron)
 - [node-key-sender](https://github.com/garimpeiro-it/node-key-sender)
 - [BootStrap](https://getbootstrap.com/) + [BootStrap Icons](https://icons.getbootstrap.com/)
 - [memoryjs](https://github.com/Rob--/memoryjs)
-- [pino](https://github.com/pinojs/pino)
 - [native-is-elevated](https://github.com/arkon/native-is-elevated)
 
 ## Build executable

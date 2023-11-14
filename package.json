@@ -19,8 +19,7 @@
     "node-key-sender": "git+https://git@github.com/grusigast/node-key-sender.git",
     "memoryjs": "3.5.1",
     "native-is-elevated": "0.7.0",
-    "pino": "8.16.1",
-    "pino-pretty": "10.2.3"
+    "electron-log": "5.0.0"
   },
   "devDependencies": {
     "electron": "^24.4.0",
