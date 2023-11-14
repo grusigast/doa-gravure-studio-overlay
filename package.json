@@ -55,6 +55,10 @@
       {
         "from": "resources/icon.png",
         "to": "icon.png"
+      },
+      {
+        "from": "resources/default-conf.json",
+        "to": "default-conf.json"
       }
     ]
   }

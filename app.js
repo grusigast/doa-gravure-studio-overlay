@@ -53,11 +53,11 @@ function checkElevation() {
 
 
 function setupKeySender() {
-  var jarPath = path.join(process.cwd(), "resources", "jar", "key-sender.jar")
-  var jrePath = path.join(process.cwd(), "resources", "local-jre", "bin", "java.exe")
+  var jarPath = path.join(process.cwd(), 'resources', 'jar', 'key-sender.jar')
+  var jrePath = path.join(process.cwd(), 'resources', 'local-jre', 'bin', 'java.exe')
 
-  logger.info('Using jarPath: ' + jarPath)
-  logger.info('Using jrePath: ' + jrePath)
+  logger.info('Using jarPath: ' + jarPath + '. File exists: ' + fs.existsSync(jarPath))
+  logger.info('Using jrePath: ' + jrePath + '. File exists: ' + fs.existsSync(jrePath))
 
   sendkeys.setOption('jarPath', jarPath)
   sendkeys.setOption('jrePath', jrePath)
@@ -135,17 +135,20 @@ function toggleOverlay () {
 }
 
 function loadConf() {
-    // Load conf file
+    // Construct conf file path
     if (process.env.INIT_CWD) {
       confPath = path.join(process.env.INIT_CWD, 'conf.json')
-      conf = JSON.parse(fs.readFileSync(confPath, 'utf8'));
     } else if (process.env.PORTABLE_EXECUTABLE_FILE) {
       confPath = path.join(path.dirname(process.env.PORTABLE_EXECUTABLE_FILE), 'conf.json')
-      conf = JSON.parse(fs.readFileSync(confPath, 'utf8'));
-    } else {
-      confPath = 'Could not construct confPath, using require instead.'
-      conf = require('./conf.json')
     }
+
+    // Check if file exists - if not, copy default-conf.json file.
+    if (!fs.existsSync(confPath)) {
+      fs.copyFileSync(path.join(process.cwd(), 'resources', 'default-conf.json'), confPath)
+    }
+
+    // Load conf from file.
+    conf = JSON.parse(fs.readFileSync(confPath, 'utf8'));
 }
 
 function loadData() {
