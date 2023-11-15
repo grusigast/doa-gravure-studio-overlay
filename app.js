@@ -13,6 +13,13 @@ var confPath, conf, scenes, actions
 var isInteractable = true
 
 app.whenReady().then(() => {
+  var isLocked = app.requestSingleInstanceLock()
+  if (!isLocked) {
+    logger.error('Another instance of the overlay is running, closing down!')
+    dialog.showErrorBox('Another instance is running!', 'Another instance of DoA Gravure Studio Overlay is running.\nPlease close that instance, either via tray icon menu Quit or via Task manager, and try starting again!');
+    app.exit()
+  }
+
   loadConf()
   setupLogger()
   checkElevation()
@@ -23,6 +30,7 @@ app.whenReady().then(() => {
 })
 
 app.on('window-all-closed', function () {
+  app.releaseSingleInstanceLock()
   app.quit()
 })
 
