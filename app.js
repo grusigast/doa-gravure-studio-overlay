@@ -35,10 +35,14 @@ function setupLogger() {
   }
 
   if (conf.logToFile) {
+    logger.transports.file.level = true;
+    logger.transports.console.level = false;
     logger.transports.file.resolvePathFn = () => logPath
     logger.transports.file.fileName = 'overlay.log'
     logger.info('File logger setup, conf loaded from ' + confPath + ' and logging to file ' + logPath)
   } else {
+    logger.transports.file.level = false;
+    logger.transports.console.level = true;
     logger.transports.console.useStyles = true
     logger.info('Console logger setup, conf loaded from ' + confPath)
   }
@@ -74,27 +78,46 @@ function createTray () {
     { id: 1, label: 'Toggle overlay', click: async() => { toggleOverlay() }},
     { id: 2, label: 'Toggle DevTools', click: async() => { toggleDevTools() }},
     { type: 'separator' },
-    { id: 3, label: 'Reload overlay', click: async() => { app.relaunch(); app.exit() }},
+    { id: 3, label: 'Reload overlay', click: async() => { reload() }},
     { id: 4, label: 'Configure overlay', click: async() => { shell.openPath(confPath) }},
     { type: 'separator' },
     { id: 5, label: 'Quit', click: async() => { mainWindow.webContents.closeDevTools(); app.quit() }}
   ]))
 }
 
-function createOverlay () {
-  // Create the browser window.
-  mainWindow = new BrowserWindow({
-    webPreferences: {
-      nodeIntegration: true,
-      contextIsolation: false
-    },
-    fullscreenable: true,
-    skipTaskbar: true,
-    frame: false,
-    show: false,
-    transparent: true,
-    resizable: true
-  })
+function reload() {
+  logger.info('Reloading overlay conf...')
+
+  // Unregister shortcut and reset logging.
+  globalShortcut.unregisterAll()
+  logger.transports.file.level = false;
+  logger.transports.console.level = false;
+
+  // Load conf and data again.
+  loadConf()
+  setupLogger()
+  loadData()
+  mainWindow.webContents.reloadIgnoringCache()
+
+  createOverlay(true)
+}
+
+function createOverlay (reload) {
+  if (!reload) {
+    // Create the browser window.
+    mainWindow = new BrowserWindow({
+      webPreferences: {
+        nodeIntegration: true,
+        contextIsolation: false
+      },
+      fullscreenable: true,
+      skipTaskbar: true,
+      frame: false,
+      show: false,
+      transparent: true,
+      resizable: true
+    })
+  }
 
   // add data and load menu.ejs
   mainWindow.loadURL('file://' + __dirname + '/ui/menu.ejs')
@@ -102,8 +125,10 @@ function createOverlay () {
   // Register overlay shortcut.
   globalShortcut.register(conf.toggleOverlay, toggleOverlay)
 
-  // Attach to process with configured windowTitle.
-  OverlayController.attachByTitle(mainWindow, conf.windowTitle)
+  if (!reload) {
+    // Attach to process with configured windowTitle.
+    OverlayController.attachByTitle(mainWindow, conf.windowTitle)
+  }
 
   // Init the overlay
   OverlayController.focusTarget()

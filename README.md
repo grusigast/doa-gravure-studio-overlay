@@ -10,7 +10,7 @@ DoA Gravure Studio Overlay is an overlay for DoA Gravure Studio to make it easie
 * Perform memory injects
 
 ## Limitations
-* The overlay will not work in Fullscreen mode! Recommend using Window mode with something like  [Borderless Gaming](https://github.com/Codeusa/Borderless-Gaming).
+* The overlay **will not work** properly in Fullscreen mode! Recommend using Window mode with something like  [Borderless Gaming](https://github.com/Codeusa/Borderless-Gaming).
 * Not possible to select characters via overlay (unless its possible via memory injects?)
 * Not possible to select costumes via overlay (unless its possible via memory injects?)
 * Navigation-based actions do not work when DoA starts with controller
@@ -21,8 +21,10 @@ After starting the application, the overlay is accessible via an icon in the Win
 In the tray icon you can also:
 * Toggle overlay state
 * Toggle Chrome DevTools
-* Configure overlay
 * Reload overlay
+  * Note that an updated windowTitle requires overlay to be restarted!
+* Configure overlay
+  * conf.json is opened by default editor.
 * Quit 
 
 
@@ -46,8 +48,8 @@ Configuration is done in the conf.json file. Available options:
 * [Node.js](https://nodejs.org/en/download/) > 16.6.0 (which comes with [npm](http://npmjs.com))
 * [node-gyp](https://github.com/nodejs/node-gyp)
 * The library used for sending key commands, [node-key-sender](https://github.com/garimpeiro-it/node-key-sender), requires a JDK/JRE in order to call a JAR-file to execute the keyboard commands.
-** The necessary files can be manually copied to `resources/` or automatically with the `npm run setup` command. The `setup` command will copy the necessary files from `%JAVA_HOME%` and `node_modules/node-key-sender/jar`
-** The JDK is copied to `resources/local-jdk/` and the `key-sender.jar` is copied to `resources/jar/`
+  * The necessary files can be manually copied to `resources/` or automatically with the `npm run setup` command. The `setup` command will copy the necessary files from `%JAVA_HOME%` and `node_modules/node-key-sender/jar`
+  * The JDK is copied to `resources/local-jdk/` and the `key-sender.jar` is copied to `resources/jar/`
 
 
 ## Developing
