@@ -19,6 +19,7 @@ DoA Gravure Studio Overlay is an overlay for DoA Gravure Studio to make it easie
 ## Instructions
 After starting the application, the overlay is accessible via an icon in the Windows tray or via a configurable keyboard shortcut (Ctrl+Q as default).
 In the tray icon you can also:
+* Start Dead or Alive 5 via Steam
 * Toggle overlay state
 * Toggle Chrome DevTools
 * Reload overlay

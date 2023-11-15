@@ -83,13 +83,15 @@ function createTray () {
   tray = new Tray(nativeImage.createFromPath(path.join('resources', 'icon.png')))
   tray.setToolTip('DoA Gravure Studio Overlay')
   tray.setContextMenu(Menu.buildFromTemplate([
-    { id: 1, label: 'Toggle overlay', click: async() => { toggleOverlay() }},
-    { id: 2, label: 'Toggle DevTools', click: async() => { toggleDevTools() }},
+    { id: 1, label: 'Start DoA', click: async() => { shell.openExternal('steam://rungameid/311730') }},
     { type: 'separator' },
-    { id: 3, label: 'Reload overlay', click: async() => { reload() }},
-    { id: 4, label: 'Configure overlay', click: async() => { shell.openPath(confPath) }},
+    { id: 2, label: 'Toggle overlay', click: async() => { toggleOverlay() }},
+    { id: 3, label: 'Toggle DevTools', click: async() => { toggleDevTools() }},
     { type: 'separator' },
-    { id: 5, label: 'Quit', click: async() => { mainWindow.webContents.closeDevTools(); app.quit() }}
+    { id: 4, label: 'Reload overlay', click: async() => { reload() }},
+    { id: 5, label: 'Configure overlay', click: async() => { shell.openPath(confPath) }},
+    { type: 'separator' },
+    { id: 6, label: 'Quit', click: async() => { mainWindow.webContents.closeDevTools(); app.quit() }}
   ]))
 }
 
