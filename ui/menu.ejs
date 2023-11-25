@@ -65,7 +65,7 @@
 
             <div class="tab-pane" id="character" role="tabpanel" aria-labelledby="character-tab" tabindex="0">
               <div class="btn-group">
-                <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" onclick="toggleDropDown(this)">
+                <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" onclick="toggleDropDown(this)">
                   <i class="bi bi-heart-pulse"></i> Breast motion
                 </button>
                 <ul class="dropdown-menu">
@@ -99,7 +99,7 @@
               </div>
 
               <div class="btn-group">
-                <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" onclick="toggleDropDown(this)">
+                <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" onclick="toggleDropDown(this)">
                   <i class="bi bi-brightness-high"></i> Brightness
                 </button>
                 <ul class="dropdown-menu">
@@ -132,7 +132,7 @@
               </div>
               <br>
               <div class="input-group input-group-sm py-2">
-                <span class="input-group-text" id="basic-addon1"><i class="bi bi-emoji-sunglasses px-1"></i> Tan level</span>
+                <span class="input-group-text"><i class="bi bi-emoji-sunglasses px-1"></i> Tan level</span>
                 <input type="range" class="form-control form-range" oninput="sendRangeValue(this, 'character-tan')">
               </div>
             </div>
@@ -144,6 +144,29 @@
               <button type="button" class="btn btn-sm btn-secondary" onclick="sendAction('screenshot')">
                 <i class="bi bi-camera"></i> Screenshot
               </button>
+              <br>
+              <div class="input-group input-group-sm py-1">
+                <span class="input-group-text"><i class="bi bi-zoom-in px-1"></i> Zoom</span>
+                <input type="range" class="form-control form-range" oninput="sendRangeValue(this, 'camera-zoom')">
+              </div>
+              <hr>
+              <div class="input-group input-group-sm py-1">
+                <span class="input-group-text"><i class="bi bi-arrow-down-up px-1"></i> Vertical pan</span>
+                <input type="range" class="form-control form-range" oninput="sendRangeValue(this, 'camera-y-pan')">
+              </div>
+              <div class="input-group input-group-sm py-1">
+                <span class="input-group-text"><i class="bi bi-arrows-vertical px-1"></i> Vertical rotation</span>
+                <input type="range" class="form-control form-range" oninput="sendRangeValue(this, 'camera-y-rotation')">
+              </div>
+              <hr>
+              <div class="input-group input-group-sm py-1">
+                <span class="input-group-text"><i class="bi bi-arrow-left-right px-1"></i> Horizontal pan</span>
+                <input type="range" class="form-control form-range" oninput="sendRangeValue(this, 'camera-x-pan')">
+              </div>
+              <div class="input-group input-group-sm py-1">
+                <span class="input-group-text"><i class="bi bi-arrows px-1"></i> Horizontal rotation</span>
+                <input type="range" class="form-control form-range" oninput="sendRangeValue(this, 'camera-x-rotation')">
+              </div>
             </div>
           </div>
 

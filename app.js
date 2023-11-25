@@ -268,7 +268,7 @@ ipcMain.on('value', (event, value, id) => {
       var tot = Math.abs(max - min)
       var relativeValue = min + ((parseFloat(value)/100) * parseFloat(tot))
 
-      handleMemoryInject(action.address, relativeValue)
+      handleMemoryInject(action.address, relativeValue.toFixed(2))
     } else {
       logger.error('Recieved unknown mode: ' + action.mode + ' for id: ' + id)
     }
@@ -280,13 +280,20 @@ ipcMain.on('value', (event, value, id) => {
 function handleMemoryInject(address, value) {
   logger.info('Injecting data: ' + value + ' to address: ' + address)
 
-  if (value) {
-    var processObject = memoryjs.openProcess(conf.processName)
-    memoryjs.writeMemory(processObject.handle, parseInt(address, 16), parseFloat(value), memoryjs.FLOAT)
-    memoryjs.closeProcess(processObject.handle)
-  } else {
-    logger.error('No value to inject!')
+  try
+  {
+    if (value) {
+
+      processObject = memoryjs.openProcess(conf.processName)
+      memoryjs.writeMemory(processObject.handle, parseInt(address, 16), parseFloat(value), memoryjs.FLOAT)
+      memoryjs.closeProcess(processObject.handle)
+    } else {
+      logger.error('No value to inject!')
+    }
+  } catch (error) {
+    logger.error('Unable to inject value to memory: ' + error)
   }
+
 }
 
 function handleKeyPress(keys, mode) {
