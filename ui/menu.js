@@ -105,3 +105,9 @@ function closeAllDropDowns()
   const dropdowns = document.querySelectorAll('.dropdown-toggle')
   const dropdown = [...dropdowns].map((dropdownToggleEl) => new bootstrap.Dropdown(dropdownToggleEl, {autoClose: true}).hide());
 }
+
+function hideDefaultContent()
+{
+  document.getElementById('defaultContent').classList.remove('show')
+  document.getElementById('defaultContent').classList.remove('active')
+}

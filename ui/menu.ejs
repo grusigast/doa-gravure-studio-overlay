@@ -17,19 +17,19 @@
             <ul class="nav justify-content-center nav-underline nav-fill" role="tablist">
               <li class="nav-item" role="presentation">
                 <button class="nav-link link-secondary" type="button" role="tab" data-bs-toggle="tab"
-                id="conf-tab" aria-controls="scenes" data-bs-target="#scenes" aria-selected="true">
+                id="conf-tab" aria-controls="scenes" data-bs-target="#scenes" aria-selected="true" onclick="hideDefaultContent()">
                   <i class="bi bi-pin-map-fill"></i> Scenes
                 </button>
               </li>
               <li class="nav-item" role="presentation">
                 <button class="nav-link link-secondary" type="button" role="tab" data-bs-toggle="tab"
-                id="character-tab" aria-controls="character" data-bs-target="#character" aria-selected="false">
+                id="character-tab" aria-controls="character" data-bs-target="#character" aria-selected="false" onclick="hideDefaultContent()">
                   <i class="bi bi-person-hearts"></i> Character
                 </button>
               </li>
               <li class="nav-item" role="presentation">
                 <button class="nav-link link-secondary" type="button" role="tab" data-bs-toggle="tab"
-                id="camera-tab" aria-controls="camera" data-bs-target="#camera" aria-selected="false">
+                id="camera-tab" aria-controls="camera" data-bs-target="#camera" aria-selected="false" onclick="hideDefaultContent()">
                   <i class="bi bi-camera-video"></i> Camera
                 </button>
               </li>
@@ -37,8 +37,11 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body tab-content">
+            <div class="tab-pane fade active show" id="defaultContent" role="tabpanel" tabindex="0">
+              <img class="menuImage rounded img-fluid" src="./img/doa-gravure-studio-logo.png" class="card-img-top">
+            </div>
 
-            <div class="tab-pane" id="scenes" role="tabpanel" aria-labelledby="scenes-tab" tabindex="0">
+            <div class="tab-pane fade" id="scenes" role="tabpanel" aria-labelledby="scenes-tab" tabindex="0">
               <div class="accordion accordion-flush" id="scenesAccordion">
                 <% for(var i=0; i < scenes.length; i++) { %>
                   <div class="accordion-item">
@@ -63,7 +66,7 @@
               </div>
             </div>
 
-            <div class="tab-pane" id="character" role="tabpanel" aria-labelledby="character-tab" tabindex="0">
+            <div class="tab-pane fade" id="character" role="tabpanel" aria-labelledby="character-tab" tabindex="0">
               <div class="btn-group">
                 <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" onclick="toggleDropDown(this)">
                   <i class="bi bi-heart-pulse"></i> Breast motion
@@ -137,7 +140,7 @@
               </div>
             </div>
 
-            <div class="tab-pane" id="camera" role="tabpanel" aria-labelledby="camera-tab" tabindex="0">
+            <div class="tab-pane fade" id="camera" role="tabpanel" aria-labelledby="camera-tab" tabindex="0">
               <button type="button" class="btn btn-sm btn-secondary" onclick="sendAction('camera-rotate')">
                 <i class="bi bi-arrow-clockwise"></i> Toggle landscape/portrait
               </button>
