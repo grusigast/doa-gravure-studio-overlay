@@ -131,6 +131,15 @@ function createOverlay (reload) {
     })
   }
 
+  mainWindow.on('focus', () => {
+    logger.info('Electron window gained focus.')
+  }); 
+
+  mainWindow.on('blur', () => {
+    logger.info('Electron window lost focus')
+    hideOverlay()
+  }); 
+
   // add data and load menu.ejs
   mainWindow.loadURL('file://' + __dirname + '/ui/menu.ejs')
 
