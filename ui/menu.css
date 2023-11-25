@@ -6,3 +6,39 @@
 .scene-button {
     margin-top: 0.5em;
 }
+
+.modal-dialog {
+    margin-left: 1em !important;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: transparent !important;
+    color: inherit;
+}
+
+button.accordion-button:focus{
+    box-shadow: inherit;
+}
+
+.accordion-collapse {
+    padding-bottom: 0.5em;
+}
+
+.form-range {
+    box-shadow: inherit;
+    box-sizing: content-box !important;
+}
+
+.form-control:focus{
+    border-color: none !important;
+    box-shadow: none !important;
+}
+
+
+.modal-content {
+    overflow: initial !important;
+}
+
+.modal-backdrop {
+    opacity: 0 !important;
+}
