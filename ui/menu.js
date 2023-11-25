@@ -62,6 +62,15 @@ function sendRangeValue(rangeElement, id)
   ipcRenderer.send('value', value, id)
 }
 
+function sendSoftEngine(switchElement, enableAction, disableAction)
+{
+  if (switchElement.checked) {
+    sendAction(enableAction)
+  } else {
+    sendAction(disableAction)
+  }
+}
+
 function setImage(keys)
 {
   var fileName = 'img/' + keys + '.jpg';

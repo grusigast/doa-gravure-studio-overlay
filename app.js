@@ -254,7 +254,14 @@ ipcMain.on('action', (event, id) => {
     if (action.action == 'keypress') {
       handleKeyPress(action.data, action.mode)
     } else if (action.action == 'inject') {
-      handleMemoryInject(action.address, action.value)
+      if (action.mode == 'multiple') {
+          action.injects.forEach(element => {
+            handleMemoryInject(element.address, element.value)
+          });
+        
+      } else {
+        handleMemoryInject(action.address, action.value)
+      }
     } else {
       logger.error('Recieved unknown action: ' + action.action + ' for id: ' + id)
     }
