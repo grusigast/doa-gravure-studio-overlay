@@ -158,18 +158,28 @@ function toggleDevTools() {
 
 function toggleOverlay () {
   if (isInteractable) {
-    logger.info('Disabling overlay')
-    OverlayController.focusTarget()
-    mainWindow.setIgnoreMouseEvents(true)
-    mainWindow.webContents.send('set-visibility', false)
-    isInteractable = false
+    hideOverlay()
   } else {
-    logger.info('Enabling overlay')
-    mainWindow.setIgnoreMouseEvents(false)
-    mainWindow.webContents.send('set-visibility', true)
-    isInteractable = true
-    OverlayController.activateOverlay()
+    showOverlay()
   }
+}
+
+function hideOverlay()
+{
+  logger.info('Disabling overlay')
+  OverlayController.focusTarget()
+  mainWindow.setIgnoreMouseEvents(true)
+  mainWindow.webContents.send('set-visibility', false)
+  isInteractable = false
+}
+
+function showOverlay()
+{
+  logger.info('Enabling overlay')
+  mainWindow.setIgnoreMouseEvents(false)
+  mainWindow.webContents.send('set-visibility', true)
+  isInteractable = true
+  OverlayController.activateOverlay()
 }
 
 function loadConf() {
@@ -213,27 +223,87 @@ function loadData() {
   }
 }
 
-// Recieve action event.
-ipcMain.on('action', (event, data, mode) => {
-  logger.info('Recieved action: ' + mode + ' with data: ' + data)
+// Recieve modal event.
+ipcMain.on('modal', (event, data) => {
+  logger.info('Recieved modal event: ' + data)
 
-  toggleOverlay()
+  hideOverlay()
+})
 
-  if (mode == 'press') {
-    sendkeys.sendKey(data).then(handleKeyPressCallback)
-  } else if (mode == 'combination') {
-    sendkeys.sendCombination(data.split('+')).then(handleKeyPressCallback)
-  } else if (mode == 'sequence') {
-    sendkeys.sendKeys(data.split('+')).then(handleKeyPressCallback)
-  } else if (mode == 'inject') {
-    memoryInject(data.split('|')[0], data.split('|')[1])
+// Recieve KeyPress event.
+ipcMain.on('keypress', (event, keys, mode) => {
+  logger.info('Recieved keypress: ' + keys + ' with mode: ' + mode)
+  handleKeyPress(keys, mode)
+})
+
+// Recieve Action event.
+ipcMain.on('action', (event, id) => {
+  logger.info('Recieved action: ' + id)
+
+  var action = actions.find((action) => action.id === id)
+  if (action) {
+    if (action.action == 'keypress') {
+      handleKeyPress(action.data, action.mode)
+    } else if (action.action == 'inject') {
+      handleMemoryInject(action.address, action.value)
+    } else {
+      logger.error('Recieved unknown action: ' + action.action + ' for id: ' + id)
+    }
   } else {
-    logger.error('Recieved action with unsupported mode: ' + mode)
+    logger.error('Recieved unknown action id: ' + id)
   }
 })
 
-function handleKeyPressCallback(out, err)
-{
+
+// Recieve Value event.
+ipcMain.on('value', (event, value, id) => {
+  logger.info('Recieved value: ' + value + ' for id: ' + id)
+
+  var action = actions.find((action) => action.id === id)
+  if (action) {
+    if (action.mode == 'range') {
+
+      var min = parseFloat(action.min)
+      var max = parseFloat(action.max)
+      var tot = Math.abs(max - min)
+      var relativeValue = min + ((parseFloat(value)/100) * parseFloat(tot))
+
+      handleMemoryInject(action.address, relativeValue)
+    } else {
+      logger.error('Recieved unknown mode: ' + action.mode + ' for id: ' + id)
+    }
+  } else {
+    logger.error('Recieved unknown action id: ' + id)
+  }
+})
+
+function handleMemoryInject(address, value) {
+  logger.info('Injecting data: ' + value + ' to address: ' + address)
+
+  if (value) {
+    var processObject = memoryjs.openProcess(conf.processName)
+    memoryjs.writeMemory(processObject.handle, parseInt(address, 16), parseFloat(value), memoryjs.FLOAT)
+    memoryjs.closeProcess(processObject.handle)
+  } else {
+    logger.error('No value to inject!')
+  }
+}
+
+function handleKeyPress(keys, mode) {
+  logger.info('Performing keypress: ' + keys + ' with mode: ' + mode)
+  toggleOverlay()
+  if (mode == 'press') {
+    sendkeys.sendKey(keys).then(handleKeyPressCallback)
+  } else if (mode == 'combination') {
+    sendkeys.sendCombination(keys.split('+')).then(handleKeyPressCallback)
+  } else if (mode == 'sequence') {
+    sendkeys.sendKeys(keys.split('+')).then(handleKeyPressCallback)
+  } else {
+    logger.error('Recieved keypress action with unsupported mode: ' + mode)
+  }
+}
+
+function handleKeyPressCallback(out, err) {
   if (err)
   {
     logger.error('Error when sending key press: ' + err)
@@ -247,9 +317,4 @@ function handleKeyPressCallback(out, err)
   {
     toggleOverlay()
   }
-}
-
-function memoryInject(hexAddress, value) {
-  var processObject = memoryjs.openProcess(conf.processName)
-  memoryjs.writeMemory(processObject.handle, parseInt(hexAddress, 16), parseFloat(value), memoryjs.FLOAT)
 }

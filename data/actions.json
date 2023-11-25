@@ -1,179 +1,130 @@
 [
     {
-        "name": "Game",
-        "actions": [
-            {
-                "type": "button",
-                "icon": "play",
-                "name": "Play",
-                "mode": "combination",
-                "data": "F1+escape"
-            },
-            {
-                "type": "button",
-                "icon": "pause",
-                "name": "Pause",
-                "mode": "combination",
-                "data": "F1+0"
-            },
-            {
-                "type": "dropdown",
-                "icon": "speedometer2",
-                "name": "Speed",
-                "options": [
-                    {
-                        "name": "Slow",
-                        "mode": "combination",
-                        "data": "F1+subtract"
-                    },
-                    {
-                        "name": "Normal",
-                        "mode": "combination",
-                        "data": "F1+escape"
-                    },
-                    {
-                        "name": "Fast",
-                        "mode": "combination",
-                        "data": "F1+add"
-                    }
-                ]
-            }
-        ]
+        "id": "play",
+        "action": "keypress",
+        "mode": "combination",
+        "data": "F1+escape"
     },
     {
-        "name": "UI",
-        "actions":[
-            {
-                "type": "button",
-                "icon": "arrow-repeat",
-                "name": "Refresh",
-                "mode": "sequence",
-                "data": "L+M+M"
-            },
-            {
-                "type": "button",
-                "icon": "magic",
-                "name": "Toggle ReShade",
-                "mode": "press",
-                "data": "F2"
-            },
-            {
-                "type": "button",
-                "icon": "eye-slash",
-                "name": "Toggle HUD",
-                "mode": "press",
-                "data": "F5"
-            }
-        ]
+        "id": "pause",
+        "action": "keypress",
+        "mode": "combination",
+        "data": "F1+0"
     },
     {
-        "name": "Camera",
-        "actions":[
-            {
-                "type": "button",
-                "icon": "arrow-clockwise",
-                "name": "Rotate",
-                "mode": "press",
-                "data": "F4"
-            },
-            {
-                "type": "button",
-                "icon": "camera",
-                "name": "Screenshot",
-                "mode": "press",
-                "data": "print_screen"
-            }
-        ]
+        "id": "speed-slow",
+        "action": "keypress",
+        "mode": "combination",
+        "data": "F1+subtract"
     },
     {
-        "name": "Character",
-        "actions":[
-            {
-                "type": "dropdown",
-                "icon": "heart-pulse",
-                "name": "Breast motion",
-                "options": [
-                    {
-                        "name": "Off",
-                        "mode": "combination",
-                        "data": "F7+back_quote"
-                    },
-                    {
-                        "name": "Natural",
-                        "mode": "combination",
-                        "data": "F7+1"
-                    },
-                    {
-                        "name": "DOA",
-                        "mode": "combination",
-                        "data": "F7+2"
-                    },
-                    {
-                        "name": "OMG",
-                        "mode": "combination",
-                        "data": "F7+3"
-                    },
-                    {
-                        "name": "OMG+DOA",
-                        "mode": "combination",
-                        "data": "F7+4"
-                    }
-                ]
-            },
-            {
-                "type": "dropdown",
-                "icon": "brightness-high",
-                "name": "Brightness",
-                "options": [
-                    {
-                        "name": "80%",
-                        "mode": "combination",
-                        "data": "F6+6"
-                    },
-                    {
-                        "name": "90%",
-                        "mode": "combination",
-                        "data": "F6+8"
-                    },
-                    {
-                        "name": "100%",
-                        "mode": "combination",
-                        "data": "F6+0"
-                    },
-                    {
-                        "name": "110%",
-                        "mode": "combination",
-                        "data": "F6+2"
-                    },
-                    {
-                        "name": "120%",
-                        "mode": "combination",
-                        "data": "F6+4"
-                    }
-                ]
-            },
-            {
-                "type": "dropdown",
-                "icon": "emoji-sunglasses",
-                "name": "Tan",
-                "options": [
-                    {
-                        "name": "Min",
-                        "mode": "inject",
-                        "data": "12559D10|-1.0"
-                    },
-                    {
-                        "name": "Mid",
-                        "mode": "inject",
-                        "data": "12559D10|0.0"
-                    },
-                    {
-                        "name": "Max",
-                        "mode": "inject",
-                        "data": "12559D10|1.0"
-                    }
-                ]
-            }
-        ]
+        "id": "speed-normal",
+        "action": "keypress",
+        "mode": "combination",
+        "data": "F1+escape"
+    },
+    {
+        "id": "speed-fast",
+        "action": "keypress",
+        "mode": "combination",
+        "data": "F1+add"
+    },
+    {
+        "id": "character-reload",
+        "action": "keypress",
+        "mode": "sequence",
+        "data": "L+M+M"
+    },
+    {
+        "id": "toggle-reshade",
+        "action": "keypress",
+        "mode": "press",
+        "data": "F2"
+    },
+    {
+        "id": "toggle-hud",
+        "action": "keypress",
+        "mode": "press",
+        "data": "F5"
+    },
+    {
+        "id": "camera-rotate",
+        "action": "keypress",
+        "mode": "press",
+        "data": "F4"
+    },
+    {
+        "id": "screenshot",
+        "action": "keypress",
+        "mode": "press",
+        "data": "print_screen"
+    },
+    {
+        "id": "breast-motion-off",
+        "action": "keypress",
+        "mode": "combination",
+        "data": "F7+back_quote"
+    },
+    {
+        "id": "breast-motion-natural",
+        "action": "keypress",
+        "mode": "combination",
+        "data": "F7+1"
+    },
+    {
+        "id": "breast-motion-doa",
+        "action": "keypress",
+        "mode": "combination",
+        "data": "F7+2"
+    },
+    {
+        "id": "breast-motion-omg",
+        "action": "keypress",
+        "mode": "combination",
+        "data": "F7+3"
+    },
+    {
+        "id": "breast-motion-omgdoa",
+        "action": "keypress",
+        "mode": "combination",
+        "data": "F7+4"
+    },
+    {
+        "id": "character-brightness-80",
+        "action": "keypress",
+        "mode": "combination",
+        "data": "F6+6"
+    },
+    {
+        "id": "character-brightness-90",
+        "action": "keypress",
+        "mode": "combination",
+        "data": "F6+8"
+    },
+    {
+        "id": "character-brightness-100",
+        "action": "keypress",
+        "mode": "combination",
+        "data": "F6+0"
+    },
+    {
+        "id": "character-brightness-110",
+        "action": "keypress",
+        "mode": "combination",
+        "data": "F6+2"
+    },
+    {
+        "id": "character-brightness-120",
+        "action": "keypress",
+        "mode": "combination",
+        "data": "F6+4"
+    },
+    {
+        "id": "character-tan",
+        "action": "inject",
+        "address": "12559D10",
+        "mode": "range",
+        "min": "-1.0",
+        "max": "2.5"
     }
 ]
