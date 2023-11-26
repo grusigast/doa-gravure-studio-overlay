@@ -42,3 +42,16 @@ button.accordion-button:focus{
 .modal-backdrop {
     opacity: 0 !important;
 }
+
+::-webkit-scrollbar {
+    width: 0.5rem;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(95, 95, 95, 0.5);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-track{
+    background: transparent;
+}
