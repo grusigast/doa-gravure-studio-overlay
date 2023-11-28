@@ -121,8 +121,9 @@
     },
     {
         "id": "character-tan",
-        "action": "inject",
-        "address": "12559D10",
+        "action": "inject-pointer",
+        "address": "00FD2420",
+        "offset": "60",
         "mode": "range",
         "min": "-1.0",
         "max": "2.5"
