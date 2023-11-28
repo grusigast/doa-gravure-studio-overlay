@@ -181,32 +181,43 @@
             </div>
 
             <div class="tab-pane" id="softengine" role="tabpanel" aria-labelledby="softengine-tab" tabindex="0">
-              <h6>Physics presets</h6>
 
+              <h6>Physics presets</h6>
               <div class="form-check form-switch form-check-inline">
-                <input class="form-check-input" type="checkbox" role="switch" id="natural-switch" onchange="sendSoftEngine(this, 'enable-softengine-natural', 'disable-softengine-natural')">
+                <input class="form-check-input" type="checkbox" role="switch" id="natural-switch" onchange="sendToggle(this, 'softengine-natural-enable', 'softengine-natural-disable')">
                 <label class="form-check-label" for="natural-switch">Natural</label>
               </div>
-
-
               <div class="form-check form-switch form-check-inline">
-                <input class="form-check-input" type="checkbox" role="switch" id="omg-switch" onchange="sendSoftEngine(this, 'enable-softengine-omg', 'disable-softengine-omg')">
+                <input class="form-check-input" type="checkbox" role="switch" id="omg-switch" onchange="sendToggle(this, 'softengine-omg-enable', 'softengine-omg-disable')">
                 <label class="form-check-label" for="omg-switch">OMG</label>
               </div>
-
-
               <div class="form-check form-switch form-check-inline">
-                <input class="form-check-input" type="checkbox" role="switch" id="doa-switch" onchange="sendSoftEngine(this, 'enable-softengine-doa', 'disable-softengine-doa')">
+                <input class="form-check-input" type="checkbox" role="switch" id="doa-switch" onchange="sendToggle(this, 'softengine-doa-enable', 'softengine-doa-enable')">
                 <label class="form-check-label" for="doa-switch">DoA</label>
               </div>
 
-
-              <br>
+              <hr>
 
               <h6>Body Type</h6>
               <div class="form-check form-switch form-check-inline">
-                <input class="form-check-input" type="checkbox" role="switch" id="a-switch" onchange="sendSoftEngine(this, 'softengine-type-a-enable', 'softengine-type-a-disable')">
+                <input class="form-check-input" type="checkbox" role="switch" id="a-switch" onchange="sendToggle(this, 'softengine-type-a-enable', 'softengine-type-a-disable')">
                 <label class="form-check-label" for="a-switch">A</label>
+              </div>
+              <div class="form-check form-switch form-check-inline">
+                <input class="form-check-input" type="checkbox" role="switch" id="a-switch" onchange="sendToggle(this, 'softengine-type-b-enable', 'softengine-type-b-disable')">
+                <label class="form-check-label" for="a-switch">B</label>
+              </div>
+              <div class="form-check form-switch form-check-inline">
+                <input class="form-check-input" type="checkbox" role="switch" id="a-switch" onchange="sendToggle(this, 'softengine-type-c-enable', 'softengine-type-c-disable')">
+                <label class="form-check-label" for="a-switch">C</label>
+              </div>
+              <div class="form-check form-switch form-check-inline">
+                <input class="form-check-input" type="checkbox" role="switch" id="a-switch" onchange="sendToggle(this, 'softengine-type-d-enable', 'softengine-type-d-disable')">
+                <label class="form-check-label" for="a-switch">D</label>
+              </div>
+              <div class="form-check form-switch form-check-inline">
+                <input class="form-check-input" type="checkbox" role="switch" id="a-switch" onchange="sendToggle(this, 'softengine-type-e-enable', 'softengine-type-e-disable')">
+                <label class="form-check-label" for="a-switch">E</label>
               </div>
             </div>
           </div>
