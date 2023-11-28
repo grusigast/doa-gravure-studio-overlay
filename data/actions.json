@@ -130,7 +130,7 @@
     {
         "id": "camera-x-pan",
         "action": "inject",
-        "address": "0147716C",
+        "address": "FC716C",
         "mode": "range",
         "min": "-2.0",
         "max": "2.0"
@@ -138,7 +138,7 @@
     {
         "id": "camera-y-pan",
         "action": "inject",
-        "address": "01477170",
+        "address": "FC7170",
         "mode": "range",
         "min": "-2.0",
         "max": "2.0"
@@ -146,7 +146,7 @@
     {
         "id": "camera-x-rotation",
         "action": "inject",
-        "address": "01477174",
+        "address": "FC7174",
         "mode": "range",
         "min": "-4.0",
         "max": "4.0"
@@ -154,7 +154,7 @@
     {
         "id": "camera-y-rotation",
         "action": "inject",
-        "address": "01477178",
+        "address": "FC7178",
         "mode": "range",
         "min": "-2.0",
         "max": "2.0"
@@ -162,7 +162,7 @@
     {
         "id": "camera-zoom",
         "action": "inject",
-        "address": "01477180",
+        "address": "FC7180",
         "mode": "range",
         "min": "-0.5",
         "max": "1.0"

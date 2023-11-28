@@ -293,15 +293,18 @@ ipcMain.on('value', (event, value, id) => {
   }
 })
 
-function handleMemoryInject(address, value) {
-  logger.info('Injecting data: ' + value + ' to address: ' + address)
+function handleMemoryInject(injectAddress, value) {
+  logger.info('Injecting data: ' + value + ' to address: ' + injectAddress)
 
   try
   {
     if (value) {
 
       processObject = memoryjs.openProcess(conf.processName)
-      memoryjs.writeMemory(processObject.handle, parseInt(address, 16), parseFloat(value), memoryjs.FLOAT)
+      var baseAddress = processObject.modBaseAddr
+      var address = baseAddress + parseInt(injectAddress, 16)
+
+      memoryjs.writeMemory(processObject.handle, address, parseFloat(value), memoryjs.FLOAT)
       memoryjs.closeProcess(processObject.handle)
     } else {
       logger.error('No value to inject!')
