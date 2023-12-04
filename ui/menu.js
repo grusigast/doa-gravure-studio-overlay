@@ -62,6 +62,15 @@ function sendRangeValue(rangeElement, id)
   ipcRenderer.send('value', value, id)
 }
 
+function sendToggle(switchElement, enableAction, disableAction)
+{
+  if (switchElement.checked) {
+    sendAction(enableAction)
+  } else {
+    sendAction(disableAction)
+  }
+}
+
 function setImage(keys)
 {
   var fileName = 'img/' + keys + '.jpg';
@@ -98,6 +107,15 @@ function toggleDropDown(element)
         return { ...defaultBsPopperConfig, strategy: 'fixed' };
     }
   }).toggle()
+}
+
+function toggleSoftEngine(switchElement)
+{
+  const toggles = document.querySelectorAll('.softengine-toggle')
+  const toggle = [...toggles].map((toggleEl) => {
+    toggleEl.checked = switchElement.checked
+    toggleEl.onchange()
+  });
 }
 
 function closeAllDropDowns()

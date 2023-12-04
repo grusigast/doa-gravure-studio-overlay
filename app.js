@@ -254,7 +254,21 @@ ipcMain.on('action', (event, id) => {
     if (action.action == 'keypress') {
       handleKeyPress(action.data, action.mode)
     } else if (action.action == 'inject') {
-      handleMemoryInject(action.address, action.value)
+      if (action.mode == 'multiple') {
+          action.injects.forEach(element => {
+            handleMemoryInject(element.address, element.value)
+          });
+        
+      } else {
+        handleMemoryInject(action.address, action.value)
+      }
+    } else if (action.action == 'inject-pointer') {
+
+      if (action.mode == 'multiple') {
+        action.injects.forEach(element => {
+          handleMemoryInjectPointer(element.address, element.offset, element.value)
+        });
+      }
     } else {
       logger.error('Recieved unknown action: ' + action.action + ' for id: ' + id)
     }
@@ -277,7 +291,13 @@ ipcMain.on('value', (event, value, id) => {
       var tot = Math.abs(max - min)
       var relativeValue = min + ((parseFloat(value)/100) * parseFloat(tot))
 
-      handleMemoryInject(action.address, relativeValue.toFixed(2))
+      if (action.action == 'inject-pointer') {
+        handleMemoryInjectPointer(action.address, action.offset, relativeValue.toFixed(2))
+      } else if (action.action == 'inject') {
+        handleMemoryInject(action.address, relativeValue.toFixed(2))
+      } else {
+        logger.error('Recieved unknown action: ' + action.action + ' for id: ' + id)
+      }
     } else {
       logger.error('Recieved unknown mode: ' + action.mode + ' for id: ' + id)
     }
@@ -286,15 +306,18 @@ ipcMain.on('value', (event, value, id) => {
   }
 })
 
-function handleMemoryInject(address, value) {
-  logger.info('Injecting data: ' + value + ' to address: ' + address)
+function handleMemoryInject(injectAddress, value) {
+  logger.info('Injecting data: ' + value + ' to address: ' + injectAddress)
 
   try
   {
     if (value) {
 
       processObject = memoryjs.openProcess(conf.processName)
-      memoryjs.writeMemory(processObject.handle, parseInt(address, 16), parseFloat(value), memoryjs.FLOAT)
+      var baseAddress = processObject.modBaseAddr
+      var address = baseAddress + parseInt(injectAddress, 16)
+
+      memoryjs.writeMemory(processObject.handle, address, parseFloat(value), memoryjs.FLOAT)
       memoryjs.closeProcess(processObject.handle)
     } else {
       logger.error('No value to inject!')
@@ -303,6 +326,28 @@ function handleMemoryInject(address, value) {
     logger.error('Unable to inject value to memory: ' + error)
   }
 
+}
+
+function handleMemoryInjectPointer(injectAddress, offset, value) {
+  try
+  {
+    if (value) {
+
+      processObject = memoryjs.openProcess(conf.processName)
+
+      var baseAddress = processObject.modBaseAddr
+      var ptrAddress = baseAddress + parseInt(injectAddress, 16) 
+      var actualAddress = memoryjs.readMemory(processObject.handle, ptrAddress, memoryjs.DWORD) + parseInt(offset, 16)
+      logger.info('Injecting data: ' + value + ' to pointer address: ' + injectAddress + ' with offset: ' + offset + '  Resulting address: ' + actualAddress) 
+
+      memoryjs.writeMemory(processObject.handle, actualAddress, parseFloat(value), memoryjs.FLOAT)
+      memoryjs.closeProcess(processObject.handle)
+    } else {
+      logger.error('No value to inject!')
+    }
+  } catch (error) {
+    logger.error('Unable to inject value to memory: ' + error)
+  }
 }
 
 function handleKeyPress(keys, mode) {
