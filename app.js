@@ -262,6 +262,13 @@ ipcMain.on('action', (event, id) => {
       } else {
         handleMemoryInject(action.address, action.value)
       }
+    } else if (action.action == 'inject-pointer') {
+
+      if (action.mode == 'multiple') {
+        action.injects.forEach(element => {
+          handleMemoryInjectPointer(element.address, element.offset, element.value)
+        });
+      }
     } else {
       logger.error('Recieved unknown action: ' + action.action + ' for id: ' + id)
     }
@@ -322,8 +329,6 @@ function handleMemoryInject(injectAddress, value) {
 }
 
 function handleMemoryInjectPointer(injectAddress, offset, value) {
-  logger.info('Injecting data: ' + value + ' to pointer address: ' + injectAddress)
-
   try
   {
     if (value) {
@@ -332,10 +337,8 @@ function handleMemoryInjectPointer(injectAddress, offset, value) {
 
       var baseAddress = processObject.modBaseAddr
       var ptrAddress = baseAddress + parseInt(injectAddress, 16) 
-
       var actualAddress = memoryjs.readMemory(processObject.handle, ptrAddress, memoryjs.DWORD) + parseInt(offset, 16)
-      console.log(actualAddress)
-
+      logger.info('Injecting data: ' + value + ' to pointer address: ' + injectAddress + ' with offset: ' + offset + '  Resulting address: ' + actualAddress) 
 
       memoryjs.writeMemory(processObject.handle, actualAddress, parseFloat(value), memoryjs.FLOAT)
       memoryjs.closeProcess(processObject.handle)

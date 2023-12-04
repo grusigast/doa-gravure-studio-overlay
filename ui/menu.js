@@ -109,6 +109,15 @@ function toggleDropDown(element)
   }).toggle()
 }
 
+function toggleSoftEngine(switchElement)
+{
+  const toggles = document.querySelectorAll('.softengine-toggle')
+  const toggle = [...toggles].map((toggleEl) => {
+    toggleEl.checked = switchElement.checked
+    toggleEl.onchange()
+  });
+}
+
 function closeAllDropDowns()
 {
   const dropdowns = document.querySelectorAll('.dropdown-toggle')
