@@ -7,6 +7,7 @@ const isElevated = require('native-is-elevated')()
 const path = require('path')
 const fs = require('fs')
 const logger = require('electron-log')
+const { listOpenWindows } = require('@josephuspaye/list-open-windows')
 
 var mainWindow, tray
 var confPath, conf, scenes, actions
@@ -64,6 +65,16 @@ function checkOtherInstance() {
     logger.error('Another instance of the overlay is running, closing down!')
     dialog.showErrorBox('Another instance is running!', 'Another instance of DoA Gravure Studio Overlay is running.\nPlease close that instance, either via tray icon menu Quit or via Task manager, and try starting again!');
     app.exit()
+  }
+}
+
+function checkWindowOpen() {
+  var windows = listOpenWindows()
+  var match = windows.find((window) => window.caption == conf.windowTitle)
+
+  if (!match) {
+    logger.error('Unable to find a window with title "' + conf.windowTitle + '", cannot show overlay.')
+    dialog.showErrorBox('Could not find target window!', 'Unable to find a window with title "' + conf.windowTitle + '"\nPlease check spelling in the conf.json file and restart the overlay.');
   }
 }
 
@@ -166,6 +177,8 @@ function toggleDevTools() {
 }
 
 function toggleOverlay () {
+  checkWindowOpen()
+
   if (isInteractable) {
     hideOverlay()
   } else {

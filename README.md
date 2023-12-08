@@ -158,6 +158,7 @@ A button for each action will show up at the bottom of the overlay.
 - [BootStrap](https://getbootstrap.com/) + [BootStrap Icons](https://icons.getbootstrap.com/)
 - [memoryjs](https://github.com/Rob--/memoryjs)
 - [native-is-elevated](https://github.com/arkon/native-is-elevated)
+- [list-open-windows](https://github.com/JosephusPaye/list-open-windows)
 
 ## Build executable
 Building a portable executable file can be done with electron-builder and the following command:
