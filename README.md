@@ -40,7 +40,8 @@ Configuration is done in the conf.json file. Available options:
     "toggleOverlay": "CmdOrCtrl + Q", // Keyboard shortcut to toggle overlay.
     "reopenOverlay": false,           // Show overlay after button pressed.
     "theme": "dark",                  // Overlay theme, "dark" or "light".
-    "logToFile": false                // Enable or disable logging to file overlay.log.   
+    "logToFile": false,               // Enable or disable logging to file overlay.log.
+    "position": "left"                // Overlay position; "left", "middle" or "right".
 }
 ```
 

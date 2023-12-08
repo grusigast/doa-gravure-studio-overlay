@@ -7,8 +7,12 @@
     margin-top: 0.5em;
 }
 
-.modal-dialog {
+.modal-left {
     margin-left: 1em !important;
+}
+
+.modal-right {
+    margin-right: 1em !important;
 }
 
 .accordion-button:not(.collapsed) {

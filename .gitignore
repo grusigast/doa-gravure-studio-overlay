@@ -134,3 +134,4 @@ dist
 /resources/local-jre/
 /resources/jar/
 overlay.log
+conf.json
