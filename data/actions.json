@@ -129,6 +129,46 @@
         "max": "2.5"
     },
     {
+        "id": "character-x-pos",
+        "action": "inject",
+        "address": "FD063c",
+        "mode": "range",
+        "min": "-1.0",
+        "max": "1.0"
+    },
+    {
+        "id": "character-y-pos",
+        "action": "inject",
+        "address": "FD0638",
+        "mode": "range",
+        "min": "-1.0",
+        "max": "1.0"
+    },
+    {
+        "id": "camera-x-pos",
+        "action": "inject",
+        "address": "FB9018",
+        "mode": "range",
+        "min": "-5.0",
+        "max": "5.0"
+    },
+    {
+        "id": "camera-y-pos",
+        "action": "inject",
+        "address": "FB902C",
+        "mode": "range",
+        "min": "-5.0",
+        "max": "5.0"
+    },
+    {
+        "id": "camera-z-pos",
+        "action": "inject",
+        "address": "FB9040",
+        "mode": "range",
+        "min": "-5.0",
+        "max": "5.0"
+    },
+    {
         "id": "camera-x-pan",
         "action": "inject",
         "address": "FC716C",
