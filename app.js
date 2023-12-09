@@ -218,14 +218,36 @@ function loadConf() {
     }
 
     // Load conf from file.
-    conf = JSON.parse(fs.readFileSync(confPath, 'utf8'));
+    conf = JSON.parse(fs.readFileSync(confPath, 'utf8'))
 }
 
 function loadData() {
   try {
     // Load overlay data.
-    scenes = require('./data/scenes.json')
-    actions = require('./data/actions.json')
+
+
+
+    // Check executable path first.
+    if (process.env.INIT_CWD) {
+      basePath = process.env.INIT_CWD
+    } else if (process.env.PORTABLE_EXECUTABLE_FILE) {
+      basePath = path.dirname(process.env.PORTABLE_EXECUTABLE_FILE)
+    }
+    actionsFile = path.join(basePath, 'actions.json')
+    scenesFile = path.join(basePath, 'scenes.json')
+
+    // If actions file not present in executable path, load from resources
+    if (!fs.existsSync(actionsFile)) {
+      actionsFile = path.join(process.cwd(), 'resources', 'actions.json')
+    }
+
+    // If scenes file not present in executable path, load from resources
+    if (!fs.existsSync(scenesFile)) {
+      scenesFile = path.join(process.cwd(), 'resources', 'scenes.json')
+    }
+    
+    scenes = JSON.parse(fs.readFileSync(scenesFile, 'utf8'))
+    actions = JSON.parse(fs.readFileSync(actionsFile, 'utf8'))
 
     if (!scenes || scenes.length == 0)
     {

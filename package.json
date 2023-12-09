@@ -62,6 +62,14 @@
       {
         "from": "resources/default-conf.json",
         "to": "default-conf.json"
+      },
+      {
+        "from": "resources/actions.json",
+        "to": "actions.json"
+      },
+      {
+        "from": "resources/scenes.json",
+        "to": "scenes.json"
       }
     ]
   }
