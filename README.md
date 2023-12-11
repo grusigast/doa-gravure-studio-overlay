@@ -37,7 +37,7 @@ Configuration is done in the conf.json file. Available options:
     "windowTitle": "DEAD OR ALIVE 5 Last Round Ver.1.10C AutoLink 19/23",           // Title of the window to display overlay window on.
     "processName": "game.exe"         // Name of DEAD OR ALIVE 5 process, used for memory injections.
     "keyDelay": 300,                  // Delay in milliseconds between overlay hide and button presses.
-    "toggleOverlay": "CmdOrCtrl + Q", // Keyboard shortcut to toggle overlay.
+    "toggleOverlay": "Ctrl + Q", // Keyboard shortcut to toggle overlay.
     "reopenOverlay": false,           // Show overlay after button pressed.
     "theme": "dark",                  // Overlay theme, "dark" or "light".
     "logToFile": false,               // Enable or disable logging to file overlay.log.
@@ -79,10 +79,11 @@ To display images in the overlay for each of the scenes, copy all jpg files from
 
 ## Scenes and actions
 
-Configuration of the overlay is done in three different JSON files;
-* /data/scenes.json
-* /data/actions.json
+Configuration of the overlay is done in two different JSON files;
+* /resources/scenes.json
+* /resources/actions.json
 
+`scenes.json` and `actions.json` can also be placed in the workspace root or executable file folder, and will be read from there instead.
 
 ### scenes.json
 Contains all scene data.
@@ -107,42 +108,34 @@ Contains all scene data.
 
 
 ### actions.json
-A button for each action will show up at the bottom of the overlay.
-
 ```javascript
 [
+    
+    // Key press action example
     {
-        "name": "Game",         // Action category.
-        "actions": [            // Array of actions in category.
+        "id": "speed-slow",     // ID of action.
+        "action": "keypress",   // Type of action; "keypress" in this case.
+        "mode": "combination",  // Type of keypress; "press" for single press, "combination" for key combinations, "sequence" for sequence of keypresses.
+        "data": "F1+subtract"   // Keys to press. Use + as delimeter for combination and sequence mode.
+    },
 
-            // Key press action.
+    // Memory inject example
+    {
+        "id": "camera-x-pan",   // ID of action.
+        "action": "inject",     // Type of action; "inject" for direct injects or "inject-pointer" for pointer lookup.
+        "address": "FC716C",    // Address of where to inject value.
+        "mode": "range",        // Mode of data entry; "range" for a slider type entry, "multiple" for injecting hardcoded values.
+        "min": "-2.0",          // Min value allowed.
+        "max": "2.0"            // Max value allowed.
+        "offset": "60"          // Memory address offset. Used for inject-pointer actions.
+        "injects": [            // Array of injects for "multiple" inject mode.
             {
-                "type": "button",       // Type of UI element, "button" or "dropdown".
-                "icon": "eye-slash",    // Bootstrap Icon key.
-                "name": "Toggle HUD",   // Name in UI.
-                "mode": "press",       // Type of action; "press" for single press, "combination" for key combinations, "sequence" for sequence of keypresses.
-                "data": "F5",           // Keys to press. Use + as delimeter for combination and sequence keyMode.
-                "options": [            // For dropdown action type, array of dropdown items.
-                    {
-                        "name": "Slow",
-                        "mode": "combination",
-                        "data": "F1+subtract"
-                    }
-                    // Additional options...
-                ]
-            },
-
-            // Memory inject action.
-            {
-                "type": "button",       // Type of UI element, "button" or "dropdown".
-                "icon": "eye-slash",    // Bootstrap Icon key.
-                "name": "Toggle HUD",   // Name in UI.
-                "mode": "inject",       // Type of action; inject for memory injections.
-                "data": "12559D10|-1.0",// Data to send, format: memoryAddressHex|value
+                "address": "000C591C",
+                "offset": "28",
+                "value": "1.1"
             }
         ]
     }
-    // Additional action categories...
 ]
 ```
 
