@@ -87,9 +87,6 @@ function setupKeySender() {
 
   sendkeys.setOption('jarPath', jarPath)
   sendkeys.setOption('jrePath', jrePath)
-
-  sendkeys.setOption('globalDelayPressMillisec', conf.keyDelay)
-  sendkeys.setOption('startDelayMillisec ', conf.keyDelay)
 }
 
 function createTray () {
@@ -223,10 +220,6 @@ function loadConf() {
 
 function loadData() {
   try {
-    // Load overlay data.
-
-
-
     // Check executable path first.
     if (process.env.INIT_CWD) {
       basePath = process.env.INIT_CWD
@@ -287,7 +280,7 @@ ipcMain.on('action', (event, id) => {
   var action = actions.find((action) => action.id === id)
   if (action) {
     if (action.action == 'keypress') {
-      handleKeyPress(action.data, action.mode)
+      handleKeyPress(action.data, action.mode, action.globalDelayPressMillisec, action.startDelayMillisec)
     } else if (action.action == 'inject') {
       if (action.mode == 'multiple') {
           action.injects.forEach(element => {
@@ -385,8 +378,21 @@ function handleMemoryInjectPointer(injectAddress, offset, value) {
   }
 }
 
-function handleKeyPress(keys, mode) {
+function handleKeyPress(keys, mode, globalDelay, startDelay) {
   logger.info('Performing keypress: ' + keys + ' with mode: ' + mode)
+
+  if (globalDelay) {
+    sendkeys.setOption('globalDelayPressMillisec', globalDelay)
+  } else {
+    sendkeys.setOption('globalDelayPressMillisec', conf.keyDelay)
+  }
+
+  if (startDelay) {
+    sendkeys.setOption('startDelayMillisec', startDelay)
+  } else {
+    sendkeys.setOption('startDelayMillisec', conf.keyDelay)
+  }
+
   toggleOverlay()
   if (mode == 'press') {
     sendkeys.sendKey(keys).then(handleKeyPressCallback)

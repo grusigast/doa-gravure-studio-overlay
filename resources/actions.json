@@ -45,7 +45,9 @@
         "id": "toggle-hud",
         "action": "keypress",
         "mode": "press",
-        "data": "F5"
+        "data": "F5",
+        "globalDelayPressMillisec": "100",
+        "startDelayMillisec": "50"
     },
     {
         "id": "camera-rotate",
