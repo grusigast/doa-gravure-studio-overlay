@@ -36,8 +36,8 @@ Configuration is done in the conf.json file. Available options:
 {
     "windowTitle": "DEAD OR ALIVE 5 Last Round Ver.1.10C AutoLink 19/23",           // Title of the window to display overlay window on.
     "processName": "game.exe"         // Name of DEAD OR ALIVE 5 process, used for memory injections.
-    "keyDelay": 300,                  // Delay in milliseconds between overlay hide and button presses.
-    "toggleOverlay": "Ctrl + Q", // Keyboard shortcut to toggle overlay.
+    "keyDelay": 100,                  // Delay in milliseconds between overlay hide and button presses.
+    "toggleOverlay": "Ctrl + Q",      // Keyboard shortcut to toggle overlay.
     "reopenOverlay": false,           // Show overlay after button pressed.
     "theme": "dark",                  // Overlay theme, "dark" or "light".
     "logToFile": false,               // Enable or disable logging to file overlay.log.
