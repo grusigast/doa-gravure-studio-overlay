@@ -356,6 +356,26 @@
                 "name": "Bathroom 9",
                 "mode": "combination",
                 "data": "F11+L"
+            },
+            {
+                "name": "Bathroom Peeking 1",
+                "mode": "combination",
+                "data": "F10+C"
+            },
+            {
+                "name": "Bathroom Peeking 2",
+                "mode": "combination",
+                "data": "F10+V"
+            },
+            {
+                "name": "Bathroom Peeking 3",
+                "mode": "combination",
+                "data": "F10+B"
+            },
+            {
+                "name": "Bathroom Peeking 4",
+                "mode": "combination",
+                "data": "F10+N"
             }
         ]
     },
@@ -496,6 +516,11 @@
                 "name": "Onsen 1",
                 "mode": "combination",
                 "data": "F10+Z"
+            },
+            {
+                "name": "Onsen 2",
+                "mode": "combination",
+                "data": "F10+X"
             }
         ]
     }
