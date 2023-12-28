@@ -74,7 +74,7 @@ function checkWindowOpen() {
 
   if (!match) {
     logger.error('Unable to find a window with title "' + conf.windowTitle + '", cannot show overlay.')
-    dialog.showErrorBox('Could not find target window!', 'Unable to find a window with title "' + conf.windowTitle + '"\nPlease check spelling in the conf.json file and restart the overlay.');
+    dialog.showErrorBox('Could not find target window!', 'Unable to find a window with title "' + conf.windowTitle + '"\nNavigate to the DoA Main menu or check the windowTitle configuration in the conf.json file and restart the overlay.');
   }
 }
 

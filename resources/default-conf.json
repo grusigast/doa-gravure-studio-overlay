@@ -1,7 +1,7 @@
 {
     "windowTitle": "DEAD OR ALIVE 5 Last Round Ver.1.10C AutoLink 18/23",
     "processName": "game.exe",
-    "keyDelay": 300,
+    "keyDelay": 50,
     "toggleOverlay": "Ctrl + Q",
     "reopenOverlay": false,
     "theme": "light",
