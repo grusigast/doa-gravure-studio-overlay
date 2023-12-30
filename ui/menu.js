@@ -49,6 +49,19 @@ function sendKeypress(keys, mode)
   ipcRenderer.send('keypress', keys, mode)
 }
 
+
+function sendActionAndActivate(id, element, listId)
+{
+  // Remove active class on all items in dropdownlist
+  [...document.getElementById(listId).getElementsByTagName('button')].map((buttonEl) => buttonEl.classList.remove('active'));
+
+  // Add active class to pressed item.
+  element.classList.add('active')
+
+  // Send action.
+  sendAction(id)
+}
+
 function sendAction(id)
 {
   console.log('Send action: '+ id)

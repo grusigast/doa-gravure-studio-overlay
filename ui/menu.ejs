@@ -79,30 +79,30 @@
                 <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" onclick="toggleDropDown(this)">
                   <i class="bi bi-heart-pulse"></i> Breast motion
                 </button>
-                <ul class="dropdown-menu">
+                <ul id="character-breast-motion" class="dropdown-menu">
                   <li>
-                    <button class="dropdown-item" type="button" onclick="sendAction('breast-motion-off')">
+                    <button class="dropdown-item" type="button" onclick="sendActionAndActivate('breast-motion-off', this, 'character-breast-motion')">
                       Off
                     </button>
                   </li>
                   <li><hr class="dropdown-divider"></li>
                   <li>
-                    <button class="dropdown-item" type="button" onclick="sendAction('breast-motion-natural')">
+                    <button class="dropdown-item" type="button" onclick="sendActionAndActivate('breast-motion-natural', this, 'character-breast-motion')">
                       Natural
                     </button>
                   </li>
                   <li>
-                    <button class="dropdown-item" type="button" onclick="sendAction('breast-motion-doa')">
+                    <button class="dropdown-item" type="button" onclick="sendActionAndActivate('breast-motion-doa', this, 'character-breast-motion')">
                       DOA
                     </button>
                   </li>
                   <li>
-                    <button class="dropdown-item" type="button" onclick="sendAction('breast-motion-omg')">
+                    <button class="dropdown-item" type="button" onclick="sendActionAndActivate('breast-motion-omg', this, 'character-breast-motion')">
                       OMG
                     </button>
                   </li>
                   <li>
-                    <button class="dropdown-item" type="button" onclick="sendAction('breast-motion-omgdoa')">
+                    <button class="dropdown-item" type="button" onclick="sendActionAndActivate('breast-motion-omgdoa', this, 'character-breast-motion')">
                       OMG+DOA
                     </button>
                   </li>
@@ -112,29 +112,29 @@
                 <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" onclick="toggleDropDown(this)">
                   <i class="bi bi-brightness-high"></i> Brightness
                 </button>
-                <ul class="dropdown-menu">
+                <ul id="character-brightness" class="dropdown-menu">
                   <li>
-                    <button class="dropdown-item" type="button" onclick="sendAction('character-brightness-80')">
+                    <button class="dropdown-item" type="button" onclick="sendActionAndActivate('character-brightness-80', this, 'character-brightness')">
                       80%
                     </button>
                   </li>
                   <li>
-                    <button class="dropdown-item" type="button" onclick="sendAction('character-brightness-90')">
+                    <button class="dropdown-item" type="button" onclick="sendActionAndActivate('character-brightness-90', this, 'character-brightness')">
                       90%
                     </button>
                   </li>
                   <li>
-                    <button class="dropdown-item" type="button" onclick="sendAction('character-brightness-100')">
+                    <button class="dropdown-item" type="button" onclick="sendActionAndActivate('character-brightness-100', this, 'character-brightness')">
                       100%
                     </button>
                   </li>
                   <li>
-                    <button class="dropdown-item" type="button" onclick="sendAction('character-brightness-110')">
+                    <button class="dropdown-item" type="button" onclick="sendActionAndActivate('character-brightness-110', this, 'character-brightness')">
                       110%
                     </button>
                   </li>
                   <li>
-                    <button class="dropdown-item" type="button" onclick="sendAction('character-brightness-120')">
+                    <button class="dropdown-item" type="button" onclick="sendActionAndActivate('character-brightness-120', this, 'character-brightness')">
                       120%
                     </button>
                   </li>
@@ -249,10 +249,10 @@
                 <button type="button" class="btn btn-outline-secondary dropdown-toggle"  data-bs-auto-close="outside" onclick="toggleDropDown(this)">
                   <i class="bi bi-speedometer"></i>
                 </button>
-                <ul class="dropdown-menu">
-                  <li><button class="dropdown-item" type="button" onclick="sendAction('speed-slow')">Slow</button></li>
-                  <li><button class="dropdown-item" type="button" onclick="sendAction('speed-normal')">Normal</button></li>
-                  <li><button class="dropdown-item" type="button" onclick="sendAction('speed-fast')">Fast</button></li>
+                <ul id="game-speed" class="dropdown-menu">
+                  <li><button class="dropdown-item" type="button" onclick="sendActionAndActivate('speed-slow', this, 'game-speed')">Slow</button></li>
+                  <li><button class="dropdown-item" type="button" onclick="sendActionAndActivate('speed-normal', this, 'game-speed')">Normal</button></li>
+                  <li><button class="dropdown-item" type="button" onclick="sendActionAndActivate('speed-fast', this, 'game-speed')">Fast</button></li>
                 </ul>
               </div>
             </div>
