@@ -49,6 +49,16 @@
 
             <!-- Scenes -->
             <div class="tab-pane fade" id="scenes" role="tabpanel" aria-labelledby="scenes-tab" tabindex="0">
+
+              <!-- Random scene select -->
+              <div class="d-grid gap-2 col-6 mx-auto">
+                <button class="btn btn-outline-secondary" onclick="selectRandomScene()">
+                  <i class="bi bi-shuffle"></i> 
+                  Select random scene
+                </button>
+              </div>
+
+              <!-- Scenes accordion -->
               <div class="accordion accordion-flush" id="scenesAccordion">
                 <% for(var i=0; i < scenes.length; i++) { %>
                   <div class="accordion-item">

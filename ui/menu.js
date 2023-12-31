@@ -142,3 +142,10 @@ function hideDefaultContent()
   document.getElementById('defaultContent').classList.remove('show')
   document.getElementById('defaultContent').classList.remove('active')
 }
+
+function selectRandomScene()
+{
+  const sceneButtons = document.querySelectorAll('.scene-button')
+  const randomSceneButton = sceneButtons[Math.floor(Math.random() * sceneButtons.length)]
+  randomSceneButton.click()
+}
