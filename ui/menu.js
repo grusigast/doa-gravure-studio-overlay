@@ -1,11 +1,12 @@
 const ipcRenderer = require('electron').ipcRenderer;
 const bootstrap = require('bootstrap')
+const $ = require('jquery')
 
 const overlayModal = new bootstrap.Modal('#overlayModal', {backdrop: 'static' })
 
 
 window.onload = function() {
-  const modal = document.getElementById('overlayModal')
+  const modal = $('#overlayModal')
   modal.addEventListener('hidden.bs.modal', event => {
     console.log('Modal hidden')
     ipcRenderer.send('modal', 'hidden')
@@ -38,6 +39,10 @@ ipcRenderer.on('set-visibility', (e, visibility) => {
   if (visibility) {
     overlayModal.show()
     document.body.style.display = null
+
+    $('.modal-dialog').draggable({
+      handle: ".modal-content"
+    });
   } else {
     overlayModal.hide()
   }
@@ -53,7 +58,7 @@ function sendKeypress(keys, mode)
 function sendActionAndActivate(id, element, listId)
 {
   // Remove active class on all items in dropdownlist
-  [...document.getElementById(listId).getElementsByTagName('button')].map((buttonEl) => buttonEl.classList.remove('active'));
+  [...$('#' + listId).find('button')].map((buttonEl) => buttonEl.classList.remove('active'));
 
   // Add active class to pressed item.
   element.classList.add('active')
@@ -87,7 +92,7 @@ function sendToggle(switchElement, enableAction, disableAction)
 function setImage(keys)
 {
   var fileName = 'img/' + keys + '.jpg';
-  var elements = document.getElementsByClassName('menuImage')
+  var elements = $('.menuImage')
 
   for (const element of elements){
     element.src = fileName
@@ -97,7 +102,7 @@ function setImage(keys)
 function resetImage()
 {
   var fileName = './img/doa-gravure-studio-logo.png';
-  var elements = document.getElementsByClassName('menuImage')
+  var elements = $('.menuImage')
 
   for (const element of elements){
     element.src = fileName
@@ -124,7 +129,7 @@ function toggleDropDown(element)
 
 function toggleSoftEngine(switchElement)
 {
-  const toggles = document.querySelectorAll('.softengine-toggle')
+  const toggles = $('.softengine-toggle')
   const toggle = [...toggles].map((toggleEl) => {
     toggleEl.checked = switchElement.checked
     toggleEl.onchange()
@@ -133,19 +138,18 @@ function toggleSoftEngine(switchElement)
 
 function closeAllDropDowns()
 {
-  const dropdowns = document.querySelectorAll('.dropdown-toggle')
+  const dropdowns = $('.dropdown-toggle')
   const dropdown = [...dropdowns].map((dropdownToggleEl) => new bootstrap.Dropdown(dropdownToggleEl, {autoClose: true}).hide());
 }
 
 function hideDefaultContent()
 {
-  document.getElementById('defaultContent').classList.remove('show')
-  document.getElementById('defaultContent').classList.remove('active')
+  $('#defaultContent').removeClass('show active')
 }
 
 function selectRandomScene()
 {
-  const sceneButtons = document.querySelectorAll('.scene-button')
+  const sceneButtons = $('.scene-button')
   const randomSceneButton = sceneButtons[Math.floor(Math.random() * sceneButtons.length)]
   randomSceneButton.click()
 }

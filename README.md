@@ -149,6 +149,7 @@ Contains all scene data.
 - [ejs-electron](https://github.com/bowheart/ejs-electron)
 - [node-key-sender](https://github.com/garimpeiro-it/node-key-sender)
 - [BootStrap](https://getbootstrap.com/) + [BootStrap Icons](https://icons.getbootstrap.com/)
+- [jQuery](https://jquery.com/) + [jQueryUI](https://jqueryui.com/)
 - [memoryjs](https://github.com/Rob--/memoryjs)
 - [native-is-elevated](https://github.com/arkon/native-is-elevated)
 - [list-open-windows](https://github.com/JosephusPaye/list-open-windows)
