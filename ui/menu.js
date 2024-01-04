@@ -6,7 +6,7 @@ const overlayModal = new bootstrap.Modal('#overlayModal', {backdrop: 'static' })
 
 
 window.onload = function() {
-  const modal = $('#overlayModal')
+  const modal = document.getElementById('overlayModal')
   modal.addEventListener('hidden.bs.modal', event => {
     console.log('Modal hidden')
     ipcRenderer.send('modal', 'hidden')
@@ -23,6 +23,10 @@ window.onload = function() {
   modal.addEventListener('show.bs.modal', event => {
     console.log('Modal show')
   })
+
+  // Enable tooltips
+  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+  const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 };
 
 window.onclick = function(event)
