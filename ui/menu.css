@@ -59,3 +59,7 @@ button.accordion-button:focus{
 ::-webkit-scrollbar-track{
     background: transparent;
 }
+
+.modal-footer {
+    border-top-width: 0px !important;
+}

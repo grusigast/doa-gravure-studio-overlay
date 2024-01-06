@@ -2,7 +2,7 @@ const ipcRenderer = require('electron').ipcRenderer;
 const bootstrap = require('bootstrap')
 const $ = require('jquery')
 
-const overlayModal = new bootstrap.Modal('#overlayModal', {backdrop: 'static' })
+const overlayModal = new bootstrap.Modal('#overlayModal', {backdrop: 'false' })
 
 
 window.onload = function() {
@@ -156,4 +156,20 @@ function selectRandomScene()
   const sceneButtons = $('.scene-button')
   const randomSceneButton = sceneButtons[Math.floor(Math.random() * sceneButtons.length)]
   randomSceneButton.click()
+}
+
+function toggleMiniMode()
+{
+  const isInMiniMode = $('.modal-header').hasClass('d-none')
+  console.log('Toggle mini mode: ' + isInMiniMode)
+
+  if (isInMiniMode) {
+    $('.modal-header').removeClass('d-none').addClass('d-inline')
+    $('.modal-body').removeClass('d-none').addClass('d-inline')
+    $('#miniModeIcon').removeClass('bi-arrows-angle-expand').addClass('bi-arrows-angle-contract')
+  } else {
+    $('.modal-header').removeClass('d-inline').addClass('d-none')
+    $('.modal-body').removeClass('d-inline').addClass('d-none')
+    $('#miniModeIcon').removeClass('bi-arrows-angle-contract').addClass('bi-arrows-angle-expand')
+  }
 }
