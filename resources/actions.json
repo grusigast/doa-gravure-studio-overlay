@@ -139,8 +139,8 @@
         "address": "00FD2420",
         "offset": "60",
         "mode": "range",
-        "min": "-1.0",
-        "max": "2.5"
+        "min": "-0.75",
+        "max": "2.0"
     },
     {
         "id": "camera-x-pan",
