@@ -190,6 +190,9 @@ function hideOverlay()
   mainWindow.setIgnoreMouseEvents(true)
   mainWindow.webContents.send('set-visibility', false)
   isInteractable = false
+
+  // Workaround for arrow keys not functioning after overlay shown
+  sendkeys.sendKey('control').then(() => {})
 }
 
 function showOverlay()
