@@ -36,10 +36,22 @@
         "data": "L+M+M"
     },
     {
-        "id": "toggle-reshade",
+        "id": "toggle-effect",
         "action": "keypress",
-        "mode": "press",
-        "data": "F2"
+        "mode": "combination",
+        "data": "F5+2"
+    },
+    {
+        "id": "toggle-stage",
+        "action": "keypress",
+        "mode": "combination",
+        "data": "F5+3"
+    },
+    {
+        "id": "toggle-character",
+        "action": "keypress",
+        "mode": "combination",
+        "data": "F5+1"
     },
     {
         "id": "toggle-hud",
