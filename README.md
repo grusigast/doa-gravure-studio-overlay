@@ -10,7 +10,6 @@ DoA Gravure Studio Overlay is an overlay for DoA Gravure Studio to make it easie
 * Perform memory injects
 
 ## Limitations
-* The overlay **will not work** properly in Fullscreen mode! Recommend using Window mode with something like  [Borderless Gaming](https://github.com/Codeusa/Borderless-Gaming).
 * Not possible to select characters via overlay (unless its possible via memory injects?)
 * Not possible to select costumes via overlay (unless its possible via memory injects?)
 * Navigation-based actions do not work when DoA starts with controller
@@ -28,6 +27,10 @@ In the tray icon you can also:
   * conf.json is opened by default editor.
 * Quit 
 
+To get the overlay working properly in fullscreen mode, set the following property in the `ReShade.ini` file in the DoA installation folder:
+```properties
+ForceWindowed=1
+```
 
 ## Configuration
 Configuration is done in the conf.json file. Available options:
