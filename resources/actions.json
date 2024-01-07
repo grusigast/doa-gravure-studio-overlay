@@ -33,7 +33,8 @@
         "id": "character-reload",
         "action": "keypress",
         "mode": "sequence",
-        "data": "L+M+M"
+        "data": "L+M+M",
+        "globalDelayPressMillisec": "200"
     },
     {
         "id": "toggle-effect",

@@ -1,527 +1,531 @@
-[
-    {
-        "name": "Beach",
-        "id": 1,
-        "scenes": [
-            {
-                "name": "Beach 1",
-                "mode": "combination",
-                "data": "F9+0"
-            },
-            {
-                "name": "Beach 2",
-                "mode": "combination",
-                "data": "F9+1"
-            },
-            {
-                "name": "Beach 3",
-                "mode": "combination",
-                "data": "F9+2"
-            },
-            {
-                "name": "Beach 4",
-                "mode": "combination",
-                "data": "F9+3"
-            },
-            {
-                "name": "Beach 5",
-                "mode": "combination",
-                "data": "F9+4"
-            },
-            {
-                "name": "Beach 6",
-                "mode": "combination",
-                "data": "F9+5"
-            },
-            {
-                "name": "Beach 7",
-                "mode": "combination",
-                "data": "F9+6"
-            },
-            {
-                "name": "Beach 8",
-                "mode": "combination",
-                "data": "F9+7"
-            },
-            {
-                "name": "Beach 9",
-                "mode": "combination",
-                "data": "F9+8"
-            },
-            {
-                "name": "Beach 10",
-                "mode": "combination",
-                "data": "F9+9"
-            },
-            {
-                "name": "Beach 11",
-                "mode": "combination",
-                "data": "F9+A"
-            },
-            {
-                "name": "Beach 12",
-                "mode": "combination",
-                "data": "F9+D"
-            },
-            {
-                "name": "Beach 13",
-                "mode": "combination",
-                "data": "F9+E"
-            },
-            {
-                "name": "Beach 14",
-                "mode": "combination",
-                "data": "F9+F"
-            },
-            {
-                "name": "Beach 15",
-                "mode": "combination",
-                "data": "F9+G"
-            },
-            {
-                "name": "Beach 16",
-                "mode": "combination",
-                "data": "F9+I"
-            },
-            {
-                "name": "Beach 17",
-                "mode": "combination",
-                "data": "F9+O"
-            },
-            {
-                "name": "Beach 18",
-                "mode": "combination",
-                "data": "F9+P"
-            },
-            {
-                "name": "Beach 19",
-                "mode": "combination",
-                "data": "F9+Q"
-            },
-            {
-                "name": "Beach 20",
-                "mode": "combination",
-                "data": "F9+R"
-            },
-            {
-                "name": "Beach 21",
-                "mode": "combination",
-                "data": "F9+S"
-            },
-            {
-                "name": "Beach 22",
-                "mode": "combination",
-                "data": "F9+T"
-            },
-            {
-                "name": "Beach 23",
-                "mode": "combination",
-                "data": "F9+U"
-            },
-            {
-                "name": "Beach 24",
-                "mode": "combination",
-                "data": "F9+W"
-            },
-            {
-                "name": "Beach 25",
-                "mode": "combination",
-                "data": "F9+Y"
-            },
-            {
-                "name": "Beach 26",
-                "mode": "combination",
-                "data": "F9+Z"
-            },
-            {
-                "name": "Beach 27",
-                "mode": "combination",
-                "data": "F9+X"
-            },
-            {
-                "name": "Beach 28",
-                "mode": "combination",
-                "data": "F9+C"
-            },
-            {
-                "name": "Beach 29",
-                "mode": "combination",
-                "data": "F9+V"
-            },
-            {
-                "name": "Beach 30",
-                "mode": "combination",
-                "data": "F9+B"
-            },
-            {
-                "name": "Beach 31",
-                "mode": "combination",
-                "data": "F9+N"
-            },
-            {
-                "name": "Beach Bounce",
-                "mode": "combination",
-                "data": "F9+H"
-            },
-            {
-                "name": "Beach Posereel 1",
-                "mode": "combination",
-                "data": "F9+J"
-            },
-            {
-                "name": "Beach Posereel 2",
-                "mode": "combination",
-                "data": "F9+K"
-            },
-            {
-                "name": "Beach Posereel 3",
-                "mode": "combination",
-                "data": "F9+L"
-            }
-        ]
-    },
-    {
-        "name": "Gym",
-        "id": 2,
-        "scenes": [
-            {
-                "name": "Boxing",
-                "mode": "combination",
-                "data": "F10+A"
-            },
-            {
-                "name": "Pushups",
-                "mode": "combination",
-                "data": "F10+D"
-            },
-            {
-                "name": "Situps",
-                "mode": "combination",
-                "data": "F10+F"
-            },
-            {
-                "name": "Gym 4",
-                "mode": "combination",
-                "data": "F10+G"
-            },
-            {
-                "name": "Treadmill",
-                "mode": "combination",
-                "data": "F10+S"
-            },
-            {
-                "name": "Gym 5",
-                "mode": "combination",
-                "data": "F10+H"
-            },
-            {
-                "name": "Gym 6",
-                "mode": "combination",
-                "data": "F10+J"
-            }
-        ]
-    },   
-    {
-        "name": "Remastered PP",
-        "id": 3,
-        "scenes": [
-            {
-                "name": "PP 1",
-                "mode": "combination",
-                "data": "F10+0"
-            },
-            {
-                "name": "PP 2",
-                "mode": "combination",
-                "data": "F10+1"
-            },
-            {
-                "name": "PP 3",
-                "mode": "combination",
-                "data": "F10+2"
-            },
-            {
-                "name": "PP 4",
-                "mode": "combination",
-                "data": "F10+3"
-            },
-            {
-                "name": "PP 5",
-                "mode": "combination",
-                "data": "F10+4"
-            },
-            {
-                "name": "PP 6",
-                "mode": "combination",
-                "data": "F10+5"
-            },
-            {
-                "name": "PP 7",
-                "mode": "combination",
-                "data": "F10+6"
-            },
-            {
-                "name": "PP 8",
-                "mode": "combination",
-                "data": "F10+7"
-            },
-            {
-                "name": "PP 9",
-                "mode": "combination",
-                "data": "F10+8"
-            },
-            {
-                "name": "PP 10",
-                "mode": "combination",
-                "data": "F10+9"
-            },
-            {
-                "name": "PP 11",
-                "mode": "combination",
-                "data": "F10+E"
-            },
-            {
-                "name": "PP 12",
-                "mode": "combination",
-                "data": "F10+Q"
-            },
-            {
-                "name": "PP 13",
-                "mode": "combination",
-                "data": "F10+R"
-            },
-            {
-                "name": "PP 14",
-                "mode": "combination",
-                "data": "F10+T"
-            },
-            {
-                "name": "PP 15",
-                "mode": "combination",
-                "data": "F10+W"
-            },
-            {
-                "name": "PP 16",
-                "mode": "combination",
-                "data": "F10+Y"
-            }
-        ]
-        
-    },
-    {
-        "name": "Bathroom",
-        "id": 4,
-        "scenes": [
-            {
-                "name": "Bathroom 1",
-                "mode": "combination",
-                "data": "F11+A"
-            },
-            {
-                "name": "Bathroom 2",
-                "mode": "combination",
-                "data": "F11+D"
-            },
-            {
-                "name": "Bathroom 3",
-                "mode": "combination",
-                "data": "F11+F"
-            },
-            {
-                "name": "Bathroom 4",
-                "mode": "combination",
-                "data": "F11+G"
-            },
-            {
-                "name": "Bathroom 5",
-                "mode": "combination",
-                "data": "F11+H"
-            },
-            {
-                "name": "Bathroom 6",
-                "mode": "combination",
-                "data": "F11+J"
-            },
-            {
-                "name": "Bathroom 7",
-                "mode": "combination",
-                "data": "F11+S"
-            },
-            {
-                "name": "Bathroom 8",
-                "mode": "combination",
-                "data": "F11+K"
-            },
-            {
-                "name": "Bathroom 9",
-                "mode": "combination",
-                "data": "F11+L"
-            },
-            {
-                "name": "Bathroom Peeking 1",
-                "mode": "combination",
-                "data": "F10+C"
-            },
-            {
-                "name": "Bathroom Peeking 2",
-                "mode": "combination",
-                "data": "F10+V"
-            },
-            {
-                "name": "Bathroom Peeking 3",
-                "mode": "combination",
-                "data": "F10+B"
-            },
-            {
-                "name": "Bathroom Peeking 4",
-                "mode": "combination",
-                "data": "F10+N"
-            }
-        ]
-    },
-    {
-        "name": "Bedroom",
-        "id": 5,
-        "scenes": [
-            {
-                "name": "Bedroom 1",
-                "mode": "combination",
-                "data": "F11+C"
-            },
-            {
-                "name": "Bedroom 2",
-                "mode": "combination",
-                "data": "F11+X"
-            },
-            {
-                "name": "Bedroom 3",
-                "mode": "combination",
-                "data": "F11+Z"
-            }
-        ]
-    },
-    {
-        "name": "Casino",
-        "id": 6,
-        "scenes": [
-            {
-                "name": "Casino 1",
-                "mode": "combination",
-                "data": "F11+E"
-            },
-            {
-                "name": "Casino 2",
-                "mode": "combination",
-                "data": "F11+Q"
-            },
-            {
-                "name": "Casino 3",
-                "mode": "combination",
-                "data": "F11+R"
-            },
-            {
-                "name": "Casino 4",
-                "mode": "combination",
-                "data": "F11+T"
-            },
-            {
-                "name": "Casino 5",
-                "mode": "combination",
-                "data": "F11+W"
-            },
-            {
-                "name": "Casino 6",
-                "mode": "combination",
-                "data": "F11+Y"
-            },
-            {
-                "name": "Casino Posereel",
-                "mode": "combination",
-                "data": "F11+U"
-            }
-        ]
-    },
-    {
-        "name": "Photo Studio",
-        "id": 7,
-        "scenes": [
-            {
-                "name": "Studio 1",
-                "mode": "combination",
-                "data": "F11+0"
-            },
-            {
-                "name": "Studio 2",
-                "mode": "combination",
-                "data": "F11+1"
-            },
-            {
-                "name": "Studio 3",
-                "mode": "combination",
-                "data": "F11+2"
-            },
-            {
-                "name": "Studio 4",
-                "mode": "combination",
-                "data": "F11+3"
-            },
-            {
-                "name": "Studio 5",
-                "mode": "combination",
-                "data": "F11+4"
-            },
-            {
-                "name": "Studio 6",
-                "mode": "combination",
-                "data": "F11+5"
-            },
-            {
-                "name": "Studio 7",
-                "mode": "combination",
-                "data": "F11+6"
-            },
-            {
-                "name": "Studio 8",
-                "mode": "combination",
-                "data": "F11+7"
-            },
-            {
-                "name": "Studio 9",
-                "mode": "combination",
-                "data": "F11+8"
-            },
-            {
-                "name": "Studio 10",
-                "mode": "combination",
-                "data": "F11+9"
-            }
-        ]
-    },
-    {
-        "name": "Manor",
-        "id": 8,
-        "scenes": [
-            {
-                "name": "Manor 1",
-                "mode": "combination",
-                "data": "F10+M"
-            }
-        ]
-    },
-    {
-        "name": "Onsen",
-        "id": 9,
-        "scenes": [
-            {
-                "name": "Onsen 1",
-                "mode": "combination",
-                "data": "F10+Z"
-            },
-            {
-                "name": "Onsen 2",
-                "mode": "combination",
-                "data": "F10+X"
-            }
-        ]
-    }
-]
+{
+    "gravurestudioversion": "1.4",
+    "scenes":
+    [
+        {
+            "name": "Beach",
+            "id": 1,
+            "scenes": [
+                {
+                    "name": "Beach 1",
+                    "mode": "combination",
+                    "data": "F9+0"
+                },
+                {
+                    "name": "Beach 2",
+                    "mode": "combination",
+                    "data": "F9+1"
+                },
+                {
+                    "name": "Beach 3",
+                    "mode": "combination",
+                    "data": "F9+2"
+                },
+                {
+                    "name": "Beach 4",
+                    "mode": "combination",
+                    "data": "F9+3"
+                },
+                {
+                    "name": "Beach 5",
+                    "mode": "combination",
+                    "data": "F9+4"
+                },
+                {
+                    "name": "Beach 6",
+                    "mode": "combination",
+                    "data": "F9+5"
+                },
+                {
+                    "name": "Beach 7",
+                    "mode": "combination",
+                    "data": "F9+6"
+                },
+                {
+                    "name": "Beach 8",
+                    "mode": "combination",
+                    "data": "F9+7"
+                },
+                {
+                    "name": "Beach 9",
+                    "mode": "combination",
+                    "data": "F9+8"
+                },
+                {
+                    "name": "Beach 10",
+                    "mode": "combination",
+                    "data": "F9+9"
+                },
+                {
+                    "name": "Beach 11",
+                    "mode": "combination",
+                    "data": "F9+A"
+                },
+                {
+                    "name": "Beach 12",
+                    "mode": "combination",
+                    "data": "F9+D"
+                },
+                {
+                    "name": "Beach 13",
+                    "mode": "combination",
+                    "data": "F9+E"
+                },
+                {
+                    "name": "Beach 14",
+                    "mode": "combination",
+                    "data": "F9+F"
+                },
+                {
+                    "name": "Beach 15",
+                    "mode": "combination",
+                    "data": "F9+G"
+                },
+                {
+                    "name": "Beach 16",
+                    "mode": "combination",
+                    "data": "F9+I"
+                },
+                {
+                    "name": "Beach 17",
+                    "mode": "combination",
+                    "data": "F9+O"
+                },
+                {
+                    "name": "Beach 18",
+                    "mode": "combination",
+                    "data": "F9+P"
+                },
+                {
+                    "name": "Beach 19",
+                    "mode": "combination",
+                    "data": "F9+Q"
+                },
+                {
+                    "name": "Beach 20",
+                    "mode": "combination",
+                    "data": "F9+R"
+                },
+                {
+                    "name": "Beach 21",
+                    "mode": "combination",
+                    "data": "F9+S"
+                },
+                {
+                    "name": "Beach 22",
+                    "mode": "combination",
+                    "data": "F9+T"
+                },
+                {
+                    "name": "Beach 23",
+                    "mode": "combination",
+                    "data": "F9+U"
+                },
+                {
+                    "name": "Beach 24",
+                    "mode": "combination",
+                    "data": "F9+W"
+                },
+                {
+                    "name": "Beach 25",
+                    "mode": "combination",
+                    "data": "F9+Y"
+                },
+                {
+                    "name": "Beach 26",
+                    "mode": "combination",
+                    "data": "F9+Z"
+                },
+                {
+                    "name": "Beach 27",
+                    "mode": "combination",
+                    "data": "F9+X"
+                },
+                {
+                    "name": "Beach 28",
+                    "mode": "combination",
+                    "data": "F9+C"
+                },
+                {
+                    "name": "Beach 29",
+                    "mode": "combination",
+                    "data": "F9+V"
+                },
+                {
+                    "name": "Beach 30",
+                    "mode": "combination",
+                    "data": "F9+B"
+                },
+                {
+                    "name": "Beach 31",
+                    "mode": "combination",
+                    "data": "F9+N"
+                },
+                {
+                    "name": "Beach Bounce",
+                    "mode": "combination",
+                    "data": "F9+H"
+                },
+                {
+                    "name": "Beach Posereel 1",
+                    "mode": "combination",
+                    "data": "F9+J"
+                },
+                {
+                    "name": "Beach Posereel 2",
+                    "mode": "combination",
+                    "data": "F9+K"
+                },
+                {
+                    "name": "Beach Posereel 3",
+                    "mode": "combination",
+                    "data": "F9+L"
+                }
+            ]
+        },
+        {
+            "name": "Gym",
+            "id": 2,
+            "scenes": [
+                {
+                    "name": "Boxing",
+                    "mode": "combination",
+                    "data": "F10+A"
+                },
+                {
+                    "name": "Pushups",
+                    "mode": "combination",
+                    "data": "F10+D"
+                },
+                {
+                    "name": "Situps",
+                    "mode": "combination",
+                    "data": "F10+F"
+                },
+                {
+                    "name": "Gym 4",
+                    "mode": "combination",
+                    "data": "F10+G"
+                },
+                {
+                    "name": "Treadmill",
+                    "mode": "combination",
+                    "data": "F10+S"
+                },
+                {
+                    "name": "Gym 5",
+                    "mode": "combination",
+                    "data": "F10+H"
+                },
+                {
+                    "name": "Gym 6",
+                    "mode": "combination",
+                    "data": "F10+J"
+                }
+            ]
+        },   
+        {
+            "name": "Remastered PP",
+            "id": 3,
+            "scenes": [
+                {
+                    "name": "PP 1",
+                    "mode": "combination",
+                    "data": "F10+0"
+                },
+                {
+                    "name": "PP 2",
+                    "mode": "combination",
+                    "data": "F10+1"
+                },
+                {
+                    "name": "PP 3",
+                    "mode": "combination",
+                    "data": "F10+2"
+                },
+                {
+                    "name": "PP 4",
+                    "mode": "combination",
+                    "data": "F10+3"
+                },
+                {
+                    "name": "PP 5",
+                    "mode": "combination",
+                    "data": "F10+4"
+                },
+                {
+                    "name": "PP 6",
+                    "mode": "combination",
+                    "data": "F10+5"
+                },
+                {
+                    "name": "PP 7",
+                    "mode": "combination",
+                    "data": "F10+6"
+                },
+                {
+                    "name": "PP 8",
+                    "mode": "combination",
+                    "data": "F10+7"
+                },
+                {
+                    "name": "PP 9",
+                    "mode": "combination",
+                    "data": "F10+8"
+                },
+                {
+                    "name": "PP 10",
+                    "mode": "combination",
+                    "data": "F10+9"
+                },
+                {
+                    "name": "PP 11",
+                    "mode": "combination",
+                    "data": "F10+E"
+                },
+                {
+                    "name": "PP 12",
+                    "mode": "combination",
+                    "data": "F10+Q"
+                },
+                {
+                    "name": "PP 13",
+                    "mode": "combination",
+                    "data": "F10+R"
+                },
+                {
+                    "name": "PP 14",
+                    "mode": "combination",
+                    "data": "F10+T"
+                },
+                {
+                    "name": "PP 15",
+                    "mode": "combination",
+                    "data": "F10+W"
+                },
+                {
+                    "name": "PP 16",
+                    "mode": "combination",
+                    "data": "F10+Y"
+                }
+            ]
+            
+        },
+        {
+            "name": "Bathroom",
+            "id": 4,
+            "scenes": [
+                {
+                    "name": "Bathroom 1",
+                    "mode": "combination",
+                    "data": "F11+A"
+                },
+                {
+                    "name": "Bathroom 2",
+                    "mode": "combination",
+                    "data": "F11+D"
+                },
+                {
+                    "name": "Bathroom 3",
+                    "mode": "combination",
+                    "data": "F11+F"
+                },
+                {
+                    "name": "Bathroom 4",
+                    "mode": "combination",
+                    "data": "F11+G"
+                },
+                {
+                    "name": "Bathroom 5",
+                    "mode": "combination",
+                    "data": "F11+H"
+                },
+                {
+                    "name": "Bathroom 6",
+                    "mode": "combination",
+                    "data": "F11+J"
+                },
+                {
+                    "name": "Bathroom 7",
+                    "mode": "combination",
+                    "data": "F11+S"
+                },
+                {
+                    "name": "Bathroom 8",
+                    "mode": "combination",
+                    "data": "F11+K"
+                },
+                {
+                    "name": "Bathroom 9",
+                    "mode": "combination",
+                    "data": "F11+L"
+                },
+                {
+                    "name": "Bathroom Peeking 1",
+                    "mode": "combination",
+                    "data": "F10+C"
+                },
+                {
+                    "name": "Bathroom Peeking 2",
+                    "mode": "combination",
+                    "data": "F10+V"
+                },
+                {
+                    "name": "Bathroom Peeking 3",
+                    "mode": "combination",
+                    "data": "F10+B"
+                },
+                {
+                    "name": "Bathroom Peeking 4",
+                    "mode": "combination",
+                    "data": "F10+N"
+                }
+            ]
+        },
+        {
+            "name": "Bedroom",
+            "id": 5,
+            "scenes": [
+                {
+                    "name": "Bedroom 1",
+                    "mode": "combination",
+                    "data": "F11+C"
+                },
+                {
+                    "name": "Bedroom 2",
+                    "mode": "combination",
+                    "data": "F11+X"
+                },
+                {
+                    "name": "Bedroom 3",
+                    "mode": "combination",
+                    "data": "F11+Z"
+                }
+            ]
+        },
+        {
+            "name": "Casino",
+            "id": 6,
+            "scenes": [
+                {
+                    "name": "Casino 1",
+                    "mode": "combination",
+                    "data": "F11+E"
+                },
+                {
+                    "name": "Casino 2",
+                    "mode": "combination",
+                    "data": "F11+Q"
+                },
+                {
+                    "name": "Casino 3",
+                    "mode": "combination",
+                    "data": "F11+R"
+                },
+                {
+                    "name": "Casino 4",
+                    "mode": "combination",
+                    "data": "F11+T"
+                },
+                {
+                    "name": "Casino 5",
+                    "mode": "combination",
+                    "data": "F11+W"
+                },
+                {
+                    "name": "Casino 6",
+                    "mode": "combination",
+                    "data": "F11+Y"
+                },
+                {
+                    "name": "Casino Posereel",
+                    "mode": "combination",
+                    "data": "F11+U"
+                }
+            ]
+        },
+        {
+            "name": "Photo Studio",
+            "id": 7,
+            "scenes": [
+                {
+                    "name": "Studio 1",
+                    "mode": "combination",
+                    "data": "F11+0"
+                },
+                {
+                    "name": "Studio 2",
+                    "mode": "combination",
+                    "data": "F11+1"
+                },
+                {
+                    "name": "Studio 3",
+                    "mode": "combination",
+                    "data": "F11+2"
+                },
+                {
+                    "name": "Studio 4",
+                    "mode": "combination",
+                    "data": "F11+3"
+                },
+                {
+                    "name": "Studio 5",
+                    "mode": "combination",
+                    "data": "F11+4"
+                },
+                {
+                    "name": "Studio 6",
+                    "mode": "combination",
+                    "data": "F11+5"
+                },
+                {
+                    "name": "Studio 7",
+                    "mode": "combination",
+                    "data": "F11+6"
+                },
+                {
+                    "name": "Studio 8",
+                    "mode": "combination",
+                    "data": "F11+7"
+                },
+                {
+                    "name": "Studio 9",
+                    "mode": "combination",
+                    "data": "F11+8"
+                },
+                {
+                    "name": "Studio 10",
+                    "mode": "combination",
+                    "data": "F11+9"
+                }
+            ]
+        },
+        {
+            "name": "Manor",
+            "id": 8,
+            "scenes": [
+                {
+                    "name": "Manor 1",
+                    "mode": "combination",
+                    "data": "F10+M"
+                }
+            ]
+        },
+        {
+            "name": "Onsen",
+            "id": 9,
+            "scenes": [
+                {
+                    "name": "Onsen 1",
+                    "mode": "combination",
+                    "data": "F10+Z"
+                },
+                {
+                    "name": "Onsen 2",
+                    "mode": "combination",
+                    "data": "F10+X"
+                }
+            ]
+        }
+    ]
+}

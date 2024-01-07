@@ -8,6 +8,7 @@ const path = require('path')
 const fs = require('fs')
 const logger = require('electron-log')
 const { listOpenWindows } = require('@josephuspaye/list-open-windows')
+const { currentVersion } = require('./package.json');
 
 var mainWindow, tray
 var confPath, conf, scenes, actions
@@ -89,6 +90,28 @@ function setupKeySender() {
   sendkeys.setOption('jrePath', jrePath)
 }
 
+function showAboutDialog()
+{
+  var clicked = dialog.showMessageBoxSync({
+    type: 'info',
+    title: 'About Gravure Studio Overlay',
+    message: 'DoA Gravure Studio Overlay - version ' + currentVersion,
+    detail: 'This version of Gravure Studio Overlay is compatible with Gravure Studio ' +  scenes.gravurestudioversion + '\n\nGravure Studio is developed by Holden McClure.',
+    buttons: ['Open overlay repo on github', 'Holden McClure on Twitter', 'Gravure Studio Patreon', 'Gravure Studio Discord', 'Close'],
+    cancelId: 4
+  })
+
+  if (clicked == 0) {
+    shell.openExternal('https://github.com/grusigast/doa-gravure-studio-overlay')
+  } else if (clicked == 1) {
+    shell.openExternal('https://twitter.com/holden_mcclure')
+  } else if (clicked == 2) {
+    shell.openExternal('https://www.patreon.com/doahdm')
+  } else if (clicked == 3) {
+    shell.openExternal('http://discord.gg/EsUF6pAgCz')
+  }
+}
+
 function createTray () {
   tray = new Tray(nativeImage.createFromPath(path.join('resources', 'icon.png')))
   tray.setToolTip('DoA Gravure Studio Overlay')
@@ -101,7 +124,8 @@ function createTray () {
     { id: 4, label: 'Reload overlay', click: async() => { reload() }},
     { id: 5, label: 'Configure overlay', click: async() => { shell.openPath(confPath) }},
     { type: 'separator' },
-    { id: 6, label: 'Quit', click: async() => { mainWindow.webContents.closeDevTools(); app.quit() }}
+    { id: 7, label: 'About Gravure Studio', click: async() => { showAboutDialog() }},
+    { id: 8, label: 'Quit', click: async() => { mainWindow.webContents.closeDevTools(); app.quit() }}
   ]))
 }
 
@@ -245,7 +269,7 @@ function loadData() {
     scenes = JSON.parse(fs.readFileSync(scenesFile, 'utf8'))
     actions = JSON.parse(fs.readFileSync(actionsFile, 'utf8'))
 
-    if (!scenes || scenes.length == 0)
+    if (!scenes || scenes.scenes.length == 0)
     {
       logger.error('Unable to read any scene data!')
     }
@@ -256,7 +280,7 @@ function loadData() {
     }
 
     // Set conf and data.
-    ejse.data({'scenes': scenes, 'actions': actions, 'conf': conf})
+    ejse.data({'scenes': scenes.scenes, 'actions': actions, 'conf': conf})
   } catch (error) {
     logger.error('Error occurred when reading scene or action data: ' + error)
     ejse.data({'scenes': [], 'actions': [], 'conf': conf})
