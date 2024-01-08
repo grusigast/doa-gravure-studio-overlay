@@ -162,6 +162,11 @@
                     "data": "F9+N"
                 },
                 {
+                    "name": "Beach 32",
+                    "mode": "combination",
+                    "data": "F9+M"
+                },
+                {
                     "name": "Beach Bounce",
                     "mode": "combination",
                     "data": "F9+H"
