@@ -3,6 +3,7 @@ const bootstrap = require('bootstrap')
 const $ = require('jquery')
 
 const overlayModal = new bootstrap.Modal('#overlayModal', {backdrop: 'false' })
+var tooltipList = []
 
 
 window.onload = function() {
@@ -26,7 +27,7 @@ window.onload = function() {
 
   // Enable tooltips
   const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-  const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+  tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 };
 
 window.onclick = function(event)
@@ -35,6 +36,9 @@ window.onclick = function(event)
   if (!event.target.classList.contains('dropdown-toggle')) {
     closeAllDropDowns()
   }
+
+  // Close all tooltips
+  tooltipList.map(tooltip => tooltip.hide())
 }
 
 
