@@ -85,7 +85,7 @@
             <!-- Character -->
             <div class="tab-pane fade" id="character" role="tabpanel" aria-labelledby="character-tab" tabindex="0">
               <div class="btn-group">
-                <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" onclick="toggleDropDown(this)">
+                <button class="btn btn-outline-secondary btn-sm dropdown-toggle" data-bs-auto-close="true" type="button" onclick="toggleDropDown(this)">
                   <i class="bi bi-heart-pulse"></i> Breast motion
                 </button>
                 <ul id="character-breast-motion" class="dropdown-menu">
@@ -118,7 +118,7 @@
                 </ul>
               </div>
               <div class="btn-group">
-                <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" onclick="toggleDropDown(this)">
+                <button class="btn btn-outline-secondary btn-sm dropdown-toggle" data-bs-auto-close="true" type="button" onclick="toggleDropDown(this)">
                   <i class="bi bi-brightness-high"></i> Brightness
                 </button>
                 <ul id="character-brightness" class="dropdown-menu">
@@ -240,7 +240,7 @@
                 <i class="bi bi-arrow-repeat"></i>
               </button>
               <div class="btn-group" role="group">
-                <button type="button" class="btn btn-outline-secondary dropdown-toggle"  data-bs-auto-close="outside" onclick="toggleDropDown(this)">
+                <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-bs-auto-close="true" onclick="toggleDropDown(this)">
                   <i class="bi bi-eye-slash"></i>
                 </button>
                 <ul class="dropdown-menu">
@@ -260,7 +260,7 @@
                 <i class="bi bi-pause"></i>
               </button>
               <div class="btn-group" role="group">
-                <button type="button" class="btn btn-outline-secondary dropdown-toggle"  data-bs-auto-close="outside" onclick="toggleDropDown(this)">
+                <button type="button" class="btn btn-outline-secondary dropdown-toggle"  data-bs-auto-close="true" onclick="toggleDropDown(this)">
                   <i class="bi bi-speedometer"></i>
                 </button>
                 <ul id="game-speed" class="dropdown-menu">

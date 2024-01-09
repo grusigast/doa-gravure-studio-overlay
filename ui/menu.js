@@ -4,6 +4,7 @@ const $ = require('jquery')
 
 const overlayModal = new bootstrap.Modal('#overlayModal', {backdrop: 'false' })
 var tooltipList = []
+var dropdownList = []
 
 
 window.onload = function() {
@@ -25,16 +26,26 @@ window.onload = function() {
     console.log('Modal show')
   })
 
-  // Enable tooltips
+  // Enable tooltips and dropdowns
   const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
   tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+
+  const dropdownElementList = document.querySelectorAll('.dropdown-toggle')
+  dropdownList = [...dropdownElementList].map(dropdownToggleEl =>
+    new bootstrap.Dropdown(dropdownToggleEl, {
+      autoClose: true,
+      popperConfig(defaultBsPopperConfig) {
+        return { ...defaultBsPopperConfig, strategy: 'fixed' };
+      }
+    })
+  )
 };
 
 window.onclick = function(event)
 {
   // Hack to fix closing dropdowns when clicking outside toggle.
   if (!event.target.classList.contains('dropdown-toggle')) {
-    closeAllDropDowns()
+    dropdownList.map(dropdown => dropdown.hide())
   }
 
   // Close all tooltips
@@ -124,15 +135,11 @@ function toggleAccordion(collapseId)
 
 function toggleDropDown(element)
 {
-  // Close all dropdowns.
-  closeAllDropDowns()
+  // Toggle clicked dropdown.
+  dropdownList.filter(dropdown => element === dropdown._element).map(dropdown => dropdown.toggle())
 
-  // Open selected dropdown.
-  new bootstrap.Dropdown(element, { autoClose : true,
-    popperConfig(defaultBsPopperConfig) {
-        return { ...defaultBsPopperConfig, strategy: 'fixed' };
-    }
-  }).toggle()
+  // Hide all else.
+  dropdownList.filter(dropdown => element !== dropdown._element).map(dropdown => dropdown.hide())
 }
 
 function toggleSoftEngine(switchElement)
@@ -142,12 +149,6 @@ function toggleSoftEngine(switchElement)
     toggleEl.checked = switchElement.checked
     toggleEl.onchange()
   });
-}
-
-function closeAllDropDowns()
-{
-  const dropdowns = $('.dropdown-toggle')
-  const dropdown = [...dropdowns].map((dropdownToggleEl) => new bootstrap.Dropdown(dropdownToggleEl, {autoClose: true}).hide());
 }
 
 function hideDefaultContent()
