@@ -92,21 +92,24 @@ Configuration of the overlay is done in two different JSON files;
 Contains all scene data.
 
 ```javascript
-[
-    {
-        "name": "Beach",                    // Scene category name.
-        "id": 1,                            // Scene category ID, just a unique integer.
-        "scenes": [                         // Array of scenes in category.
-            {
-                "name": "Beach 1",          // Scene name
-                "mode": "combination",   // Type of keypress; "press" for single press, "combination" for key combinations, "sequence" for sequence of keypresses.
-                "data": "F9+0"              // Keys to press. Use + as delimeter for combination and sequence keyMode.
-            }
-            // Additional scenes...
-        ]
-    }
-    // Additional scene categories...
-]
+{
+    "gravurestudioversion": "1.4",              // Currently supported Gravure Studio version
+    "scenes": [
+        {
+            "name": "Beach",                    // Scene category name.
+            "id": 1,                            // Scene category ID, just a unique integer.
+            "scenes": [                         // Array of scenes in category.
+                {
+                    "name": "Beach 1",          // Scene name
+                    "mode": "combination",      // Type of keypress; "press" for single press, "combination" for key combinations, "sequence" for sequence of keypresses.
+                    "data": "F9+0"              // Keys to press. Use + as delimeter for combination and sequence keyMode.
+                }
+                // Additional scenes...
+            ]
+        }
+        // Additional scene categories...
+    ]
+}
 ```
 
 
