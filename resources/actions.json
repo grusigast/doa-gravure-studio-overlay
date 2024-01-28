@@ -184,6 +184,14 @@
         "max": "1.0"
     },
     {
+        "id": "camera-perspective",
+        "action": "inject",
+        "address": "FC717C",
+        "mode": "range",
+        "min": "0.0",
+        "max": "7.0"
+    },
+    {
         "id": "softengine-natural-disable",
         "action": "inject-pointer",
         "mode": "multiple",
