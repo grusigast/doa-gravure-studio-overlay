@@ -59,6 +59,42 @@
 
               <!-- Scenes accordion -->
               <div class="accordion accordion-flush" id="scenesAccordion">
+
+                <!-- Favorites -->
+                <% if (conf.favorites.length > 0) { %>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"  aria-expanded="false"
+                        aria-controls="flush-collapse-favorites" data-bs-target="#flush-collapse-favorites" onclick="toggleAccordion('flush-collapse-favorites')">
+                        <i class="bi bi-suit-heart"></i> Favorite scenes
+                      </button>
+                    </h2>
+                    <div id="flush-collapse-favorites" class="accordion-collapse collapse" data-bs-parent="#scenesAccordion">
+                      <img class="menuImage rounded img-fluid" src="./img/doa-gravure-studio-logo.png" class="card-img-top">
+                      <div id="favorites-list">
+                        <% for(var i=0; i < scenes.length; i++) { %>
+                          <% for(var j=0; j < scenes[i].scenes.length; j++) { %>
+                            <% if (conf.favorites.includes(scenes[i].scenes[j].data)) { %>
+                            <div id="favorites-buttons" class="btn-group btn-group-sm" role="group">
+                              <button class="btn btn-outline-secondary btn-sm scene-button" data-sceneid="<%= scenes[i].scenes[j].data %>"
+                                onmouseover="setImage('<%= scenes[i].scenes[j].data %>')"
+                                onclick="sendKeypress('<%= scenes[i].scenes[j].data %>', '<%= scenes[i].scenes[j].mode %>')">
+                                <%=  scenes[i].scenes[j].name %>
+                              </button>
+                              <button class="btn btn-outline-secondary btn-sm scene-button favorite-button" data-favsceneid="<%= scenes[i].data %>"
+                                onclick="toggleFavorite('<%= scenes[i].scenes[j].data %>', this)">
+                                  <i class="bi bi-suit-heart-fill"></i> 
+                              </button>
+                            </div>
+                            <% } %>
+                          <% } %>
+                        <% } %>
+                      </div>
+                    </div>
+                  </div>
+                <% } %>
+
+                <!-- Scene categories -->
                 <% for(var i=0; i < scenes.length; i++) { %>
                   <div class="accordion-item">
                     <h2 class="accordion-header">
@@ -70,11 +106,22 @@
                     <div id="flush-collapse-<%= scenes[i].id %>" class="accordion-collapse collapse" data-bs-parent="#scenesAccordion">
                       <img class="menuImage rounded img-fluid" src="./img/doa-gravure-studio-logo.png" class="card-img-top">
                       <% for(var j=0; j < scenes[i].scenes.length; j++) { %>
-                        <button class="btn btn-outline-secondary btn-sm scene-button"
+                        <div class="btn-group btn-group-sm" role="group">
+                          <button class="btn btn-outline-secondary btn-sm scene-button" data-sceneid="<%= scenes[i].scenes[j].data %>"
                             onmouseover="setImage('<%= scenes[i].scenes[j].data %>')"
                             onclick="sendKeypress('<%= scenes[i].scenes[j].data %>', '<%= scenes[i].scenes[j].mode %>')">
-                          <%=  scenes[i].scenes[j].name %>
-                        </button>
+                            <%=  scenes[i].scenes[j].name %>
+                          </button>
+                          <button class="btn btn-outline-secondary btn-sm scene-button favorite-button" data-favsceneid="<%= scenes[i].data %>"
+                            onclick="toggleFavorite('<%= scenes[i].scenes[j].data %>', this)">
+                            <% if (conf.favorites.includes(scenes[i].scenes[j].data)) { %>
+                              <i class="bi bi-suit-heart-fill"></i> 
+                            <% } else{ %>  
+                              <i class="bi bi-suit-heart"></i> 
+                            <% } %>
+                          </button>
+                        </div>
+
                       <% } %>
                     </div>
                   </div>
@@ -287,6 +334,7 @@
     <script>window.$ = window.jQuery = require('../node_modules/jquery');</script>
     <script src="../node_modules/jquery/dist/jquery.min.js"></script>
     <script src="../node_modules/jquery-ui/dist/jquery-ui.min.js"></script>
+    <script src="../node_modules/ejs/ejs.min.js"></script>
   </body>
 </html>
 

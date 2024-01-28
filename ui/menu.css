@@ -63,3 +63,8 @@ button.accordion-button:focus{
 .modal-footer {
     border-top-width: 0px !important;
 }
+
+.favorite-button
+{
+    color:#dc3545 !important;
+}

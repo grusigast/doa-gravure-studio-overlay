@@ -6,5 +6,6 @@
     "reopenOverlay": false,
     "theme": "light",
     "logToFile": false,
-    "position": "left"
+    "position": "left",
+    "favorites": []
 }

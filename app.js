@@ -287,6 +287,21 @@ function loadData() {
   }
 }
 
+// Recieve toggle favorite event.
+ipcMain.on('toggle-favorite', (event, sceneId) => {
+  logger.info('Recieved toggle favorite event: ' + sceneId)
+
+  if (conf.favorites.includes(sceneId))
+  {
+    conf.favorites = conf.favorites.filter(item => item !== sceneId)
+  }
+  else
+  {
+    conf.favorites.push(sceneId)
+  }
+  fs.writeFileSync(confPath, JSON.stringify(conf, null, 2))
+})
+
 // Recieve modal event.
 ipcMain.on('modal', (event, data) => {
   logger.info('Recieved modal event: ' + data)

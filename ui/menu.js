@@ -178,3 +178,59 @@ function toggleMiniMode()
     $('#miniModeIcon').removeClass('bi-arrows-angle-contract').addClass('bi-arrows-angle-expand')
   }
 }
+
+function toggleFavorite(id, element)
+{
+  // Toggle favorite icon.
+  $('[data-favsceneid="'+id+'"]').each(function() {
+
+
+    var buttonInnerHtml = $(this).html().trim()
+    console.log(buttonInnerHtml)
+
+    if (buttonInnerHtml.includes('bi-suit-heart-fill"')) {
+      $(this).html('<i class="bi bi-suit-heart"></i>')
+    } else if (buttonInnerHtml.includes('bi-suit-heart"')) {
+      $(this).html('<i class="bi bi-suit-heart-fill"></i>')
+    }
+  })
+
+  // Send toggled favorite to server.
+  ipcRenderer.send('toggle-favorite', id)
+
+  // Find currently set favorites.
+  var currentFavorites = []
+  $('.bi-suit-heart-fill').each(function() {
+    var button = $(this).parent().prev()
+    var scene = {                
+      "name": button.html().trim(),
+      "mode": "combination",
+      "data": button.data('sceneid')
+    }
+
+    if (!currentFavorites.some(element => element.name === scene.name)) {
+      currentFavorites.push(scene)
+    }
+  })
+
+  console.log(currentFavorites)
+
+  // Construct new favorite list html for currently set favorites.
+  var favoritesHtml = ejs.render(`
+    <% for(var i=0; i < scenes.length; i++) { %>
+      <div id="favorites-buttons" class="btn-group btn-group-sm" role="group">
+        <button class="btn btn-outline-secondary btn-sm scene-button" data-sceneid="<%= scenes[i].data %>"
+          onmouseover="setImage('<%= scenes[i].data %>')"
+          onclick="sendKeypress('<%= scenes[i].data %>', '<%= scenes[i].mode %>')">
+          <%=  scenes[i].name %>
+        </button>
+        <button class="btn btn-outline-secondary btn-sm scene-button favorite-button" data-favsceneid="<%= scenes[i].data %>"
+          onclick="toggleFavorite('<%= scenes[i].data %>', this)">
+            <i class="bi bi-suit-heart-fill"></i> 
+        </button>
+      </div>
+    <% } %>`, {scenes: currentFavorites})
+
+  // Set in element
+  $('#favorites-list').html(favoritesHtml)
+}

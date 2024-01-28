@@ -45,6 +45,7 @@ Configuration is done in the conf.json file. Available options:
     "theme": "dark",                  // Overlay theme, "dark" or "light".
     "logToFile": false,               // Enable or disable logging to file overlay.log.
     "position": "left"                // Overlay position; "left", "middle" or "right".
+    "favorites": ["F9+M"]                   // List of comma separated favorite scenes.
 }
 ```
 
