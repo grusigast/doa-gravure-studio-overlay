@@ -158,9 +158,6 @@
 
             <!-- Camera-->
             <div class="tab-pane fade" id="camera" role="tabpanel" aria-labelledby="camera-tab" tabindex="0">
-              <button type="button" class="btn btn-sm btn-outline-secondary" onclick="sendAction('camera-rotate')">
-                <i class="bi bi-arrow-clockwise"></i> Toggle landscape/portrait
-              </button>
               <button type="button" class="btn btn-sm btn-outline-secondary" onclick="sendAction('screenshot')">
                 <i class="bi bi-camera"></i> Screenshot
               </button>
@@ -172,6 +169,13 @@
               <div class="input-group input-group-sm py-1">
                 <span class="input-group-text"><i class="bi bi-box px-1"></i> Perspective</span>
                 <input type="range" class="form-control form-range" oninput="sendRangeValue(this, 'camera-perspective')">
+              </div>
+              <div class="input-group input-group-sm py-1">
+                <span class="input-group-text"><i class="bi bi-arrow-repeat px-1"></i> Rotation</span>
+                <button type="button" class="btn btn-sm btn-outline-secondary" onclick="sendAction('camera-rotate')">
+                  <i class="bi bi-arrow-clockwise"></i> Rotate
+                </button>
+                <input type="range" class="form-control form-range" oninput="sendRangeValue(this, 'camera-rotation')">
               </div>
               <hr>
               <div class="input-group input-group-sm py-1">

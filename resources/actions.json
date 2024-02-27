@@ -192,6 +192,14 @@
         "max": "7.0"
     },
     {
+        "id": "camera-rotation",
+        "action": "inject",
+        "address": "FC7188",
+        "mode": "range",
+        "min": "0.0",
+        "max": "6.0"
+    },
+    {
         "id": "softengine-natural-disable",
         "action": "inject-pointer",
         "mode": "multiple",
