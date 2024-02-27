@@ -69,12 +69,6 @@
         "data": "F4"
     },
     {
-        "id": "screenshot",
-        "action": "keypress",
-        "mode": "press",
-        "data": "print_screen"
-    },
-    {
         "id": "breast-motion-off",
         "action": "keypress",
         "mode": "combination",

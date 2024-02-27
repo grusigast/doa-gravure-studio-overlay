@@ -1,4 +1,5 @@
 const ipcRenderer = require('electron').ipcRenderer;
+const { desktopCapturer, remote } = require('electron');
 const bootstrap = require('bootstrap')
 const $ = require('jquery')
 
@@ -102,6 +103,15 @@ function sendAction(id, element)
   ipcRenderer.send('action', id)
 }
 
+function sendSpecialAction(id)
+{
+  console.log('Send special action: '+ id)
+
+  getVideoSources()
+
+  ipcRenderer.send('special-action', id)
+}
+
 function sendRangeValue(rangeElement, id)
 {
   var value = rangeElement.value
@@ -189,4 +199,13 @@ function toggleMiniMode()
     $('.modal-body').removeClass('d-inline').addClass('d-none')
     $('#miniModeIcon').removeClass('bi-arrows-angle-contract').addClass('bi-arrows-angle-expand')
   }
+}
+
+
+function getVideoSources()
+{
+  const inputSources = desktopCapturer.getSources({
+    types: ['window', 'screen']
+  });
+  console.log(inputSources)
 }

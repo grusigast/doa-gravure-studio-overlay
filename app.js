@@ -1,4 +1,4 @@
-const {app, BrowserWindow, globalShortcut, ipcMain, Tray, Menu, nativeImage, dialog, shell } = require('electron')
+const {app, BrowserWindow, globalShortcut, ipcMain, Tray, Menu, nativeImage, dialog, shell, desktopCapturer } = require('electron')
 const { OverlayController } = require('electron-overlay-window')
 const sendkeys = require('node-key-sender')
 const ejse = require('ejs-electron')
@@ -9,6 +9,7 @@ const fs = require('fs')
 const logger = require('electron-log')
 const { listOpenWindows } = require('@josephuspaye/list-open-windows')
 const { currentVersion } = require('./package.json');
+const Jimp = require('jimp')
 
 var mainWindow, tray
 var confPath, conf, scenes, actions
@@ -331,6 +332,23 @@ ipcMain.on('action', (event, id) => {
     }
   } else {
     logger.error('Recieved unknown action id: ' + id)
+  }
+})
+
+// Recieve Special action event.
+ipcMain.on('special-action', (event, id) => {
+  logger.info('Recieved special-action: ' + id)
+
+  if (id === 'screenshot') {
+    logger.info('Taking screenshot')
+
+    var bufferString = Buffer.from(OverlayController.screenshot()).toString('base64')
+    fs.writeFileSync('temp.data', bufferString)
+
+
+
+  } else {
+    logger.error('Recieved unknown special action id: ' + id)
   }
 })
 

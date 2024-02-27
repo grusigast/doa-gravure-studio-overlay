@@ -26,7 +26,8 @@
     "@popperjs/core": "2.11.8",
     "@josephuspaye/list-open-windows": "0.1.2",
     "jquery": "3.7.1",
-    "jquery-ui": "1.13.2"
+    "jquery-ui": "1.13.2",
+    "jimp": "0.22.10"
   },
   "devDependencies": {
     "electron": "^24.4.0",
