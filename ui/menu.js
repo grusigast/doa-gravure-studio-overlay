@@ -130,6 +130,7 @@ function resetImage()
 
 function toggleAccordion(collapseId)
 {
+  new bootstrap.Collapse('#' + collapseId).toggle()
   resetImage()
 }
 
