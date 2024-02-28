@@ -44,7 +44,8 @@ Configuration is done in the conf.json file. Available options:
     "hideOverlay": false,             // Hide overlay after button pressed.
     "theme": "dark",                  // Overlay theme, "dark" or "light".
     "logToFile": false,               // Enable or disable logging to file overlay.log.
-    "position": "left"                // Overlay position; "left", "middle" or "right".
+    "position": "left",               // Overlay position; "left", "middle" or "right".
+    "screenshotLocation": "./screenshots/"  // Location where screenshots will be stored.
 }
 ```
 

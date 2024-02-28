@@ -1,4 +1,4 @@
-const {app, BrowserWindow, globalShortcut, ipcMain, Tray, Menu, nativeImage, dialog, shell, desktopCapturer } = require('electron')
+const {app, BrowserWindow, globalShortcut, ipcMain, Tray, Menu, nativeImage, dialog, shell } = require('electron')
 const { OverlayController } = require('electron-overlay-window')
 const sendkeys = require('node-key-sender')
 const ejse = require('ejs-electron')
@@ -9,7 +9,6 @@ const fs = require('fs')
 const logger = require('electron-log')
 const { listOpenWindows } = require('@josephuspaye/list-open-windows')
 const { currentVersion } = require('./package.json');
-const Jimp = require('jimp')
 
 var mainWindow, tray
 var confPath, conf, scenes, actions
@@ -340,13 +339,28 @@ ipcMain.on('special-action', (event, id) => {
   logger.info('Recieved special-action: ' + id)
 
   if (id === 'screenshot') {
-    logger.info('Taking screenshot')
 
-    var bufferString = Buffer.from(OverlayController.screenshot()).toString('base64')
-    fs.writeFileSync('temp.data', bufferString)
+    screenshotLocation = conf.screenshotLocation
+    if (!path.isAbsolute(conf.screenshotLocation))
+    {
+      // Construct absolute screenshot location from relative path.
+      if (process.env.INIT_CWD) {
+        screenshotLocation = path.join(process.env.INIT_CWD, conf.screenshotLocation)
+      } else if (process.env.PORTABLE_EXECUTABLE_FILE) {
+        screenshotLocation = path.join(path.dirname(process.env.PORTABLE_EXECUTABLE_FILE), conf.screenshotLocation)
+      }
+    }
 
+    // Create dir if it does not exist.
+    if (!fs.existsSync(screenshotLocation)) {
+      fs.mkdirSync(screenshotLocation)
+    }
 
+    screenshotPath = path.join(screenshotLocation, new Date().getTime() + '.png')
+    logger.info('Taking screenshot, saving to ' + screenshotPath + '...')
 
+    pngBuffer = nativeImage.createFromBitmap(OverlayController.screenshot(), { height: OverlayController.targetBounds.height, width: OverlayController.targetBounds.width }).toPNG()    
+    fs.writeFileSync(screenshotPath, pngBuffer)
   } else {
     logger.error('Recieved unknown special action id: ' + id)
   }
