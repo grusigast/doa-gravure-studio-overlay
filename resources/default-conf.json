@@ -3,7 +3,7 @@
     "processName": "game.exe",
     "keyDelay": 100,
     "toggleOverlay": "Ctrl + Q",
-    "reopenOverlay": false,
+    "hideOverlay": false,
     "theme": "light",
     "logToFile": false,
     "position": "left"

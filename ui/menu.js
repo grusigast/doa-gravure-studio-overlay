@@ -2,6 +2,7 @@ const ipcRenderer = require('electron').ipcRenderer;
 const bootstrap = require('bootstrap')
 const $ = require('jquery')
 
+const spinnerElement = '<span class="spinner-border spinner-border-sm" aria-hidden="true"></span>'
 const overlayModal = new bootstrap.Modal('#overlayModal', {backdrop: 'false' })
 var tooltipList = []
 var dropdownList = []
@@ -67,17 +68,25 @@ ipcRenderer.on('set-visibility', (e, visibility) => {
   }
 });
 
-function sendKeypress(keys, mode)
+ipcRenderer.on('button-pressed', (e, status) => {
+  console.log('button-pressed: ' + status)
+  $('.spinner-border').remove()
+});
+
+function sendKeypress(element, keys, mode)
 {
   console.log('Send: ' + keys + '  with mode: '  + mode)
+  $(element).prepend(spinnerElement)
   ipcRenderer.send('keypress', keys, mode)
 }
 
 
-function sendActionAndActivate(id, element, listId)
+function sendActionAndActivate(id, element, listId, buttonId)
 {
   // Remove active class on all items in dropdownlist
   [...$('#' + listId).find('button')].map((buttonEl) => buttonEl.classList.remove('active'));
+
+  $('#' + buttonId).prepend(spinnerElement)
 
   // Add active class to pressed item.
   element.classList.add('active')
@@ -86,9 +95,10 @@ function sendActionAndActivate(id, element, listId)
   sendAction(id)
 }
 
-function sendAction(id)
+function sendAction(id, element)
 {
   console.log('Send action: '+ id)
+  $(element).prepend(spinnerElement)
   ipcRenderer.send('action', id)
 }
 
@@ -157,10 +167,11 @@ function hideDefaultContent()
   $('#defaultContent').removeClass('show active')
 }
 
-function selectRandomScene()
+function selectRandomScene(element)
 {
   const sceneButtons = $('.scene-button')
   const randomSceneButton = sceneButtons[Math.floor(Math.random() * sceneButtons.length)]
+  $(element).prepend(spinnerElement)
   randomSceneButton.click()
 }
 
