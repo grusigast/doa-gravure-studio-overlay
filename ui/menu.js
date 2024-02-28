@@ -105,7 +105,13 @@ function sendAction(id, element)
 function sendSpecialAction(id)
 {
   console.log('Send special action: '+ id)
-  ipcRenderer.send('special-action', id)
+
+  const modal = document.getElementById('overlayModal')
+  modal.addEventListener('hidden.bs.modal', function performWhenClosed() {
+    ipcRenderer.send('special-action', id)
+    modal.removeEventListener('hidden.bs.modal', performWhenClosed)
+  })
+  overlayModal.hide()
 }
 
 function sendRangeValue(rangeElement, id)
