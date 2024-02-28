@@ -118,7 +118,7 @@ function createTray () {
   tray.setContextMenu(Menu.buildFromTemplate([
     { id: 1, label: 'Start DoA', click: async() => { shell.openExternal('steam://rungameid/311730') }},
     { type: 'separator' },
-    { id: 2, label: 'Toggle overlay', click: async() => { toggleOverlay() }},
+    { id: 2, label: 'Toggle overlay', click: async() => { toggleOverlay(true) }},
     { id: 3, label: 'Toggle DevTools', click: async() => { toggleDevTools() }},
     { type: 'separator' },
     { id: 4, label: 'Reload overlay', click: async() => { reload() }},
@@ -163,20 +163,11 @@ function createOverlay (reload) {
     })
   }
 
-  mainWindow.on('focus', () => {
-    logger.info('Electron window gained focus.')
-  }); 
-
-  mainWindow.on('blur', () => {
-    logger.info('Electron window lost focus')
-    hideOverlay()
-  }); 
-
   // add data and load menu.ejs
   mainWindow.loadURL('file://' + __dirname + '/ui/menu.ejs')
 
   // Register overlay shortcut.
-  globalShortcut.register(conf.toggleOverlay, toggleOverlay)
+  globalShortcut.register(conf.toggleOverlay, () => toggleOverlay(true))
 
   if (!reload) {
     // Attach to process with configured windowTitle.
@@ -197,33 +188,43 @@ function toggleDevTools() {
   }
 }
 
-function toggleOverlay () {
+function toggleOverlay(toggleVisibiliy) {
   checkWindowOpen()
 
   if (isInteractable) {
-    hideOverlay()
+    disableOverlay(toggleVisibiliy)
   } else {
-    showOverlay()
+    enableOverlay(toggleVisibiliy)
   }
 }
 
-function hideOverlay()
+function disableOverlay(hide)
 {
-  logger.info('Disabling overlay')
+  logger.info('Disabling overlay...')
   OverlayController.focusTarget()
   mainWindow.setIgnoreMouseEvents(true)
-  mainWindow.webContents.send('set-visibility', false)
+
+  if (hide) {
+    logger.info('Hiding overlay...')
+    mainWindow.webContents.send('set-visibility', false)
+  }
+
   isInteractable = false
 
   // Workaround for arrow keys not functioning after overlay shown
   sendkeys.sendKey('control').then(() => {})
 }
 
-function showOverlay()
+function enableOverlay(show)
 {
-  logger.info('Enabling overlay')
+  logger.info('Enabling overlay...')
   mainWindow.setIgnoreMouseEvents(false)
-  mainWindow.webContents.send('set-visibility', true)
+
+  if (show) {
+    logger.info('Showing overlay...')
+    mainWindow.webContents.send('set-visibility', true)
+  }
+
   isInteractable = true
   OverlayController.activateOverlay()
 }
@@ -290,8 +291,9 @@ function loadData() {
 // Recieve modal event.
 ipcMain.on('modal', (event, data) => {
   logger.info('Recieved modal event: ' + data)
-
-  hideOverlay()
+  if (data == 'hidden' && isInteractable) {
+    disableOverlay(true)
+  }
 })
 
 // Recieve KeyPress event.
@@ -420,7 +422,7 @@ function handleKeyPress(keys, mode, globalDelay, startDelay) {
     sendkeys.setOption('startDelayMillisec', conf.keyDelay)
   }
 
-  toggleOverlay()
+  toggleOverlay(false)
   if (mode == 'press') {
     sendkeys.sendKey(keys).then(handleKeyPressCallback)
   } else if (mode == 'combination') {
@@ -433,17 +435,21 @@ function handleKeyPress(keys, mode, globalDelay, startDelay) {
 }
 
 function handleKeyPressCallback(out, err) {
-  if (err)
-  {
+  if (err) {
     logger.error('Error when sending key press: ' + err)
+    mainWindow.webContents.send('button-pressed', false)
+  } else {
+    mainWindow.webContents.send('button-pressed', true)
   }
+
   if (out)
   {
     logger.info('Output from keyevent: ' + out)
   }
 
-  if (conf.reopenOverlay)
-  {
-    toggleOverlay()
+  if (conf.hideOverlay) {
+    disableOverlay(true)
+  } else {
+    toggleOverlay(false)
   }
 }

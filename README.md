@@ -41,7 +41,7 @@ Configuration is done in the conf.json file. Available options:
     "processName": "game.exe"         // Name of DEAD OR ALIVE 5 process, used for memory injections.
     "keyDelay": 100,                  // Delay in milliseconds between overlay hide and button presses.
     "toggleOverlay": "Ctrl + Q",      // Keyboard shortcut to toggle overlay.
-    "reopenOverlay": false,           // Show overlay after button pressed.
+    "hideOverlay": false,             // Hide overlay after button pressed.
     "theme": "dark",                  // Overlay theme, "dark" or "light".
     "logToFile": false,               // Enable or disable logging to file overlay.log.
     "position": "left"                // Overlay position; "left", "middle" or "right".

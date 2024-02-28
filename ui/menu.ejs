@@ -51,7 +51,7 @@
 
               <!-- Random scene select -->
               <div class="d-grid gap-2 col-6 mx-auto">
-                <button class="btn btn-outline-secondary" onclick="selectRandomScene()">
+                <button class="btn btn-outline-secondary" onclick="selectRandomScene(this)">
                   <i class="bi bi-shuffle"></i> 
                   Select random scene
                 </button>
@@ -71,7 +71,7 @@
                       <% for(var j=0; j < scenes[i].scenes.length; j++) { %>
                         <button class="btn btn-outline-secondary btn-sm scene-button"
                             onmouseover="setImage('<%= scenes[i].scenes[j].data %>')"
-                            onclick="sendKeypress('<%= scenes[i].scenes[j].data %>', '<%= scenes[i].scenes[j].mode %>')">
+                            onclick="sendKeypress(this, '<%= scenes[i].scenes[j].data %>', '<%= scenes[i].scenes[j].mode %>')">
                           <%= scenes[i].scenes[j].name %>
                         </button>
                       <% } %>
@@ -84,65 +84,65 @@
             <!-- Character -->
             <div class="tab-pane fade" id="character" role="tabpanel" aria-labelledby="character-tab" tabindex="0">
               <div class="btn-group">
-                <button class="btn btn-outline-secondary btn-sm dropdown-toggle" data-bs-auto-close="true" type="button" onclick="toggleDropDown(this)">
+                <button id="breast-motion-button" class="btn btn-outline-secondary btn-sm dropdown-toggle" data-bs-auto-close="true" type="button" onclick="toggleDropDown(this)">
                   <i class="bi bi-heart-pulse"></i> Breast motion
                 </button>
                 <ul id="character-breast-motion" class="dropdown-menu">
                   <li>
-                    <button class="dropdown-item" type="button" onclick="sendActionAndActivate('breast-motion-off', this, 'character-breast-motion')">
+                    <button class="dropdown-item" type="button" onclick="sendActionAndActivate('breast-motion-off', this, 'character-breast-motion', 'breast-motion-button')">
                       Off
                     </button>
                   </li>
                   <li><hr class="dropdown-divider"></li>
                   <li>
-                    <button class="dropdown-item" type="button" onclick="sendActionAndActivate('breast-motion-natural', this, 'character-breast-motion')">
+                    <button class="dropdown-item" type="button" onclick="sendActionAndActivate('breast-motion-natural', this, 'character-breast-motion', 'breast-motion-button')">
                       Natural
                     </button>
                   </li>
                   <li>
-                    <button class="dropdown-item" type="button" onclick="sendActionAndActivate('breast-motion-doa', this, 'character-breast-motion')">
+                    <button class="dropdown-item" type="button" onclick="sendActionAndActivate('breast-motion-doa', this, 'character-breast-motion', 'breast-motion-button')">
                       DOA
                     </button>
                   </li>
                   <li>
-                    <button class="dropdown-item" type="button" onclick="sendActionAndActivate('breast-motion-omg', this, 'character-breast-motion')">
+                    <button class="dropdown-item" type="button" onclick="sendActionAndActivate('breast-motion-omg', this, 'character-breast-motion', 'breast-motion-button')">
                       OMG
                     </button>
                   </li>
                   <li>
-                    <button class="dropdown-item" type="button" onclick="sendActionAndActivate('breast-motion-omgdoa', this, 'character-breast-motion')">
+                    <button class="dropdown-item" type="button" onclick="sendActionAndActivate('breast-motion-omgdoa', this, 'character-breast-motion', 'breast-motion-button')">
                       OMG+DOA
                     </button>
                   </li>
                 </ul>
               </div>
               <div class="btn-group">
-                <button class="btn btn-outline-secondary btn-sm dropdown-toggle" data-bs-auto-close="true" type="button" onclick="toggleDropDown(this)">
+                <button id="brigthess-button" class="btn btn-outline-secondary btn-sm dropdown-toggle" data-bs-auto-close="true" type="button" onclick="toggleDropDown(this)">
                   <i class="bi bi-brightness-high"></i> Brightness
                 </button>
                 <ul id="character-brightness" class="dropdown-menu">
                   <li>
-                    <button class="dropdown-item" type="button" onclick="sendActionAndActivate('character-brightness-80', this, 'character-brightness')">
+                    <button class="dropdown-item" type="button" onclick="sendActionAndActivate('character-brightness-80', this, 'character-brightness', 'brighness-button')">
                       80%
                     </button>
                   </li>
                   <li>
-                    <button class="dropdown-item" type="button" onclick="sendActionAndActivate('character-brightness-90', this, 'character-brightness')">
+                    <button class="dropdown-item" type="button" onclick="sendActionAndActivate('character-brightness-90', this, 'character-brightness', 'brighness-button')">
                       90%
                     </button>
                   </li>
                   <li>
-                    <button class="dropdown-item" type="button" onclick="sendActionAndActivate('character-brightness-100', this, 'character-brightness')">
+                    <button class="dropdown-item" type="button" onclick="sendActionAndActivate('character-brightness-100', this, 'character-brightness', 'brighness-button')">
                       100%
                     </button>
                   </li>
                   <li>
-                    <button class="dropdown-item" type="button" onclick="sendActionAndActivate('character-brightness-110', this, 'character-brightness')">
+                    <button class="dropdown-item" type="button" onclick="sendActionAndActivate('character-brightness-110', this, 'character-brightness', 'brighness-button')">
                       110%
                     </button>
                   </li>
                   <li>
-                    <button class="dropdown-item" type="button" onclick="sendActionAndActivate('character-brightness-120', this, 'character-brightness')">
+                    <button class="dropdown-item" type="button" onclick="sendActionAndActivate('character-brightness-120', this, 'character-brightness', 'brighness-button')">
                       120%
                     </button>
                   </li>
@@ -157,7 +157,7 @@
 
             <!-- Camera-->
             <div class="tab-pane fade" id="camera" role="tabpanel" aria-labelledby="camera-tab" tabindex="0">
-              <button type="button" class="btn btn-sm btn-outline-secondary" onclick="sendAction('screenshot')">
+              <button type="button" class="btn btn-sm btn-outline-secondary" onclick="sendAction('screenshot', this)">
                 <i class="bi bi-camera"></i> Screenshot
               </button>
               <br>
@@ -171,7 +171,7 @@
               </div>
               <div class="input-group input-group-sm py-1">
                 <span class="input-group-text"><i class="bi bi-arrow-repeat px-1"></i> Rotation</span>
-                <button type="button" class="btn btn-sm btn-outline-secondary" onclick="sendAction('camera-rotate')">
+                <button type="button" class="btn btn-sm btn-outline-secondary" onclick="sendAction('camera-rotate', this)">
                   <i class="bi bi-arrow-clockwise"></i> Rotate
                 </button>
                 <input type="range" class="form-control form-range" oninput="sendRangeValue(this, 'camera-rotation')">
@@ -243,7 +243,7 @@
               <button type="button" class="btn btn-outline-secondary" onclick="toggleMiniMode()" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Toggle overlay mini mode">
                 <i id="miniModeIcon" class="bi bi-arrows-angle-contract"></i>
               </button>
-              <button type="button" class="btn btn-outline-secondary" onclick="sendAction('character-reload')" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Re-select character and start new scene">
+              <button type="button" class="btn btn-outline-secondary" onclick="sendAction('character-reload', this)" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Re-select character and start new scene">
                 <i class="bi bi-arrow-repeat"></i>
               </button>
               <div class="btn-group" role="group">
@@ -260,20 +260,32 @@
             </div>
 
             <div class="btn-group" role="group">
-              <button type="button" class="btn btn-outline-secondary" onclick="sendAction('play')" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Resume scene playback">
+              <button type="button" class="btn btn-outline-secondary" onclick="sendAction('play', this)" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Resume scene playback">
                 <i class="bi bi-play"></i>
               </button>
-              <button type="button" class="btn btn-outline-secondary" onclick="sendAction('pause')" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Pause scene playback">
+              <button type="button" class="btn btn-outline-secondary" onclick="sendAction('pause', this)" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Pause scene playback">
                 <i class="bi bi-pause"></i>
               </button>
               <div class="btn-group" role="group">
-                <button type="button" class="btn btn-outline-secondary dropdown-toggle"  data-bs-auto-close="true" onclick="toggleDropDown(this)">
+                <button id="game-speed-button" type="button" class="btn btn-outline-secondary dropdown-toggle"  data-bs-auto-close="true" onclick="toggleDropDown(this)">
                   <i class="bi bi-speedometer"></i>
                 </button>
                 <ul id="game-speed" class="dropdown-menu">
-                  <li><button class="dropdown-item" type="button" onclick="sendActionAndActivate('speed-slow', this, 'game-speed')">Slow</button></li>
-                  <li><button class="dropdown-item" type="button" onclick="sendActionAndActivate('speed-normal', this, 'game-speed')">Normal</button></li>
-                  <li><button class="dropdown-item" type="button" onclick="sendActionAndActivate('speed-fast', this, 'game-speed')">Fast</button></li>
+                  <li>
+                    <button class="dropdown-item" type="button" onclick="sendActionAndActivate('speed-slow', this, 'game-speed', 'game-speed-button')">
+                      Slow
+                    </button>
+                  </li>
+                  <li>
+                    <button class="dropdown-item" type="button" onclick="sendActionAndActivate('speed-normal', this, 'game-speed', 'game-speed-button')">
+                      Normal
+                    </button>
+                  </li>
+                  <li>
+                    <button class="dropdown-item" type="button" onclick="sendActionAndActivate('speed-fast', this, 'game-speed', 'game-speed-button')">
+                      Fast
+                    </button>
+                  </li>
                 </ul>
               </div>
             </div>
