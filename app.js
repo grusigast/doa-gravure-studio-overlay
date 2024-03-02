@@ -8,7 +8,7 @@ const path = require('path')
 const fs = require('fs')
 const logger = require('electron-log')
 const { listOpenWindows } = require('@josephuspaye/list-open-windows')
-const { currentVersion } = require('./package.json');
+const currentVersion = process.env.npm_package_version || app.getVersion()
 
 var mainWindow, tray
 var confPath, conf, scenes, actions
@@ -79,6 +79,30 @@ function checkWindowOpen() {
   }
 }
 
+async function checkUpdates() {
+  logger.info('Checking for updates...')
+  const response = await fetch('https://api.github.com/repos/grusigast/doa-gravure-studio-overlay/tags', {method: 'GET'});
+  const data = await response.json();
+
+  if (data.length == 0) {
+    logger.error('Unable to get latest version got: ' + JSON.stringify(data))
+    dialog.showErrorBox('Unable to get latest version info', 'Unable to retrieve information about latest release, check logs for more info')
+  } else {
+    var latestVersion = data[0].name
+    logger.info('Current installed version is: ' + currentVersion  +' and latest remote version is: ' + latestVersion)
+    var clicked = dialog.showMessageBoxSync({
+      title: currentVersion === latestVersion ? 'You are on the latest version!' : 'A new version is available!',
+      message: 'Current installed version is: ' + currentVersion  +' and latest remote version is: ' + latestVersion,
+      buttons: ['Get latest release on github', 'Close'],
+      cancelId: 1
+    })
+    if (clicked==0)
+    {
+      shell.openExternal('https://github.com/grusigast/doa-gravure-studio-overlay/releases')
+    }
+  } 
+}
+
 function setupKeySender() {
   var jarPath = path.join(process.cwd(), 'resources', 'jar', 'key-sender.jar')
   var jrePath = path.join(process.cwd(), 'resources', 'local-jre', 'bin', 'java.exe')
@@ -125,7 +149,8 @@ function createTray () {
     { id: 5, label: 'Configure overlay', click: async() => { shell.openPath(confPath) }},
     { type: 'separator' },
     { id: 7, label: 'About Gravure Studio', click: async() => { showAboutDialog() }},
-    { id: 8, label: 'Quit', click: async() => { mainWindow.webContents.closeDevTools(); app.quit() }}
+    { id: 8, label: 'Check for updates', click: async() => { checkUpdates() }},
+    { id: 9, label: 'Quit', click: async() => { mainWindow.webContents.closeDevTools(); app.quit() }}
   ]))
 }
 

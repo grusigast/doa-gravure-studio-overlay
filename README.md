@@ -25,7 +25,9 @@ In the tray icon you can also:
   * Note that an updated windowTitle requires overlay to be restarted!
 * Configure overlay
   * conf.json is opened by default editor.
-* Quit 
+* Check for updates
+* Show overlay information
+* Quit overlay
 
 To get the overlay working properly in fullscreen mode, set the following property in the `ReShade.ini` file in the DoA installation folder:
 ```properties
