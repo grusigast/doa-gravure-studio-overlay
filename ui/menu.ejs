@@ -157,10 +157,6 @@
 
             <!-- Camera-->
             <div class="tab-pane fade" id="camera" role="tabpanel" aria-labelledby="camera-tab" tabindex="0">
-              <button type="button" class="btn btn-sm btn-outline-secondary" onclick="sendAction('screenshot', this)">
-                <i class="bi bi-camera"></i> Screenshot
-              </button>
-              <br>
               <div class="input-group input-group-sm py-1">
                 <span class="input-group-text"><i class="bi bi-zoom-in px-1"></i> Zoom</span>
                 <input type="range" class="form-control form-range" oninput="sendRangeValue(this, 'camera-zoom')">
@@ -266,6 +262,9 @@
               <button type="button" class="btn btn-outline-secondary" onclick="sendAction('pause', this)" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Pause scene playback">
                 <i class="bi bi-pause"></i>
               </button>
+              <button type="button" class="btn btn-outline-secondary" onclick="sendSpecialAction('screenshot')">
+                <i class="bi bi-camera"></i>
+              </button>
               <div class="btn-group" role="group">
                 <button id="game-speed-button" type="button" class="btn btn-outline-secondary dropdown-toggle"  data-bs-auto-close="true" onclick="toggleDropDown(this)">
                   <i class="bi bi-speedometer"></i>
@@ -290,7 +289,7 @@
               </div>
             </div>
 
-            <div>
+            <div data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Toggle SoftEngine">
               <input type="checkbox" class="btn-check" id="btn-check-outlined" autocomplete="off" onchange="toggleSoftEngine(this)">
               <label class="btn btn-outline-success" for="btn-check-outlined"><i class="bi bi-magic"></i> SoftEngine</label><br>
             </div>

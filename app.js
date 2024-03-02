@@ -334,6 +334,38 @@ ipcMain.on('action', (event, id) => {
   }
 })
 
+// Recieve Special action event.
+ipcMain.on('special-action', (event, id) => {
+  logger.info('Recieved special-action: ' + id)
+
+  if (id === 'screenshot') {
+
+    screenshotLocation = conf.screenshotLocation
+    if (!path.isAbsolute(conf.screenshotLocation))
+    {
+      // Construct absolute screenshot location from relative path.
+      if (process.env.INIT_CWD) {
+        screenshotLocation = path.join(process.env.INIT_CWD, conf.screenshotLocation)
+      } else if (process.env.PORTABLE_EXECUTABLE_FILE) {
+        screenshotLocation = path.join(path.dirname(process.env.PORTABLE_EXECUTABLE_FILE), conf.screenshotLocation)
+      }
+    }
+
+    // Create dir if it does not exist.
+    if (!fs.existsSync(screenshotLocation)) {
+      fs.mkdirSync(screenshotLocation)
+    }
+
+    screenshotPath = path.join(screenshotLocation, new Date().getTime() + '.png')
+    logger.info('Taking screenshot, saving to ' + screenshotPath + '...')
+
+    pngBuffer = nativeImage.createFromBitmap(OverlayController.screenshot(), { height: OverlayController.targetBounds.height, width: OverlayController.targetBounds.width }).toPNG()    
+    fs.writeFileSync(screenshotPath, pngBuffer)
+  } else {
+    logger.error('Recieved unknown special action id: ' + id)
+  }
+})
+
 
 // Recieve Value event.
 ipcMain.on('value', (event, value, id) => {
