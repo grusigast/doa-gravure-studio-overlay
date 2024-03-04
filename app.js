@@ -9,6 +9,7 @@ const fs = require('fs')
 const logger = require('electron-log')
 const { listOpenWindows } = require('@josephuspaye/list-open-windows')
 const currentVersion = process.env.npm_package_version || app.getVersion()
+const {vlc : Recorder} = require('screen-capture-recorder')
 
 var mainWindow, tray
 var confPath, conf, scenes, actions
@@ -386,6 +387,10 @@ ipcMain.on('special-action', (event, id) => {
 
     pngBuffer = nativeImage.createFromBitmap(OverlayController.screenshot(), { height: OverlayController.targetBounds.height, width: OverlayController.targetBounds.width }).toPNG()    
     fs.writeFileSync(screenshotPath, pngBuffer)
+  } else if (id === 'record') {
+    const scene = new Recorder( {x : 0, y : 0 , w : 640 , h : 480} );
+    scene.warmup()
+    scene.StartRecord()
   } else {
     logger.error('Recieved unknown special action id: ' + id)
   }

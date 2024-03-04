@@ -262,9 +262,7 @@
               <button type="button" class="btn btn-outline-secondary" onclick="sendAction('pause', this)" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Pause scene playback">
                 <i class="bi bi-pause"></i>
               </button>
-              <button type="button" class="btn btn-outline-secondary" onclick="sendSpecialAction('screenshot')">
-                <i class="bi bi-camera"></i>
-              </button>
+
               <div class="btn-group" role="group">
                 <button id="game-speed-button" type="button" class="btn btn-outline-secondary dropdown-toggle"  data-bs-auto-close="true" onclick="toggleDropDown(this)">
                   <i class="bi bi-speedometer"></i>
@@ -287,6 +285,15 @@
                   </li>
                 </ul>
               </div>
+            </div>
+
+            <div class="btn-group" role="group">
+              <button type="button" class="btn btn-outline-secondary" onclick="sendSpecialAction('screenshot')">
+                <i class="bi bi-camera"></i>
+              </button>
+              <button type="button" class="btn btn-outline-secondary" onclick="sendSpecialAction('record')">
+                <i class="bi bi-record-circle"></i>
+              </button>
             </div>
 
             <div data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Toggle SoftEngine">
