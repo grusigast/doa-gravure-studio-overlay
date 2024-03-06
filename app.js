@@ -322,9 +322,17 @@ ipcMain.on('modal', (event, data) => {
 })
 
 // Recieve KeyPress event.
-ipcMain.on('keypress', (event, keys, mode) => {
-  logger.info('Recieved keypress: ' + keys + ' with mode: ' + mode)
-  handleKeyPress(keys, mode)
+ipcMain.on('keypress', (event, keys, mode, customFolder) => {
+  logger.info('Recieved keypress: ' + keys + ' with mode: ' + mode + ' and customFolder: ' + customFolder)
+
+  if (customFolder)
+  {
+    logger.info('Set customFolder to: ' + customFolder)
+    setAutolinkFolder(customFolder)
+    handleKeyPress(keys, mode, conf.keyDelay, conf.keyDelay, customFolder)
+  } else {
+    handleKeyPress(keys, mode)
+  }
 })
 
 // Recieve Action event.
@@ -420,6 +428,27 @@ ipcMain.on('value', (event, value, id) => {
   }
 })
 
+
+function setAutolinkFolder(value)
+{
+  var processObject = memoryjs.openProcess(conf.processName)
+
+  var startAdress = parseInt('100B13DC', 16)
+  var chars = value.length
+  
+  for (let index = 0; index < chars; index++) {
+    var char = value.charAt(index)
+    var charValue = char.charCodeAt(0)
+    var currentAddress = startAdress + (index * 2)
+    
+    memoryjs.virtualProtectEx(processObject.handle, currentAddress, 1, memoryjs.PAGE_READWRITE)
+    memoryjs.writeMemory(processObject.handle, currentAddress, charValue, memoryjs.UCHAR)
+    memoryjs.virtualProtectEx(processObject.handle, currentAddress, 1, memoryjs.PAGE_READONLY)
+  }
+
+  memoryjs.closeProcess(processObject.handle)
+}
+
 function handleMemoryInject(injectAddress, value) {
   logger.info('Injecting data: ' + value + ' to address: ' + injectAddress)
 
@@ -464,7 +493,7 @@ function handleMemoryInjectPointer(injectAddress, offset, value) {
   }
 }
 
-function handleKeyPress(keys, mode, globalDelay, startDelay) {
+function handleKeyPress(keys, mode, globalDelay, startDelay, restoreAfterCustomFolder) {
   logger.info('Performing keypress: ' + keys + ' with mode: ' + mode)
 
   if (globalDelay) {
@@ -483,15 +512,15 @@ function handleKeyPress(keys, mode, globalDelay, startDelay) {
   if (mode == 'press') {
     sendkeys.sendKey(keys).then(handleKeyPressCallback)
   } else if (mode == 'combination') {
-    sendkeys.sendCombination(keys.split('+')).then(handleKeyPressCallback)
+    sendkeys.sendCombination(keys.split('+')).then((out, err) => handleKeyPressCallback(out, err, restoreAfterCustomFolder))
   } else if (mode == 'sequence') {
-    sendkeys.sendKeys(keys.split('+')).then(handleKeyPressCallback)
+    sendkeys.sendKeys(keys.split('+')).then((out, err) => handleKeyPressCallback(out, err, restoreAfterCustomFolder))
   } else {
     logger.error('Recieved keypress action with unsupported mode: ' + mode)
   }
 }
 
-function handleKeyPressCallback(out, err) {
+function handleKeyPressCallback(out, err, restoreAfterCustomFolder) {
   if (err) {
     logger.error('Error when sending key press: ' + err)
     mainWindow.webContents.send('button-pressed', false)
@@ -502,6 +531,12 @@ function handleKeyPressCallback(out, err) {
   if (out)
   {
     logger.info('Output from keyevent: ' + out)
+  }
+
+  if (restoreAfterCustomFolder)
+  {
+    logger.info('Restoring folder to: ParvateParadise')
+    setAutolinkFolder('ParvateParadise')
   }
 
   if (conf.hideOverlay) {

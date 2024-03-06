@@ -71,7 +71,7 @@
                       <% for(var j=0; j < scenes[i].scenes.length; j++) { %>
                         <button class="btn btn-outline-secondary btn-sm scene-button"
                             onmouseover="setImage('<%= scenes[i].scenes[j].data %>')"
-                            onclick="sendKeypress(this, '<%= scenes[i].scenes[j].data %>', '<%= scenes[i].scenes[j].mode %>')">
+                            onclick="sendKeypress(this, '<%= scenes[i].scenes[j].data %>', '<%= scenes[i].scenes[j].mode %>', '<%= scenes[i].scenes[j].customfolder %>')">
                           <%= scenes[i].scenes[j].name %>
                         </button>
                       <% } %>

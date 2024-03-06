@@ -73,11 +73,11 @@ ipcRenderer.on('button-pressed', (e, status) => {
   $('.spinner-border').remove()
 });
 
-function sendKeypress(element, keys, mode)
+function sendKeypress(element, keys, mode, customFolder)
 {
   console.log('Send: ' + keys + '  with mode: '  + mode)
   $(element).prepend(spinnerElement)
-  ipcRenderer.send('keypress', keys, mode)
+  ipcRenderer.send('keypress', keys, mode, customFolder)
 }
 
 
