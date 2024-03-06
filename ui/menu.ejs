@@ -15,12 +15,22 @@
         <div class="modal-content">
           <div class="modal-header">
             <ul class="nav justify-content-center nav-underline nav-fill" role="tablist">
-              <li class="nav-item" role="presentation">
-                <button class="nav-link link-secondary" type="button" role="tab" data-bs-toggle="tab"
-                id="conf-tab" aria-controls="scenes" data-bs-target="#scenes" aria-selected="true" onclick="hideDefaultContent()">
-                  <i class="bi bi-pin-map-fill"></i> Scenes
-                </button>
-              </li>
+              <% if(scenes.length > 0) { %>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link link-secondary" type="button" role="tab" data-bs-toggle="tab"
+                  id="scenes-tab" aria-controls="scenes" data-bs-target="#scenes" aria-selected="true" onclick="hideDefaultContent()">
+                    <i class="bi bi-pin-map-fill"></i> Scenes
+                  </button>
+                </li>
+              <% } %>
+              <% if(poses.length > 0) { %>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link link-secondary" type="button" role="tab" data-bs-toggle="tab"
+                  id="poses-tab" aria-controls="poses" data-bs-target="#poses" aria-selected="true" onclick="hideDefaultContent()">
+                    <i class="bi bi-person-arms-up"></i> Poses
+                  </button>
+                </li>
+              <% } %>
               <li class="nav-item" role="presentation">
                 <button class="nav-link link-secondary" type="button" role="tab" data-bs-toggle="tab"
                 id="character-tab" aria-controls="character" data-bs-target="#character" aria-selected="false" onclick="hideDefaultContent()">
@@ -51,7 +61,7 @@
 
               <!-- Random scene select -->
               <div class="d-grid gap-2 col-6 mx-auto">
-                <button class="btn btn-outline-secondary" onclick="selectRandomScene(this)">
+                <button class="btn btn-outline-secondary" onclick="selectRandomScene(this, 'scene')">
                   <i class="bi bi-shuffle"></i> 
                   Select random scene
                 </button>
@@ -73,6 +83,41 @@
                             onmouseover="setImage('<%= scenes[i].scenes[j].data %>')"
                             onclick="sendKeypress(this, '<%= scenes[i].scenes[j].data %>', '<%= scenes[i].scenes[j].mode %>', '<%= scenes[i].scenes[j].customfolder %>')">
                           <%= scenes[i].scenes[j].name %>
+                        </button>
+                      <% } %>
+                    </div>
+                  </div>
+                <% } %>
+              </div>
+            </div>
+
+            <!-- Poses -->
+            <div class="tab-pane fade" id="poses" role="tabpanel" aria-labelledby="poses-tab" tabindex="0">
+
+              <!-- Random pose select -->
+              <div class="d-grid gap-2 col-6 mx-auto">
+                <button class="btn btn-outline-secondary" onclick="selectRandomScene(this, 'pose')">
+                  <i class="bi bi-shuffle"></i> 
+                  Select random pose
+                </button>
+              </div>
+
+              <!-- Poses accordion -->
+              <div class="accordion accordion-flush" id="posesAccordion">
+                <% for(var i=0; i < poses.length; i++) { %>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed" type="button" onclick="toggleAccordion('pose-flush-collapse-<%= poses[i].id %>')">
+                          <%= poses[i].name %>
+                      </button>
+                    </h2>
+                    <div id="pose-flush-collapse-<%= poses[i].id %>" class="accordion-collapse collapse" data-bs-parent="#posesAccordion">
+                      <img class="menuImage rounded img-fluid" src="./img/doa-gravure-studio-logo.png" class="card-img-top">
+                      <% for(var j=0; j < poses[i].scenes.length; j++) { %>
+                        <button class="btn btn-outline-secondary btn-sm pose-button"
+                            onmouseover="setImage('<%= poses[i].scenes[j].data %>')"
+                            onclick="sendKeypress(this, '<%= poses[i].scenes[j].data %>', '<%= poses[i].scenes[j].mode %>', '<%= poses[i].scenes[j].customfolder %>')">
+                          <%= poses[i].scenes[j].name %>
                         </button>
                       <% } %>
                     </div>

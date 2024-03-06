@@ -297,7 +297,7 @@ function loadData() {
 
     if (!scenes || scenes.scenes.length == 0)
     {
-      logger.error('Unable to read any scene data!')
+      logger.error('Unable to read any scene or pose data!')
     }
   
     if (!actions || actions.length == 0)
@@ -306,10 +306,12 @@ function loadData() {
     }
 
     // Set conf and data.
-    ejse.data({'scenes': scenes.scenes, 'actions': actions, 'conf': conf})
+    ejse.data({'scenes': scenes.scenes ?  scenes.scenes : [],
+              'poses': scenes.poses ? scenes.poses : [],
+              'actions': actions, 'conf': conf})
   } catch (error) {
     logger.error('Error occurred when reading scene or action data: ' + error)
-    ejse.data({'scenes': [], 'actions': [], 'conf': conf})
+    ejse.data({'scenes': [], 'poses': [], 'actions': [], 'conf': conf})
   }
 }
 
