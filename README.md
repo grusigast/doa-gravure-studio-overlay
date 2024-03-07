@@ -112,6 +112,9 @@ Contains all scene data.
             ]
         }
         // Additional scene categories...
+    ],
+    "poses": [
+        // Same structure as for scenes. Will be separated into own tab in overlay.
     ]
 }
 ```

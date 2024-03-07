@@ -179,9 +179,9 @@ function hideDefaultContent()
   $('#defaultContent').removeClass('show active')
 }
 
-function selectRandomScene(element)
+function selectRandomScene(element, type)
 {
-  const sceneButtons = $('.scene-button')
+  const sceneButtons = $('.' + type + '-button')
   const randomSceneButton = sceneButtons[Math.floor(Math.random() * sceneButtons.length)]
   $(element).prepend(spinnerElement)
   randomSceneButton.click()
