@@ -80,7 +80,7 @@
                       <img class="menuImage rounded img-fluid" src="./img/doa-gravure-studio-logo.png" class="card-img-top">
                       <% for(var j=0; j < scenes[i].scenes.length; j++) { %>
                         <button class="btn btn-outline-secondary btn-sm scene-button"
-                            onmouseover="setImage('<%= scenes[i].scenes[j].data %>')"
+                            onmouseover="setImage('<%= scenes[i].scenes[j].data %>', '<%= scenes[i].scenes[j].thumbnail %>')"
                             onclick="sendKeypress(this, '<%= scenes[i].scenes[j].data %>', '<%= scenes[i].scenes[j].mode %>', '<%= scenes[i].scenes[j].customfolder %>')">
                           <%= scenes[i].scenes[j].name %>
                         </button>
@@ -115,7 +115,7 @@
                       <img class="menuImage rounded img-fluid" src="./img/doa-gravure-studio-logo.png" class="card-img-top">
                       <% for(var j=0; j < poses[i].scenes.length; j++) { %>
                         <button class="btn btn-outline-secondary btn-sm pose-button"
-                            onmouseover="setImage('<%= poses[i].scenes[j].data %>')"
+                            onmouseover="setImage('<%= poses[i].scenes[j].data %>', '<%= poses[i].scenes[j].thumbnail %>')"
                             onclick="sendKeypress(this, '<%= poses[i].scenes[j].data %>', '<%= poses[i].scenes[j].mode %>', '<%= poses[i].scenes[j].customfolder %>')">
                           <%= poses[i].scenes[j].name %>
                         </button>

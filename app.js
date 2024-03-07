@@ -188,6 +188,18 @@ function createOverlay (reload) {
     })
   }
 
+  // Handle local thumbnails
+  mainWindow.webContents.session.protocol.registerFileProtocol('thumbnail', (request, callback) => {
+      var thumbPath = decodeURIComponent(request.url.replace('thumbnail:///', ''))
+      var basePath
+      if (process.env.INIT_CWD) {
+        basePath = process.env.INIT_CWD
+      } else if (process.env.PORTABLE_EXECUTABLE_FILE) {
+        basePath = path.dirname(process.env.PORTABLE_EXECUTABLE_FILE)
+      }
+      callback(path.join(basePath, thumbPath))
+    })
+
   // add data and load menu.ejs
   mainWindow.loadURL('file://' + __dirname + '/ui/menu.ejs')
 

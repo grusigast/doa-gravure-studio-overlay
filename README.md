@@ -106,7 +106,8 @@ Contains all scene data.
                     "name": "Beach 1",          // Scene name
                     "mode": "combination",      // Type of keypress; "press" for single press, "combination" for key combinations, "sequence" for sequence of keypresses.
                     "data": "F9+0"              // Keys to press. Use + as delimeter for combination and sequence keyMode.
-                    "customfolder": "Custom-Paradise",  // Custom AutoLink folder to execute hotkey in. Must be 15 characters.
+                    "customfolder": "Custom-Paradise",  // [Optional] Custom AutoLink folder to execute hotkey in. Must be 15 characters.
+                    "thumbnail": "thumbs/beach1.jpg"    // [Optional] Relative path to thumbnail. Will be used instead of bundled thumbnail.
                 }
                 // Additional scenes...
             ]

@@ -130,9 +130,9 @@ function sendToggle(switchElement, enableAction, disableAction)
   }
 }
 
-function setImage(keys)
+function setImage(keys, thumbnail)
 {
-  var fileName = 'img/' + keys + '.jpg';
+  var fileName = thumbnail ? 'thumbnail://' + thumbnail : 'img/' + keys + '.jpg';
   var elements = $('.menuImage')
 
   for (const element of elements){
