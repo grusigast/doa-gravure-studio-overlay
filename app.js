@@ -189,7 +189,8 @@ function createOverlay (reload) {
   }
 
   // Handle local thumbnails
-  mainWindow.webContents.session.protocol.registerFileProtocol('thumbnail', (request, callback) => {
+  mainWindow.webContents.session.protocol.registerFileProtocol('thumbnail', (request, callback) =>
+  {
       var thumbPath = decodeURIComponent(request.url.replace('thumbnail:///', ''))
       var basePath
       if (process.env.INIT_CWD) {
@@ -198,7 +199,15 @@ function createOverlay (reload) {
         basePath = path.dirname(process.env.PORTABLE_EXECUTABLE_FILE)
       }
       callback(path.join(basePath, thumbPath))
-    })
+  })
+
+  // Main window lost focus.
+  mainWindow.on('blur', () => {
+    if (isInteractable) {
+      logger.info('Electron window lost focus, hiding overlay.')
+      disableOverlay(true)
+    }
+  }); 
 
   // add data and load menu.ejs
   mainWindow.loadURL('file://' + __dirname + '/ui/menu.ejs')
