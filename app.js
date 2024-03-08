@@ -1,3 +1,4 @@
+require('v8-compile-cache')
 const {app, BrowserWindow, globalShortcut, ipcMain, Tray, Menu, nativeImage, dialog, shell } = require('electron')
 const { OverlayController } = require('electron-overlay-window')
 const sendkeys = require('node-key-sender')
