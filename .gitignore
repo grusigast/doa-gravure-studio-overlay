@@ -137,3 +137,5 @@ overlay.log
 conf.json
 /screenshots/
 /thumbs/
+/ui/css/transparent/transparent.css
+/ui/css/transparent/transparent.css.map

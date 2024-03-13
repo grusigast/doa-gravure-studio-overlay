@@ -1,0 +1,22 @@
+$frosted-opacity: 0.6 !default;
+$primary: #fff !default;
+$body-bg: #fff !default;
+
+
+
+$spacer: 1em;
+$input-btn-padding-y: .4rem;
+$input-btn-padding-x: .7rem;
+
+$accordion-bg: #123456 !default;
+$accordion-button-bg: #123456 !default;
+$accordion-button-active-bg:              #123456 !default;
+
+$accordion-color: #123456 !default;
+$accordion-button-color: #123456 !default;
+$accordion-button-active-color:           #123456 !default;
+
+
+@import "../../../node_modules/bootswatch/dist/quartz/variables";
+@import "../../../node_modules/bootstrap/scss/bootstrap";
+@import "../../../node_modules/bootswatch/dist/quartz/bootswatch";
