@@ -3,6 +3,10 @@
     max-width: 1600px;
 }
 
+.modal-dialog {
+    min-width: 520px !important;
+}
+
 .scene-button {
     margin-top: 0.5em;
 }
