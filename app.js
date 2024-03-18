@@ -199,7 +199,15 @@ function createOverlay (reload) {
       } else if (process.env.PORTABLE_EXECUTABLE_FILE) {
         basePath = path.dirname(process.env.PORTABLE_EXECUTABLE_FILE)
       }
-      callback(path.join(basePath, thumbPath))
+
+      var imgPath = path.join(basePath, thumbPath)
+      if (!fs.existsSync(imgPath))
+      {
+        logger.error('Could not find thumbnail at: ' + imgPath + '. Using bundled NoScreen.png image.')
+        callback(path.join(process.cwd(), 'resources', 'NoScreen.png'))
+      } else {
+        callback(imgPath)
+      }
   })
 
   // Main window lost focus.

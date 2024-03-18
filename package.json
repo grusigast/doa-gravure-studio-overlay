@@ -75,6 +75,10 @@
       {
         "from": "resources/scenes.json",
         "to": "scenes.json"
+      },
+      {
+        "from": "resources/NoScreen.png",
+        "to": "NoScreen.png"
       }
     ]
   }
