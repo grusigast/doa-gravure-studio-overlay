@@ -13,6 +13,7 @@ DoA Gravure Studio Overlay is an overlay for DoA Gravure Studio to make it easie
 * Not possible to select characters via overlay (unless its possible via memory injects?)
 * Not possible to select costumes via overlay (unless its possible via memory injects?)
 * Navigation-based actions do not work when DoA starts with controller
+* Sending keyboard commands to the DoA window relies on a QWERTY-keyboard layout
 
 
 ## Instructions
