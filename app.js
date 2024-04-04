@@ -110,7 +110,7 @@ function setupKeySender() {
   logger.info('Using jrePath: ' + jrePath + '. File exists: ' + fs.existsSync(jrePath))
 
   sendkeys.setOption('jarPath', jarPath)
-  sendkeys.setOption('jrePath', jrePath)
+  sendkeys.setOption('jrePath', '"' + jrePath + '"')
 }
 
 function showAboutDialog()
@@ -556,11 +556,26 @@ function handleKeyPress(keys, mode, globalDelay, startDelay, restoreAfterCustomF
 
   toggleOverlay(false)
   if (mode == 'press') {
-    sendkeys.sendKey(keys).then(handleKeyPressCallback)
+    sendkeys
+      .sendKey(keys).then(handleKeyPressCallback)
+      .catch((error) => {
+        logger.error('Something went really bad when sending key press: ' + error)
+        mainWindow.webContents.send('button-pressed', false)
+      })
   } else if (mode == 'combination') {
-    sendkeys.sendCombination(keys.split('+')).then((out, err) => handleKeyPressCallback(out, err, restoreAfterCustomFolder))
+    sendkeys.sendCombination(keys.split('+'))
+      .then((out, err) => handleKeyPressCallback(out, err, restoreAfterCustomFolder))
+      .catch((error) => {
+        logger.error('Something went really bad when sending key press: ' + error)
+        mainWindow.webContents.send('button-pressed', false)
+      })
   } else if (mode == 'sequence') {
-    sendkeys.sendKeys(keys.split('+')).then((out, err) => handleKeyPressCallback(out, err, restoreAfterCustomFolder))
+    sendkeys.sendKeys(keys.split('+'))
+      .then((out, err) => handleKeyPressCallback(out, err, restoreAfterCustomFolder))
+      .catch((error) => {
+        logger.error('Something went really bad when sending key press: ' + error)
+        mainWindow.webContents.send('button-pressed', false)
+      })
   } else {
     logger.error('Recieved keypress action with unsupported mode: ' + mode)
   }
