@@ -71,3 +71,9 @@ button.accordion-button:focus{
 .modal-footer {
     border-top-width: 0px !important;
 }
+
+[data-bs-theme=dark] {
+    .btn, .nav-link {
+        color: #adb5bd !important;
+    }
+}

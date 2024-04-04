@@ -63,8 +63,10 @@ ipcRenderer.on('set-visibility', (e, visibility) => {
     $('.modal-dialog').draggable({
       handle: ".modal-content"
     });
+    $('.spinner-border').remove()
   } else {
     overlayModal.hide()
+    $('.spinner-border').remove()
   }
 });
 
@@ -76,6 +78,7 @@ ipcRenderer.on('button-pressed', (e, status) => {
 function sendKeypress(element, keys, mode, customFolder)
 {
   console.log('Send: ' + keys + '  with mode: '  + mode)
+  $('.spinner-border').remove()
   $(element).prepend(spinnerElement)
   ipcRenderer.send('keypress', keys, mode, customFolder)
 }
