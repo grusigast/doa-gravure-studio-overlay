@@ -70,14 +70,12 @@ function checkOtherInstance() {
   }
 }
 
-function checkWindowOpen() {
-  var windows = listOpenWindows()
-  var match = windows.find((window) => window.caption == conf.windowTitle)
+function findDoaWindow() {
+  return listOpenWindows().find((window) => window.caption.startsWith('DEAD OR ALIVE 5 Last Round'))
+}
 
-  if (!match) {
-    logger.error('Unable to find a window with title "' + conf.windowTitle + '", cannot show overlay.')
-    dialog.showErrorBox('Could not find target window!', 'Unable to find a window with title "' + conf.windowTitle + '"\nNavigate to the DoA Main menu or check the windowTitle configuration in the conf.json file and restart the overlay.');
-  }
+function isTargetWindowOpen() {
+  return listOpenWindows().find((window) => window.caption == conf.windowTitle)
 }
 
 async function checkUpdates() {
@@ -244,12 +242,28 @@ function toggleDevTools() {
 }
 
 function toggleOverlay(toggleVisibiliy) {
-  checkWindowOpen()
+  if (!isTargetWindowOpen()) {
+    logger.error('Did not find a window with exact title "'+ conf.windowTitle+'", searching for DoA window...')
+    var doaMatch = findDoaWindow()
+    if (doaMatch) {
+      logger.info('Found a potential DoA window with title "'+ doaMatch.caption +'", updating conf.')
 
-  if (isInteractable) {
-    disableOverlay(toggleVisibiliy)
+      conf.windowTitle = doaMatch.caption
+      conf.autoStart = true
+      fs.writeFileSync(confPath, JSON.stringify(conf, null, 2))
+
+      dialog.showErrorBox('Updated conf!', 'Updated windowTitle conf to "' + doaMatch.caption +'". Please restart the overlay.');
+      app.exit()
+    } else {
+      logger.error('Could not find a potential DoA window with title starting with "DEAD OR ALIVE 5 Last Round"')
+      dialog.showErrorBox('Could not find target window!', 'Unable to find an opened DEAD OR ALIVE 5 window!');
+    }
   } else {
-    enableOverlay(toggleVisibiliy)
+    if (isInteractable) {
+      disableOverlay(toggleVisibiliy)
+    } else {
+      enableOverlay(toggleVisibiliy)
+    }
   }
 }
 
