@@ -13,11 +13,13 @@ DoA Gravure Studio Overlay is an overlay for DoA Gravure Studio to make it easie
 * Not possible to select characters via overlay (unless its possible via memory injects?)
 * Not possible to select costumes via overlay (unless its possible via memory injects?)
 * Navigation-based actions do not work when DoA starts with controller
-* Sending keyboard commands to the DoA window relies on a QWERTY-keyboard layout
 
 
 ## Instructions
-After starting the application, the overlay is accessible via an icon in the Windows tray or via a configurable keyboard shortcut (Ctrl+Q as default).
+
+Download the latest overlay version from the [releases page](https://github.com/grusigast/doa-gravure-studio-overlay/releases) and place in the `/Gravure Studio Overlay/` folder of the unzipped Gravure Studio release package.
+
+After starting the application as Administrator, the overlay is accessible via an icon in the Windows tray or via a configurable keyboard shortcut (Ctrl+Q as default).
 In the tray icon you can also:
 * Start Dead or Alive 5 via Steam
 * Toggle overlay state
