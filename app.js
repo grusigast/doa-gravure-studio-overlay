@@ -313,6 +313,12 @@ function loadConf() {
 
     // Load conf from file.
     conf = JSON.parse(fs.readFileSync(confPath, 'utf8'))
+
+    // Replace hardcoded setting value distributed by mistake.
+    if (conf.screenshotLocation == 'C:\\Dev\\doa-gravure-studio-overlay\\dist\\screenshotsAbsolute\\') {
+      conf.screenshotLocation = "./screenshots/"
+      fs.writeFileSync(confPath, JSON.stringify(conf, null, 2))
+    }
 }
 
 function loadData() {
