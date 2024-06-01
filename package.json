@@ -73,6 +73,10 @@
         "to": "actions.json"
       },
       {
+        "from": "resources/softengine.json",
+        "to": "softengine.json"
+      },
+      {
         "from": "resources/scenes.json",
         "to": "scenes.json"
       },

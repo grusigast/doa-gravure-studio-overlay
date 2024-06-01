@@ -12,7 +12,7 @@ const { listOpenWindows } = require('@josephuspaye/list-open-windows')
 const currentVersion = process.env.npm_package_version || app.getVersion()
 
 var mainWindow, tray
-var confPath, conf, scenes, actions
+var confPath, conf, scenes, actions, softengine
 var isInteractable = true
 
 app.whenReady().then(() => {
@@ -331,6 +331,7 @@ function loadData() {
     }
     actionsFile = path.join(basePath, 'actions.json')
     scenesFile = path.join(basePath, 'scenes.json')
+    softengine = path.join(basePath, 'softengine.json')
 
     // If actions file not present in executable path, load from resources
     if (!fs.existsSync(actionsFile)) {
@@ -341,9 +342,15 @@ function loadData() {
     if (!fs.existsSync(scenesFile)) {
       scenesFile = path.join(process.cwd(), 'resources', 'scenes.json')
     }
-    
+
+    // If softengine file not present in executable path, load from resources
+    if (!fs.existsSync(softengine)) {
+      softengine = path.join(process.cwd(), 'resources', 'softengine.json')
+    }
+
     scenes = JSON.parse(fs.readFileSync(scenesFile, 'utf8'))
     actions = JSON.parse(fs.readFileSync(actionsFile, 'utf8'))
+    softengine = JSON.parse(fs.readFileSync(softengine, 'utf8'))
 
     if (!scenes || scenes.scenes.length == 0)
     {
@@ -355,13 +362,20 @@ function loadData() {
       logger.error('Unable to read any action data!')
     }
 
+    if (!softengine || softengine.length == 0)
+    {
+      logger.error('Unable to read any softengine data!')
+    }
+
     // Set conf and data.
     ejse.data({'scenes': scenes.scenes ?  scenes.scenes : [],
               'poses': scenes.poses ? scenes.poses : [],
-              'actions': actions, 'conf': conf})
+              'actions': actions,
+              'softengine': softengine,
+              'conf': conf})
   } catch (error) {
     logger.error('Error occurred when reading scene or action data: ' + error)
-    ejse.data({'scenes': [], 'poses': [], 'actions': [], 'conf': conf})
+    ejse.data({'scenes': [], 'poses': [], 'actions': [], 'softengine': [], 'conf': conf})
   }
 }
 
@@ -391,7 +405,11 @@ ipcMain.on('keypress', (event, keys, mode, customFolder) => {
 ipcMain.on('action', (event, id) => {
   logger.info('Recieved action: ' + id)
 
-  var action = actions.find((action) => action.id === id)
+  var action = id.includes('softengine') ?
+    softengine.find((action) => action.id === id) :
+    actions.find((action) => action.id === id)
+
+
   if (action) {
     if (action.action == 'keypress') {
       handleKeyPress(action.data, action.mode, action.globalDelayPressMillisec, action.startDelayMillisec)
@@ -456,7 +474,10 @@ ipcMain.on('special-action', (event, id) => {
 ipcMain.on('value', (event, value, id) => {
   logger.info('Recieved value: ' + value + ' for id: ' + id)
 
-  var action = actions.find((action) => action.id === id)
+  var action = id.includes('softengine') ?
+    softengine.find((action) => action.id === id) :
+    actions.find((action) => action.id === id)
+    
   if (action) {
     if (action.mode == 'range') {
 
