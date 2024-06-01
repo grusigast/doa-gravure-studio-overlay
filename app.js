@@ -1,5 +1,5 @@
 require('v8-compile-cache')
-const {app, BrowserWindow, globalShortcut, ipcMain, Tray, Menu, nativeImage, dialog, shell } = require('electron')
+const {app, BrowserWindow, globalShortcut, ipcMain, Tray, Menu, nativeImage, dialog, shell, desktopCapturer } = require('electron')
 const { OverlayController } = require('electron-overlay-window')
 const sendkeys = require('node-key-sender')
 const ejse = require('ejs-electron')
@@ -14,6 +14,7 @@ const currentVersion = process.env.npm_package_version || app.getVersion()
 var mainWindow, tray
 var confPath, conf, scenes, actions, softengine
 var isInteractable = true
+var screenRecorder
 
 app.whenReady().then(() => {
   loadConf()
@@ -24,7 +25,22 @@ app.whenReady().then(() => {
   loadData()
   createOverlay()
   createTray()
+
+  videoTest()
+
+
 })
+
+async function videoTest() {
+  await desktopCapturer.getSources({types: ['window']}).then(async sources => {
+    for (const source of sources) {
+      if (source.name === conf.windowTitle) {
+        mainWindow.webContents.send('SET_SOURCE', source.id)
+        return
+      }
+    }
+  })
+}
 
 app.on('window-all-closed', function () {
   app.releaseSingleInstanceLock()

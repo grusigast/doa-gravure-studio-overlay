@@ -137,3 +137,4 @@ overlay.log
 conf.json
 /screenshots/
 /thumbs/
+*.webm

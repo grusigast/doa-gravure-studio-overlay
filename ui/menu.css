@@ -4,7 +4,7 @@
 }
 
 .modal-dialog {
-    min-width: 520px !important;
+    min-width: 500px !important;
 }
 
 .scene-button {
@@ -75,5 +75,15 @@ button.accordion-button:focus{
 [data-bs-theme=dark] {
     .btn, .nav-link {
         color: #adb5bd !important;
+    }
+}
+
+.blink {
+    animation: blinker 1s linear infinite;
+  }
+  
+@keyframes blinker {
+    50% {
+        opacity: 0;
     }
 }

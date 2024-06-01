@@ -1,4 +1,5 @@
-const ipcRenderer = require('electron').ipcRenderer;
+const { ipcRenderer } = require('electron')
+const { writeFile } = require('fs')
 const bootstrap = require('bootstrap')
 const $ = require('jquery')
 
@@ -7,6 +8,8 @@ const overlayModal = new bootstrap.Modal('#overlayModal', {backdrop: 'false' })
 var tooltipList = []
 var dropdownList = []
 
+let mediaRecorder
+var recordedChunks = []
 
 window.onload = function() {
   const modal = document.getElementById('overlayModal')
@@ -74,6 +77,66 @@ ipcRenderer.on('button-pressed', (e, status) => {
   console.log('button-pressed: ' + status)
   $('.spinner-border').remove()
 });
+
+
+ipcRenderer.on('SET_SOURCE', async (event, sourceId) => {
+  console.log('SET SOURCE: ' + sourceId)
+
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({
+      audio: false,
+      video: {
+        mandatory: {
+          chromeMediaSource: 'desktop',
+          chromeMediaSourceId: sourceId,
+          minWidth: 1280,
+          maxWidth: 1280,
+          minHeight: 720,
+          maxHeight: 720
+        }
+      }
+    })
+
+    console.log(stream)
+
+    const options = { mimeType: 'video/webm; codecs=vp9' };
+    mediaRecorder = new MediaRecorder(stream, options);
+    mediaRecorder.ondataavailable = (e) => recordedChunks.push(e.data);
+    mediaRecorder.onstop = stopRecording;
+
+  } catch (e) {
+    console.log(e)
+  }
+})
+
+function toggleRecord(recordBtn) {
+  if (mediaRecorder.state == 'inactive') {
+    console.log('Started recording...')
+    recordedChunks = []
+    mediaRecorder.start(0)
+    
+    $(recordBtn).html('<i class="bi bi-record-fill text-danger blink"></i>')
+  } else {
+    console.log('Stopped recording!')
+    mediaRecorder.stop()
+
+    $(recordBtn).html('<i class="bi bi-record"></i>')
+  }
+}
+
+async function stopRecording(e) {
+  const blob = new Blob(recordedChunks, {
+    type: 'video/webm; codecs=vp9'
+  });
+
+  const buffer = Buffer.from(await blob.arrayBuffer());
+
+  var filePath = Date.now() + '.webm';
+
+  console.log(filePath);
+
+  writeFile(filePath, buffer, () => console.log('Video saved successfully!'));
+}
 
 function sendKeypress(element, keys, mode, customFolder)
 {
