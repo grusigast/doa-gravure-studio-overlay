@@ -1,2044 +1,2237 @@
 [
     {
-        "id": "softengine-natural-disable",
-        "action": "inject-pointer",
-        "mode": "multiple",
-        "injects": [
+        "category": "Physics presets",
+        "toggles": [
             {
-                "address": "000C591C",
-                "offset": "28",
-                "value": "1.1"
+                "name": "Natural",
+                "enable": {
+                    "id": "softengine-natural-enable",
+                    "action": "inject-pointer",
+                    "mode": "multiple",
+                    "injects": [
+                        {
+                            "address": "000C591C",
+                            "offset": "28",
+                            "value": "1.5"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "2C",
+                            "value": "1.25"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "30",
+                            "value": "-0.1"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "34",
+                            "value": "1.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "38",
+                            "value": "1.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "3C",
+                            "value": "1.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "20",
+                            "value": "0.9"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "24",
+                            "value": "1.0"
+                        }
+                    ]
+                },
+                "disable": {
+                    "id": "softengine-natural-disable",
+                    "action": "inject-pointer",
+                    "mode": "multiple",
+                    "injects": [
+                        {
+                            "address": "000C591C",
+                            "offset": "28",
+                            "value": "1.1"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "2C",
+                            "value": "0.8"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "30",
+                            "value": "-0.1"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "34",
+                            "value": "1.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "38",
+                            "value": "1.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "3C",
+                            "value": "1.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "20",
+                            "value": "0.9"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "24",
+                            "value": "1.0"
+                        }
+                    ]
+                }
             },
             {
-                "address": "000C591C",
-                "offset": "2C",
-                "value": "0.8"
+                "name": "DOA",
+                "enable": {
+                    "id": "softengine-doa-enable",
+                    "action": "inject-pointer",
+                    "mode": "multiple",
+                    "injects": [
+                        {
+                            "address": "000C591C",
+                            "offset": "48",
+                            "value": "1.5"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "4C",
+                            "value": "1.5"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "50",
+                            "value": "-0.1"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "54",
+                            "value": "1.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "58",
+                            "value": "1.2"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "5C",
+                            "value": "1.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "40",
+                            "value": "0.9"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "44",
+                            "value": "1.0"
+                        }
+                    ]
+                },
+                "disable": {
+                    "id": "softengine-doa-disable",
+                    "action": "inject-pointer",
+                    "mode": "multiple",
+                    "injects": [
+                        {
+                            "address": "000C591C",
+                            "offset": "48",
+                            "value": "1.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "4C",
+                            "value": "1.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "50",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "54",
+                            "value": "1.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "58",
+                            "value": "1.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "5C",
+                            "value": "1.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "40",
+                            "value": "1.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "44",
+                            "value": "1.0"
+                        }
+                    ]
+                }
             },
             {
-                "address": "000C591C",
-                "offset": "30",
-                "value": "-0.1"
-            },
-            {
-                "address": "000C591C",
-                "offset": "34",
-                "value": "1.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "38",
-                "value": "1.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "3C",
-                "value": "1.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "20",
-                "value": "0.9"
-            },
-            {
-                "address": "000C591C",
-                "offset": "24",
-                "value": "1.0"
+                "name": "OMG",
+                "enable": {
+                    "id": "softengine-omg-enable",
+                    "action": "inject-pointer",
+                    "mode": "multiple",
+                    "injects": [
+                        {
+                            "address": "000C591C",
+                            "offset": "68",
+                            "value": "1.5"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "6C",
+                            "value": "1.25"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "70",
+                            "value": "-0.1"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "74",
+                            "value": "1.2"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "7C",
+                            "value": "1.3"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "60",
+                            "value": "0.9"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "64",
+                            "value": "1.0"
+                        }
+                    ]
+                },
+                "disable": {
+                    "id": "softengine-omg-disable",
+                    "action": "inject-pointer",
+                    "mode": "multiple",
+                    "injects": [
+                        {
+                            "address": "000C591C",
+                            "offset": "68",
+                            "value": "0.25"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "6C",
+                            "value": "1.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "70",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "74",
+                            "value": "2.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "7C",
+                            "value": "1.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "60",
+                            "value": "1.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "64",
+                            "value": "1.1"
+                        }
+                    ]
+                }
             }
         ]
     },
     {
-        "id": "softengine-natural-enable",
-        "action": "inject-pointer",
-        "mode": "multiple",
-        "injects": [
+        "category": "Body Types",
+        "toggles": [
             {
-                "address": "000C591C",
-                "offset": "28",
-                "value": "1.5"
+                "name": "Type A",
+                "enable": {
+                    "id": "softengine-type-a-enable",
+                    "action": "inject-pointer",
+                    "mode": "multiple",
+                    "injects": [
+                        {
+                            "address": "000C591C",
+                            "offset": "9C",
+                            "value": "0.4"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "A4",
+                            "value": "6.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "A8",
+                            "value": "15.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "AC",
+                            "value": "4.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "B0",
+                            "value": "8.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "B4",
+                            "value": "0.015"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "B8",
+                            "value": "0.004"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "BC",
+                            "value": "0.05"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "C0",
+                            "value": "0.02"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "80",
+                            "value": "3.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "84",
+                            "value": "2.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "88",
+                            "value": "0.1"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "8C",
+                            "value": "0.2"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "90",
+                            "value": "0.03"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "94",
+                            "value": "0.8"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "98",
+                            "value": "0.6"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "A0",
+                            "value": "0.35"
+                        }
+                    ]
+                },
+                "disable": {
+                    "id": "softengine-type-a-disable",
+                    "action": "inject-pointer",
+                    "mode": "multiple",
+                    "injects": [
+                        {
+                            "address": "000C591C",
+                            "offset": "9C",
+                            "value": "0.4"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "A4",
+                            "value": "9.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "A8",
+                            "value": "8.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "AC",
+                            "value": "5.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "B0",
+                            "value": "2.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "B4",
+                            "value": "0.015"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "B8",
+                            "value": "0.004"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "BC",
+                            "value": "0.005"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "C0",
+                            "value": "0.002"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "80",
+                            "value": "2.5"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "84",
+                            "value": "2.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "88",
+                            "value": "0.05"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "8C",
+                            "value": "0.2"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "90",
+                            "value": "0.03"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "94",
+                            "value": "0.8"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "98",
+                            "value": "0.6"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "A0",
+                            "value": "0.35"
+                        }
+                    ]
+                }
             },
             {
-                "address": "000C591C",
-                "offset": "2C",
-                "value": "1.25"
+                "name": "Type B",
+                "enable": {
+                    "id": "softengine-type-b-enable",
+                    "action": "inject-pointer",
+                    "mode": "multiple",
+                    "injects": [
+                        {
+                            "address": "000C591C",
+                            "offset": "D4",
+                            "value": "0.03"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "E0",
+                            "value": "0.4"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "E8",
+                            "value": "6.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "EC",
+                            "value": "25.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "F0",
+                            "value": "4.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "F4",
+                            "value": "8.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "F8",
+                            "value": "0.075"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "FC",
+                            "value": "0.01"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "100",
+                            "value": "0.075"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "104",
+                            "value": "0.025"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "C4",
+                            "value": "2.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "C8",
+                            "value": "1.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "CC",
+                            "value": "0.1"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "D0",
+                            "value": "0.2"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "D8",
+                            "value": "0.8"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "DC",
+                            "value": "0.6"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "E4",
+                            "value": "0.35"
+                        }
+                    ]
+                },
+                "disable": {
+                    "id": "softengine-type-b-disable",
+                    "action": "inject-pointer",
+                    "mode": "multiple",
+                    "injects": [
+                        {
+                            "address": "000C591C",
+                            "offset": "D4",
+                            "value": "0.03"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "E0",
+                            "value": "0.4"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "E8",
+                            "value": "9.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "EC",
+                            "value": "15.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "F0",
+                            "value": "8.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "F4",
+                            "value": "5.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "F8",
+                            "value": "0.02"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "FC",
+                            "value": "0.012"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "100",
+                            "value": "0.012"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "104",
+                            "value": "0.008"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "C4",
+                            "value": "3.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "C8",
+                            "value": "2.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "CC",
+                            "value": "0.1"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "D0",
+                            "value": "0.2"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "D8",
+                            "value": "0.8"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "DC",
+                            "value": "0.6"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "E4",
+                            "value": "0.35"
+                        }
+                    ]
+                }
             },
             {
-                "address": "000C591C",
-                "offset": "30",
-                "value": "-0.1"
+                "name": "Type C",
+                "enable": {
+                    "id": "softengine-type-c-enable",
+                    "action": "inject-pointer",
+                    "mode": "multiple",
+                    "injects": [
+                        {
+                            "address": "000C591C",
+                            "offset": "118",
+                            "value": "0.03"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "124",
+                            "value": "0.4"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "12C",
+                            "value": "6.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "130",
+                            "value": "25.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "134",
+                            "value": "4.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "138",
+                            "value": "8.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "13C",
+                            "value": "0.075"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "140",
+                            "value": "0.01"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "144",
+                            "value": "0.075"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "148",
+                            "value": "0.025"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "108",
+                            "value": "2.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "10C",
+                            "value": "1.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "110",
+                            "value": "0.1"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "114",
+                            "value": "0.2"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "11C",
+                            "value": "0.8"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "120",
+                            "value": "0.6"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "128",
+                            "value": "0.35"
+                        }
+                    ]
+                },
+                "disable": {
+                    "id": "softengine-type-c-disable",
+                    "action": "inject-pointer",
+                    "mode": "multiple",
+                    "injects": [
+                        {
+                            "address": "000C591C",
+                            "offset": "118",
+                            "value": "0.03"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "124",
+                            "value": "0.4"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "12C",
+                            "value": "9.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "130",
+                            "value": "15.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "134",
+                            "value": "8.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "138",
+                            "value": "5.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "13C",
+                            "value": "0.015"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "140",
+                            "value": "0.004"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "144",
+                            "value": "0.012"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "148",
+                            "value": "0.008"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "108",
+                            "value": "3.5"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "10C",
+                            "value": "2.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "110",
+                            "value": "0.1"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "114",
+                            "value": "0.2"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "11C",
+                            "value": "1.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "120",
+                            "value": "0.6"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "128",
+                            "value": "0.35"
+                        }
+                    ]
+                }
             },
             {
-                "address": "000C591C",
-                "offset": "34",
-                "value": "1.0"
+                "name": "Type D",
+                "enable": {
+                    "id": "softengine-type-d-enable",
+                    "action": "inject-pointer",
+                    "mode": "multiple",
+                    "injects": [
+                        {
+                            "address": "000C591C",
+                            "offset": "15C",
+                            "value": "0.03"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "168",
+                            "value": "0.4"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "170",
+                            "value": "6.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "174",
+                            "value": "25.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "178",
+                            "value": "4.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "17C",
+                            "value": "8.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "180",
+                            "value": "0.075"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "184",
+                            "value": "0.01"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "188",
+                            "value": "0.075"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "18C",
+                            "value": "0.025"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "14C",
+                            "value": "2.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "150",
+                            "value": "1.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "154",
+                            "value": "0.1"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "158",
+                            "value": "0.2"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "160",
+                            "value": "0.8"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "164",
+                            "value": "0.6"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "16C",
+                            "value": "0.35"
+                        }
+                    ]
+                },
+                "disable": {
+                    "id": "softengine-type-d-disable",
+                    "action": "inject-pointer",
+                    "mode": "multiple",
+                    "injects": [
+                        {
+                            "address": "000C591C",
+                            "offset": "15C",
+                            "value": "0.03"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "168",
+                            "value": "0.4"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "170",
+                            "value": "9.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "174",
+                            "value": "15.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "178",
+                            "value": "8.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "17C",
+                            "value": "4.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "180",
+                            "value": "0.025"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "184",
+                            "value": "0.04"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "188",
+                            "value": "0.012"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "18C",
+                            "value": "0.008"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "14C",
+                            "value": "3.5"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "150",
+                            "value": "3.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "154",
+                            "value": "0.1"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "158",
+                            "value": "0.2"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "160",
+                            "value": "1.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "164",
+                            "value": "1.5"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "16C",
+                            "value": "0.35"
+                        }
+                    ]
+                }
             },
             {
-                "address": "000C591C",
-                "offset": "38",
-                "value": "1.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "3C",
-                "value": "1.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "20",
-                "value": "0.9"
-            },
-            {
-                "address": "000C591C",
-                "offset": "24",
-                "value": "1.0"
+                "name": "Type E",
+                "enable": {
+                    "id": "softengine-type-e-enable",
+                    "action": "inject-pointer",
+                    "mode": "multiple",
+                    "injects": [
+                        {
+                            "address": "000C591C",
+                            "offset": "1A0",
+                            "value": "0.03"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "1AC",
+                            "value": "0.4"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "1B4",
+                            "value": "6.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "1B8",
+                            "value": "25.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "1BC",
+                            "value": "4.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "1C0",
+                            "value": "8.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "1C4",
+                            "value": "0.075"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "1C8",
+                            "value": "0.01"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "1CC",
+                            "value": "0.075"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "1D0",
+                            "value": "0.0025"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "190",
+                            "value": "2.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "194",
+                            "value": "1.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "198",
+                            "value": "0.1"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "19C",
+                            "value": "0.2"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "1A4",
+                            "value": "0.8"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "1A8",
+                            "value": "0.6"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "1B0",
+                            "value": "0.35"
+                        }
+                    ]
+                },
+                "disable": {
+                    "id": "softengine-type-e-disable",
+                    "action": "inject-pointer",
+                    "mode": "multiple",
+                    "injects": [
+                        {
+                            "address": "000C591C",
+                            "offset": "1A0",
+                            "value": "0.03"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "1AC",
+                            "value": "0.4"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "1B4",
+                            "value": "9.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "1B8",
+                            "value": "15.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "1BC",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "1C0",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "1C4",
+                            "value": "0.02"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "1C8",
+                            "value": "0.004"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "1CC",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "1D0",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "190",
+                            "value": "1.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "194",
+                            "value": "2.0"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "198",
+                            "value": "0.1"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "19C",
+                            "value": "0.2"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "1A4",
+                            "value": "0.8"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "1A8",
+                            "value": "0.6"
+                        },
+                        {
+                            "address": "000C591C",
+                            "offset": "1B0",
+                            "value": "0.35"
+                        }
+                    ]
+                }
             }
         ]
     },
     {
-        "id": "softengine-doa-enable",
-        "action": "inject-pointer",
-        "mode": "multiple",
-        "injects": [
-            {
-                "address": "000C591C",
-                "offset": "48",
-                "value": "1.5"
-            },
-            {
-                "address": "000C591C",
-                "offset": "4C",
-                "value": "1.5"
-            },
-            {
-                "address": "000C591C",
-                "offset": "50",
-                "value": "-0.1"
-            },
-            {
-                "address": "000C591C",
-                "offset": "54",
-                "value": "1.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "58",
-                "value": "1.2"
-            },
-            {
-                "address": "000C591C",
-                "offset": "5C",
-                "value": "1.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "40",
-                "value": "0.9"
-            },
-            {
-                "address": "000C591C",
-                "offset": "44",
-                "value": "1.0"
-            }
-        ]
-    },
-    {
-        "id": "softengine-doa-disable",
-        "action": "inject-pointer",
-        "mode": "multiple",
-        "injects": [
-            {
-                "address": "000C591C",
-                "offset": "48",
-                "value": "1.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "4C",
-                "value": "1.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "50",
-                "value": "0.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "54",
-                "value": "1.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "58",
-                "value": "1.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "5C",
-                "value": "1.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "40",
-                "value": "1.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "44",
-                "value": "1.0"
-            }
-        ]
-    },
-    {
-        "id": "softengine-omg-enable",
-        "action": "inject-pointer",
-        "mode": "multiple",
-        "injects": [
-            {
-                "address": "000C591C",
-                "offset": "68",
-                "value": "1.5"
-            },
-            {
-                "address": "000C591C",
-                "offset": "6C",
-                "value": "1.25"
-            },
-            {
-                "address": "000C591C",
-                "offset": "70",
-                "value": "-0.1"
-            },
-            {
-                "address": "000C591C",
-                "offset": "74",
-                "value": "1.2"
-            },
-            {
-                "address": "000C591C",
-                "offset": "7C",
-                "value": "1.3"
-            },
-            {
-                "address": "000C591C",
-                "offset": "60",
-                "value": "0.9"
-            },
-            {
-                "address": "000C591C",
-                "offset": "64",
-                "value": "1.0"
-            }
-        ]
-    },
-    {
-        "id": "softengine-omg-disable",
-        "action": "inject-pointer",
-        "mode": "multiple",
-        "injects": [
-            {
-                "address": "000C591C",
-                "offset": "68",
-                "value": "0.25"
-            },
-            {
-                "address": "000C591C",
-                "offset": "6C",
-                "value": "1.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "70",
-                "value": "0.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "74",
-                "value": "2.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "7C",
-                "value": "1.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "60",
-                "value": "1.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "64",
-                "value": "1.1"
-            }
-        ]
-    },
-    {
-        "id": "softengine-type-a-enable",
-        "action": "inject-pointer",
-        "mode": "multiple",
-        "injects": [
-            {
-                "address": "000C591C",
-                "offset": "9C",
-                "value": "0.4"
-            },
-            {
-                "address": "000C591C",
-                "offset": "A4",
-                "value": "6.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "A8",
-                "value": "15.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "AC",
-                "value": "4.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "B0",
-                "value": "8.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "B4",
-                "value": "0.015"
-            },
-            {
-                "address": "000C591C",
-                "offset": "B8",
-                "value": "0.004"
-            },
-            {
-                "address": "000C591C",
-                "offset": "BC",
-                "value": "0.05"
-            },
-            {
-                "address": "000C591C",
-                "offset": "C0",
-                "value": "0.02"
-            },
-            {
-                "address": "000C591C",
-                "offset": "80",
-                "value": "3.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "84",
-                "value": "2.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "88",
-                "value": "0.1"
-            },
-            {
-                "address": "000C591C",
-                "offset": "8C",
-                "value": "0.2"
-            },
-            {
-                "address": "000C591C",
-                "offset": "90",
-                "value": "0.03"
-            },
-            {
-                "address": "000C591C",
-                "offset": "94",
-                "value": "0.8"
-            },
-            {
-                "address": "000C591C",
-                "offset": "98",
-                "value": "0.6"
-            },
-            {
-                "address": "000C591C",
-                "offset": "A0",
-                "value": "0.35"
-            }
-        ]
-    },
-    {
-        "id": "softengine-type-a-disable",
-        "action": "inject-pointer",
-        "mode": "multiple",
-        "injects": [
-            {
-                "address": "000C591C",
-                "offset": "9C",
-                "value": "0.4"
-            },
-            {
-                "address": "000C591C",
-                "offset": "A4",
-                "value": "9.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "A8",
-                "value": "8.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "AC",
-                "value": "5.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "B0",
-                "value": "2.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "B4",
-                "value": "0.015"
-            },
-            {
-                "address": "000C591C",
-                "offset": "B8",
-                "value": "0.004"
-            },
-            {
-                "address": "000C591C",
-                "offset": "BC",
-                "value": "0.005"
-            },
-            {
-                "address": "000C591C",
-                "offset": "C0",
-                "value": "0.002"
-            },
-            {
-                "address": "000C591C",
-                "offset": "80",
-                "value": "2.5"
-            },
-            {
-                "address": "000C591C",
-                "offset": "84",
-                "value": "2.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "88",
-                "value": "0.05"
-            },
-            {
-                "address": "000C591C",
-                "offset": "8C",
-                "value": "0.2"
-            },
-            {
-                "address": "000C591C",
-                "offset": "90",
-                "value": "0.03"
-            },
-            {
-                "address": "000C591C",
-                "offset": "94",
-                "value": "0.8"
-            },
-            {
-                "address": "000C591C",
-                "offset": "98",
-                "value": "0.6"
-            },
-            {
-                "address": "000C591C",
-                "offset": "A0",
-                "value": "0.35"
-            }
-        ]
-    },
-    {
-        "id": "softengine-type-b-enable",
-        "action": "inject-pointer",
-        "mode": "multiple",
-        "injects": [
-            {
-                "address": "000C591C",
-                "offset": "D4",
-                "value": "0.03"
-            },
-            {
-                "address": "000C591C",
-                "offset": "E0",
-                "value": "0.4"
-            },
-            {
-                "address": "000C591C",
-                "offset": "E8",
-                "value": "6.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "EC",
-                "value": "25.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "F0",
-                "value": "4.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "F4",
-                "value": "8.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "F8",
-                "value": "0.075"
-            },
-            {
-                "address": "000C591C",
-                "offset": "FC",
-                "value": "0.01"
-            },
-            {
-                "address": "000C591C",
-                "offset": "100",
-                "value": "0.075"
-            },
-            {
-                "address": "000C591C",
-                "offset": "104",
-                "value": "0.025"
-            },
-            {
-                "address": "000C591C",
-                "offset": "C4",
-                "value": "2.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "C8",
-                "value": "1.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "CC",
-                "value": "0.1"
-            },
-            {
-                "address": "000C591C",
-                "offset": "D0",
-                "value": "0.2"
-            },
-            {
-                "address": "000C591C",
-                "offset": "D8",
-                "value": "0.8"
-            },
-            {
-                "address": "000C591C",
-                "offset": "DC",
-                "value": "0.6"
-            },
-            {
-                "address": "000C591C",
-                "offset": "E4",
-                "value": "0.35"
-            }
-        ]
-    },
-    {
-        "id": "softengine-type-b-disable",
-        "action": "inject-pointer",
-        "mode": "multiple",
-        "injects": [
-            {
-                "address": "000C591C",
-                "offset": "D4",
-                "value": "0.03"
-            },
-            {
-                "address": "000C591C",
-                "offset": "E0",
-                "value": "0.4"
-            },
-            {
-                "address": "000C591C",
-                "offset": "E8",
-                "value": "9.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "EC",
-                "value": "15.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "F0",
-                "value": "8.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "F4",
-                "value": "5.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "F8",
-                "value": "0.02"
-            },
-            {
-                "address": "000C591C",
-                "offset": "FC",
-                "value": "0.012"
-            },
-            {
-                "address": "000C591C",
-                "offset": "100",
-                "value": "0.012"
-            },
-            {
-                "address": "000C591C",
-                "offset": "104",
-                "value": "0.008"
-            },
-            {
-                "address": "000C591C",
-                "offset": "C4",
-                "value": "3.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "C8",
-                "value": "2.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "CC",
-                "value": "0.1"
-            },
-            {
-                "address": "000C591C",
-                "offset": "D0",
-                "value": "0.2"
-            },
-            {
-                "address": "000C591C",
-                "offset": "D8",
-                "value": "0.8"
-            },
-            {
-                "address": "000C591C",
-                "offset": "DC",
-                "value": "0.6"
-            },
-            {
-                "address": "000C591C",
-                "offset": "E4",
-                "value": "0.35"
-            }
-        ]
-    },
-    {
-        "id": "softengine-type-c-enable",
-        "action": "inject-pointer",
-        "mode": "multiple",
-        "injects": [
-            {
-                "address": "000C591C",
-                "offset": "118",
-                "value": "0.03"
-            },
-            {
-                "address": "000C591C",
-                "offset": "124",
-                "value": "0.4"
-            },
-            {
-                "address": "000C591C",
-                "offset": "12C",
-                "value": "6.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "130",
-                "value": "25.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "134",
-                "value": "4.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "138",
-                "value": "8.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "13C",
-                "value": "0.075"
-            },
-            {
-                "address": "000C591C",
-                "offset": "140",
-                "value": "0.01"
-            },
-            {
-                "address": "000C591C",
-                "offset": "144",
-                "value": "0.075"
-            },
-            {
-                "address": "000C591C",
-                "offset": "148",
-                "value": "0.025"
-            },
-            {
-                "address": "000C591C",
-                "offset": "108",
-                "value": "2.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "10C",
-                "value": "1.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "110",
-                "value": "0.1"
-            },
-            {
-                "address": "000C591C",
-                "offset": "114",
-                "value": "0.2"
-            },
-            {
-                "address": "000C591C",
-                "offset": "11C",
-                "value": "0.8"
-            },
-            {
-                "address": "000C591C",
-                "offset": "120",
-                "value": "0.6"
-            },
-            {
-                "address": "000C591C",
-                "offset": "128",
-                "value": "0.35"
-            }
-        ]
-    },
-    {
-        "id": "softengine-type-c-disable",
-        "action": "inject-pointer",
-        "mode": "multiple",
-        "injects": [
-            {
-                "address": "000C591C",
-                "offset": "118",
-                "value": "0.03"
-            },
-            {
-                "address": "000C591C",
-                "offset": "124",
-                "value": "0.4"
-            },
-            {
-                "address": "000C591C",
-                "offset": "12C",
-                "value": "9.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "130",
-                "value": "15.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "134",
-                "value": "8.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "138",
-                "value": "5.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "13C",
-                "value": "0.015"
-            },
-            {
-                "address": "000C591C",
-                "offset": "140",
-                "value": "0.004"
-            },
-            {
-                "address": "000C591C",
-                "offset": "144",
-                "value": "0.012"
-            },
-            {
-                "address": "000C591C",
-                "offset": "148",
-                "value": "0.008"
-            },
-            {
-                "address": "000C591C",
-                "offset": "108",
-                "value": "3.5"
-            },
-            {
-                "address": "000C591C",
-                "offset": "10C",
-                "value": "2.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "110",
-                "value": "0.1"
-            },
-            {
-                "address": "000C591C",
-                "offset": "114",
-                "value": "0.2"
-            },
-            {
-                "address": "000C591C",
-                "offset": "11C",
-                "value": "1.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "120",
-                "value": "0.6"
-            },
-            {
-                "address": "000C591C",
-                "offset": "128",
-                "value": "0.35"
-            }
-        ]
-    },
-    {
-        "id": "softengine-type-d-enable",
-        "action": "inject-pointer",
-        "mode": "multiple",
-        "injects": [
-            {
-                "address": "000C591C",
-                "offset": "15C",
-                "value": "0.03"
-            },
-            {
-                "address": "000C591C",
-                "offset": "168",
-                "value": "0.4"
-            },
-            {
-                "address": "000C591C",
-                "offset": "170",
-                "value": "6.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "174",
-                "value": "25.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "178",
-                "value": "4.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "17C",
-                "value": "8.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "180",
-                "value": "0.075"
-            },
-            {
-                "address": "000C591C",
-                "offset": "184",
-                "value": "0.01"
-            },
-            {
-                "address": "000C591C",
-                "offset": "188",
-                "value": "0.075"
-            },
-            {
-                "address": "000C591C",
-                "offset": "18C",
-                "value": "0.025"
-            },
-            {
-                "address": "000C591C",
-                "offset": "14C",
-                "value": "2.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "150",
-                "value": "1.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "154",
-                "value": "0.1"
-            },
-            {
-                "address": "000C591C",
-                "offset": "158",
-                "value": "0.2"
-            },
-            {
-                "address": "000C591C",
-                "offset": "160",
-                "value": "0.8"
-            },
-            {
-                "address": "000C591C",
-                "offset": "164",
-                "value": "0.6"
-            },
-            {
-                "address": "000C591C",
-                "offset": "16C",
-                "value": "0.35"
-            }
-        ]
-    },
-    {
-        "id": "softengine-type-d-disable",
-        "action": "inject-pointer",
-        "mode": "multiple",
-        "injects": [
-            {
-                "address": "000C591C",
-                "offset": "15C",
-                "value": "0.03"
-            },
-            {
-                "address": "000C591C",
-                "offset": "168",
-                "value": "0.4"
-            },
-            {
-                "address": "000C591C",
-                "offset": "170",
-                "value": "9.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "174",
-                "value": "15.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "178",
-                "value": "8.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "17C",
-                "value": "4.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "180",
-                "value": "0.025"
-            },
-            {
-                "address": "000C591C",
-                "offset": "184",
-                "value": "0.04"
-            },
-            {
-                "address": "000C591C",
-                "offset": "188",
-                "value": "0.012"
-            },
-            {
-                "address": "000C591C",
-                "offset": "18C",
-                "value": "0.008"
-            },
-            {
-                "address": "000C591C",
-                "offset": "14C",
-                "value": "3.5"
-            },
-            {
-                "address": "000C591C",
-                "offset": "150",
-                "value": "3.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "154",
-                "value": "0.1"
-            },
-            {
-                "address": "000C591C",
-                "offset": "158",
-                "value": "0.2"
-            },
-            {
-                "address": "000C591C",
-                "offset": "160",
-                "value": "1.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "164",
-                "value": "1.5"
-            },
-            {
-                "address": "000C591C",
-                "offset": "16C",
-                "value": "0.35"
-            }
-        ]
-    },
-    {
-        "id": "softengine-type-e-enable",
-        "action": "inject-pointer",
-        "mode": "multiple",
-        "injects": [
-            {
-                "address": "000C591C",
-                "offset": "1A0",
-                "value": "0.03"
-            },
-            {
-                "address": "000C591C",
-                "offset": "1AC",
-                "value": "0.4"
-            },
-            {
-                "address": "000C591C",
-                "offset": "1B4",
-                "value": "6.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "1B8",
-                "value": "25.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "1BC",
-                "value": "4.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "1C0",
-                "value": "8.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "1C4",
-                "value": "0.075"
-            },
-            {
-                "address": "000C591C",
-                "offset": "1C8",
-                "value": "0.01"
-            },
-            {
-                "address": "000C591C",
-                "offset": "1CC",
-                "value": "0.075"
-            },
-            {
-                "address": "000C591C",
-                "offset": "1D0",
-                "value": "0.0025"
-            },
-            {
-                "address": "000C591C",
-                "offset": "190",
-                "value": "2.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "194",
-                "value": "1.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "198",
-                "value": "0.1"
-            },
-            {
-                "address": "000C591C",
-                "offset": "19C",
-                "value": "0.2"
-            },
-            {
-                "address": "000C591C",
-                "offset": "1A4",
-                "value": "0.8"
-            },
-            {
-                "address": "000C591C",
-                "offset": "1A8",
-                "value": "0.6"
-            },
-            {
-                "address": "000C591C",
-                "offset": "1B0",
-                "value": "0.35"
-            }
-        ]
-    },
-    {
-        "id": "softengine-type-e-disable",
-        "action": "inject-pointer",
-        "mode": "multiple",
-        "injects": [
-            {
-                "address": "000C591C",
-                "offset": "1A0",
-                "value": "0.03"
-            },
-            {
-                "address": "000C591C",
-                "offset": "1AC",
-                "value": "0.4"
-            },
-            {
-                "address": "000C591C",
-                "offset": "1B4",
-                "value": "9.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "1B8",
-                "value": "15.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "1BC",
-                "value": "0.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "1C0",
-                "value": "0.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "1C4",
-                "value": "0.02"
-            },
-            {
-                "address": "000C591C",
-                "offset": "1C8",
-                "value": "0.004"
-            },
-            {
-                "address": "000C591C",
-                "offset": "1CC",
-                "value": "0.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "1D0",
-                "value": "0.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "190",
-                "value": "1.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "194",
-                "value": "2.0"
-            },
-            {
-                "address": "000C591C",
-                "offset": "198",
-                "value": "0.1"
-            },
-            {
-                "address": "000C591C",
-                "offset": "19C",
-                "value": "0.2"
-            },
-            {
-                "address": "000C591C",
-                "offset": "1A4",
-                "value": "0.8"
-            },
-            {
-                "address": "000C591C",
-                "offset": "1A8",
-                "value": "0.6"
-            },
-            {
-                "address": "000C591C",
-                "offset": "1B0",
-                "value": "0.35"
-            }
-        ]
-    },
-    {
-        "id": "softengine-collision-type-1-enable",
-        "action": "inject",
-        "mode": "multiple",
-        "injects": [
-            {
-                "address": "CBDA48",
-                "value": "0.025"
-            },
-            {
-                "address": "CBDA4C",
-                "value": "-0.025"
-            },
-            {
-                "address": "CBDA50",
-                "value": "0.0"
-            },
-
-            {
-                "address": "CBDA54",
-                "value": "0.025"
-            },
-            {
-                "address": "CBDA58",
-                "value": "0.0"
-            },
-            {
-                "address": "CBDA5C",
-                "value": "0.0"
-            },
-
-            {
-                "address": "CBDA60",
-                "value": "0.0"
-            },
-            {
-                "address": "CBDA64",
-                "value": "0.0"
-            },
-            {
-                "address": "CBDA68",
-                "value": "0.0"
-            },
-
-            {
-                "address": "CBDA6C",
-                "value": "0.025"
-            },
-            {
-                "address": "CBDA70",
-                "value": "0.0"
-            },
-            {
-                "address": "CBDA74",
-                "value": "0.0"
-            },
-
-            {
-                "address": "CBDA78",
-                "value": "0.025"
-            },
-            {
-                "address": "CBDA7C",
-                "value": "0.0"
-            },
-            {
-                "address": "CBDA80",
-                "value": "0.0"
-            },
-
-            {
-                "address": "CBDA84",
-                "value": "0.05"
-            },
-            {
-                "address": "CBDA88",
-                "value": "0.05"
-            },
-            {
-                "address": "CBDA8C",
-                "value": "-0.05"
-            },
-
-            
-            {
-                "address": "CBDA90",
-                "value": "20.0"
-            }
-        ]
-    },
-    {
-        "id": "softengine-collision-type-1-disable",
-        "action": "inject",
-        "mode": "multiple",
-        "injects": [
-            {
-                "address": "CBDA48",
-                "value": "0.04"
-            },
-            {
-                "address": "CBDA4C",
-                "value": "0.0"
-            },
-            {
-                "address": "CBDA50",
-                "value": "0.005"
-            },
-
-            {
-                "address": "CBDA54",
-                "value": "0.03"
-            },
-            {
-                "address": "CBDA58",
-                "value": "0.0"
-            },
-            {
-                "address": "CBDA5C",
-                "value": "0.005"
-            },
-
-            {
-                "address": "CBDA60",
-                "value": "0.02"
-            },
-            {
-                "address": "CBDA64",
-                "value": "0.02"
-            },
-            {
-                "address": "CBDA68",
-                "value": "0.005"
-            },
-
-            {
-                "address": "CBDA6C",
-                "value": "0.0"
-            },
-            {
-                "address": "CBDA70",
-                "value": "0.015"
-            },
-            {
-                "address": "CBDA74",
-                "value": "0.005"
-            },
-
-            {
-                "address": "CBDA78",
-                "value": "0.05"
-            },
-            {
-                "address": "CBDA7C",
-                "value": "0.01"
-            },
-            {
-                "address": "CBDA80",
-                "value": "0.005"
-            },
-
-            {
-                "address": "CBDA84",
-                "value": "0.01"
-            },
-            {
-                "address": "CBDA88",
-                "value": "0.01"
-            },
-            {
-                "address": "CBDA8C",
-                "value": "0.005"
-            },
-
-            {
-                "address": "CBDA90",
-                "value": "35.0"
-            }
-        ]
-    },
-    {
-        "id": "softengine-collision-type-2-enable",
-        "action": "inject",
-        "mode": "multiple",
-        "injects": [
-            {
-                "address": "CBDA94",
-                "value": "0.025"
-            },
-            {
-                "address": "CBDA98",
-                "value": "-0.025"
-            },
-            {
-                "address": "CBDA9C",
-                "value": "0.0"
-            },
-
-            {
-                "address": "CBDAA0",
-                "value": "0.025"
-            },
-            {
-                "address": "CBDAA4",
-                "value": "0.0"
-            },
-            {
-                "address": "CBDAA8",
-                "value": "0.0"
-            },
-
-            {
-                "address": "CBDAAC",
-                "value": "0.0"
-            },
-            {
-                "address": "CBDAB0",
-                "value": "0.0"
-            },
-            {
-                "address": "CBDAB4",
-                "value": "0.0"
-            },
-
-            {
-                "address": "CBDAB8",
-                "value": "0.025"
-            },
-            {
-                "address": "CBDABC",
-                "value": "0.0"
-            },
-            {
-                "address": "CBDAC0",
-                "value": "0.0"
-            },
-
-            {
-                "address": "CBDAC4",
-                "value": "0.025"
-            },
-            {
-                "address": "CBDAC8",
-                "value": "-0.05"
-            },
-            {
-                "address": "CBDACC",
-                "value": "0.0"
-            },
-
-            {
-                "address": "CBDAD0",
-                "value": "0.05"
-            },
-            {
-                "address": "CBDAD4",
-                "value": "0.05"
-            },
-            {
-                "address": "CBDAD8",
-                "value": "-0.05"
-            },
-
-            {
-                "address": "CBDADC",
-                "value": "20.0"
-            }
-        ]
-    },
-    {
-        "id": "softengine-collision-type-2-disable",
-        "action": "inject",
-        "mode": "multiple",
-        "injects": [
-            {
-                "address": "CBDA94",
-                "value": "0.04"
-            },
-            {
-                "address": "CBDA98",
-                "value": "0.02"
-            },
-            {
-                "address": "CBDA9C",
-                "value": "0.02"
-            },
-
-            {
-                "address": "CBDAA0",
-                "value": "0.06"
-            },
-            {
-                "address": "CBDAA4",
-                "value": "0.005"
-            },
-            {
-                "address": "CBDAA8",
-                "value": "0.0379"
-            },
-
-            {
-                "address": "CBDAAC",
-                "value": "0.0"
-            },
-            {
-                "address": "CBDAB0",
-                "value": "0.04"
-            },
-            {
-                "address": "CBDAB4",
-                "value": "0.01"
-            },
-
-            {
-                "address": "CBDAB8",
-                "value": "0.01"
-            },
-            {
-                "address": "CBDABC",
-                "value": "0.02"
-            },
-            {
-                "address": "CBDAC0",
-                "value": "0.01"
-            },
-
-            {
-                "address": "CBDAC4",
-                "value": "0.02"
-            },
-            {
-                "address": "CBDAC8",
-                "value": "0.01"
-            },
-            {
-                "address": "CBDACC",
-                "value": "0.0"
-            },
-
-            {
-                "address": "CBDAD0",
-                "value": "0.05"
-            },
-            {
-                "address": "CBDAD4",
-                "value": "0.05"
-            },
-            {
-                "address": "CBDAD8",
-                "value": "-0.05"
-            },
-
-            {
-                "address": "CBDADC",
-                "value": "35.0"
-            }
-        ]
-    },
-    {
-        "id": "softengine-collision-type-3-enable",
-        "action": "inject",
-        "mode": "multiple",
-        "injects": [
-            {
-                "address": "CBDAE0",
-                "value": "0.025"
-            },
-            {
-                "address": "CBDAE4",
-                "value": "-0.025"
-            },
-            {
-                "address": "CBDAE8",
-                "value": "0.0"
-            },
-
-            {
-                "address": "CBDAEC",
-                "value": "0.025"
-            },
-            {
-                "address": "CBDAF0",
-                "value": "0.0"
-            },
-            {
-                "address": "CBDAF4",
-                "value": "0.0"
-            },
-
-            {
-                "address": "CBDAF8",
-                "value": "0.0"
-            },
-            {
-                "address": "CBDAFC",
-                "value": "0.0"
-            },
-            {
-                "address": "CBDB00",
-                "value": "0.0"
-            },
-
-            {
-                "address": "CBDB04",
-                "value": "0.025"
-            },
-            {
-                "address": "CBDB08",
-                "value": "0.0"
-            },
-            {
-                "address": "CBDB0C",
-                "value": "0.0"
-            },
-
-            {
-                "address": "CBDB10",
-                "value": "0.025"
-            },
-            {
-                "address": "CBDB14",
-                "value": "-0.05"
-            },
-            {
-                "address": "CBDB18",
-                "value": "0.0"
-            },
-
-            {
-                "address": "CBDB1C",
-                "value": "0.05"
-            },
-            {
-                "address": "CBDB20",
-                "value": "0.05"
-            },
-            {
-                "address": "CBDB24",
-                "value": "-0.05"
-            },
-
-            {
-                "address": "CBDB28",
-                "value": "20.0"
-            }
-        ]
-    },
-    {
-        "id": "softengine-collision-type-3-disable",
-        "action": "inject",
-        "mode": "multiple",
-        "injects": [
-            {
-                "address": "CBDAE0",
-                "value": "0.03"
-            },
-            {
-                "address": "CBDAE4",
-                "value": "0.02"
-            },
-            {
-                "address": "CBDAE8",
-                "value": "0.004"
-            },
-
-            {
-                "address": "CBDAEC",
-                "value": "0.04"
-            },
-            {
-                "address": "CBDAF0",
-                "value": "0.005"
-            },
-            {
-                "address": "CBDAF4",
-                "value": "0.008"
-            },
-
-            {
-                "address": "CBDAF8",
-                "value": "0.0"
-            },
-            {
-                "address": "CBDAFC",
-                "value": "0.01"
-            },
-            {
-                "address": "CBDB00",
-                "value": "0.01"
-            },
-
-            {
-                "address": "CBDB04",
-                "value": "0.02"
-            },
-            {
-                "address": "CBDB08",
-                "value": "0.027"
-            },
-            {
-                "address": "CBDB0C",
-                "value": "0.013"
-            },
-
-            {
-                "address": "CBDB10",
-                "value": "0.01"
-            },
-            {
-                "address": "CBDB14",
-                "value": "0.0"
-            },
-            {
-                "address": "CBDB18",
-                "value": "0.01"
-            },
-
-            {
-                "address": "CBDB1C",
-                "value": "0.029"
-            },
-            {
-                "address": "CBDB20",
-                "value": "0.02"
-            },
-            {
-                "address": "CBDB24",
-                "value": "0.006"
-            },
-
-            {
-                "address": "CBDB28",
-                "value": "32.0"
-            }
-        ]
-    },
-    {
-        "id": "softengine-collision-type-4-enable",
-        "action": "inject",
-        "mode": "multiple",
-        "injects": [
-            {
-                "address": "CBDB2C",
-                "value": "0.025"
-            },
-            {
-                "address": "CBDB30",
-                "value": "-0.025"
-            },
-            {
-                "address": "CBDB34",
-                "value": "0.0"
-            },
-
-            {
-                "address": "CBDB38",
-                "value": "0.025"
-            },
-            {
-                "address": "CBDB3C",
-                "value": "0.0"
-            },
-            {
-                "address": "CBDB40",
-                "value": "0.0"
-            },
-
-            {
-                "address": "CBDB44",
-                "value": "0.0"
-            },
-            {
-                "address": "CBDB48",
-                "value": "0.0"
-            },
-            {
-                "address": "CBDB4C",
-                "value": "0.0"
-            },
-
-            {
-                "address": "CBDB50",
-                "value": "0.025"
-            },
-            {
-                "address": "CBDB54",
-                "value": "0.0"
-            },
-            {
-                "address": "CBDB58",
-                "value": "0.0"
-            },
-
-            {
-                "address": "CBDB5C",
-                "value": "0.025"
-            },
-            {
-                "address": "CBDB60",
-                "value": "-0.05"
-            },
-            {
-                "address": "CBDB64",
-                "value": "0.0"
-            },
-
-            {
-                "address": "CBDB68",
-                "value": "0.05"
-            },
-            {
-                "address": "CBDB6C",
-                "value": "0.05"
-            },
-            {
-                "address": "CBDB70",
-                "value": "-0.05"
-            },
-
-            
-            {
-                "address": "CBDB74",
-                "value": "20.0"
-            }
-        ]
-    },
-    {
-        "id": "softengine-collision-type-4-disable",
-        "action": "inject",
-        "mode": "multiple",
-        "injects": [
-            {
-                "address": "CBDB2C",
-                "value": "0.0"
-            },
-            {
-                "address": "CBDB30",
-                "value": "0.0"
-            },
-            {
-                "address": "CBDB34",
-                "value": "0.0"
-            },
-
-            {
-                "address": "CBDB38",
-                "value": "0.0"
-            },
-            {
-                "address": "CBDB3C",
-                "value": "0.0"
-            },
-            {
-                "address": "CBDB40",
-                "value": "0.0"
-            },
-
-            {
-                "address": "CBDB44",
-                "value": "0.0"
-            },
-            {
-                "address": "CBDB48",
-                "value": "0.0"
-            },
-            {
-                "address": "CBDB4C",
-                "value": "0.0"
-            },
-
-            {
-                "address": "CBDB50",
-                "value": "0.0"
-            },
-            {
-                "address": "CBDB54",
-                "value": "0.0"
-            },
-            {
-                "address": "CBDB58",
-                "value": "0.0"
-            },
-
-            {
-                "address": "CBDB5C",
-                "value": "0.0"
-            },
-            {
-                "address": "CBDB60",
-                "value": "0.0"
-            },
-            {
-                "address": "CBDB64",
-                "value": "0.0"
-            },
-
-            {
-                "address": "CBDB68",
-                "value": "0.0"
-            },
-            {
-                "address": "CBDB6C",
-                "value": "0.0"
-            },
-            {
-                "address": "CBDB70",
-                "value": "0.0"
-            },
-
-            
-            {
-                "address": "CBDB74",
-                "value": "32.0"
-            }
-        ]
-    },
-    {
-        "id": "softengine-nodecp-enable",
-        "action": "inject-pointer",
-        "mode": "multiple",
-        "injects": [
-            {
-                "address": "02066D20",
-                "offsets": ["B18","5C","8C","60","80","4C","78"],
-                "value": "1.0"
-            },
-            {
-                "address": "02066D20",
-                "offsets": ["B18","5C","8C","60","80","4C","7C"],
-                "value": "1.0"
-            },
-            {
-                "address": "02066D20",
-                "offsets": ["B18","5C","8C","60","80","4C","80"],
-                "value": "1.0"
-            },
-            {
-                "address": "02066D20",
-                "offsets": ["B18","5C","8C","60","80","4C","84"],
-                "value": "1.0"
-            },
-            {
-                "address": "02066D20",
-                "offsets": ["B18","5C","8C","60","80","4C","88"],
-                "value": "1.0"
-            },
-            {
-                "address": "02066D20",
-                "offsets": ["B18","5C","8C","60","80","4C","74"],
-                "value": "0.6"
-            },
-
-            {
-                "address": "02066D20",
-                "offsets": ["B18","5C","8C","60","80","4C","1C0"],
-                "value": "1.0"
-            },
-            {
-                "address": "02066D20",
-                "offsets": ["B18","5C","8C","60","80","4C","1C4"],
-                "value": "1.0"
-            },
-            {
-                "address": "02066D20",
-                "offsets": ["B18","5C","8C","60","80","4C","1C8"],
-                "value": "1.0"
-            },
-            {
-                "address": "02066D20",
-                "offsets": ["B18","5C","8C","60","80","4C","1CC"],
-                "value": "1.0"
-            },
-            {
-                "address": "02066D20",
-                "offsets": ["B18","5C","8C","60","80","4C","1D0"],
-                "value": "1.0"
-            },
-            {
-                "address": "02066D20",
-                "offsets": ["B18","5C","8C","60","80","4C","1BC"],
-                "value": "0.6"
-            }
-        ]
-    },
-    {
-        "id": "softengine-nodecp-disable",
-        "action": "inject-pointer",
-        "mode": "multiple",
-        "injects": [
-            {
-                "address": "02066D20",
-                "offsets": ["B18","5C","8C","60","80","4C","78"],
-                "value": "0.5"
-            },
-            {
-                "address": "02066D20",
-                "offsets": ["B18","5C","8C","60","80","4C","7C"],
-                "value": "0.5"
-            },
-            {
-                "address": "02066D20",
-                "offsets": ["B18","5C","8C","60","80","4C","80"],
-                "value": "0.5"
-            },
-            {
-                "address": "02066D20",
-                "offsets": ["B18","5C","8C","60","80","4C","84"],
-                "value": "0.5"
-            },
-            {
-                "address": "02066D20",
-                "offsets": ["B18","5C","8C","60","80","4C","88"],
-                "value": "0.5"
-            },
-            {
-                "address": "02066D20",
-                "offsets": ["B18","5C","8C","60","80","4C","74"],
-                "value": "0.3"
-            },
-
-            {
-                "address": "02066D20",
-                "offsets": ["B18","5C","8C","60","80","4C","1C0"],
-                "value": "0.5"
-            },
-            {
-                "address": "02066D20",
-                "offsets": ["B18","5C","8C","60","80","4C","1C4"],
-                "value": "0.5"
-            },
-            {
-                "address": "02066D20",
-                "offsets": ["B18","5C","8C","60","80","4C","1C8"],
-                "value": "0.5"
-            },
-            {
-                "address": "02066D20",
-                "offsets": ["B18","5C","8C","60","80","4C","1CC"],
-                "value": "0.5"
-            },
-            {
-                "address": "02066D20",
-                "offsets": ["B18","5C","8C","60","80","4C","1D0"],
-                "value": "0.5"
-            },
-            {
-                "address": "02066D20",
-                "offsets": ["B18","5C","8C","60","80","4C","1BC"],
-                "value": "0.3"
+        "category": "Collision Relationship",
+        "toggles": [
+            {
+                "name": "Type 1",
+                "enable": {
+                    "id": "softengine-collision-type-1-enable",
+                    "action": "inject",
+                    "mode": "multiple",
+                    "injects": [
+                        {
+                            "address": "CBDA48",
+                            "value": "0.025"
+                        },
+                        {
+                            "address": "CBDA4C",
+                            "value": "-0.025"
+                        },
+                        {
+                            "address": "CBDA50",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "CBDA54",
+                            "value": "0.025"
+                        },
+                        {
+                            "address": "CBDA58",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "CBDA5C",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "CBDA60",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "CBDA64",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "CBDA68",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "CBDA6C",
+                            "value": "0.025"
+                        },
+                        {
+                            "address": "CBDA70",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "CBDA74",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "CBDA78",
+                            "value": "0.025"
+                        },
+                        {
+                            "address": "CBDA7C",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "CBDA80",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "CBDA84",
+                            "value": "0.05"
+                        },
+                        {
+                            "address": "CBDA88",
+                            "value": "0.05"
+                        },
+                        {
+                            "address": "CBDA8C",
+                            "value": "-0.05"
+                        },
+                        {
+                            "address": "CBDA90",
+                            "value": "20.0"
+                        }
+                    ]
+                },
+                "disable": {
+                    "id": "softengine-collision-type-1-disable",
+                    "action": "inject",
+                    "mode": "multiple",
+                    "injects": [
+                        {
+                            "address": "CBDA48",
+                            "value": "0.04"
+                        },
+                        {
+                            "address": "CBDA4C",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "CBDA50",
+                            "value": "0.005"
+                        },
+                        {
+                            "address": "CBDA54",
+                            "value": "0.03"
+                        },
+                        {
+                            "address": "CBDA58",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "CBDA5C",
+                            "value": "0.005"
+                        },
+                        {
+                            "address": "CBDA60",
+                            "value": "0.02"
+                        },
+                        {
+                            "address": "CBDA64",
+                            "value": "0.02"
+                        },
+                        {
+                            "address": "CBDA68",
+                            "value": "0.005"
+                        },
+                        {
+                            "address": "CBDA6C",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "CBDA70",
+                            "value": "0.015"
+                        },
+                        {
+                            "address": "CBDA74",
+                            "value": "0.005"
+                        },
+                        {
+                            "address": "CBDA78",
+                            "value": "0.05"
+                        },
+                        {
+                            "address": "CBDA7C",
+                            "value": "0.01"
+                        },
+                        {
+                            "address": "CBDA80",
+                            "value": "0.005"
+                        },
+                        {
+                            "address": "CBDA84",
+                            "value": "0.01"
+                        },
+                        {
+                            "address": "CBDA88",
+                            "value": "0.01"
+                        },
+                        {
+                            "address": "CBDA8C",
+                            "value": "0.005"
+                        },
+                        {
+                            "address": "CBDA90",
+                            "value": "35.0"
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "Type 2",
+                "enable": {
+                    "id": "softengine-collision-type-2-enable",
+                    "action": "inject",
+                    "mode": "multiple",
+                    "injects": [
+                        {
+                            "address": "CBDA94",
+                            "value": "0.025"
+                        },
+                        {
+                            "address": "CBDA98",
+                            "value": "-0.025"
+                        },
+                        {
+                            "address": "CBDA9C",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "CBDAA0",
+                            "value": "0.025"
+                        },
+                        {
+                            "address": "CBDAA4",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "CBDAA8",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "CBDAAC",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "CBDAB0",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "CBDAB4",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "CBDAB8",
+                            "value": "0.025"
+                        },
+                        {
+                            "address": "CBDABC",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "CBDAC0",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "CBDAC4",
+                            "value": "0.025"
+                        },
+                        {
+                            "address": "CBDAC8",
+                            "value": "-0.05"
+                        },
+                        {
+                            "address": "CBDACC",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "CBDAD0",
+                            "value": "0.05"
+                        },
+                        {
+                            "address": "CBDAD4",
+                            "value": "0.05"
+                        },
+                        {
+                            "address": "CBDAD8",
+                            "value": "-0.05"
+                        },
+                        {
+                            "address": "CBDADC",
+                            "value": "20.0"
+                        }
+                    ]
+                },
+                "disable": {
+                    "id": "softengine-collision-type-2-disable",
+                    "action": "inject",
+                    "mode": "multiple",
+                    "injects": [
+                        {
+                            "address": "CBDA94",
+                            "value": "0.04"
+                        },
+                        {
+                            "address": "CBDA98",
+                            "value": "0.02"
+                        },
+                        {
+                            "address": "CBDA9C",
+                            "value": "0.02"
+                        },
+                        {
+                            "address": "CBDAA0",
+                            "value": "0.06"
+                        },
+                        {
+                            "address": "CBDAA4",
+                            "value": "0.005"
+                        },
+                        {
+                            "address": "CBDAA8",
+                            "value": "0.0379"
+                        },
+                        {
+                            "address": "CBDAAC",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "CBDAB0",
+                            "value": "0.04"
+                        },
+                        {
+                            "address": "CBDAB4",
+                            "value": "0.01"
+                        },
+                        {
+                            "address": "CBDAB8",
+                            "value": "0.01"
+                        },
+                        {
+                            "address": "CBDABC",
+                            "value": "0.02"
+                        },
+                        {
+                            "address": "CBDAC0",
+                            "value": "0.01"
+                        },
+                        {
+                            "address": "CBDAC4",
+                            "value": "0.02"
+                        },
+                        {
+                            "address": "CBDAC8",
+                            "value": "0.01"
+                        },
+                        {
+                            "address": "CBDACC",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "CBDAD0",
+                            "value": "0.05"
+                        },
+                        {
+                            "address": "CBDAD4",
+                            "value": "0.05"
+                        },
+                        {
+                            "address": "CBDAD8",
+                            "value": "-0.05"
+                        },
+                        {
+                            "address": "CBDADC",
+                            "value": "35.0"
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "Type 3",
+                "enable": {
+                    "id": "softengine-collision-type-3-enable",
+                    "action": "inject",
+                    "mode": "multiple",
+                    "injects": [
+                        {
+                            "address": "CBDAE0",
+                            "value": "0.025"
+                        },
+                        {
+                            "address": "CBDAE4",
+                            "value": "-0.025"
+                        },
+                        {
+                            "address": "CBDAE8",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "CBDAEC",
+                            "value": "0.025"
+                        },
+                        {
+                            "address": "CBDAF0",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "CBDAF4",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "CBDAF8",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "CBDAFC",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "CBDB00",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "CBDB04",
+                            "value": "0.025"
+                        },
+                        {
+                            "address": "CBDB08",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "CBDB0C",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "CBDB10",
+                            "value": "0.025"
+                        },
+                        {
+                            "address": "CBDB14",
+                            "value": "-0.05"
+                        },
+                        {
+                            "address": "CBDB18",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "CBDB1C",
+                            "value": "0.05"
+                        },
+                        {
+                            "address": "CBDB20",
+                            "value": "0.05"
+                        },
+                        {
+                            "address": "CBDB24",
+                            "value": "-0.05"
+                        },
+                        {
+                            "address": "CBDB28",
+                            "value": "20.0"
+                        }
+                    ]
+                },
+                "disable": {
+                    "id": "softengine-collision-type-3-disable",
+                    "action": "inject",
+                    "mode": "multiple",
+                    "injects": [
+                        {
+                            "address": "CBDAE0",
+                            "value": "0.03"
+                        },
+                        {
+                            "address": "CBDAE4",
+                            "value": "0.02"
+                        },
+                        {
+                            "address": "CBDAE8",
+                            "value": "0.004"
+                        },
+                        {
+                            "address": "CBDAEC",
+                            "value": "0.04"
+                        },
+                        {
+                            "address": "CBDAF0",
+                            "value": "0.005"
+                        },
+                        {
+                            "address": "CBDAF4",
+                            "value": "0.008"
+                        },
+                        {
+                            "address": "CBDAF8",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "CBDAFC",
+                            "value": "0.01"
+                        },
+                        {
+                            "address": "CBDB00",
+                            "value": "0.01"
+                        },
+                        {
+                            "address": "CBDB04",
+                            "value": "0.02"
+                        },
+                        {
+                            "address": "CBDB08",
+                            "value": "0.027"
+                        },
+                        {
+                            "address": "CBDB0C",
+                            "value": "0.013"
+                        },
+                        {
+                            "address": "CBDB10",
+                            "value": "0.01"
+                        },
+                        {
+                            "address": "CBDB14",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "CBDB18",
+                            "value": "0.01"
+                        },
+                        {
+                            "address": "CBDB1C",
+                            "value": "0.029"
+                        },
+                        {
+                            "address": "CBDB20",
+                            "value": "0.02"
+                        },
+                        {
+                            "address": "CBDB24",
+                            "value": "0.006"
+                        },
+                        {
+                            "address": "CBDB28",
+                            "value": "32.0"
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "Type 4",
+                "enable": {
+                    "id": "softengine-collision-type-4-enable",
+                    "action": "inject",
+                    "mode": "multiple",
+                    "injects": [
+                        {
+                            "address": "CBDB2C",
+                            "value": "0.025"
+                        },
+                        {
+                            "address": "CBDB30",
+                            "value": "-0.025"
+                        },
+                        {
+                            "address": "CBDB34",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "CBDB38",
+                            "value": "0.025"
+                        },
+                        {
+                            "address": "CBDB3C",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "CBDB40",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "CBDB44",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "CBDB48",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "CBDB4C",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "CBDB50",
+                            "value": "0.025"
+                        },
+                        {
+                            "address": "CBDB54",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "CBDB58",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "CBDB5C",
+                            "value": "0.025"
+                        },
+                        {
+                            "address": "CBDB60",
+                            "value": "-0.05"
+                        },
+                        {
+                            "address": "CBDB64",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "CBDB68",
+                            "value": "0.05"
+                        },
+                        {
+                            "address": "CBDB6C",
+                            "value": "0.05"
+                        },
+                        {
+                            "address": "CBDB70",
+                            "value": "-0.05"
+                        },
+                        {
+                            "address": "CBDB74",
+                            "value": "20.0"
+                        }
+                    ]
+                },
+                "disable": {
+                    "id": "softengine-collision-type-4-disable",
+                    "action": "inject",
+                    "mode": "multiple",
+                    "injects": [
+                        {
+                            "address": "CBDB2C",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "CBDB30",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "CBDB34",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "CBDB38",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "CBDB3C",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "CBDB40",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "CBDB44",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "CBDB48",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "CBDB4C",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "CBDB50",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "CBDB54",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "CBDB58",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "CBDB5C",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "CBDB60",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "CBDB64",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "CBDB68",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "CBDB6C",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "CBDB70",
+                            "value": "0.0"
+                        },
+                        {
+                            "address": "CBDB74",
+                            "value": "32.0"
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "nodecp",
+                "enable": {
+                    "id": "softengine-nodecp-enable",
+                    "action": "inject-pointer",
+                    "mode": "multiple",
+                    "injects": [
+                        {
+                            "address": "02066D20",
+                            "offsets": [
+                                "B18",
+                                "5C",
+                                "8C",
+                                "60",
+                                "80",
+                                "4C",
+                                "78"
+                            ],
+                            "value": "1.0"
+                        },
+                        {
+                            "address": "02066D20",
+                            "offsets": [
+                                "B18",
+                                "5C",
+                                "8C",
+                                "60",
+                                "80",
+                                "4C",
+                                "7C"
+                            ],
+                            "value": "1.0"
+                        },
+                        {
+                            "address": "02066D20",
+                            "offsets": [
+                                "B18",
+                                "5C",
+                                "8C",
+                                "60",
+                                "80",
+                                "4C",
+                                "80"
+                            ],
+                            "value": "1.0"
+                        },
+                        {
+                            "address": "02066D20",
+                            "offsets": [
+                                "B18",
+                                "5C",
+                                "8C",
+                                "60",
+                                "80",
+                                "4C",
+                                "84"
+                            ],
+                            "value": "1.0"
+                        },
+                        {
+                            "address": "02066D20",
+                            "offsets": [
+                                "B18",
+                                "5C",
+                                "8C",
+                                "60",
+                                "80",
+                                "4C",
+                                "88"
+                            ],
+                            "value": "1.0"
+                        },
+                        {
+                            "address": "02066D20",
+                            "offsets": [
+                                "B18",
+                                "5C",
+                                "8C",
+                                "60",
+                                "80",
+                                "4C",
+                                "74"
+                            ],
+                            "value": "0.6"
+                        },
+                        {
+                            "address": "02066D20",
+                            "offsets": [
+                                "B18",
+                                "5C",
+                                "8C",
+                                "60",
+                                "80",
+                                "4C",
+                                "1C0"
+                            ],
+                            "value": "1.0"
+                        },
+                        {
+                            "address": "02066D20",
+                            "offsets": [
+                                "B18",
+                                "5C",
+                                "8C",
+                                "60",
+                                "80",
+                                "4C",
+                                "1C4"
+                            ],
+                            "value": "1.0"
+                        },
+                        {
+                            "address": "02066D20",
+                            "offsets": [
+                                "B18",
+                                "5C",
+                                "8C",
+                                "60",
+                                "80",
+                                "4C",
+                                "1C8"
+                            ],
+                            "value": "1.0"
+                        },
+                        {
+                            "address": "02066D20",
+                            "offsets": [
+                                "B18",
+                                "5C",
+                                "8C",
+                                "60",
+                                "80",
+                                "4C",
+                                "1CC"
+                            ],
+                            "value": "1.0"
+                        },
+                        {
+                            "address": "02066D20",
+                            "offsets": [
+                                "B18",
+                                "5C",
+                                "8C",
+                                "60",
+                                "80",
+                                "4C",
+                                "1D0"
+                            ],
+                            "value": "1.0"
+                        },
+                        {
+                            "address": "02066D20",
+                            "offsets": [
+                                "B18",
+                                "5C",
+                                "8C",
+                                "60",
+                                "80",
+                                "4C",
+                                "1BC"
+                            ],
+                            "value": "0.6"
+                        }
+                    ]
+                },
+                "disable": {
+                    "id": "softengine-nodecp-disable",
+                    "action": "inject-pointer",
+                    "mode": "multiple",
+                    "injects": [
+                        {
+                            "address": "02066D20",
+                            "offsets": [
+                                "B18",
+                                "5C",
+                                "8C",
+                                "60",
+                                "80",
+                                "4C",
+                                "78"
+                            ],
+                            "value": "0.5"
+                        },
+                        {
+                            "address": "02066D20",
+                            "offsets": [
+                                "B18",
+                                "5C",
+                                "8C",
+                                "60",
+                                "80",
+                                "4C",
+                                "7C"
+                            ],
+                            "value": "0.5"
+                        },
+                        {
+                            "address": "02066D20",
+                            "offsets": [
+                                "B18",
+                                "5C",
+                                "8C",
+                                "60",
+                                "80",
+                                "4C",
+                                "80"
+                            ],
+                            "value": "0.5"
+                        },
+                        {
+                            "address": "02066D20",
+                            "offsets": [
+                                "B18",
+                                "5C",
+                                "8C",
+                                "60",
+                                "80",
+                                "4C",
+                                "84"
+                            ],
+                            "value": "0.5"
+                        },
+                        {
+                            "address": "02066D20",
+                            "offsets": [
+                                "B18",
+                                "5C",
+                                "8C",
+                                "60",
+                                "80",
+                                "4C",
+                                "88"
+                            ],
+                            "value": "0.5"
+                        },
+                        {
+                            "address": "02066D20",
+                            "offsets": [
+                                "B18",
+                                "5C",
+                                "8C",
+                                "60",
+                                "80",
+                                "4C",
+                                "74"
+                            ],
+                            "value": "0.3"
+                        },
+                        {
+                            "address": "02066D20",
+                            "offsets": [
+                                "B18",
+                                "5C",
+                                "8C",
+                                "60",
+                                "80",
+                                "4C",
+                                "1C0"
+                            ],
+                            "value": "0.5"
+                        },
+                        {
+                            "address": "02066D20",
+                            "offsets": [
+                                "B18",
+                                "5C",
+                                "8C",
+                                "60",
+                                "80",
+                                "4C",
+                                "1C4"
+                            ],
+                            "value": "0.5"
+                        },
+                        {
+                            "address": "02066D20",
+                            "offsets": [
+                                "B18",
+                                "5C",
+                                "8C",
+                                "60",
+                                "80",
+                                "4C",
+                                "1C8"
+                            ],
+                            "value": "0.5"
+                        },
+                        {
+                            "address": "02066D20",
+                            "offsets": [
+                                "B18",
+                                "5C",
+                                "8C",
+                                "60",
+                                "80",
+                                "4C",
+                                "1CC"
+                            ],
+                            "value": "0.5"
+                        },
+                        {
+                            "address": "02066D20",
+                            "offsets": [
+                                "B18",
+                                "5C",
+                                "8C",
+                                "60",
+                                "80",
+                                "4C",
+                                "1D0"
+                            ],
+                            "value": "0.5"
+                        },
+                        {
+                            "address": "02066D20",
+                            "offsets": [
+                                "B18",
+                                "5C",
+                                "8C",
+                                "60",
+                                "80",
+                                "4C",
+                                "1BC"
+                            ],
+                            "value": "0.3"
+                        }
+                    ]
+                }
             }
         ]
     }

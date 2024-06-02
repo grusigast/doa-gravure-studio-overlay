@@ -379,6 +379,27 @@ function loadData() {
   }
 }
 
+function findAction(id) {
+  if (id.includes('softengine')) {
+    var hit
+    softengine.forEach((category) => {
+      category.toggles.forEach((toggle) => {
+        if (toggle.enable.id === id) {
+          hit = toggle.enable
+          return
+        }
+        if (toggle.disable.id === id) {
+          hit = toggle.disable
+          return
+        }
+      })
+    })
+    return hit
+  } else {
+    return actions.find((action) => action.id === id)
+  }  
+}
+
 // Recieve modal event.
 ipcMain.on('modal', (event, data) => {
   logger.info('Recieved modal event: ' + data)
@@ -405,11 +426,7 @@ ipcMain.on('keypress', (event, keys, mode, customFolder) => {
 ipcMain.on('action', (event, id) => {
   logger.info('Recieved action: ' + id)
 
-  var action = id.includes('softengine') ?
-    softengine.find((action) => action.id === id) :
-    actions.find((action) => action.id === id)
-
-
+  var action = findAction(id)
   if (action) {
     if (action.action == 'keypress') {
       handleKeyPress(action.data, action.mode, action.globalDelayPressMillisec, action.startDelayMillisec)
@@ -474,10 +491,7 @@ ipcMain.on('special-action', (event, id) => {
 ipcMain.on('value', (event, value, id) => {
   logger.info('Recieved value: ' + value + ' for id: ' + id)
 
-  var action = id.includes('softengine') ?
-    softengine.find((action) => action.id === id) :
-    actions.find((action) => action.id === id)
-    
+  var action = findAction(id)
   if (action) {
     if (action.mode == 'range') {
 

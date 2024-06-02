@@ -86,13 +86,14 @@ npm start
 To display images in the overlay for each of the scenes, copy all jpg files from the `<DOAHDM Gravure Studio folder>\Scene Guide\` folder to `doa-gravure-studio-overlay\ui\img\`.
 
 
-## Scenes and actions
+## Scenes, actions and SoftEngine
 
-Configuration of the overlay is done in two different JSON files;
+Configuration of the overlay is done in three different JSON files;
 * /resources/scenes.json
 * /resources/actions.json
+* /resources/softengine.json
 
-`scenes.json` and `actions.json` can also be placed in the workspace root or executable file folder, and will be read from there instead.
+These files can also be placed in the workspace root or executable file folder, and will be read from there instead.
 
 ### scenes.json
 Contains all scene data.
@@ -153,6 +154,47 @@ Contains all scene data.
             }
         ]
     }
+]
+```
+### softengine.json
+```javascript
+[
+    {
+        "category": "Physics presets",                  // SoftEngine eategory name
+        "toggles": [                                    // List of toggles
+            {
+                "name": "Natural",                      // Name of toggle
+                "enable": {                             // Enable toggle
+                    "id": "softengine-natural-enable",  // Action id, must contain 'softengine'
+                    "action": "inject-pointer",
+                    "mode": "multiple",
+                    "injects": [
+                        {
+                            "address": "000C591C",
+                            "offsets": "28",
+                            "value": "1.5"
+                        },
+                        // Additional injects...
+                    ]
+                },
+                "disable": {                            // Disable toggle
+                    "id": "softengine-natural-disable", // Action id, must contain 'softengine'
+                    "action": "inject-pointer",
+                    "mode": "multiple",
+                    "injects": [
+                        {
+                            "address": "000C591C",
+                            "offsets": ["28", "1B"],
+                            "value": "1.1"
+                        },
+                        // Additional injects...
+                    ]
+                }
+            },
+            // Additional toggles...
+        ]
+    },
+    // Additional SoftEngine categories...
 ]
 ```
 
