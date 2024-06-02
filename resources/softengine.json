@@ -1190,5 +1190,856 @@
                 "value": "0.35"
             }
         ]
+    },
+    {
+        "id": "softengine-collision-type-1-enable",
+        "action": "inject",
+        "mode": "multiple",
+        "injects": [
+            {
+                "address": "CBDA48",
+                "value": "0.025"
+            },
+            {
+                "address": "CBDA4C",
+                "value": "-0.025"
+            },
+            {
+                "address": "CBDA50",
+                "value": "0.0"
+            },
+
+            {
+                "address": "CBDA54",
+                "value": "0.025"
+            },
+            {
+                "address": "CBDA58",
+                "value": "0.0"
+            },
+            {
+                "address": "CBDA5C",
+                "value": "0.0"
+            },
+
+            {
+                "address": "CBDA60",
+                "value": "0.0"
+            },
+            {
+                "address": "CBDA64",
+                "value": "0.0"
+            },
+            {
+                "address": "CBDA68",
+                "value": "0.0"
+            },
+
+            {
+                "address": "CBDA6C",
+                "value": "0.025"
+            },
+            {
+                "address": "CBDA70",
+                "value": "0.0"
+            },
+            {
+                "address": "CBDA74",
+                "value": "0.0"
+            },
+
+            {
+                "address": "CBDA78",
+                "value": "0.025"
+            },
+            {
+                "address": "CBDA7C",
+                "value": "0.0"
+            },
+            {
+                "address": "CBDA80",
+                "value": "0.0"
+            },
+
+            {
+                "address": "CBDA84",
+                "value": "0.05"
+            },
+            {
+                "address": "CBDA88",
+                "value": "0.05"
+            },
+            {
+                "address": "CBDA8C",
+                "value": "-0.05"
+            },
+
+            
+            {
+                "address": "CBDA90",
+                "value": "20.0"
+            }
+        ]
+    },
+    {
+        "id": "softengine-collision-type-1-disable",
+        "action": "inject",
+        "mode": "multiple",
+        "injects": [
+            {
+                "address": "CBDA48",
+                "value": "0.04"
+            },
+            {
+                "address": "CBDA4C",
+                "value": "0.0"
+            },
+            {
+                "address": "CBDA50",
+                "value": "0.005"
+            },
+
+            {
+                "address": "CBDA54",
+                "value": "0.03"
+            },
+            {
+                "address": "CBDA58",
+                "value": "0.0"
+            },
+            {
+                "address": "CBDA5C",
+                "value": "0.005"
+            },
+
+            {
+                "address": "CBDA60",
+                "value": "0.02"
+            },
+            {
+                "address": "CBDA64",
+                "value": "0.02"
+            },
+            {
+                "address": "CBDA68",
+                "value": "0.005"
+            },
+
+            {
+                "address": "CBDA6C",
+                "value": "0.0"
+            },
+            {
+                "address": "CBDA70",
+                "value": "0.015"
+            },
+            {
+                "address": "CBDA74",
+                "value": "0.005"
+            },
+
+            {
+                "address": "CBDA78",
+                "value": "0.05"
+            },
+            {
+                "address": "CBDA7C",
+                "value": "0.01"
+            },
+            {
+                "address": "CBDA80",
+                "value": "0.005"
+            },
+
+            {
+                "address": "CBDA84",
+                "value": "0.01"
+            },
+            {
+                "address": "CBDA88",
+                "value": "0.01"
+            },
+            {
+                "address": "CBDA8C",
+                "value": "0.005"
+            },
+
+            {
+                "address": "CBDA90",
+                "value": "35.0"
+            }
+        ]
+    },
+    {
+        "id": "softengine-collision-type-2-enable",
+        "action": "inject",
+        "mode": "multiple",
+        "injects": [
+            {
+                "address": "CBDA94",
+                "value": "0.025"
+            },
+            {
+                "address": "CBDA98",
+                "value": "-0.025"
+            },
+            {
+                "address": "CBDA9C",
+                "value": "0.0"
+            },
+
+            {
+                "address": "CBDAA0",
+                "value": "0.025"
+            },
+            {
+                "address": "CBDAA4",
+                "value": "0.0"
+            },
+            {
+                "address": "CBDAA8",
+                "value": "0.0"
+            },
+
+            {
+                "address": "CBDAAC",
+                "value": "0.0"
+            },
+            {
+                "address": "CBDAB0",
+                "value": "0.0"
+            },
+            {
+                "address": "CBDAB4",
+                "value": "0.0"
+            },
+
+            {
+                "address": "CBDAB8",
+                "value": "0.025"
+            },
+            {
+                "address": "CBDABC",
+                "value": "0.0"
+            },
+            {
+                "address": "CBDAC0",
+                "value": "0.0"
+            },
+
+            {
+                "address": "CBDAC4",
+                "value": "0.025"
+            },
+            {
+                "address": "CBDAC8",
+                "value": "-0.05"
+            },
+            {
+                "address": "CBDACC",
+                "value": "0.0"
+            },
+
+            {
+                "address": "CBDAD0",
+                "value": "0.05"
+            },
+            {
+                "address": "CBDAD4",
+                "value": "0.05"
+            },
+            {
+                "address": "CBDAD8",
+                "value": "-0.05"
+            },
+
+            {
+                "address": "CBDADC",
+                "value": "20.0"
+            }
+        ]
+    },
+    {
+        "id": "softengine-collision-type-2-disable",
+        "action": "inject",
+        "mode": "multiple",
+        "injects": [
+            {
+                "address": "CBDA94",
+                "value": "0.04"
+            },
+            {
+                "address": "CBDA98",
+                "value": "0.02"
+            },
+            {
+                "address": "CBDA9C",
+                "value": "0.02"
+            },
+
+            {
+                "address": "CBDAA0",
+                "value": "0.06"
+            },
+            {
+                "address": "CBDAA4",
+                "value": "0.005"
+            },
+            {
+                "address": "CBDAA8",
+                "value": "0.0379"
+            },
+
+            {
+                "address": "CBDAAC",
+                "value": "0.0"
+            },
+            {
+                "address": "CBDAB0",
+                "value": "0.04"
+            },
+            {
+                "address": "CBDAB4",
+                "value": "0.01"
+            },
+
+            {
+                "address": "CBDAB8",
+                "value": "0.01"
+            },
+            {
+                "address": "CBDABC",
+                "value": "0.02"
+            },
+            {
+                "address": "CBDAC0",
+                "value": "0.01"
+            },
+
+            {
+                "address": "CBDAC4",
+                "value": "0.02"
+            },
+            {
+                "address": "CBDAC8",
+                "value": "0.01"
+            },
+            {
+                "address": "CBDACC",
+                "value": "0.0"
+            },
+
+            {
+                "address": "CBDAD0",
+                "value": "0.05"
+            },
+            {
+                "address": "CBDAD4",
+                "value": "0.05"
+            },
+            {
+                "address": "CBDAD8",
+                "value": "-0.05"
+            },
+
+            {
+                "address": "CBDADC",
+                "value": "35.0"
+            }
+        ]
+    },
+    {
+        "id": "softengine-collision-type-3-enable",
+        "action": "inject",
+        "mode": "multiple",
+        "injects": [
+            {
+                "address": "CBDAE0",
+                "value": "0.025"
+            },
+            {
+                "address": "CBDAE4",
+                "value": "-0.025"
+            },
+            {
+                "address": "CBDAE8",
+                "value": "0.0"
+            },
+
+            {
+                "address": "CBDAEC",
+                "value": "0.025"
+            },
+            {
+                "address": "CBDAF0",
+                "value": "0.0"
+            },
+            {
+                "address": "CBDAF4",
+                "value": "0.0"
+            },
+
+            {
+                "address": "CBDAF8",
+                "value": "0.0"
+            },
+            {
+                "address": "CBDAFC",
+                "value": "0.0"
+            },
+            {
+                "address": "CBDB00",
+                "value": "0.0"
+            },
+
+            {
+                "address": "CBDB04",
+                "value": "0.025"
+            },
+            {
+                "address": "CBDB08",
+                "value": "0.0"
+            },
+            {
+                "address": "CBDB0C",
+                "value": "0.0"
+            },
+
+            {
+                "address": "CBDB10",
+                "value": "0.025"
+            },
+            {
+                "address": "CBDB14",
+                "value": "-0.05"
+            },
+            {
+                "address": "CBDB18",
+                "value": "0.0"
+            },
+
+            {
+                "address": "CBDB1C",
+                "value": "0.05"
+            },
+            {
+                "address": "CBDB20",
+                "value": "0.05"
+            },
+            {
+                "address": "CBDB24",
+                "value": "-0.05"
+            },
+
+            {
+                "address": "CBDB28",
+                "value": "20.0"
+            }
+        ]
+    },
+    {
+        "id": "softengine-collision-type-3-disable",
+        "action": "inject",
+        "mode": "multiple",
+        "injects": [
+            {
+                "address": "CBDAE0",
+                "value": "0.03"
+            },
+            {
+                "address": "CBDAE4",
+                "value": "0.02"
+            },
+            {
+                "address": "CBDAE8",
+                "value": "0.004"
+            },
+
+            {
+                "address": "CBDAEC",
+                "value": "0.04"
+            },
+            {
+                "address": "CBDAF0",
+                "value": "0.005"
+            },
+            {
+                "address": "CBDAF4",
+                "value": "0.008"
+            },
+
+            {
+                "address": "CBDAF8",
+                "value": "0.0"
+            },
+            {
+                "address": "CBDAFC",
+                "value": "0.01"
+            },
+            {
+                "address": "CBDB00",
+                "value": "0.01"
+            },
+
+            {
+                "address": "CBDB04",
+                "value": "0.02"
+            },
+            {
+                "address": "CBDB08",
+                "value": "0.027"
+            },
+            {
+                "address": "CBDB0C",
+                "value": "0.013"
+            },
+
+            {
+                "address": "CBDB10",
+                "value": "0.01"
+            },
+            {
+                "address": "CBDB14",
+                "value": "0.0"
+            },
+            {
+                "address": "CBDB18",
+                "value": "0.01"
+            },
+
+            {
+                "address": "CBDB1C",
+                "value": "0.029"
+            },
+            {
+                "address": "CBDB20",
+                "value": "0.02"
+            },
+            {
+                "address": "CBDB24",
+                "value": "0.006"
+            },
+
+            {
+                "address": "CBDB28",
+                "value": "32.0"
+            }
+        ]
+    },
+    {
+        "id": "softengine-collision-type-4-enable",
+        "action": "inject",
+        "mode": "multiple",
+        "injects": [
+            {
+                "address": "CBDB2C",
+                "value": "0.025"
+            },
+            {
+                "address": "CBDB30",
+                "value": "-0.025"
+            },
+            {
+                "address": "CBDB34",
+                "value": "0.0"
+            },
+
+            {
+                "address": "CBDB38",
+                "value": "0.025"
+            },
+            {
+                "address": "CBDB3C",
+                "value": "0.0"
+            },
+            {
+                "address": "CBDB40",
+                "value": "0.0"
+            },
+
+            {
+                "address": "CBDB44",
+                "value": "0.0"
+            },
+            {
+                "address": "CBDB48",
+                "value": "0.0"
+            },
+            {
+                "address": "CBDB4C",
+                "value": "0.0"
+            },
+
+            {
+                "address": "CBDB50",
+                "value": "0.025"
+            },
+            {
+                "address": "CBDB54",
+                "value": "0.0"
+            },
+            {
+                "address": "CBDB58",
+                "value": "0.0"
+            },
+
+            {
+                "address": "CBDB5C",
+                "value": "0.025"
+            },
+            {
+                "address": "CBDB60",
+                "value": "-0.05"
+            },
+            {
+                "address": "CBDB64",
+                "value": "0.0"
+            },
+
+            {
+                "address": "CBDB68",
+                "value": "0.05"
+            },
+            {
+                "address": "CBDB6C",
+                "value": "0.05"
+            },
+            {
+                "address": "CBDB70",
+                "value": "-0.05"
+            },
+
+            
+            {
+                "address": "CBDB74",
+                "value": "20.0"
+            }
+        ]
+    },
+    {
+        "id": "softengine-collision-type-4-disable",
+        "action": "inject",
+        "mode": "multiple",
+        "injects": [
+            {
+                "address": "CBDB2C",
+                "value": "0.0"
+            },
+            {
+                "address": "CBDB30",
+                "value": "0.0"
+            },
+            {
+                "address": "CBDB34",
+                "value": "0.0"
+            },
+
+            {
+                "address": "CBDB38",
+                "value": "0.0"
+            },
+            {
+                "address": "CBDB3C",
+                "value": "0.0"
+            },
+            {
+                "address": "CBDB40",
+                "value": "0.0"
+            },
+
+            {
+                "address": "CBDB44",
+                "value": "0.0"
+            },
+            {
+                "address": "CBDB48",
+                "value": "0.0"
+            },
+            {
+                "address": "CBDB4C",
+                "value": "0.0"
+            },
+
+            {
+                "address": "CBDB50",
+                "value": "0.0"
+            },
+            {
+                "address": "CBDB54",
+                "value": "0.0"
+            },
+            {
+                "address": "CBDB58",
+                "value": "0.0"
+            },
+
+            {
+                "address": "CBDB5C",
+                "value": "0.0"
+            },
+            {
+                "address": "CBDB60",
+                "value": "0.0"
+            },
+            {
+                "address": "CBDB64",
+                "value": "0.0"
+            },
+
+            {
+                "address": "CBDB68",
+                "value": "0.0"
+            },
+            {
+                "address": "CBDB6C",
+                "value": "0.0"
+            },
+            {
+                "address": "CBDB70",
+                "value": "0.0"
+            },
+
+            
+            {
+                "address": "CBDB74",
+                "value": "32.0"
+            }
+        ]
+    },
+    {
+        "id": "softengine-nodecp-enable",
+        "action": "inject-pointer",
+        "mode": "multiple",
+        "injects": [
+            {
+                "address": "02066D20",
+                "offsets": ["B18","5C","8C","60","80","4C","78"],
+                "value": "1.0"
+            },
+            {
+                "address": "02066D20",
+                "offsets": ["B18","5C","8C","60","80","4C","7C"],
+                "value": "1.0"
+            },
+            {
+                "address": "02066D20",
+                "offsets": ["B18","5C","8C","60","80","4C","80"],
+                "value": "1.0"
+            },
+            {
+                "address": "02066D20",
+                "offsets": ["B18","5C","8C","60","80","4C","84"],
+                "value": "1.0"
+            },
+            {
+                "address": "02066D20",
+                "offsets": ["B18","5C","8C","60","80","4C","88"],
+                "value": "1.0"
+            },
+            {
+                "address": "02066D20",
+                "offsets": ["B18","5C","8C","60","80","4C","74"],
+                "value": "0.6"
+            },
+
+            {
+                "address": "02066D20",
+                "offsets": ["B18","5C","8C","60","80","4C","1C0"],
+                "value": "1.0"
+            },
+            {
+                "address": "02066D20",
+                "offsets": ["B18","5C","8C","60","80","4C","1C4"],
+                "value": "1.0"
+            },
+            {
+                "address": "02066D20",
+                "offsets": ["B18","5C","8C","60","80","4C","1C8"],
+                "value": "1.0"
+            },
+            {
+                "address": "02066D20",
+                "offsets": ["B18","5C","8C","60","80","4C","1CC"],
+                "value": "1.0"
+            },
+            {
+                "address": "02066D20",
+                "offsets": ["B18","5C","8C","60","80","4C","1D0"],
+                "value": "1.0"
+            },
+            {
+                "address": "02066D20",
+                "offsets": ["B18","5C","8C","60","80","4C","1BC"],
+                "value": "0.6"
+            }
+        ]
+    },
+    {
+        "id": "softengine-nodecp-disable",
+        "action": "inject-pointer",
+        "mode": "multiple",
+        "injects": [
+            {
+                "address": "02066D20",
+                "offsets": ["B18","5C","8C","60","80","4C","78"],
+                "value": "0.5"
+            },
+            {
+                "address": "02066D20",
+                "offsets": ["B18","5C","8C","60","80","4C","7C"],
+                "value": "0.5"
+            },
+            {
+                "address": "02066D20",
+                "offsets": ["B18","5C","8C","60","80","4C","80"],
+                "value": "0.5"
+            },
+            {
+                "address": "02066D20",
+                "offsets": ["B18","5C","8C","60","80","4C","84"],
+                "value": "0.5"
+            },
+            {
+                "address": "02066D20",
+                "offsets": ["B18","5C","8C","60","80","4C","88"],
+                "value": "0.5"
+            },
+            {
+                "address": "02066D20",
+                "offsets": ["B18","5C","8C","60","80","4C","74"],
+                "value": "0.3"
+            },
+
+            {
+                "address": "02066D20",
+                "offsets": ["B18","5C","8C","60","80","4C","1C0"],
+                "value": "0.5"
+            },
+            {
+                "address": "02066D20",
+                "offsets": ["B18","5C","8C","60","80","4C","1C4"],
+                "value": "0.5"
+            },
+            {
+                "address": "02066D20",
+                "offsets": ["B18","5C","8C","60","80","4C","1C8"],
+                "value": "0.5"
+            },
+            {
+                "address": "02066D20",
+                "offsets": ["B18","5C","8C","60","80","4C","1CC"],
+                "value": "0.5"
+            },
+            {
+                "address": "02066D20",
+                "offsets": ["B18","5C","8C","60","80","4C","1D0"],
+                "value": "0.5"
+            },
+            {
+                "address": "02066D20",
+                "offsets": ["B18","5C","8C","60","80","4C","1BC"],
+                "value": "0.3"
+            }
+        ]
     }
 ]

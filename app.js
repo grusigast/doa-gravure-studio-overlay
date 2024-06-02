@@ -426,7 +426,7 @@ ipcMain.on('action', (event, id) => {
 
       if (action.mode == 'multiple') {
         action.injects.forEach(element => {
-          handleMemoryInjectPointer(element.address, element.offset, element.value)
+          handleMemoryInjectPointer(element.address, element.offset, element.value, element.offsets)
         });
       }
     } else {
@@ -487,7 +487,7 @@ ipcMain.on('value', (event, value, id) => {
       var relativeValue = min + ((parseFloat(value)/100) * parseFloat(tot))
 
       if (action.action == 'inject-pointer') {
-        handleMemoryInjectPointer(action.address, action.offset, relativeValue.toFixed(2))
+        handleMemoryInjectPointer(action.address, action.offset, relativeValue.toFixed(2), action.offsets)
       } else if (action.action == 'inject') {
         handleMemoryInject(action.address, relativeValue.toFixed(2))
       } else {
@@ -544,7 +544,7 @@ function handleMemoryInject(injectAddress, value) {
 
 }
 
-function handleMemoryInjectPointer(injectAddress, offset, value) {
+function handleMemoryInjectPointer(injectAddress, offset, value, offsets) {
   try
   {
     if (value) {
@@ -553,8 +553,21 @@ function handleMemoryInjectPointer(injectAddress, offset, value) {
 
       var baseAddress = processObject.modBaseAddr
       var ptrAddress = baseAddress + parseInt(injectAddress, 16) 
-      var actualAddress = memoryjs.readMemory(processObject.handle, ptrAddress, memoryjs.DWORD) + parseInt(offset, 16)
-      logger.info('Injecting data: ' + value + ' to pointer address: ' + injectAddress + ' with offset: ' + offset + '  Resulting address: ' + actualAddress) 
+      var actualAddress
+
+      if (offsets) {
+        actualAddress = memoryjs.readMemory(processObject.handle, ptrAddress, memoryjs.DWORD)
+        for (var i = 0; i < offsets.length - 1; i++) {
+          var offset = offsets[i]
+          increasedPtr = actualAddress + parseInt(offset, 16)
+          actualAddress = memoryjs.readMemory(processObject.handle, increasedPtr, memoryjs.DWORD)
+        }
+        actualAddress = actualAddress + + parseInt(offsets[offsets.length - 1], 16)
+        logger.info('Injecting data: ' + value + ' to pointer address: ' + injectAddress + ' with multiple offsets: [' + offsets + ']  Resulting address: ' + actualAddress.toString(16).toUpperCase()) 
+      } else {
+        actualAddress = memoryjs.readMemory(processObject.handle, ptrAddress, memoryjs.DWORD) + parseInt(offset, 16)
+        logger.info('Injecting data: ' + value + ' to pointer address: ' + injectAddress + ' with offset: ' + offset + '  Resulting address: ' + actualAddress.toString(16).toUpperCase()) 
+      }
 
       memoryjs.writeMemory(processObject.handle, actualAddress, parseFloat(value), memoryjs.FLOAT)
       memoryjs.closeProcess(processObject.handle)
