@@ -25,22 +25,7 @@ app.whenReady().then(() => {
   loadData()
   createOverlay()
   createTray()
-
-  videoTest()
-
-
 })
-
-async function videoTest() {
-  await desktopCapturer.getSources({types: ['window']}).then(async sources => {
-    for (const source of sources) {
-      if (source.name === conf.windowTitle) {
-        mainWindow.webContents.send('SET_SOURCE', source.id)
-        return
-      }
-    }
-  })
-}
 
 app.on('window-all-closed', function () {
   app.releaseSingleInstanceLock()
@@ -531,6 +516,20 @@ ipcMain.on('value', (event, value, id) => {
   }
 })
 
+// Handle videosource event.
+ipcMain.handle('videosource', async (event, ...args) => {
+  logger.info('Getting window source...')
+  const result = await desktopCapturer.getSources({types: ['window']}).then(sources => {
+    for (const source of sources) {
+      if (source.name === conf.windowTitle) {
+        return source.id
+      }
+    }
+    logger.error('Did not find any source window matching configuration to record!')
+    return null
+  })
+  return result
+})
 
 function setAutolinkFolder(value)
 {

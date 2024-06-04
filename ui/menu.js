@@ -8,7 +8,7 @@ const overlayModal = new bootstrap.Modal('#overlayModal', {backdrop: 'false' })
 var tooltipList = []
 var dropdownList = []
 
-let mediaRecorder
+var mediaRecorder
 var recordedChunks = []
 
 window.onload = function() {
@@ -79,48 +79,51 @@ ipcRenderer.on('button-pressed', (e, status) => {
 });
 
 
-ipcRenderer.on('SET_SOURCE', async (event, sourceId) => {
-  console.log('SET SOURCE: ' + sourceId)
+async function toggleRecord(recordBtn) {
 
-  try {
-    const stream = await navigator.mediaDevices.getUserMedia({
-      audio: false,
-      video: {
-        mandatory: {
-          chromeMediaSource: 'desktop',
-          chromeMediaSourceId: sourceId,
-          minWidth: 1280,
-          maxWidth: 1280,
-          minHeight: 720,
-          maxHeight: 720
-        }
-      }
-    })
-
-    console.log(stream)
-
-    const options = { mimeType: 'video/webm; codecs=vp9' };
-    mediaRecorder = new MediaRecorder(stream, options);
-    mediaRecorder.ondataavailable = (e) => recordedChunks.push(e.data);
-    mediaRecorder.onstop = stopRecording;
-
-  } catch (e) {
-    console.log(e)
-  }
-})
-
-function toggleRecord(recordBtn) {
-  if (mediaRecorder.state == 'inactive') {
-    console.log('Started recording...')
-    recordedChunks = []
-    mediaRecorder.start(0)
-    
-    $(recordBtn).html('<i class="bi bi-record-fill text-danger blink"></i>')
-  } else {
+  // Check if recording is in progress.
+  if (mediaRecorder && mediaRecorder.state == 'recording') {
     console.log('Stopped recording!')
     mediaRecorder.stop()
-
     $(recordBtn).html('<i class="bi bi-record"></i>')
+  } else {
+    const sourceId = await ipcRenderer.invoke('videosource')
+    if (!sourceId) {
+      console.log('No video source!')
+      mediaStream = null
+      recordedChunks = []
+      $('#recordBtn')
+        .html('<i class="bi bi-exclamation-triangle-fill"></i>')
+        .attr('data-bs-title', 'Unable to find a recordable source window.')
+    } else {
+      console.log(sourceId)
+
+      let stream = await navigator.mediaDevices.getUserMedia({
+        audio: {
+          mandatory: {
+            chromeMediaSource: 'desktop',
+            chromeMediaSourceId: sourceId
+          }
+        },
+        video: {
+          mandatory: {
+            chromeMediaSource: 'desktop',
+            chromeMediaSourceId: sourceId
+          }
+        }
+      })
+      const options = { mimeType: 'video/webm; codecs=vp9' };
+      mediaRecorder = new MediaRecorder(stream, options);
+      mediaRecorder.ondataavailable = (e) => recordedChunks.push(e.data);
+      mediaRecorder.onstop = stopRecording;
+
+      console.log('Started recording...')
+      recordedChunks = []
+      mediaRecorder.start(0)
+
+      $(recordBtn).html('<i class="bi bi-record-fill text-danger blink"></i>')
+
+    }
   }
 }
 
@@ -130,11 +133,7 @@ async function stopRecording(e) {
   });
 
   const buffer = Buffer.from(await blob.arrayBuffer());
-
   var filePath = Date.now() + '.webm';
-
-  console.log(filePath);
-
   writeFile(filePath, buffer, () => console.log('Video saved successfully!'));
 }
 
