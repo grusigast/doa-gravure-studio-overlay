@@ -618,7 +618,17 @@ function handleKeyPress(keys, mode, globalDelay, startDelay, restoreAfterCustomF
       })
   } else if (mode == 'combination') {
     sendkeys.sendCombination(keys.split('+'))
-      .then((out, err) => handleKeyPressCallback(out, err, restoreAfterCustomFolder))
+      .then((out, err) => {
+
+        if (conf.keyStuckFix) {
+          logger.info('Applying stuck key workaround...')
+          sendkeys.startBatch()
+          keys.split('+').forEach((key) => sendkeys.batchTypeKey(key, 100, sendkeys.BATCH_EVENT_KEY_UP))
+          sendkeys.sendBatch()
+        }
+
+        handleKeyPressCallback(out, err, restoreAfterCustomFolder)
+      })
       .catch((error) => {
         logger.error('Something went really bad when sending key press: ' + error)
         mainWindow.webContents.send('button-pressed', false)

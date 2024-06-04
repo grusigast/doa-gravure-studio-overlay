@@ -50,7 +50,8 @@ Configuration is done in the conf.json file. Available options:
     "theme": "dark",                  // Overlay theme, "dark" or "light".
     "logToFile": false,               // Enable or disable logging to file overlay.log.
     "position": "left",               // Overlay position; "left", "middle" or "right".
-    "screenshotLocation": "./screenshots/"  // Location where screenshots will be stored.
+    "screenshotLocation": "./screenshots/",  // Location where screenshots will be stored.
+    "keyStuckFix": true               // Set to true to attempt to fix F1-F12 keys being stuck after selecting scene.
 }
 ```
 
