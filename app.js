@@ -531,6 +531,42 @@ ipcMain.handle('videosource', async (event, ...args) => {
   return result
 })
 
+ipcMain.handle('recorderOptions', async (event, ...args) => {
+  var options = conf.mediaRecorderOptions
+  options.location = conf.recordingLocation
+  return options
+})
+
+ipcMain.handle('saveRecording', async (event, ...args) => {
+  try {
+    var recordingLocation = conf.recordingLocation
+    if (!path.isAbsolute(conf.recordingLocation))
+    {
+      // Construct absolute recording location from relative path.
+      if (process.env.INIT_CWD) {
+        recordingLocation = path.join(process.env.INIT_CWD, conf.recordingLocation)
+      } else if (process.env.PORTABLE_EXECUTABLE_FILE) {
+        recordingLocation = path.join(path.dirname(process.env.PORTABLE_EXECUTABLE_FILE), conf.recordingLocation)
+      }
+    }
+
+    // Create dir if it does not exist.
+    if (!fs.existsSync(recordingLocation)) {
+      fs.mkdirSync(recordingLocation)
+    }
+
+    var recordingPath = path.join(conf.recordingLocation, new Date().getTime() + '.' + conf.mediaRecorderOptions.fileType)
+    logger.info('Saving recording to ' + recordingPath + '...')
+  
+    fs.writeFileSync(recordingPath, args[0]);
+  
+    return true
+  } catch (error) {
+    logger.error('Unable to save recording: ' + error)
+    return false
+  }
+})
+
 function setAutolinkFolder(value)
 {
   var processObject = memoryjs.openProcess(conf.processName)

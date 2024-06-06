@@ -80,61 +80,73 @@ ipcRenderer.on('button-pressed', (e, status) => {
 
 
 async function toggleRecord(recordBtn) {
-
-  // Check if recording is in progress.
-  if (mediaRecorder && mediaRecorder.state == 'recording') {
-    console.log('Stopped recording!')
-    mediaRecorder.stop()
-    $(recordBtn).html('<i class="bi bi-record"></i>')
-  } else {
-    const sourceId = await ipcRenderer.invoke('videosource')
-    if (!sourceId) {
-      console.log('No video source!')
-      mediaStream = null
-      recordedChunks = []
-      $('#recordBtn')
-        .html('<i class="bi bi-exclamation-triangle-fill"></i>')
-        .attr('data-bs-title', 'Unable to find a recordable source window.')
+  try {
+    // Check if recording is in progress.
+    if (mediaRecorder && mediaRecorder.state == 'recording') {
+      console.log('Stopped recording!')
+      mediaRecorder.stop()
+      $(recordBtn)
+        .html('<i class="bi bi-record"></i>')
+        .attr('data-bs-original-title', 'Start recording')
     } else {
-      console.log(sourceId)
+      // Get window source id.
+      const sourceId = await ipcRenderer.invoke('videosource')
 
-      let stream = await navigator.mediaDevices.getUserMedia({
-        audio: {
-          mandatory: {
-            chromeMediaSource: 'desktop',
-            chromeMediaSourceId: sourceId
+      // Show warning if no source found
+      if (!sourceId) {
+        mediaStream = null
+        recordedChunks = []
+        $(recordBtn).html('<i class="bi bi-exclamation-triangle-fill"></i>')
+        bootstrap.Tooltip.getInstance('#recordBtn').setContent({'.tooltip-inner': 'Unable to find a recordable source window!'})
+      } else {
+        const recorderOptions = await ipcRenderer.invoke('recorderOptions')
+        let stream = await navigator.mediaDevices.getUserMedia({
+          audio: {
+            mandatory: {
+              chromeMediaSource: 'desktop',
+              chromeMediaSourceId: sourceId
+            }
+          },
+          video: {
+            mandatory: {
+              chromeMediaSource: 'desktop',
+              chromeMediaSourceId: sourceId
+            }
           }
-        },
-        video: {
-          mandatory: {
-            chromeMediaSource: 'desktop',
-            chromeMediaSourceId: sourceId
-          }
-        }
-      })
-      const options = { mimeType: 'video/webm; codecs=vp9' };
-      mediaRecorder = new MediaRecorder(stream, options);
-      mediaRecorder.ondataavailable = (e) => recordedChunks.push(e.data);
-      mediaRecorder.onstop = stopRecording;
+        })
 
-      console.log('Started recording...')
-      recordedChunks = []
-      mediaRecorder.start(0)
+        // Setup recorder
+        mediaRecorder = new MediaRecorder(stream, recorderOptions);
+        mediaRecorder.ondataavailable = (e) => recordedChunks.push(e.data);
+        mediaRecorder.onstop = (e) => stopRecording(e, recorderOptions);
 
-      $(recordBtn).html('<i class="bi bi-record-fill text-danger blink"></i>')
-
+        // Start recorder and update button icon.
+        recordedChunks = []
+        mediaRecorder.start(0)
+        $(recordBtn).html('<i class="bi bi-record-fill text-danger blink"></i>')
+        bootstrap.Tooltip.getInstance('#recordBtn').setContent({'.tooltip-inner': 'Stop recording'})
+      }
     }
+  } catch (error) {
+    console.log('Error initializing recording: ' + error)
+    $(recordBtn).html('<i class="bi bi-exclamation-triangle-fill"></i>')
+    bootstrap.Tooltip.getInstance('#recordBtn').setContent({'.tooltip-inner': 'Unable to initialize recording, check DevTools log'})
   }
 }
 
-async function stopRecording(e) {
+async function stopRecording(e, recorderOptions) {
   const blob = new Blob(recordedChunks, {
-    type: 'video/webm; codecs=vp9'
+    type: recorderOptions.mimeType
   });
 
   const buffer = Buffer.from(await blob.arrayBuffer());
-  var filePath = Date.now() + '.webm';
-  writeFile(filePath, buffer, () => console.log('Video saved successfully!'));
+  const saveFile = await ipcRenderer.invoke('saveRecording', buffer)
+  if (!saveFile) {
+    $(recordBtn).html('<i class="bi bi-exclamation-triangle-fill"></i>')
+    bootstrap.Tooltip.getInstance('#recordBtn').setContent({'.tooltip-inner': 'Unable to store recording, check logs'})
+  } else {
+    bootstrap.Tooltip.getInstance('#recordBtn').setContent({'.tooltip-inner': 'Start recording'})
+  }
 }
 
 function sendKeypress(element, keys, mode, customFolder)
