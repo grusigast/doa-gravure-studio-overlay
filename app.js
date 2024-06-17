@@ -300,6 +300,7 @@ function enableOverlay(show)
 }
 
 function loadConf() {
+  try {
     // Construct conf file path
     if (process.env.INIT_CWD) {
       confPath = path.join(process.env.INIT_CWD, 'conf.json')
@@ -320,6 +321,10 @@ function loadConf() {
       conf.screenshotLocation = "./screenshots/"
       fs.writeFileSync(confPath, JSON.stringify(conf, null, 2))
     }
+  } catch (err) {
+    dialog.showErrorBox('Invalid conf.json!', 'There seems to be some issue with the conf.json: \n' + err + '\n\nPlease make sure its valid JSON format and try again.');
+    app.exit()
+  }
 }
 
 function loadData() {
