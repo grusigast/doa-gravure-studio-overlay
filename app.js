@@ -555,7 +555,7 @@ ipcMain.handle('saveRecording', async (event, ...args) => {
       fs.mkdirSync(recordingLocation)
     }
 
-    var recordingPath = path.join(conf.recordingLocation, new Date().getTime() + '.' + conf.mediaRecorderOptions.fileType)
+    var recordingPath = path.join(recordingLocation, new Date().getTime() + '.' + conf.mediaRecorderOptions.fileType)
     logger.info('Saving recording to ' + recordingPath + '...')
   
     fs.writeFileSync(recordingPath, args[0]);
