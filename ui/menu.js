@@ -1,4 +1,5 @@
-const ipcRenderer = require('electron').ipcRenderer;
+const { ipcRenderer } = require('electron')
+const { writeFile } = require('fs')
 const bootstrap = require('bootstrap')
 const $ = require('jquery')
 
@@ -7,6 +8,8 @@ const overlayModal = new bootstrap.Modal('#overlayModal', {backdrop: 'false' })
 var tooltipList = []
 var dropdownList = []
 
+var mediaRecorder
+var recordedChunks = []
 
 window.onload = function() {
   const modal = document.getElementById('overlayModal')
@@ -74,6 +77,77 @@ ipcRenderer.on('button-pressed', (e, status) => {
   console.log('button-pressed: ' + status)
   $('.spinner-border').remove()
 });
+
+
+async function toggleRecord(recordBtn) {
+  try {
+    // Check if recording is in progress.
+    if (mediaRecorder && mediaRecorder.state == 'recording') {
+      console.log('Stopped recording!')
+      mediaRecorder.stop()
+      $(recordBtn)
+        .html('<i class="bi bi-record"></i>')
+        .attr('data-bs-original-title', 'Start recording')
+    } else {
+      // Get window source id.
+      const sourceId = await ipcRenderer.invoke('videosource')
+
+      // Show warning if no source found
+      if (!sourceId) {
+        mediaStream = null
+        recordedChunks = []
+        $(recordBtn).html('<i class="bi bi-exclamation-triangle-fill"></i>')
+        bootstrap.Tooltip.getInstance('#recordBtn').setContent({'.tooltip-inner': 'Unable to find a recordable source window!'})
+      } else {
+        const recorderOptions = await ipcRenderer.invoke('recorderOptions')
+        let stream = await navigator.mediaDevices.getUserMedia({
+          audio: {
+            mandatory: {
+              chromeMediaSource: 'desktop',
+              chromeMediaSourceId: sourceId
+            }
+          },
+          video: {
+            mandatory: {
+              chromeMediaSource: 'desktop',
+              chromeMediaSourceId: sourceId
+            }
+          }
+        })
+
+        // Setup recorder
+        mediaRecorder = new MediaRecorder(stream, recorderOptions);
+        mediaRecorder.ondataavailable = (e) => recordedChunks.push(e.data);
+        mediaRecorder.onstop = (e) => stopRecording(e, recorderOptions);
+
+        // Start recorder and update button icon.
+        recordedChunks = []
+        mediaRecorder.start(0)
+        $(recordBtn).html('<i class="bi bi-record-fill text-danger blink"></i>')
+        bootstrap.Tooltip.getInstance('#recordBtn').setContent({'.tooltip-inner': 'Stop recording'})
+      }
+    }
+  } catch (error) {
+    console.log('Error initializing recording: ' + error)
+    $(recordBtn).html('<i class="bi bi-exclamation-triangle-fill"></i>')
+    bootstrap.Tooltip.getInstance('#recordBtn').setContent({'.tooltip-inner': 'Unable to initialize recording, check DevTools log'})
+  }
+}
+
+async function stopRecording(e, recorderOptions) {
+  const blob = new Blob(recordedChunks, {
+    type: recorderOptions.mimeType
+  });
+
+  const buffer = Buffer.from(await blob.arrayBuffer());
+  const saveFile = await ipcRenderer.invoke('saveRecording', buffer)
+  if (!saveFile) {
+    $(recordBtn).html('<i class="bi bi-exclamation-triangle-fill"></i>')
+    bootstrap.Tooltip.getInstance('#recordBtn').setContent({'.tooltip-inner': 'Unable to store recording, check logs'})
+  } else {
+    bootstrap.Tooltip.getInstance('#recordBtn').setContent({'.tooltip-inner': 'Start recording'})
+  }
+}
 
 function sendKeypress(element, keys, mode, customFolder)
 {

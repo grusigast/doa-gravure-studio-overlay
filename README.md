@@ -51,7 +51,17 @@ Configuration is done in the conf.json file. Available options:
     "logToFile": false,               // Enable or disable logging to file overlay.log.
     "position": "left",               // Overlay position; "left", "middle" or "right".
     "screenshotLocation": "./screenshots/",  // Location where screenshots will be stored.
-    "keyStuckFix": true               // Set to true to attempt to fix F1-F12 keys being stuck after selecting scene.
+    "recordingLocation": "./recordings/",    // Location where recorded videos will be stored.
+    "keyStuckFix": true,              // Set to true to attempt to fix F1-F12 keys being stuck after selecting scene.
+
+    // Video recording uses MediaRecorder: https://developer.mozilla.org/en-US/docs/Web/API/MediaRecorder
+    // Supported mimeTypes in Chrome seems a bit limited 
+    "mediaRecorderOptions": {
+        "audioBitsPerSecond": 128000,
+        "videoBitsPerSecond": 50000000,
+        "mimeType": "video/x-matroska;codecs=h264",
+        "fileType": "mp4"
+    },
 }
 ```
 

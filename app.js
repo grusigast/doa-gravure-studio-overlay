@@ -1,5 +1,5 @@
 require('v8-compile-cache')
-const {app, BrowserWindow, globalShortcut, ipcMain, Tray, Menu, nativeImage, dialog, shell } = require('electron')
+const {app, BrowserWindow, globalShortcut, ipcMain, Tray, Menu, nativeImage, dialog, shell, desktopCapturer } = require('electron')
 const { OverlayController } = require('electron-overlay-window')
 const sendkeys = require('node-key-sender')
 const ejse = require('ejs-electron')
@@ -14,6 +14,7 @@ const currentVersion = process.env.npm_package_version || app.getVersion()
 var mainWindow, tray
 var confPath, conf, scenes, actions, softengine
 var isInteractable = true
+var screenRecorder
 
 app.whenReady().then(() => {
   loadConf()
@@ -515,6 +516,56 @@ ipcMain.on('value', (event, value, id) => {
   }
 })
 
+// Handle videosource event.
+ipcMain.handle('videosource', async (event, ...args) => {
+  logger.info('Getting window source...')
+  const result = await desktopCapturer.getSources({types: ['window']}).then(sources => {
+    for (const source of sources) {
+      if (source.name === conf.windowTitle) {
+        return source.id
+      }
+    }
+    logger.error('Did not find any source window matching configuration to record!')
+    return null
+  })
+  return result
+})
+
+ipcMain.handle('recorderOptions', async (event, ...args) => {
+  var options = conf.mediaRecorderOptions
+  options.location = conf.recordingLocation
+  return options
+})
+
+ipcMain.handle('saveRecording', async (event, ...args) => {
+  try {
+    var recordingLocation = conf.recordingLocation
+    if (!path.isAbsolute(conf.recordingLocation))
+    {
+      // Construct absolute recording location from relative path.
+      if (process.env.INIT_CWD) {
+        recordingLocation = path.join(process.env.INIT_CWD, conf.recordingLocation)
+      } else if (process.env.PORTABLE_EXECUTABLE_FILE) {
+        recordingLocation = path.join(path.dirname(process.env.PORTABLE_EXECUTABLE_FILE), conf.recordingLocation)
+      }
+    }
+
+    // Create dir if it does not exist.
+    if (!fs.existsSync(recordingLocation)) {
+      fs.mkdirSync(recordingLocation)
+    }
+
+    var recordingPath = path.join(recordingLocation, new Date().getTime() + '.' + conf.mediaRecorderOptions.fileType)
+    logger.info('Saving recording to ' + recordingPath + '...')
+  
+    fs.writeFileSync(recordingPath, args[0]);
+  
+    return true
+  } catch (error) {
+    logger.error('Unable to save recording: ' + error)
+    return false
+  }
+})
 
 function setAutolinkFolder(value)
 {

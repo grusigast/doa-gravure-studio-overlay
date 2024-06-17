@@ -288,6 +288,9 @@
               <button type="button" class="btn btn-outline-secondary" onclick="sendSpecialAction('screenshot')">
                 <i class="bi bi-camera"></i>
               </button>
+              <button type="button" id="recordBtn" class="btn btn-outline-secondary" onclick="toggleRecord(this)" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Start recording">
+                <i class="bi bi-record"></i>
+              </button>
               <div class="btn-group" role="group">
                 <button id="game-speed-button" type="button" class="btn btn-outline-secondary dropdown-toggle"  data-bs-auto-close="true" onclick="toggleDropDown(this)">
                   <i class="bi bi-speedometer"></i>
@@ -314,7 +317,7 @@
 
             <div data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Toggle SoftEngine">
               <input type="checkbox" class="btn-check" id="btn-check-outlined" autocomplete="off" onchange="toggleSoftEngine(this)">
-              <label class="btn btn-outline-success" for="btn-check-outlined"><i class="bi bi-magic"></i> SoftEngine</label><br>
+              <label class="btn btn-outline-success" for="btn-check-outlined"><i class="bi bi-magic"></i></label><br>
             </div>
           </div>
         </div>
