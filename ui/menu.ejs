@@ -55,7 +55,7 @@
           </div>
           <div class="modal-body tab-content">
             <div class="tab-pane fade active show" id="defaultContent" role="tabpanel" tabindex="0">
-              <img class="menuImage rounded img-fluid" src="./img/doa-gravure-studio-logo.png" class="card-img-top">
+              <img class="menuImage rounded img-fluid card-img-top" src="./img/doa-gravure-studio-logo.png">
             </div>
 
             <!-- Scenes -->
@@ -79,7 +79,7 @@
                       </button>
                     </h2>
                     <div id="flush-collapse-<%= scenes[i].id %>" class="accordion-collapse collapse" data-bs-parent="#scenesAccordion">
-                      <img class="menuImage rounded img-fluid" src="./img/doa-gravure-studio-logo.png" class="card-img-top">
+                      <img class="menuImage rounded img-fluid card-img-top" src="./img/doa-gravure-studio-logo.png">
                       <% for(var j=0; j < scenes[i].scenes.length; j++) { %>
                         <button class="btn btn-outline-secondary btn-sm scene-button"
                             onmouseover="setImage('<%= scenes[i].scenes[j].data %>', '<%= scenes[i].scenes[j].thumbnail %>')"
@@ -114,11 +114,12 @@
                       </button>
                     </h2>
                     <div id="pose-flush-collapse-<%= poses[i].id %>" class="accordion-collapse collapse" data-bs-parent="#posesAccordion">
-                      <img class="menuImage rounded img-fluid" src="./img/doa-gravure-studio-logo.png" class="card-img-top">
+                      
                       <% for(var j=0; j < poses[i].scenes.length; j++) { %>
                         <button class="btn btn-outline-secondary btn-sm pose-button"
-                            onmouseover="setImage('<%= poses[i].scenes[j].data %>', '<%= poses[i].scenes[j].thumbnail %>')"
-                            onclick="sendKeypress(this, '<%= poses[i].scenes[j].data %>', '<%= poses[i].scenes[j].mode %>', '<%= poses[i].scenes[j].customfolder %>')">
+                            
+                            onclick="sendKeypress(this, '<%= poses[i].scenes[j].data %>', '<%= poses[i].scenes[j].mode %>', '<%= poses[i].scenes[j].customfolder %>')"
+                            data-bs-toggle="tooltip" data-bs-title="<img class='menuImage rounded img-fluid card-img-top' src='./img/doa-gravure-studio-logo.png'>" data-bs-placement="top">
                           <%= poses[i].scenes[j].name %>
                         </button>
                       <% } %>

@@ -32,7 +32,7 @@ window.onload = function() {
 
   // Enable tooltips and dropdowns
   const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-  tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+  tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl, { html: true }))
 
   const dropdownElementList = document.querySelectorAll('.dropdown-toggle')
   dropdownList = [...dropdownElementList].map(dropdownToggleEl =>
