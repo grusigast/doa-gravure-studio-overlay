@@ -8,3 +8,8 @@
 .modal-content {
     min-height: 100% !important;
 }
+
+#body {
+    background-color: white !important;
+    max-width: 1600px;
+}
