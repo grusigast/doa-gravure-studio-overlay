@@ -9,6 +9,7 @@ const path = require('path')
 const fs = require('fs')
 const logger = require('electron-log')
 const { listOpenWindows } = require('@josephuspaye/list-open-windows')
+const processWindows = require("node-process-windows")
 const currentVersion = process.env.npm_package_version || app.getVersion()
 
 var mainWindow, tray
@@ -150,7 +151,7 @@ function createTray () {
     { type: 'separator' },
     { id: 7, label: 'About Gravure Studio', click: async() => { showAboutDialog() }},
     { id: 8, label: 'Check for updates', click: async() => { checkUpdates() }},
-    { id: 9, label: 'Quit', click: async() => { mainWindow.webContents.closeDevTools(); app.quit() }}
+    { id: 9, label: 'Quit', click: async() => { mainWindow.webContents.closeDevTools(); mainWindow.destroy(); app.quit() }}
   ]))
 }
 
@@ -174,18 +175,41 @@ function reload() {
 function createOverlay (reload) {
   if (!reload) {
     // Create the browser window.
-    mainWindow = new BrowserWindow({
-      webPreferences: {
-        nodeIntegration: true,
-        contextIsolation: false
-      },
-      fullscreenable: true,
-      skipTaskbar: true,
-      frame: false,
-      show: false,
-      transparent: true,
-      resizable: true
-    })
+
+    if (conf.standalone) {
+      mainWindow = new BrowserWindow({
+        webPreferences: {
+          nodeIntegration: true,
+          contextIsolation: false
+        },
+        fullscreenable: false,
+        frame: true,
+        show: false,
+        transparent: false,
+        resizable: true,
+        center: true,
+        roundedCorners: true,
+        width: 520,
+        height: 600,
+        autoHideMenuBar: true,
+        maximizable: false,
+        title: 'DoA Gravure Studio Overlay',
+        icon: path.join('resources', 'icon.png')
+      })
+    } else {
+      mainWindow = new BrowserWindow({
+        webPreferences: {
+          nodeIntegration: true,
+          contextIsolation: false
+        },
+        fullscreenable: true,
+        skipTaskbar: true,
+        frame: false,
+        show: false,
+        transparent: true,
+        resizable: true
+      })
+    }
   }
 
   // Handle local thumbnails
@@ -211,11 +235,21 @@ function createOverlay (reload) {
 
   // Main window lost focus.
   mainWindow.on('blur', () => {
-    if (isInteractable) {
+    if (isInteractable && !conf.standalone) {
       logger.info('Electron window lost focus, hiding overlay.')
       disableOverlay(true)
     }
   }); 
+
+  // Main window closed.
+  mainWindow.on('close', (e)=> {
+    if (conf.standalone) {
+      e.preventDefault()
+
+      logger.info('Electron standalone window closed, hiding overlay.')
+      disableOverlay(true)
+    }
+  })
 
   // add data and load menu.ejs
   mainWindow.loadURL('file://' + __dirname + '/ui/menu.ejs')
@@ -223,14 +257,16 @@ function createOverlay (reload) {
   // Register overlay shortcut.
   globalShortcut.register(conf.toggleOverlay, () => toggleOverlay(true))
 
-  if (!reload) {
-    // Attach to process with configured windowTitle.
-    OverlayController.attachByTitle(mainWindow, conf.windowTitle)
-  }
-
   // Init the overlay
-  OverlayController.focusTarget()
-  mainWindow.setIgnoreMouseEvents(true)
+  if (!conf.standalone) {
+    if (!reload) {
+      // Attach to process with configured windowTitle.
+      OverlayController.attachByTitle(mainWindow, conf.windowTitle)
+    }
+
+    OverlayController.focusTarget()
+    mainWindow.setIgnoreMouseEvents(true)
+  }
   isInteractable = false
 }
 
@@ -270,33 +306,53 @@ function toggleOverlay(toggleVisibiliy) {
 
 function disableOverlay(hide)
 {
-  logger.info('Disabling overlay...')
-  OverlayController.focusTarget()
-  mainWindow.setIgnoreMouseEvents(true)
+  if (!conf.standalone)
+  {
+    logger.info('Disabling overlay...')
+    OverlayController.focusTarget()
+    mainWindow.setIgnoreMouseEvents(true)
 
-  if (hide) {
-    logger.info('Hiding overlay...')
-    mainWindow.webContents.send('set-visibility', false)
+    if (hide) {
+      logger.info('Hiding overlay...')
+      mainWindow.webContents.send('set-visibility', false)
+    }
+
+    isInteractable = false
+
+    // Workaround for arrow keys not functioning after overlay shown
+    sendkeys.sendKey('control').then(() => {})
+  } else {
+    if (hide) {
+      mainWindow.hide()
+    }
+    processWindows.focusWindow(conf.windowTitle)
+    isInteractable = false
   }
-
-  isInteractable = false
-
-  // Workaround for arrow keys not functioning after overlay shown
-  sendkeys.sendKey('control').then(() => {})
 }
 
 function enableOverlay(show)
 {
-  logger.info('Enabling overlay...')
-  mainWindow.setIgnoreMouseEvents(false)
+  if (!conf.standalone)
+  {
+    logger.info('Enabling overlay...')
+    mainWindow.setIgnoreMouseEvents(false)
 
-  if (show) {
-    logger.info('Showing overlay...')
-    mainWindow.webContents.send('set-visibility', true)
+    if (show) {
+      logger.info('Showing overlay...')
+      mainWindow.webContents.send('set-visibility', true)
+    }
+
+    isInteractable = true
+    OverlayController.activateOverlay()
+  } else {
+    if (show) {
+      mainWindow.show()
+      mainWindow.webContents.send('set-visibility', true)
+    }
+    
+    processWindows.focusWindow('DoA Gravure Studio Overlay')
+    isInteractable = true
   }
-
-  isInteractable = true
-  OverlayController.activateOverlay()
 }
 
 function loadConf() {

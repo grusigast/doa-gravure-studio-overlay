@@ -63,7 +63,7 @@ ipcRenderer.on('set-visibility', (e, visibility) => {
     overlayModal.show()
     document.body.style.display = null
 
-    $('.modal-dialog').draggable({
+    $('.standalone-false').draggable({
       handle: ".modal-content"
     });
     $('.spinner-border').remove()

@@ -7,5 +7,6 @@
     "theme": "light",
     "logToFile": false,
     "position": "left",
-    "screenshotLocation": "./screenshots/"
+    "screenshotLocation": "./screenshots/",
+    "standalone": false
 }
