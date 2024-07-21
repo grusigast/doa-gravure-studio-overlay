@@ -349,8 +349,6 @@ function enableOverlay(show)
       mainWindow.show()
       mainWindow.webContents.send('set-visibility', true)
     }
-    
-    processWindows.focusWindow('DoA Gravure Studio Overlay')
     isInteractable = true
   }
 }

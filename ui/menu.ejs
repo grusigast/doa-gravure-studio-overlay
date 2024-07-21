@@ -264,9 +264,11 @@
 
           <div class="modal-footer justify-content-between">
             <div class="btn-group" role="group">
-              <button type="button" class="btn btn-outline-secondary" onclick="toggleMiniMode()" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Toggle overlay mini mode">
-                <i id="miniModeIcon" class="bi bi-arrows-angle-contract"></i>
-              </button>
+              <% if(!conf.standalone) { %>
+                <button type="button" class="btn btn-outline-secondary" onclick="toggleMiniMode()" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Toggle overlay mini mode">
+                  <i id="miniModeIcon" class="bi bi-arrows-angle-contract"></i>
+                </button>
+              <% } %>
               <button type="button" class="btn btn-outline-secondary" onclick="sendAction('character-reload', this)" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Re-select character and start new scene">
                 <i class="bi bi-arrow-repeat"></i>
               </button>
@@ -290,9 +292,11 @@
               <button type="button" class="btn btn-outline-secondary" onclick="sendAction('pause', this)" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Pause scene playback">
                 <i class="bi bi-pause"></i>
               </button>
-              <button type="button" class="btn btn-outline-secondary" onclick="sendSpecialAction('screenshot')">
-                <i class="bi bi-camera"></i>
-              </button>
+              <% if(!conf.standalone) { %>
+                <button type="button" class="btn btn-outline-secondary" onclick="sendSpecialAction('screenshot')">
+                  <i class="bi bi-camera"></i>
+                </button>
+              <% } %>
               <button type="button" id="recordBtn" class="btn btn-outline-secondary" onclick="toggleRecord(this)" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Start recording">
                 <i class="bi bi-record"></i>
               </button>
