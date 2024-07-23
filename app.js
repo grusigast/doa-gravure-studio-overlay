@@ -9,7 +9,6 @@ const path = require('path')
 const fs = require('fs')
 const logger = require('electron-log')
 const { listOpenWindows } = require('@josephuspaye/list-open-windows')
-const processWindows = require("node-process-windows")
 const currentVersion = process.env.npm_package_version || app.getVersion()
 
 var mainWindow, tray
@@ -175,7 +174,6 @@ function reload() {
 function createOverlay (reload) {
   if (!reload) {
     // Create the browser window.
-
     if (conf.standalone) {
       mainWindow = new BrowserWindow({
         webPreferences: {
@@ -325,7 +323,18 @@ function disableOverlay(hide)
     if (hide) {
       mainWindow.hide()
     }
-    processWindows.focusWindow(conf.windowTitle)
+
+    sendkeys.setWindowFocus(conf.windowTitle)
+      .then((out, err) => {
+        if (err)
+          logger.error('Unable to change focus to target window: ' + error)
+
+        if (out)
+          logger.info('Changed window focus: ' + error)
+      })
+      .catch((error) => {
+        logger.error('Unable to change focus to target window: ' + error)
+      })
     isInteractable = false
   }
 }
