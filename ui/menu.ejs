@@ -5,13 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <link href="menu.css" type="text/css" rel="stylesheet">
+    <% if(conf.standalone) { %>
+      <link href="standalone.css" type="text/css" rel="stylesheet">
+    <% } %>
+
     <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="../node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
   </head>
-  <body id="body" style="display: none;">
+  <body id="body" class="standalone-display-<%= conf.standalone %>">
 
     <div id="overlayModal" class="modal fade" tabindex="-1" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-<%= conf.position %>" data-backdrop="false">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-<%= conf.position %> standalone-<%= conf.standalone %>" data-backdrop="false">
         <div class="modal-content">
           <div class="modal-header d-inline">
             <ul class="nav justify-content-center nav-underline nav-fill" role="tablist">
@@ -53,13 +57,14 @@
               <% } %>
             </ul>
           </div>
-          <div class="modal-body tab-content">
-            <div class="tab-pane fade active show" id="defaultContent" role="tabpanel" tabindex="0">
-              <img class="menuImage rounded img-fluid" src="./img/doa-gravure-studio-logo.png" class="card-img-top">
+          <div class="modal-body tab-content d-flex">
+            <!-- Logo -->
+            <div class="tab-pane fade active show align-middle align-self-center" id="defaultContent" role="tabpanel" tabindex="0">
+              <img class="menuImage rounded img-fluid " src="./img/doa-gravure-studio-logo.png" class="card-img-top">
             </div>
 
             <!-- Scenes -->
-            <div class="tab-pane fade" id="scenes" role="tabpanel" aria-labelledby="scenes-tab" tabindex="0">
+            <div class="tab-pane fade align-top flex-fill" id="scenes" role="tabpanel" aria-labelledby="scenes-tab" tabindex="0">
 
               <!-- Random scene select -->
               <div class="d-grid gap-2 col-6 mx-auto">
@@ -94,7 +99,7 @@
             </div>
 
             <!-- Poses -->
-            <div class="tab-pane fade" id="poses" role="tabpanel" aria-labelledby="poses-tab" tabindex="0">
+            <div class="tab-pane fade align-top flex-fill" id="poses" role="tabpanel" aria-labelledby="poses-tab" tabindex="0">
 
               <!-- Random pose select -->
               <div class="d-grid gap-2 col-6 mx-auto">
@@ -129,7 +134,7 @@
             </div>
 
             <!-- Character -->
-            <div class="tab-pane fade" id="character" role="tabpanel" aria-labelledby="character-tab" tabindex="0">
+            <div class="tab-pane fade align-top flex-fill" id="character" role="tabpanel" aria-labelledby="character-tab" tabindex="0">
               <div class="btn-group">
                 <button id="breast-motion-button" class="btn btn-outline-secondary btn-sm dropdown-toggle" data-bs-auto-close="true" type="button" onclick="toggleDropDown(this)">
                   <i class="bi bi-heart-pulse"></i> Breast motion
@@ -203,7 +208,7 @@
             </div>
 
             <!-- Camera-->
-            <div class="tab-pane fade" id="camera" role="tabpanel" aria-labelledby="camera-tab" tabindex="0">
+            <div class="tab-pane fade align-top flex-fill" id="camera" role="tabpanel" aria-labelledby="camera-tab" tabindex="0">
               <div class="input-group input-group-sm py-1">
                 <span class="input-group-text"><i class="bi bi-zoom-in px-1"></i> Zoom</span>
                 <input type="range" class="form-control form-range" oninput="sendRangeValue(this, 'camera-zoom')">
@@ -240,7 +245,7 @@
             </div>
 
             <!-- SoftEngine toggles -->
-            <div class="tab-pane" id="softengine" role="tabpanel" aria-labelledby="softengine-tab" tabindex="0">
+            <div class="tab-pane fade align-top flex-fill" id="softengine" role="tabpanel" aria-labelledby="softengine-tab" tabindex="0">
               <% for(var i=0; i < softengine.length; i++) { %>
                 <h6><%= softengine[i].category %></h6>
                 <% for(var j=0; j < softengine[i].toggles.length; j++) { %>
@@ -259,9 +264,11 @@
 
           <div class="modal-footer justify-content-between">
             <div class="btn-group" role="group">
-              <button type="button" class="btn btn-outline-secondary" onclick="toggleMiniMode()" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Toggle overlay mini mode">
-                <i id="miniModeIcon" class="bi bi-arrows-angle-contract"></i>
-              </button>
+              <% if(!conf.standalone) { %>
+                <button type="button" class="btn btn-outline-secondary" onclick="toggleMiniMode()" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Toggle overlay mini mode">
+                  <i id="miniModeIcon" class="bi bi-arrows-angle-contract"></i>
+                </button>
+              <% } %>
               <button type="button" class="btn btn-outline-secondary" onclick="sendAction('character-reload', this)" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Re-select character and start new scene">
                 <i class="bi bi-arrow-repeat"></i>
               </button>
@@ -285,9 +292,11 @@
               <button type="button" class="btn btn-outline-secondary" onclick="sendAction('pause', this)" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Pause scene playback">
                 <i class="bi bi-pause"></i>
               </button>
-              <button type="button" class="btn btn-outline-secondary" onclick="sendSpecialAction('screenshot')">
-                <i class="bi bi-camera"></i>
-              </button>
+              <% if(!conf.standalone) { %>
+                <button type="button" class="btn btn-outline-secondary" onclick="sendSpecialAction('screenshot')">
+                  <i class="bi bi-camera"></i>
+                </button>
+              <% } %>
               <button type="button" id="recordBtn" class="btn btn-outline-secondary" onclick="toggleRecord(this)" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Start recording">
                 <i class="bi bi-record"></i>
               </button>

@@ -43,6 +43,11 @@ window.onload = function() {
       }
     })
   )
+
+  // Show modal directly if standalone mode.
+  if ($('.standalone-mode-true').length > 0) {
+    overlayModal.show()
+  }
 };
 
 window.onclick = function(event)
@@ -61,9 +66,13 @@ ipcRenderer.on('set-visibility', (e, visibility) => {
   console.log('set-visibility: ' + visibility)
   if (visibility) {
     overlayModal.show()
-    document.body.style.display = null
 
-    $('.modal-dialog').draggable({
+    // Remove transparency if not in standalone mode.
+    if ($('.standalone-mode-false').length > 0) {
+      document.body.style.display = null
+    }
+
+    $('.standalone-false').draggable({
       handle: ".modal-content"
     });
     $('.spinner-border').remove()

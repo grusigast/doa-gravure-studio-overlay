@@ -53,6 +53,7 @@ Configuration is done in the conf.json file. Available options:
     "screenshotLocation": "./screenshots/",  // Location where screenshots will be stored.
     "recordingLocation": "./recordings/",    // Location where recorded videos will be stored.
     "keyStuckFix": true,              // Set to true to attempt to fix F1-F12 keys being stuck after selecting scene.
+    "standalone": false,              // Set to true to run the overlay in a standalone window instead of on top of the DoA window.
 
     // Video recording uses MediaRecorder: https://developer.mozilla.org/en-US/docs/Web/API/MediaRecorder
     // Supported mimeTypes in Chrome seems a bit limited 
