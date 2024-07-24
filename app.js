@@ -324,7 +324,7 @@ function disableOverlay(hide)
       mainWindow.hide()
     }
 
-    sendkeys.setWindowFocus(conf.windowTitle)
+    sendkeys.setWindowFocus('"' + conf.windowTitle + '"')
       .then((out, err) => {
         if (err)
           logger.error('Unable to change focus to target window: ' + error)
