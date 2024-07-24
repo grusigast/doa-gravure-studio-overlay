@@ -521,6 +521,9 @@ ipcMain.on('action', (event, id) => {
   } else {
     logger.error('Recieved unknown action id: ' + id)
   }
+
+  // Signal action handled to GUI.
+  mainWindow.webContents.send('button-pressed', true)
 })
 
 // Recieve Special action event.

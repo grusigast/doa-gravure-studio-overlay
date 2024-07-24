@@ -138,6 +138,38 @@
         "max": "2.0"
     },
     {
+        "id": "character-wet",
+        "action": "inject",
+        "address": "FD20B4",
+        "mode": "range",
+        "min": "10.0",
+        "max": "1000.0"
+    },
+    {
+        "id": "character-wet-set",
+        "action": "inject",
+        "mode": "multiple",
+        "injects": [
+            {
+                "address": "FD20A8",
+                "value": "8000.0"
+            },
+            {
+                "address": "FD20B0",
+                "value": "8000.0"
+            },
+            {
+                "address": "FD20AC",
+                "value": "8000.0"
+            },
+            {
+                "address": "FD20B4",
+                "value": "1000.0"
+            }
+        ]
+    },
+
+    {
         "id": "camera-x-pan",
         "action": "inject",
         "address": "FC716C",
