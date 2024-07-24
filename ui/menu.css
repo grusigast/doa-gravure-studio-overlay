@@ -87,3 +87,8 @@ button.accordion-button:focus{
         opacity: 0;
     }
 }
+
+.pose-buttons {
+    max-height: 100px;
+    overflow-y: scroll;
+}
