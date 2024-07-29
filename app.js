@@ -605,6 +605,8 @@ ipcMain.handle('videosource', async (event, ...args) => {
 ipcMain.handle('recorderOptions', async (event, ...args) => {
   var options = conf.mediaRecorderOptions
   options.location = conf.recordingLocation
+  options.audioBitsPerSecond = conf.audioKiloBitsPerSecond
+  options.videoBitsPerSecond = conf.videoKiloBitsPerSecond
   return options
 })
 

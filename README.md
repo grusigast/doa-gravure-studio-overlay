@@ -58,8 +58,8 @@ Configuration is done in the conf.json file. Available options:
     // Video recording uses MediaRecorder: https://developer.mozilla.org/en-US/docs/Web/API/MediaRecorder
     // Supported mimeTypes in Chrome seems a bit limited 
     "mediaRecorderOptions": {
-        "audioBitsPerSecond": 128000,
-        "videoBitsPerSecond": 50000000,
+        "audioKiloBitsPerSecond": 128,
+        "videoKiloBitsPerSecond": 25000,
         "mimeType": "video/x-matroska;codecs=h264",
         "fileType": "mp4"
     },
