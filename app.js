@@ -717,7 +717,11 @@ function handleMemoryInjectPointer(injectAddress, offset, value, offsets) {
   }
 }
 
-function handleKeyPress(keys, mode, globalDelay, startDelay, restoreAfterCustomFolder) {
+function sleep (time) {
+  return new Promise((resolve) => setTimeout(resolve, time));
+}
+
+async function handleKeyPress(keys, mode, globalDelay, startDelay, restoreAfterCustomFolder) {
   logger.info('Performing keypress: ' + keys + ' with mode: ' + mode)
 
   if (globalDelay) {
@@ -733,6 +737,11 @@ function handleKeyPress(keys, mode, globalDelay, startDelay, restoreAfterCustomF
   }
 
   toggleOverlay(false)
+  if (conf.standalone) {
+    // wait a bit in standalone mode until continuing with keypress.
+    await sleep(500)
+  }
+
   if (mode == 'press') {
     sendkeys
       .sendKey(keys).then(handleKeyPressCallback)
