@@ -11,6 +11,8 @@ const logger = require('electron-log')
 const { listOpenWindows } = require('@josephuspaye/list-open-windows')
 const currentVersion = process.env.npm_package_version || app.getVersion()
 
+const settingsHandler = require("./settings.js")
+
 var mainWindow, tray
 var confPath, conf, scenes, actions, softengine
 var isInteractable = true
@@ -143,19 +145,22 @@ function createTray () {
     { id: 1, label: 'Start DoA', click: async() => { shell.openExternal('steam://rungameid/311730') }},
     { type: 'separator' },
     { id: 2, label: 'Toggle overlay', click: async() => { toggleOverlay(true) }},
-    { id: 3, label: 'Toggle DevTools', click: async() => { toggleDevTools() }},
+    { id: 3, label: 'Reload overlay', click: async() => { reload() }},
+    { id: 4, label: 'Toggle DevTools', click: async() => { toggleDevTools() }},
     { type: 'separator' },
-    { id: 4, label: 'Reload overlay', click: async() => { reload() }},
-    { id: 5, label: 'Configure overlay', click: async() => { shell.openPath(confPath) }},
+    { id: 5, label: 'Settings...', click: async() => { settingsHandler.showSettingsWindow(conf, logger, saveConf, reload) }},
     { type: 'separator' },
-    { id: 7, label: 'About Gravure Studio', click: async() => { showAboutDialog() }},
-    { id: 8, label: 'Check for updates', click: async() => { checkUpdates() }},
-    { id: 9, label: 'Quit', click: async() => { mainWindow.webContents.closeDevTools(); mainWindow.destroy(); app.quit() }}
+    { id: 6, label: 'About Gravure Studio', click: async() => { showAboutDialog() }},
+    { id: 7, label: 'Check for updates', click: async() => { checkUpdates() }},
+    { id: 8, label: 'Quit', click: async() => { mainWindow.webContents.closeDevTools(); mainWindow.destroy(); app.quit() }}
   ]))
 }
 
 function reload() {
   logger.info('Reloading overlay conf...')
+
+  // Hide window if currently displaying.
+  disableOverlay(true)
 
   // Unregister shortcut and reset logging.
   globalShortcut.unregisterAll()
@@ -284,8 +289,7 @@ function toggleOverlay(toggleVisibiliy) {
       logger.info('Found a potential DoA window with title "'+ doaMatch.caption +'", updating conf.')
 
       conf.windowTitle = doaMatch.caption
-      conf.autoStart = true
-      fs.writeFileSync(confPath, JSON.stringify(conf, null, 2))
+      saveConf(conf)
 
       dialog.showErrorBox('Updated conf!', 'Updated windowTitle conf to "' + doaMatch.caption +'". Please restart the overlay.');
       app.exit()
@@ -299,6 +303,15 @@ function toggleOverlay(toggleVisibiliy) {
     } else {
       enableOverlay(toggleVisibiliy)
     }
+  }
+}
+
+function saveConf(newConf) {
+  try {
+    logger.info('Saving new configuration...')
+    fs.writeFileSync(confPath, JSON.stringify(newConf, null, 2))
+  } catch (error) {
+    logger.error('Unable to save configuration: ' + error)
   }
 }
 

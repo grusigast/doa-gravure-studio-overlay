@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en" data-bs-theme="<%= conf.theme %>">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  </head>
+  <body id="body" >
+    <div class="p-3">
+      <p class="lead text-center">
+        DoA Gravure Studio Overlay - <%= version %>
+      </p>
+
+      <div class="mb-3">
+        <label for="windowTitleInput" class="form-label">
+          DoA window title
+          <span class="badge rounded-pill text-bg-dark" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Requires restart">
+            <i class="bi bi-arrow-clockwise"></i>
+          </span>
+        </label>
+        <input type="text" class="form-control" id="windowTitleInput" value="<%= conf.windowTitle %>">
+        <div class="form-text">
+          Title of the window the overlay will be attached to.<br>
+          Note that the title changes when going in to the DoA main menu when AutoLink is installed correctly.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="processNameInput" class="form-label">DoA process name</label>
+        <input type="text" class="form-control" id="processNameInput" value="<%= conf.processName %>">
+      </div>
+
+      <div class="mb-3">
+        <label for="keyDelayInput" class="form-label">Key Delay (ms)</label>
+        <input type="text" class="form-control" id="keyDelayInput" value="<%= conf.keyDelay %>">
+        <div class="form-text">Delay between button press in GUI and keyboard event sent to DoA window.</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="hotkeyInput" class="form-label">Toggle hotkey</label>
+        <input type="text" class="form-control" id="hotkeyInput" value="<%= conf.toggleOverlay %>">
+      </div>
+
+      <div class="form-check form-switch mb-3">
+        <input class="form-check-input" type="checkbox" role="switch" id="hideInput">
+        <label class="form-check-label" for="hideInput">Hide overlay</label>
+        <div class="form-text">Hide overlay after button pressed.</div>
+      </div>
+
+      <div class="form-check form-switch mb-3">
+        <input class="form-check-input" type="checkbox" role="switch" id="standaloneInput">
+        <label class="form-check-label" for="standaloneInput">
+          Standalone mode
+          <span class="badge rounded-pill text-bg-dark" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Requires restart">
+            <i class="bi bi-arrow-clockwise"></i>
+          </span>
+        </label>
+        <div class="form-text">Run the overlay in a separate window instead of on top of the DoA window.</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="themeInput" class="form-label">Theme</label>
+        <select id="themeInput" class="form-select" aria-label="Theme">
+          <option value="light">light</option>
+          <option value="dark">dark</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="positionInput" class="form-label">Position</label>
+        <select id="positionInput" class="form-select" aria-label="Position">
+          <option value="left">left</option>
+          <option value="middle">middle</option>
+          <option value="right">right</option>
+        </select>
+        <div class="form-text">Original position of the overlay when opened.</div>
+      </div>
+
+      <div class="form-check form-switch mb-3">
+        <input class="form-check-input" type="checkbox" role="switch" id="logInput">
+        <label class="form-check-label" for="logInput">Log to file</label>
+      </div>
+
+
+      <div class="mb-3">
+        <label for="screenshotInput" class="form-label">Screenshot location</label>
+        <input type="text" class="form-control" id="screenshotInput" value="<%= conf.screenshotLocation %>">
+      </div>
+
+      <div class="mb-3">
+        <label for="recordingInput" class="form-label">Recording location</label>
+        <input type="text" class="form-control" id="recordingInput" value="<%= conf.recordingLocation %>">
+      </div>
+
+      <hr>
+
+      <div class="d-grid gap-2 d-sm-flex justify-content-md-end">
+        <button class="btn btn-primary me-md-2" type="button" onclick="saveSettings()">Save</button>
+        <button class="btn btn-outline-secondary" type="button" onclick="closeWindow()">Cancel</button>
+      </div>
+    </div>
+
+    <script>
+      body.onload = function() { init("<%= JSON.stringify(conf) %>"); }
+    </script>
+    <script src="settings.js"></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="../node_modules/@popperjs/core/dist/esm/popper.js"></script>
+    <script>window.$ = window.jQuery = require('../node_modules/jquery');</script>
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../node_modules/jquery-ui/dist/jquery-ui.min.js"></script>
+  </body>
+</html>
+
