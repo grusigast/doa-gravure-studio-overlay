@@ -30,12 +30,7 @@
       <div class="mb-3">
         <label for="processNameInput" class="form-label">DoA process name</label>
         <input type="text" class="form-control" id="processNameInput" value="<%= conf.processName %>">
-      </div>
-
-      <div class="mb-3">
-        <label for="keyDelayInput" class="form-label">Key Delay (ms)</label>
-        <input type="text" class="form-control" id="keyDelayInput" value="<%= conf.keyDelay %>">
-        <div class="form-text">Delay between button press in GUI and keyboard event sent to DoA window.</div>
+        <div class="form-text">Name of the process that memory injects will be performed on.</div>
       </div>
 
       <div class="mb-3">
@@ -43,22 +38,7 @@
         <input type="text" class="form-control" id="hotkeyInput" value="<%= conf.toggleOverlay %>">
       </div>
 
-      <div class="form-check form-switch mb-3">
-        <input class="form-check-input" type="checkbox" role="switch" id="hideInput">
-        <label class="form-check-label" for="hideInput">Hide overlay</label>
-        <div class="form-text">Hide overlay after button pressed.</div>
-      </div>
-
-      <div class="form-check form-switch mb-3">
-        <input class="form-check-input" type="checkbox" role="switch" id="standaloneInput">
-        <label class="form-check-label" for="standaloneInput">
-          Standalone mode
-          <span class="badge rounded-pill text-bg-dark" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Requires restart">
-            <i class="bi bi-arrow-clockwise"></i>
-          </span>
-        </label>
-        <div class="form-text">Run the overlay in a separate window instead of on top of the DoA window.</div>
-      </div>
+      <hr>
 
       <div class="mb-3">
         <label for="themeInput" class="form-label">Theme</label>
@@ -79,16 +59,40 @@
       </div>
 
       <div class="form-check form-switch mb-3">
+        <input class="form-check-input" type="checkbox" role="switch" id="standaloneInput">
+        <label class="form-check-label" for="standaloneInput">
+          Standalone mode
+          <span class="badge rounded-pill text-bg-dark" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Requires restart">
+            <i class="bi bi-arrow-clockwise"></i>
+          </span>
+        </label>
+        <div class="form-text">Run the overlay in a separate window instead of on top of the DoA window.</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="keyDelayInput" class="form-label">Key Delay (ms)</label>
+        <input type="text" class="form-control" id="keyDelayInput" value="<%= conf.keyDelay %>">
+        <div class="form-text">Delay between button press in GUI and keyboard event sent to DoA window.</div>
+      </div>
+
+      <div class="form-check form-switch mb-3">
+        <input class="form-check-input" type="checkbox" role="switch" id="hideInput">
+        <label class="form-check-label" for="hideInput">Hide overlay</label>
+        <div class="form-text">Hide overlay after button pressed.</div>
+      </div>
+
+      <div class="form-check form-switch mb-3">
         <input class="form-check-input" type="checkbox" role="switch" id="logInput">
         <label class="form-check-label" for="logInput">Log to file</label>
       </div>
 
+      <hr>
 
       <div class="mb-3">
         <label for="screenshotInput" class="form-label">Screenshot location</label>
         <input type="text" class="form-control" id="screenshotInput" value="<%= conf.screenshotLocation %>">
       </div>
-
+      
       <div class="mb-3">
         <label for="recordingInput" class="form-label">Recording location</label>
         <input type="text" class="form-control" id="recordingInput" value="<%= conf.recordingLocation %>">
