@@ -1,4 +1,4 @@
-const { BrowserWindow, ipcMain } = require('electron')
+const { app, BrowserWindow, ipcMain } = require('electron')
 const path = require('path')
 const ejse = require('ejs-electron')
 const currentVersion = process.env.npm_package_version || app.getVersion()
