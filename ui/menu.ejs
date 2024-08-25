@@ -202,17 +202,38 @@
                   </li>
                 </ul>
               </div>
+              <div class="btn-group">
+                <button id="wetness-button" class="btn btn-outline-secondary btn-sm dropdown-toggle" data-bs-auto-close="true" type="button" onclick="toggleDropDown(this)">
+                  <i class="bi bi-droplet-half"></i> Wet level
+                </button>
+                <ul id="character-wetness" class="dropdown-menu">
+                  <li>
+                    <button class="dropdown-item" type="button" onclick="sendActionAndActivate('character-wet-off', this, 'character-wetness', 'wetness-button')">
+                      Off
+                    </button>
+                  </li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li>
+                    <button class="dropdown-item" type="button" onclick="sendActionAndActivate('character-wet-low', this, 'character-wetness', 'wetness-button')">
+                      Low
+                    </button>
+                  </li>
+                  <li>
+                    <button class="dropdown-item" type="button" onclick="sendActionAndActivate('character-wet-mid', this, 'character-wetness', 'wetness-button')">
+                      Mid
+                    </button>
+                  </li>
+                  <li>
+                    <button class="dropdown-item" type="button" onclick="sendActionAndActivate('character-wet-high', this, 'character-wetness', 'wetness-button')">
+                      High
+                    </button>
+                  </li>
+                </ul>
+              </div>
               <br>
               <div class="input-group input-group-sm py-2">
                 <span class="input-group-text"><i class="bi bi-emoji-sunglasses px-1"></i> Tan level</span>
                 <input type="range" class="form-control form-range" oninput="sendRangeValue(this, 'character-tan')">
-              </div>
-              <div class="input-group input-group-sm py-1">
-                <span class="input-group-text"><i class="bi bi-droplet-half px-1"></i> Wet level</span>
-                <button type="button" class="btn btn-sm btn-outline-secondary" onclick="sendAction('character-wet-set', this)">
-                  <i class="bi bi-check-lg"></i> Set
-                </button>
-                <input type="range" class="form-control form-range" oninput="sendRangeValue(this, 'character-wet')">
               </div>
             </div>
 

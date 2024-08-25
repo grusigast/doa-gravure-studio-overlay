@@ -134,41 +134,9 @@
         "address": "00FD2420",
         "offset": "60",
         "mode": "range",
-        "min": "-0.75",
+        "min": "0.01",
         "max": "2.0"
     },
-    {
-        "id": "character-wet",
-        "action": "inject",
-        "address": "FD20B4",
-        "mode": "range",
-        "min": "10.0",
-        "max": "1000.0"
-    },
-    {
-        "id": "character-wet-set",
-        "action": "inject",
-        "mode": "multiple",
-        "injects": [
-            {
-                "address": "FD20A8",
-                "value": "8000.0"
-            },
-            {
-                "address": "FD20B0",
-                "value": "8000.0"
-            },
-            {
-                "address": "FD20AC",
-                "value": "8000.0"
-            },
-            {
-                "address": "FD20B4",
-                "value": "1000.0"
-            }
-        ]
-    },
-
     {
         "id": "camera-x-pan",
         "action": "inject",
@@ -224,5 +192,97 @@
         "mode": "range",
         "min": "0.0",
         "max": "6.0"
+    },
+    {
+        "id": "character-wet-low",
+        "action": "inject",
+        "mode": "multiple",
+        "injects": [
+            {
+                "address": "FD20A8",
+                "value": "8000.0"
+            },
+            {
+                "address": "FD20B0",
+                "value": "8000.0"
+            },
+            {
+                "address": "FD20AC",
+                "value": "8000.0"
+            },
+            {
+                "address": "FD20B4",
+                "value": "3000.0"
+            }
+        ]
+    },
+    {
+        "id": "character-wet-mid",
+        "action": "inject",
+        "mode": "multiple",
+        "injects": [
+            {
+                "address": "FD20A8",
+                "value": "8000.0"
+            },
+            {
+                "address": "FD20B0",
+                "value": "8000.0"
+            },
+            {
+                "address": "FD20AC",
+                "value": "8000.0"
+            },
+            {
+                "address": "FD20B4",
+                "value": "1000.0"
+            }
+        ]
+    },
+    {
+        "id": "character-wet-high",
+        "action": "inject",
+        "mode": "multiple",
+        "injects": [
+            {
+                "address": "FD20A8",
+                "value": "8000.0"
+            },
+            {
+                "address": "FD20B0",
+                "value": "8000.0"
+            },
+            {
+                "address": "FD20AC",
+                "value": "8000.0"
+            },
+            {
+                "address": "FD20B4",
+                "value": "500.0"
+            }
+        ]
+    },
+    {
+        "id": "character-wet-off",
+        "action": "inject",
+        "mode": "multiple",
+        "injects": [
+            {
+                "address": "FD20A8",
+                "value": "0.0"
+            },
+            {
+                "address": "FD20B0",
+                "value": "0.0"
+            },
+            {
+                "address": "FD20AC",
+                "value": "0.0"
+            },
+            {
+                "address": "FD20B4",
+                "value": "0.0"
+            }
+        ]
     }
 ]
