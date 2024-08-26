@@ -89,6 +89,6 @@ button.accordion-button:focus{
 }
 
 .pose-buttons {
-    max-height: 100px;
+    max-height: 150px;
     overflow-y: scroll;
 }
