@@ -86,7 +86,7 @@
                     <div id="flush-collapse-<%= scenes[i].id %>" class="accordion-collapse collapse" data-bs-parent="#scenesAccordion">
                       <img class="menuImage rounded img-fluid" src="./img/doa-gravure-studio-logo.png" class="card-img-top">
                       <% for(var j=0; j < scenes[i].scenes.length; j++) { %>
-                        <button class="btn btn-outline-secondary btn-sm scene-button"
+                        <button class="btn btn-outline-secondary btn-sm scene-button focus-ring focus-ring-secondary text-decoration-none"
                             onmouseover="setImage('<%= scenes[i].scenes[j].data %>', '<%= scenes[i].scenes[j].thumbnail %>')"
                             onclick="sendKeypress(this, '<%= scenes[i].scenes[j].data %>', '<%= scenes[i].scenes[j].mode %>', '<%= scenes[i].scenes[j].customfolder %>')">
                           <%= scenes[i].scenes[j].name %>
@@ -122,7 +122,7 @@
                       <img class="menuImage rounded img-fluid card-img-top" src="./img/doa-gravure-studio-logo.png">
                       <div class="pose-buttons">
                         <% for(var j=0; j < poses[i].scenes.length; j++) { %>
-                          <button class="btn btn-outline-secondary btn-sm pose-button"
+                          <button class="btn btn-outline-secondary btn-sm pose-button focus-ring focus-ring-secondary text-decoration-none"
                               onmouseover="setImage('<%= poses[i].scenes[j].data %>', '<%= poses[i].scenes[j].thumbnail %>')"
                               onclick="sendKeypress(this, '<%= poses[i].scenes[j].data %>', '<%= poses[i].scenes[j].mode %>', '<%= poses[i].scenes[j].customfolder %>')">
                             <%= poses[i].scenes[j].name %>

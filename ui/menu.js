@@ -76,6 +76,9 @@ ipcRenderer.on('set-visibility', (e, visibility) => {
       handle: ".modal-content"
     });
     $('.spinner-border').remove()
+
+    // Scroll to focused element
+    document.activeElement.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" })
   } else {
     overlayModal.hide()
     $('.spinner-border').remove()
