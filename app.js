@@ -344,6 +344,9 @@ function disableOverlay(hide)
 
         if (out)
           logger.info('Changed window focus: ' + error)
+
+        // Workaround for arrow keys not functioning after overlay shown
+        sendkeys.sendKey('control').then(() => {})
       })
       .catch((error) => {
         logger.error('Unable to change focus to target window: ' + error)
