@@ -515,17 +515,17 @@ ipcMain.on('action', (event, id) => {
     } else if (action.action == 'inject') {
       if (action.mode == 'multiple') {
           action.injects.forEach(element => {
-            handleMemoryInject(element.address, element.value)
+            handleMemoryInject(element.address, element.value, element.lock)
           });
         
       } else {
-        handleMemoryInject(action.address, action.value)
+        handleMemoryInject(action.address, action.value, action.lock)
       }
     } else if (action.action == 'inject-pointer') {
 
       if (action.mode == 'multiple') {
         action.injects.forEach(element => {
-          handleMemoryInjectPointer(element.address, element.offset, element.value, element.offsets)
+          handleMemoryInjectPointer(element.address, element.offset, element.value, element.offsets, element.lock)
         });
       }
     } else {
@@ -586,9 +586,9 @@ ipcMain.on('value', (event, value, id) => {
       var relativeValue = min + ((parseFloat(value)/100) * parseFloat(tot))
 
       if (action.action == 'inject-pointer') {
-        handleMemoryInjectPointer(action.address, action.offset, relativeValue.toFixed(2), action.offsets)
+        handleMemoryInjectPointer(action.address, action.offset, relativeValue.toFixed(2), action.offsets, action.lock)
       } else if (action.action == 'inject') {
-        handleMemoryInject(action.address, relativeValue.toFixed(2))
+        handleMemoryInject(action.address, relativeValue.toFixed(2), action.lock)
       } else {
         logger.error('Recieved unknown action: ' + action.action + ' for id: ' + id)
       }
@@ -673,8 +673,8 @@ function setAutolinkFolder(value)
   memoryjs.closeProcess(processObject.handle)
 }
 
-function handleMemoryInject(injectAddress, value) {
-  logger.info('Injecting data: ' + value + ' to address: ' + injectAddress)
+function handleMemoryInject(injectAddress, value, lock) {
+  logger.info('Injecting data: ' + value + ' to address: ' + injectAddress + ' lock? ' + lock)
 
   try
   {
@@ -684,7 +684,16 @@ function handleMemoryInject(injectAddress, value) {
       var baseAddress = processObject.modBaseAddr
       var address = baseAddress + parseInt(injectAddress, 16)
 
+      if (lock) {
+        unlockMemoryRegion(processObject.handle, address)
+      }
+
       memoryjs.writeMemory(processObject.handle, address, parseFloat(value), memoryjs.FLOAT)
+
+      if (lock) {
+        lockMemoryRegion(processObject.handle, address)
+      }
+
       memoryjs.closeProcess(processObject.handle)
     } else {
       logger.error('No value to inject!')
@@ -695,7 +704,7 @@ function handleMemoryInject(injectAddress, value) {
 
 }
 
-function handleMemoryInjectPointer(injectAddress, offset, value, offsets) {
+function handleMemoryInjectPointer(injectAddress, offset, value, offsets, lock) {
   try
   {
     if (value) {
@@ -720,7 +729,16 @@ function handleMemoryInjectPointer(injectAddress, offset, value, offsets) {
         logger.info('Injecting data: ' + value + ' to pointer address: ' + injectAddress + ' with offset: ' + offset + '  Resulting address: ' + actualAddress.toString(16).toUpperCase()) 
       }
 
+      if (lock) {
+        lockMemoryRegion(processObject.handle, actualAddress)
+      }
+
       memoryjs.writeMemory(processObject.handle, actualAddress, parseFloat(value), memoryjs.FLOAT)
+
+      if (lock) {
+        unlockMemoryRegion(processObject.handle, actualAddress)
+      }
+
       memoryjs.closeProcess(processObject.handle)
     } else {
       logger.error('No value to inject!')
@@ -815,4 +833,14 @@ function handleKeyPressCallback(out, err, restoreAfterCustomFolder) {
   } else {
     toggleOverlay(false)
   }
+}
+
+function lockMemoryRegion(handle, address)
+{
+  memoryjs.virtualProtectEx(handle, address, 8, memoryjs.PAGE_EXECUTE_READWRITE)
+}
+
+function unlockMemoryRegion(handle, address)
+{
+  memoryjs.virtualProtectEx(handle, address, 8, memoryjs.PAGE_EXECUTE_WRITECOPY)
 }

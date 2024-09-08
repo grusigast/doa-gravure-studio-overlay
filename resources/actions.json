@@ -135,7 +135,8 @@
         "offset": "60",
         "mode": "range",
         "min": "0.01",
-        "max": "2.0"
+        "max": "2.0",
+        "lock": true
     },
     {
         "id": "camera-x-pan",
@@ -200,19 +201,23 @@
         "injects": [
             {
                 "address": "FD20A8",
-                "value": "8000.0"
+                "value": "8000.0",
+                "lock": true
             },
             {
                 "address": "FD20B0",
-                "value": "8000.0"
+                "value": "8000.0",
+                "lock": true
             },
             {
                 "address": "FD20AC",
-                "value": "8000.0"
+                "value": "8000.0",
+                "lock": true
             },
             {
                 "address": "FD20B4",
-                "value": "3000.0"
+                "value": "3000.0",
+                "lock": true
             }
         ]
     },
@@ -223,19 +228,23 @@
         "injects": [
             {
                 "address": "FD20A8",
-                "value": "8000.0"
+                "value": "8000.0",
+                "lock": true
             },
             {
                 "address": "FD20B0",
-                "value": "8000.0"
+                "value": "8000.0",
+                "lock": true
             },
             {
                 "address": "FD20AC",
-                "value": "8000.0"
+                "value": "8000.0",
+                "lock": true
             },
             {
                 "address": "FD20B4",
-                "value": "1000.0"
+                "value": "1000.0",
+                "lock": true
             }
         ]
     },
@@ -246,19 +255,23 @@
         "injects": [
             {
                 "address": "FD20A8",
-                "value": "8000.0"
+                "value": "8000.0",
+                "lock": true
             },
             {
                 "address": "FD20B0",
-                "value": "8000.0"
+                "value": "8000.0",
+                "lock": true
             },
             {
                 "address": "FD20AC",
-                "value": "8000.0"
+                "value": "8000.0",
+                "lock": true
             },
             {
                 "address": "FD20B4",
-                "value": "500.0"
+                "value": "500.0",
+                "lock": true
             }
         ]
     },
@@ -269,19 +282,23 @@
         "injects": [
             {
                 "address": "FD20A8",
-                "value": "0.0"
+                "value": "0.0",
+                "lock": true
             },
             {
                 "address": "FD20B0",
-                "value": "0.0"
+                "value": "0.0",
+                "lock": true
             },
             {
                 "address": "FD20AC",
-                "value": "0.0"
+                "value": "0.0",
+                "lock": true
             },
             {
                 "address": "FD20B4",
-                "value": "0.0"
+                "value": "0.0",
+                "lock": true
             }
         ]
     }
