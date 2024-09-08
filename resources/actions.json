@@ -134,8 +134,8 @@
         "address": "00FD2420",
         "offset": "60",
         "mode": "range",
-        "min": "0.01",
-        "max": "2.0"
+        "min": "0.005",
+        "max": "1.0"
     },
     {
         "id": "camera-x-pan",
@@ -200,19 +200,25 @@
         "injects": [
             {
                 "address": "FD20A8",
-                "value": "8000.0"
+                "value": "100.0"
             },
             {
                 "address": "FD20B0",
-                "value": "8000.0"
+                "value": "100.0"
             },
             {
                 "address": "FD20AC",
-                "value": "8000.0"
+                "value": "100.0"
             },
             {
                 "address": "FD20B4",
-                "value": "3000.0"
+                "value": "8000.0"
+            },
+            {
+                "address": "00FD2420",
+                "mode": "pointer",
+                "offset": "60",
+                "value": "0.005"
             }
         ]
     },
@@ -223,19 +229,25 @@
         "injects": [
             {
                 "address": "FD20A8",
-                "value": "8000.0"
+                "value": "400.0"
             },
             {
                 "address": "FD20B0",
-                "value": "8000.0"
+                "value": "400.0"
             },
             {
                 "address": "FD20AC",
-                "value": "8000.0"
+                "value": "400.0"
             },
             {
                 "address": "FD20B4",
-                "value": "1000.0"
+                "value": "8000.0"
+            },
+            {
+                "address": "00FD2420",
+                "offset": "60",
+                "mode": "pointer",
+                "value": "0.005"
             }
         ]
     },
@@ -246,19 +258,25 @@
         "injects": [
             {
                 "address": "FD20A8",
-                "value": "8000.0"
+                "value": "800.0"
             },
             {
                 "address": "FD20B0",
-                "value": "8000.0"
+                "value": "800.0"
             },
             {
                 "address": "FD20AC",
-                "value": "8000.0"
+                "value": "800.0"
             },
             {
                 "address": "FD20B4",
-                "value": "500.0"
+                "value": "16000.0"
+            },
+            {
+                "address": "00FD2420",
+                "offset": "60",
+                "mode": "pointer",
+                "value": "0.005"
             }
         ]
     },

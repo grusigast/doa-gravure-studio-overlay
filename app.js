@@ -515,7 +515,11 @@ ipcMain.on('action', (event, id) => {
     } else if (action.action == 'inject') {
       if (action.mode == 'multiple') {
           action.injects.forEach(element => {
-            handleMemoryInject(element.address, element.value)
+            if (element.mode == 'pointer') {
+              handleMemoryInjectPointer(element.address, element.offset, element.value, element.offsets)
+            } else {
+              handleMemoryInject(element.address, element.value)
+            }
           });
         
       } else {
