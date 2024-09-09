@@ -17,6 +17,7 @@ var mainWindow, tray
 var confPath, conf, scenes, actions, softengine
 var isInteractable = true
 var screenRecorder
+var keepInjections = new Map([])
 
 app.whenReady().then(() => {
   loadConf()
@@ -519,20 +520,20 @@ ipcMain.on('action', (event, id) => {
       if (action.mode == 'multiple') {
           action.injects.forEach(element => {
             if (element.mode == 'pointer') {
-              handleMemoryInjectPointer(element.address, element.offset, element.value, element.offsets)
+              handleMemoryInjectPointer(element.address, element.offset, element.value, element.offsets, action.keep)
             } else {
-              handleMemoryInject(element.address, element.value)
+              handleMemoryInject(element.address, element.value, action.keep)
             }
           });
         
       } else {
-        handleMemoryInject(action.address, action.value)
+        handleMemoryInject(action.address, action.value, action.keep)
       }
     } else if (action.action == 'inject-pointer') {
 
       if (action.mode == 'multiple') {
         action.injects.forEach(element => {
-          handleMemoryInjectPointer(element.address, element.offset, element.value, element.offsets)
+          handleMemoryInjectPointer(element.address, element.offset, element.value, element.offsets, action.keep)
         });
       }
     } else {
@@ -593,9 +594,9 @@ ipcMain.on('value', (event, value, id) => {
       var relativeValue = min + ((parseFloat(value)/100) * parseFloat(tot))
 
       if (action.action == 'inject-pointer') {
-        handleMemoryInjectPointer(action.address, action.offset, relativeValue.toFixed(2), action.offsets)
+        handleMemoryInjectPointer(action.address, action.offset, relativeValue.toFixed(2), action.offsets, action.keep)
       } else if (action.action == 'inject') {
-        handleMemoryInject(action.address, relativeValue.toFixed(2))
+        handleMemoryInject(action.address, relativeValue.toFixed(2), action.keep)
       } else {
         logger.error('Recieved unknown action: ' + action.action + ' for id: ' + id)
       }
@@ -680,7 +681,7 @@ function setAutolinkFolder(value)
   memoryjs.closeProcess(processObject.handle)
 }
 
-function handleMemoryInject(injectAddress, value) {
+function handleMemoryInject(injectAddress, value, keep) {
   logger.info('Injecting data: ' + value + ' to address: ' + injectAddress)
 
   try
@@ -693,6 +694,11 @@ function handleMemoryInject(injectAddress, value) {
 
       memoryjs.writeMemory(processObject.handle, address, parseFloat(value), memoryjs.FLOAT)
       memoryjs.closeProcess(processObject.handle)
+
+      if (keep) {
+        logger.info('Storing injection: ' + address.toString(16) + ': ' + parseFloat(value))
+        keepInjections.set(address, parseFloat(value))
+      }
     } else {
       logger.error('No value to inject!')
     }
@@ -702,7 +708,7 @@ function handleMemoryInject(injectAddress, value) {
 
 }
 
-function handleMemoryInjectPointer(injectAddress, offset, value, offsets) {
+function handleMemoryInjectPointer(injectAddress, offset, value, offsets, keep) {
   try
   {
     if (value) {
@@ -729,6 +735,11 @@ function handleMemoryInjectPointer(injectAddress, offset, value, offsets) {
 
       memoryjs.writeMemory(processObject.handle, actualAddress, parseFloat(value), memoryjs.FLOAT)
       memoryjs.closeProcess(processObject.handle)
+
+      if (keep) {
+        logger.info('Storing injection: ' + actualAddress.toString(16) + ': ' + parseFloat(value))
+        keepInjections.set(actualAddress, parseFloat(value))
+      }
     } else {
       logger.error('No value to inject!')
     }
@@ -821,5 +832,19 @@ function handleKeyPressCallback(out, err, restoreAfterCustomFolder) {
     disableOverlay(true)
   } else {
     toggleOverlay(false)
+  }
+
+
+  if (keepInjections.size > 0) {
+    logger.info('Wait a sec and re-inject stuffs here!')
+    logger.info([...keepInjections.entries()])
+
+    
+    processObject = memoryjs.openProcess(conf.processName)
+    for (const [key, value] of keepInjections) {
+      logger.info('Re-injecting ' + key + ': ' + value)
+      memoryjs.writeMemory(processObject.handle, key, value, memoryjs.FLOAT)
+    }
+    memoryjs.closeProcess(processObject.handle)
   }
 }
