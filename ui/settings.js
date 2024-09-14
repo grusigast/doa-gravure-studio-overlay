@@ -39,5 +39,7 @@ function saveSettings() {
     conf.screenshotLocation = $("#screenshotInput").val()
     conf.recordingLocation = $("#recordingInput").val()
 
+    conf.memoryPollRate = $("#memoryPollRateInput").val()
+
     ipcRenderer.send('settings', 'save', JSON.stringify(conf))
 }

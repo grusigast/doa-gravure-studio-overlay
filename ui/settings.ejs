@@ -23,7 +23,7 @@
         <input type="text" class="form-control" id="windowTitleInput" value="<%= conf.windowTitle %>">
         <div class="form-text">
           Title of the window the overlay will be attached to.<br>
-          Note that the title changes when going in to the DoA main menu when AutoLink is installed correctly.
+          Note that the window title changes when going in to the DoA main menu when AutoLink is installed correctly.
         </div>
       </div>
 
@@ -31,6 +31,20 @@
         <label for="processNameInput" class="form-label">DoA process name</label>
         <input type="text" class="form-control" id="processNameInput" value="<%= conf.processName %>">
         <div class="form-text">Name of the process that memory injects will be performed on.</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="memoryPollRateInput" class="form-label">
+          Memory poll rate (ms)
+          <span class="badge rounded-pill text-bg-dark" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Requires restart">
+            <i class="bi bi-arrow-clockwise"></i>
+          </span>
+        </label>
+        <input type="text" class="form-control" id="memoryPollRateInput" value="<%= conf.memoryPollRate %>">
+        <div class="form-text">
+          Poll rate of checking memory regions for re-inserted values (such as character tan and wet level).<br>
+          Set to -1 to turn feature off.
+        </div>
       </div>
 
       <div class="mb-3">

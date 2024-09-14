@@ -54,6 +54,7 @@ Configuration is done in the conf.json file. Available options:
     "recordingLocation": "./recordings/",    // Location where recorded videos will be stored.
     "keyStuckFix": true,              // Set to true to attempt to fix F1-F12 keys being stuck after selecting scene.
     "standalone": false,              // Set to true to run the overlay in a standalone window instead of on top of the DoA window.
+    "memoryPollingRate": 2000,        // Polling rate in milliseconds how often "keep" inject values should be re-injected.
 
     // Video recording uses MediaRecorder: https://developer.mozilla.org/en-US/docs/Web/API/MediaRecorder
     // Supported mimeTypes in Chrome seems a bit limited 
@@ -158,6 +159,7 @@ Contains all scene data.
         "min": "-2.0",          // Min value allowed.
         "max": "2.0"            // Max value allowed.
         "offset": "60"          // Memory address offset. Used for inject-pointer actions.
+        "keep": false,          // True if value should be re-injected every polling period.
         "injects": [            // Array of injects for "multiple" inject mode.
             {
                 "address": "000C591C",

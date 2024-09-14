@@ -11,6 +11,7 @@
     "screenshotLocation": "./screenshots/",
     "recordingLocation": "./recordings/",
     "standalone": false,
+    "memoryPollRate": 2000,
     "mediaRecorderOptions": {
       "audioKiloBitsPerSecond": 128,
       "videoKiloBitsPerSecond": 25000,

@@ -131,6 +131,7 @@
     {
         "id": "character-tan",
         "action": "inject-pointer",
+        "keep": true,
         "address": "00FD2420",
         "offset": "60",
         "mode": "range",
@@ -197,6 +198,7 @@
         "id": "character-wet-low",
         "action": "inject",
         "mode": "multiple",
+        "keep": true,
         "injects": [
             {
                 "address": "FD20A8",
@@ -226,6 +228,7 @@
         "id": "character-wet-mid",
         "action": "inject",
         "mode": "multiple",
+        "keep": true,
         "injects": [
             {
                 "address": "FD20A8",
@@ -255,6 +258,7 @@
         "id": "character-wet-high",
         "action": "inject",
         "mode": "multiple",
+        "keep": true,
         "injects": [
             {
                 "address": "FD20A8",
@@ -284,6 +288,7 @@
         "id": "character-wet-off",
         "action": "inject",
         "mode": "multiple",
+        "keep": true,
         "injects": [
             {
                 "address": "FD20A8",

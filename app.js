@@ -3,7 +3,6 @@ const {app, BrowserWindow, globalShortcut, ipcMain, Tray, Menu, nativeImage, dia
 const { OverlayController } = require('electron-overlay-window')
 const sendkeys = require('node-key-sender')
 const ejse = require('ejs-electron')
-const memoryjs = require('memoryjs')
 const isElevated = require('native-is-elevated')()
 const path = require('path')
 const fs = require('fs')
@@ -12,6 +11,7 @@ const { listOpenWindows } = require('@josephuspaye/list-open-windows')
 const currentVersion = process.env.npm_package_version || app.getVersion()
 
 const settingsHandler = require("./settings.js")
+const injectHandler = require("./injects.js")
 
 var mainWindow, tray
 var confPath, conf, scenes, actions, softengine
@@ -27,6 +27,8 @@ app.whenReady().then(() => {
   loadData()
   createOverlay()
   createTray()
+
+  injectHandler.init(conf, logger)
 })
 
 app.on('window-all-closed', function () {
@@ -500,7 +502,7 @@ ipcMain.on('keypress', (event, keys, mode, customFolder) => {
   if (customFolder)
   {
     logger.info('Set customFolder to: ' + customFolder)
-    setAutolinkFolder(customFolder)
+    injectHandler.setAutolinkFolder(customFolder)
     handleKeyPress(keys, mode, conf.keyDelay, conf.keyDelay, customFolder)
   } else {
     handleKeyPress(keys, mode)
@@ -515,26 +517,8 @@ ipcMain.on('action', (event, id) => {
   if (action) {
     if (action.action == 'keypress') {
       handleKeyPress(action.data, action.mode, action.globalDelayPressMillisec, action.startDelayMillisec)
-    } else if (action.action == 'inject') {
-      if (action.mode == 'multiple') {
-          action.injects.forEach(element => {
-            if (element.mode == 'pointer') {
-              handleMemoryInjectPointer(element)
-            } else {
-              handleMemoryInject(element)
-            }
-          });
-        
-      } else {
-        handleMemoryInject(action)
-      }
-    } else if (action.action == 'inject-pointer') {
-
-      if (action.mode == 'multiple') {
-        action.injects.forEach(element => {
-          handleMemoryInjectPointer(element)
-        });
-      }
+    } else if (action.action == 'inject' || action.action == 'inject-pointer') {
+      injectHandler.inject(action)
     } else {
       logger.error('Recieved unknown action: ' + action.action + ' for id: ' + id)
     }
@@ -585,24 +569,7 @@ ipcMain.on('value', (event, value, id) => {
 
   var action = findAction(id)
   if (action) {
-    if (action.mode == 'range') {
-
-      var min = parseFloat(action.min)
-      var max = parseFloat(action.max)
-      var tot = Math.abs(max - min)
-      var relativeValue = min + ((parseFloat(value)/100) * parseFloat(tot))
-      action.value = relativeValue.toFixed(2)
-
-      if (action.action == 'inject-pointer') {
-        handleMemoryInjectPointer(action)
-      } else if (action.action == 'inject') {
-        handleMemoryInject(action)
-      } else {
-        logger.error('Recieved unknown action: ' + action.action + ' for id: ' + id)
-      }
-    } else {
-      logger.error('Recieved unknown mode: ' + action.mode + ' for id: ' + id)
-    }
+    injectHandler.inject(action, value)
   } else {
     logger.error('Recieved unknown action id: ' + id)
   }
@@ -660,113 +627,6 @@ ipcMain.handle('saveRecording', async (event, ...args) => {
     return false
   }
 })
-
-function setAutolinkFolder(value)
-{
-  var processObject = memoryjs.openProcess(conf.processName)
-
-  var startAdress = parseInt('100B13DC', 16)
-  var chars = value.length
-  
-  for (let index = 0; index < chars; index++) {
-    var char = value.charAt(index)
-    var charValue = char.charCodeAt(0)
-    var currentAddress = startAdress + (index * 2)
-    
-    memoryjs.virtualProtectEx(processObject.handle, currentAddress, 1, memoryjs.PAGE_READWRITE)
-    memoryjs.writeMemory(processObject.handle, currentAddress, charValue, memoryjs.UCHAR)
-    memoryjs.virtualProtectEx(processObject.handle, currentAddress, 1, memoryjs.PAGE_READONLY)
-  }
-
-  memoryjs.closeProcess(processObject.handle)
-}
-
-function handleMemoryInject(inject) {
-
-  var injectAddress = inject.address
-  var value = inject.value
-  var valueType = inject.valueType
-
-  try
-  {
-    if (value) {
-
-      processObject = memoryjs.openProcess(conf.processName)
-      var baseAddress = processObject.modBaseAddr
-      var address = baseAddress + parseInt(injectAddress, 16)
-
-      if (valueType == 'add') {
-        var existingValue = memoryjs.readMemory(processObject.handle, address, memoryjs.FLOAT)
-        var newValue = parseFloat(existingValue) + parseFloat(value)
-        
-        logger.info('Add ' + value + ' to existing value: ' + existingValue)
-
-        value = newValue
-      }
-      
-      logger.info('Injecting data: ' + value + ' to address: ' + injectAddress)
-
-      memoryjs.writeMemory(processObject.handle, address, parseFloat(value), memoryjs.FLOAT)
-      memoryjs.closeProcess(processObject.handle)
-    } else {
-      logger.error('No value to inject!')
-    }
-  } catch (error) {
-    logger.error('Unable to inject value to memory: ' + error)
-  }
-
-}
-
-function handleMemoryInjectPointer(inject) {
-
-  var injectAddress = inject.address
-  var offset = inject.offset
-  var offsets = inject.offsets
-  var value = inject.value
-  var valueType = inject.valueType
-
-  try
-  {
-    if (value) {
-
-      processObject = memoryjs.openProcess(conf.processName)
-
-      var baseAddress = processObject.modBaseAddr
-      var ptrAddress = baseAddress + parseInt(injectAddress, 16) 
-      var actualAddress
-
-      if (offsets) {
-        actualAddress = memoryjs.readMemory(processObject.handle, ptrAddress, memoryjs.DWORD)
-        for (var i = 0; i < offsets.length - 1; i++) {
-          var offset = offsets[i]
-          increasedPtr = actualAddress + parseInt(offset, 16)
-          actualAddress = memoryjs.readMemory(processObject.handle, increasedPtr, memoryjs.DWORD)
-        }
-        actualAddress = actualAddress + + parseInt(offsets[offsets.length - 1], 16)
-        logger.info('Injecting data: ' + value + ' to pointer address: ' + injectAddress + ' with multiple offsets: [' + offsets + ']  Resulting address: ' + actualAddress.toString(16).toUpperCase()) 
-      } else {
-        actualAddress = memoryjs.readMemory(processObject.handle, ptrAddress, memoryjs.DWORD) + parseInt(offset, 16)
-        logger.info('Injecting data: ' + value + ' to pointer address: ' + injectAddress + ' with offset: ' + offset + '  Resulting address: ' + actualAddress.toString(16).toUpperCase()) 
-      }
-
-      if (valueType == 'add') {
-        var existingValue = memoryjs.readMemory(processObject.handle, actualAddress, memoryjs.FLOAT)
-        var newValue = parseFloat(existingValue) + parseFloat(value)
-        
-        logger.info('Add ' + value + ' to existing value: ' + existingValue)
-
-        value = newValue
-      }
-
-      memoryjs.writeMemory(processObject.handle, actualAddress, parseFloat(value), memoryjs.FLOAT)
-      memoryjs.closeProcess(processObject.handle)
-    } else {
-      logger.error('No value to inject!')
-    }
-  } catch (error) {
-    logger.error('Unable to inject value to memory: ' + error)
-  }
-}
 
 function sleep (time) {
   return new Promise((resolve) => setTimeout(resolve, time));
@@ -845,7 +705,7 @@ function handleKeyPressCallback(out, err, restoreAfterCustomFolder) {
   if (restoreAfterCustomFolder)
   {
     logger.info('Restoring folder to: ParvateParadise')
-    setAutolinkFolder('ParvateParadise')
+    injectHandler.setAutolinkFolder('ParvateParadise')
   }
 
   if (conf.hideOverlay) {
