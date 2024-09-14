@@ -63,6 +63,12 @@
         "startDelayMillisec": "50"
     },
     {
+        "id": "toggle-reshade",
+        "action": "keypress",
+        "mode": "combination",
+        "data": "F2"
+    },
+    {
         "id": "camera-rotate",
         "action": "keypress",
         "mode": "press",
