@@ -302,5 +302,53 @@
                 "value": "0.0"
             }
         ]
+    },
+    {
+        "id": "character-move-left",
+        "action": "inject",
+        "mode": "multiple",
+        "injects": [
+            {
+                "address": "FD0638",
+                "valueType": "add",
+                "value": "0.1"
+            }
+        ]
+    },
+    {
+        "id": "character-move-right",
+        "action": "inject",
+        "mode": "multiple",
+        "injects": [
+            {
+                "address": "FD0638",
+                "valueType": "add",
+                "value": "-0.1"
+            }
+        ]
+    },
+    {
+        "id": "character-move-forward",
+        "action": "inject",
+        "mode": "multiple",
+        "injects": [
+            {
+                "address": "FD063C",
+                "valueType": "add",
+                "value": "-0.1"
+            }
+        ]
+    },
+    {
+        "id": "character-move-back",
+        "action": "inject",
+        "mode": "multiple",
+        "injects": [
+            {
+                "address": "FD063C",
+                "valueType": "add",
+                "value": "0.1"
+            }
+        ]
     }
 ]

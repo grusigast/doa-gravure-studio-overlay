@@ -235,6 +235,21 @@
                 <span class="input-group-text"><i class="bi bi-emoji-sunglasses px-1"></i> Tan level</span>
                 <input type="range" class="form-control form-range" oninput="sendRangeValue(this, 'character-tan')">
               </div>
+              <div class="input-group input-group-sm w-100">
+                <span class="input-group-text"><i class="bi bi-arrows-move px-1"></i> Position</span>
+                <button type="button" class="btn btn-sm btn-outline-secondary" onclick="sendAction('character-move-left', this)">
+                  <i class="bi bi-chevron-double-left"></i> Left
+                </button>
+                <button type="button" class="btn btn-sm btn-outline-secondary" onclick="sendAction('character-move-right', this)">
+                  <i class="bi bi-chevron-double-right"></i> Right
+                </button>
+                <button type="button" class="btn btn-sm btn-outline-secondary" onclick="sendAction('character-move-forward', this)">
+                  <i class="bi bi-chevron-double-down"></i> Forward
+                </button>
+                <button type="button" class="btn btn-sm btn-outline-secondary" onclick="sendAction('character-move-back', this)">
+                  <i class="bi bi-chevron-double-up"></i> Back
+                </button>
+              </div>
             </div>
 
             <!-- Camera-->

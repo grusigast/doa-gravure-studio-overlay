@@ -519,20 +519,20 @@ ipcMain.on('action', (event, id) => {
       if (action.mode == 'multiple') {
           action.injects.forEach(element => {
             if (element.mode == 'pointer') {
-              handleMemoryInjectPointer(element.address, element.offset, element.value, element.offsets)
+              handleMemoryInjectPointer(element)
             } else {
-              handleMemoryInject(element.address, element.value)
+              handleMemoryInject(element)
             }
           });
         
       } else {
-        handleMemoryInject(action.address, action.value)
+        handleMemoryInject(action)
       }
     } else if (action.action == 'inject-pointer') {
 
       if (action.mode == 'multiple') {
         action.injects.forEach(element => {
-          handleMemoryInjectPointer(element.address, element.offset, element.value, element.offsets)
+          handleMemoryInjectPointer(element)
         });
       }
     } else {
@@ -591,11 +591,12 @@ ipcMain.on('value', (event, value, id) => {
       var max = parseFloat(action.max)
       var tot = Math.abs(max - min)
       var relativeValue = min + ((parseFloat(value)/100) * parseFloat(tot))
+      action.value = relativeValue.toFixed(2)
 
       if (action.action == 'inject-pointer') {
-        handleMemoryInjectPointer(action.address, action.offset, relativeValue.toFixed(2), action.offsets)
+        handleMemoryInjectPointer(action)
       } else if (action.action == 'inject') {
-        handleMemoryInject(action.address, relativeValue.toFixed(2))
+        handleMemoryInject(action)
       } else {
         logger.error('Recieved unknown action: ' + action.action + ' for id: ' + id)
       }
@@ -680,8 +681,11 @@ function setAutolinkFolder(value)
   memoryjs.closeProcess(processObject.handle)
 }
 
-function handleMemoryInject(injectAddress, value) {
-  logger.info('Injecting data: ' + value + ' to address: ' + injectAddress)
+function handleMemoryInject(inject) {
+
+  var injectAddress = inject.address
+  var value = inject.value
+  var valueType = inject.valueType
 
   try
   {
@@ -690,6 +694,17 @@ function handleMemoryInject(injectAddress, value) {
       processObject = memoryjs.openProcess(conf.processName)
       var baseAddress = processObject.modBaseAddr
       var address = baseAddress + parseInt(injectAddress, 16)
+
+      if (valueType == 'add') {
+        var existingValue = memoryjs.readMemory(processObject.handle, address, memoryjs.FLOAT)
+        var newValue = parseFloat(existingValue) + parseFloat(value)
+        
+        logger.info('Add ' + value + ' to existing value: ' + existingValue)
+
+        value = newValue
+      }
+      
+      logger.info('Injecting data: ' + value + ' to address: ' + injectAddress)
 
       memoryjs.writeMemory(processObject.handle, address, parseFloat(value), memoryjs.FLOAT)
       memoryjs.closeProcess(processObject.handle)
@@ -702,7 +717,14 @@ function handleMemoryInject(injectAddress, value) {
 
 }
 
-function handleMemoryInjectPointer(injectAddress, offset, value, offsets) {
+function handleMemoryInjectPointer(inject) {
+
+  var injectAddress = inject.address
+  var offset = inject.offset
+  var offsets = inject.offsets
+  var value = inject.value
+  var valueType = inject.valueType
+
   try
   {
     if (value) {
@@ -725,6 +747,15 @@ function handleMemoryInjectPointer(injectAddress, offset, value, offsets) {
       } else {
         actualAddress = memoryjs.readMemory(processObject.handle, ptrAddress, memoryjs.DWORD) + parseInt(offset, 16)
         logger.info('Injecting data: ' + value + ' to pointer address: ' + injectAddress + ' with offset: ' + offset + '  Resulting address: ' + actualAddress.toString(16).toUpperCase()) 
+      }
+
+      if (valueType == 'add') {
+        var existingValue = memoryjs.readMemory(processObject.handle, actualAddress, memoryjs.FLOAT)
+        var newValue = parseFloat(existingValue) + parseFloat(value)
+        
+        logger.info('Add ' + value + ' to existing value: ' + existingValue)
+
+        value = newValue
       }
 
       memoryjs.writeMemory(processObject.handle, actualAddress, parseFloat(value), memoryjs.FLOAT)

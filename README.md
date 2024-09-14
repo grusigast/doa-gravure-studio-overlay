@@ -162,7 +162,8 @@ Contains all scene data.
             {
                 "address": "000C591C",
                 "offset": "28",
-                "value": "1.1"
+                "value": "1.1",
+                "valueType": "add"  // Type of value, "add" to add value to existing value in memory. Leave empty to just set the value directly.
             }
         ]
     }
