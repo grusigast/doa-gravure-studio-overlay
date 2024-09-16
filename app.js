@@ -628,6 +628,14 @@ ipcMain.handle('saveRecording', async (event, ...args) => {
   }
 })
 
+ipcMain.handle('getSoftEngineStatus', async (event, ...args) => {
+  return injectHandler.getSoftEngineStatus()
+})
+
+ipcMain.on('setSoftEngineStatus', (event, value) => {
+  injectHandler.setSoftEngineStatus(value)
+})
+
 function sleep (time) {
   return new Promise((resolve) => setTimeout(resolve, time));
 }

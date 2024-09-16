@@ -107,6 +107,42 @@ module.exports = function () {
     memoryjs.closeProcess(processObject.handle)
   }
 
+  module.setSoftEngineStatus = function(enabled) {
+    currentlyInjecting = true
+    try {
+      processObject = memoryjs.openProcess(conf.processName)
+
+      var softEngineStatusAddress = '00F7A948'
+      var baseAddress = processObject.modBaseAddr
+      var address = baseAddress + parseInt(softEngineStatusAddress, 16)
+
+      memoryjs.writeMemory(processObject.handle, address, enabled, memoryjs.BOOLEAN)
+      memoryjs.closeProcess(processObject.handle)
+    } catch (error) {
+      // ignore errors.
+    }
+    currentlyInjecting = false
+  }
+
+  module.getSoftEngineStatus = function() {
+    try {
+      processObject = memoryjs.openProcess(conf.processName)
+
+      var softEngineStatusAddress = '00F7A948'
+      var baseAddress = processObject.modBaseAddr
+      var address = baseAddress + parseInt(softEngineStatusAddress, 16)
+
+      var value = memoryjs.readMemory(processObject.handle, address, memoryjs.BOOLEAN)
+
+      memoryjs.closeProcess(processObject.handle)
+
+      return value
+    } catch (error) {
+      // ignore errors.
+    }
+    return false
+  }
+
   function reinjectKeepValues() {
     try {
       if (keepInjections.size > 0 && !currentlyInjecting) { 

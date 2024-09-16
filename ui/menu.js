@@ -62,9 +62,14 @@ window.onclick = function(event)
 }
 
 
-ipcRenderer.on('set-visibility', (e, visibility) => {
+ipcRenderer.on('set-visibility', async (e, visibility) => {
   console.log('set-visibility: ' + visibility)
   if (visibility) {
+    // Set SoftEngine toggle status.
+    const enabled = await ipcRenderer.invoke('getSoftEngineStatus')
+    $('#softengine-toggle-btn').prop('checked', enabled)
+
+    // Show modal.
     overlayModal.show()
 
     // Remove transparency if not in standalone mode.
@@ -169,7 +174,6 @@ function sendKeypress(element, keys, mode, customFolder)
   ipcRenderer.send('keypress', keys, mode, customFolder)
 }
 
-
 function sendActionAndActivate(id, element, listId, buttonId)
 {
   // Remove active class on all items in dropdownlist
@@ -256,6 +260,9 @@ function toggleDropDown(element)
 
 function toggleSoftEngine(switchElement)
 {
+  // Send event to server.
+  ipcRenderer.send('setSoftEngineStatus', switchElement.checked)
+
   const toggles = $('.softengine-toggle')
   const toggle = [...toggles].map((toggleEl) => {
     toggleEl.checked = switchElement.checked
