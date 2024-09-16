@@ -628,6 +628,17 @@ ipcMain.handle('saveRecording', async (event, ...args) => {
   }
 })
 
+
+ipcMain.handle('isInjectActionSet', async (event, ...args) => {
+  var action = findAction(args[0])
+  if (action) {
+    var isInjected = injectHandler.isInjected(action)
+    logger.info('Checking if ' + action.id + ' is set: ' + isInjected)
+    return isInjected
+  }
+  return false
+})
+
 function sleep (time) {
   return new Promise((resolve) => setTimeout(resolve, time));
 }

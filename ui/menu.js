@@ -48,6 +48,8 @@ window.onload = function() {
   if ($('.standalone-mode-true').length > 0) {
     overlayModal.show()
   }
+
+  setSoftEngineToggles()
 };
 
 window.onclick = function(event)
@@ -89,6 +91,24 @@ ipcRenderer.on('button-pressed', (e, status) => {
   console.log('button-pressed: ' + status)
   $('.spinner-border').remove()
 });
+
+async function setSoftEngineToggles() {
+  var allEnabled = true
+
+  // Set SoftEngine toggles
+  $('.softengine-toggle').each(async function() {
+    const status = await ipcRenderer.invoke('isInjectActionSet', $(this).attr('id'))
+    if (!status) {
+      allEnabled = false
+    }
+
+    $(this).prop('checked', status)
+  })
+
+  if (allEnabled) {
+    $('#softEngineToggle').prop('checked', status)
+  }
+}
 
 
 async function toggleRecord(recordBtn) {
@@ -256,6 +276,8 @@ function toggleDropDown(element)
 
 function toggleSoftEngine(switchElement)
 {
+  console.log('toggleSoftEngine')
+
   const toggles = $('.softengine-toggle')
   const toggle = [...toggles].map((toggleEl) => {
     toggleEl.checked = switchElement.checked

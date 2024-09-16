@@ -12,7 +12,8 @@
                         {
                             "address": "000C591C",
                             "offset": "28",
-                            "value": "1.5"
+                            "value": "1.5",
+                            "enableCheck": true
                         },
                         {
                             "address": "000C591C",
@@ -109,7 +110,8 @@
                         {
                             "address": "000C591C",
                             "offset": "48",
-                            "value": "1.5"
+                            "value": "1.5",
+                            "enableCheck": true
                         },
                         {
                             "address": "000C591C",
@@ -206,7 +208,8 @@
                         {
                             "address": "000C591C",
                             "offset": "68",
-                            "value": "1.5"
+                            "value": "1.5",
+                            "enableCheck": true
                         },
                         {
                             "address": "000C591C",
@@ -298,7 +301,8 @@
                         {
                             "address": "000C591C",
                             "offset": "9C",
-                            "value": "0.6"
+                            "value": "0.6",
+                            "enableCheck": true
                         },
                         {
                             "address": "000C591C",
@@ -490,7 +494,8 @@
                         {
                             "address": "000C591C",
                             "offset": "E0",
-                            "value": "0.6"
+                            "value": "0.6",                            
+                            "enableCheck": true
                         },
                         {
                             "address": "000C591C",
@@ -677,7 +682,8 @@
                         {
                             "address": "000C591C",
                             "offset": "124",
-                            "value": "0.6"
+                            "value": "0.6",
+                            "enableCheck": true
                         },
                         {
                             "address": "000C591C",
@@ -864,7 +870,8 @@
                         {
                             "address": "000C591C",
                             "offset": "168",
-                            "value": "0.6"
+                            "value": "0.6",
+                            "enableCheck": true
                         },
                         {
                             "address": "000C591C",
@@ -1051,7 +1058,8 @@
                         {
                             "address": "000C591C",
                             "offset": "1AC",
-                            "value": "0.6"
+                            "value": "0.6",
+                            "enableCheck": true
                         },
                         {
                             "address": "000C591C",
@@ -1237,7 +1245,8 @@
                     "injects": [
                         {
                             "address": "CBDA48",
-                            "value": "0.025"
+                            "value": "0.025",
+                            "enableCheck": true
                         },
                         {
                             "address": "CBDA4C",
@@ -1406,7 +1415,8 @@
                     "injects": [
                         {
                             "address": "CBDA94",
-                            "value": "0.025"
+                            "value": "0.025",
+                            "enableCheck": true
                         },
                         {
                             "address": "CBDA98",
@@ -1575,7 +1585,8 @@
                     "injects": [
                         {
                             "address": "CBDAE0",
-                            "value": "0.025"
+                            "value": "0.025",
+                            "enableCheck": true
                         },
                         {
                             "address": "CBDAE4",
@@ -1744,7 +1755,8 @@
                     "injects": [
                         {
                             "address": "CBDB2C",
-                            "value": "0.025"
+                            "value": "0.025",
+                            "enableCheck": true
                         },
                         {
                             "address": "CBDB30",
@@ -2065,7 +2077,8 @@
                                 "4C",
                                 "1BC"
                             ],
-                            "value": "0.6"
+                            "value": "0.6",
+                            "enableCheck": true
                         }
                     ]
                 },

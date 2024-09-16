@@ -26,8 +26,7 @@
                     <i class="bi bi-pin-map-fill"></i> Scenes
                   </button>
                 </li>
-              <% } %>
-              <% if(poses.length > 0) { %>
+              <% } %><% if(poses.length > 0) { %>
                 <li class="nav-item" role="presentation">
                   <button class="nav-link link-secondary" type="button" role="tab" data-bs-toggle="tab"
                   id="poses-tab" aria-controls="poses" data-bs-target="#poses" aria-selected="true" onclick="hideDefaultContent()">
@@ -295,7 +294,7 @@
                 <h6><%= softengine[i].category %></h6>
                 <% for(var j=0; j < softengine[i].toggles.length; j++) { %>
                   <div class="form-check form-switch form-check-inline">
-                    <input class="form-check-input softengine-toggle" type="checkbox" role="switch"
+                    <input id="<%= softengine[i].toggles[j].enable.id %>" class="form-check-input softengine-toggle" type="checkbox" role="switch"
                       onchange="sendToggle(this, '<%= softengine[i].toggles[j].enable.id %>', '<%= softengine[i].toggles[j].disable.id %>')">
                     <label class="form-check-label">
                       <%= softengine[i].toggles[j].name %>

@@ -107,6 +107,80 @@ module.exports = function () {
     memoryjs.closeProcess(processObject.handle)
   }
 
+  module.isInjected = function(action) {
+    var isSet = false
+
+    action.injects.forEach(element => {
+      if (element.enableCheck) {
+
+        var existingValue
+        if (action.action == 'inject-pointer') {
+          existingValue = readValuePointer(element.address, element.offset, element.offsets)
+        } else {
+          existingValue = readValue(element.address)
+        }
+        
+        console.log(existingValue.toFixed(3) + '  -   '  + parseFloat(element.value).toFixed(3))
+        if (existingValue.toFixed(3) == parseFloat(element.value).toFixed(3)) {
+          isSet = true
+        }
+      }
+    });
+
+    return isSet
+  }
+
+  function readValue(injectAddress) {
+    try {
+      processObject = memoryjs.openProcess(conf.processName)
+
+      var baseAddress = processObject.modBaseAddr
+      var address = baseAddress + parseInt(injectAddress, 16)
+      var value = memoryjs.readMemory(processObject.handle, address, memoryjs.FLOAT)
+
+      memoryjs.closeProcess(processObject.handle)
+      return value
+    } catch (error) {
+      // ignore errors
+    }
+    return -1
+  }
+
+  function readValuePointer(address, offset, offsets) {
+    try {
+      processObject = memoryjs.openProcess(conf.processName)
+
+      var baseAddress = processObject.modBaseAddr
+      var ptrAddress = baseAddress + parseInt(address, 16)
+      var actualAddress
+
+      if (offsets) {
+        logger.info('checking offsets: ' + offsets)
+
+        actualAddress = memoryjs.readMemory(processObject.handle, ptrAddress, memoryjs.DWORD)
+        for (var i = 0; i < offsets.length - 1; i++) {
+          var offset = offsets[i]
+          increasedPtr = actualAddress + parseInt(offset, 16)
+          console.log('increasedPtr: ' + increasedPtr)
+          actualAddress = memoryjs.readMemory(processObject.handle, increasedPtr, memoryjs.DWORD)
+        }
+        actualAddress = actualAddress + parseInt(offsets[offsets.length - 1], 16)
+
+        console.log( actualAddress.toString(16).toUpperCase())
+      } else {
+        actualAddress = memoryjs.readMemory(processObject.handle, ptrAddress, memoryjs.DWORD) + parseInt(offset, 16)
+      }
+
+      var value = memoryjs.readMemory(processObject.handle, actualAddress, memoryjs.FLOAT)
+      memoryjs.closeProcess(processObject.handle)
+
+      return value
+    } catch (error) {
+      // ignore errors
+    }
+    return -1
+  }
+
   function reinjectKeepValues() {
     try {
       if (keepInjections.size > 0 && !currentlyInjecting) { 
@@ -188,7 +262,7 @@ module.exports = function () {
             increasedPtr = actualAddress + parseInt(offset, 16)
             actualAddress = memoryjs.readMemory(processObject.handle, increasedPtr, memoryjs.DWORD)
           }
-          actualAddress = actualAddress + + parseInt(offsets[offsets.length - 1], 16)
+          actualAddress = actualAddress + parseInt(offsets[offsets.length - 1], 16)
           logger.info('Injecting data: ' + value + ' to pointer address: ' + injectAddress + ' with multiple offsets: [' + offsets + ']  Resulting address: ' + actualAddress.toString(16).toUpperCase())
         } else {
           actualAddress = memoryjs.readMemory(processObject.handle, ptrAddress, memoryjs.DWORD) + parseInt(offset, 16)
