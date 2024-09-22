@@ -45,7 +45,7 @@ window.onload = function() {
   )
 
   // Show modal directly if standalone mode.
-  if ($('.standalone-mode-true').length > 0) {
+  if ($('.standalone-display-true').length > 0) {
     overlayModal.show()
   }
 };
@@ -73,7 +73,7 @@ ipcRenderer.on('set-visibility', async (e, visibility) => {
     overlayModal.show()
 
     // Remove transparency if not in standalone mode.
-    if ($('.standalone-mode-false').length > 0) {
+    if ($('.standalone-display-false').length > 0) {
       document.body.style.display = null
     }
 
@@ -199,12 +199,17 @@ function sendSpecialAction(id)
 {
   console.log('Send special action: '+ id)
 
-  const modal = document.getElementById('overlayModal')
-  modal.addEventListener('hidden.bs.modal', function performWhenClosed() {
+  // Hide modal if not standalone mode.
+  if ($('.standalone-display-false').length > 0) {
+    const modal = document.getElementById('overlayModal')
+    modal.addEventListener('hidden.bs.modal', function performWhenClosed() {
+      ipcRenderer.send('special-action', id)
+      modal.removeEventListener('hidden.bs.modal', performWhenClosed)
+    })
+    overlayModal.hide()
+  } else {
     ipcRenderer.send('special-action', id)
-    modal.removeEventListener('hidden.bs.modal', performWhenClosed)
-  })
-  overlayModal.hide()
+  }
 }
 
 function sendRangeValue(rangeElement, id)

@@ -227,6 +227,7 @@ Contains all scene data.
 - [memoryjs](https://github.com/Rob--/memoryjs)
 - [native-is-elevated](https://github.com/arkon/native-is-elevated)
 - [list-open-windows](https://github.com/JosephusPaye/list-open-windows)
+- [node-screenshots](https://github.com/nashaofu/node-screenshots)
 
 ## Build executable
 Building a portable executable file can be done with electron-builder and the following command:

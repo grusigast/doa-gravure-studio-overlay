@@ -28,7 +28,8 @@
     "jquery": "3.7.1",
     "jquery-ui": "1.13.2",
     "node-fetch": "3.3.2",
-    "v8-compile-cache": "2.4.0"
+    "v8-compile-cache": "2.4.0",
+    "node-screenshots": "0.2.1"
   },
   "devDependencies": {
     "electron": "^24.4.0",

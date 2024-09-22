@@ -338,11 +338,9 @@
               <button type="button" class="btn btn-outline-secondary" onclick="sendAction('pause', this)" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Pause scene playback">
                 <i class="bi bi-pause"></i>
               </button>
-              <% if(!conf.standalone) { %>
-                <button type="button" class="btn btn-outline-secondary" onclick="sendSpecialAction('screenshot')">
-                  <i class="bi bi-camera"></i>
-                </button>
-              <% } %>
+              <button type="button" class="btn btn-outline-secondary" onclick="sendSpecialAction('screenshot')">
+                <i class="bi bi-camera"></i>
+              </button>
               <button type="button" id="recordBtn" class="btn btn-outline-secondary" onclick="toggleRecord(this)" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Start recording">
                 <i class="bi bi-record"></i>
               </button>
