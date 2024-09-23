@@ -2,7 +2,7 @@
 
 DoA Gravure Studio Overlay is an overlay for DoA Gravure Studio to make it easier to select scenes and access AutoLink actions.
 
-![Screenshot of overlay](screenshot.png?raw=true "Screenshot of overlay")
+![Screenshot of overlay](https://files.catbox.moe/l5935v.jpg "Screenshot of overlay")
 
 ## Features
 * Select DoA Gravure Studio scenes
