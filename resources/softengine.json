@@ -22,7 +22,7 @@
                         {
                             "address": "000C591C",
                             "offset": "30",
-                            "value": "-0.1"
+                            "value": "-0.2"
                         },
                         {
                             "address": "000C591C",
@@ -119,7 +119,7 @@
                         {
                             "address": "000C591C",
                             "offset": "50",
-                            "value": "-0.1"
+                            "value": "-0.2"
                         },
                         {
                             "address": "000C591C",
@@ -216,7 +216,7 @@
                         {
                             "address": "000C591C",
                             "offset": "70",
-                            "value": "-0.1"
+                            "value": "-0.2"
                         },
                         {
                             "address": "000C591C",
@@ -358,7 +358,7 @@
                         {
                             "address": "000C591C",
                             "offset": "8C",
-                            "value": "0.2"
+                            "value": "0.15"
                         },
                         {
                             "address": "000C591C",
@@ -378,7 +378,7 @@
                         {
                             "address": "000C591C",
                             "offset": "A0",
-                            "value": "0.35"
+                            "value": "0.15"
                         }
                     ]
                 },
@@ -550,7 +550,7 @@
                         {
                             "address": "000C591C",
                             "offset": "D0",
-                            "value": "0.2"
+                            "value": "0.15"
                         },
                         {
                             "address": "000C591C",
@@ -565,7 +565,7 @@
                         {
                             "address": "000C591C",
                             "offset": "E4",
-                            "value": "0.35"
+                            "value": "0.15"
                         }
                     ]
                 },
@@ -737,7 +737,7 @@
                         {
                             "address": "000C591C",
                             "offset": "114",
-                            "value": "0.2"
+                            "value": "0.15"
                         },
                         {
                             "address": "000C591C",
@@ -752,7 +752,7 @@
                         {
                             "address": "000C591C",
                             "offset": "128",
-                            "value": "0.35"
+                            "value": "0.15"
                         }
                     ]
                 },
@@ -924,7 +924,7 @@
                         {
                             "address": "000C591C",
                             "offset": "158",
-                            "value": "0.2"
+                            "value": "0.15"
                         },
                         {
                             "address": "000C591C",
@@ -939,7 +939,7 @@
                         {
                             "address": "000C591C",
                             "offset": "16C",
-                            "value": "0.35"
+                            "value": "0.15"
                         }
                     ]
                 },
@@ -1111,7 +1111,7 @@
                         {
                             "address": "000C591C",
                             "offset": "19C",
-                            "value": "0.2"
+                            "value": "0.15"
                         },
                         {
                             "address": "000C591C",
@@ -1126,7 +1126,7 @@
                         {
                             "address": "000C591C",
                             "offset": "1B0",
-                            "value": "0.35"
+                            "value": "0.15"
                         }
                     ]
                 },

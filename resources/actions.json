@@ -208,25 +208,25 @@
         "injects": [
             {
                 "address": "FD20A8",
-                "value": "100.0"
+                "value": "15.0"
             },
             {
                 "address": "FD20B0",
-                "value": "100.0"
+                "value": "15.0"
             },
             {
                 "address": "FD20AC",
-                "value": "100.0"
+                "value": "15.0"
             },
             {
                 "address": "FD20B4",
-                "value": "8000.0"
+                "value": "15.0"
             },
             {
                 "address": "00FD2420",
                 "mode": "pointer",
                 "offset": "60",
-                "value": "0.005"
+                "value": "0.0005"
             }
         ]
     },
@@ -238,25 +238,25 @@
         "injects": [
             {
                 "address": "FD20A8",
-                "value": "400.0"
+                "value": "30.0"
             },
             {
                 "address": "FD20B0",
-                "value": "400.0"
+                "value": "30.0"
             },
             {
                 "address": "FD20AC",
-                "value": "400.0"
+                "value": "30.0"
             },
             {
                 "address": "FD20B4",
-                "value": "8000.0"
+                "value": "50.0"
             },
             {
                 "address": "00FD2420",
                 "offset": "60",
                 "mode": "pointer",
-                "value": "0.005"
+                "value": "0.0005"
             }
         ]
     },
@@ -268,25 +268,25 @@
         "injects": [
             {
                 "address": "FD20A8",
-                "value": "800.0"
+                "value": "45.0"
             },
             {
                 "address": "FD20B0",
-                "value": "800.0"
+                "value": "45.0"
             },
             {
                 "address": "FD20AC",
-                "value": "800.0"
+                "value": "45.0"
             },
             {
                 "address": "FD20B4",
-                "value": "16000.0"
+                "value": "100.0"
             },
             {
                 "address": "00FD2420",
                 "offset": "60",
                 "mode": "pointer",
-                "value": "0.005"
+                "value": "0.0005"
             }
         ]
     },
